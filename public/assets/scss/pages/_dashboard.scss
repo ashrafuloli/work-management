@@ -1,0 +1,1466 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Dashboard Page
+// ============================================================
+
+.wm-dashboard-page {
+    max-width: 100%;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-dashboard__header {
+
+    @include flex-between;
+
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+
+}
+
+.wm-dashboard__header-content {
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__eyebrow {
+
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__eyebrow i {
+
+    font-size: $font-size-lg;
+
+}
+
+.wm-dashboard__title {
+
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+
+}
+
+.wm-dashboard__description {
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+
+}
+
+.wm-dashboard__header-actions {
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    flex-shrink: 0;
+
+}
+
+.wm-dashboard__date-button {
+
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+
+}
+
+.wm-dashboard__date-button i:last-child {
+
+    margin-left: $spacing-1;
+
+    font-size: $font-size-sm;
+
+}
+
+
+// ============================================================
+// Statistics
+// ============================================================
+
+.wm-dashboard__stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+
+}
+
+.wm-dashboard__stat-card {
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+}
+
+.wm-dashboard__stat-card:hover {
+
+    border-color: $color-border-dark;
+
+    box-shadow: $shadow-md;
+
+}
+
+.wm-dashboard__stat-top {
+
+    @include flex-between;
+
+    margin-bottom: $spacing-5;
+
+}
+
+.wm-dashboard__stat-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: $radius-lg;
+
+    font-size: 20px;
+
+}
+
+.wm-dashboard__stat-icon--primary {
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+}
+
+.wm-dashboard__stat-icon--blue {
+
+    color: $color-info-dark;
+    background: $color-info-light;
+
+}
+
+.wm-dashboard__stat-icon--green {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__stat-icon--purple {
+
+    color: $color-purple;
+    background: $color-purple-light;
+
+}
+
+.wm-dashboard__stat-trend {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 4px 8px;
+
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__stat-trend--positive {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__stat-trend--neutral {
+
+    color: $color-text-secondary;
+    background: $color-gray-100;
+
+}
+
+.wm-dashboard__stat-value {
+
+    margin-bottom: 4px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.2;
+
+}
+
+.wm-dashboard__stat-label {
+
+    color: $color-text;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+}
+
+.wm-dashboard__stat-footer {
+
+    margin-top: $spacing-3;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+
+}
+
+
+// ============================================================
+// Main Grid
+// ============================================================
+
+.wm-dashboard__grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(0, 1fr);
+
+    gap: $spacing-5;
+
+}
+
+
+// ============================================================
+// Card
+// ============================================================
+
+.wm-dashboard__card {
+
+    min-width: 0;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+}
+
+.wm-dashboard__card-header {
+
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+}
+
+.wm-dashboard__card-title {
+
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__card-description {
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+}
+
+.wm-dashboard__card-link {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    flex-shrink: 0;
+
+    color: $color-primary;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    text-decoration: none;
+
+    @include transition;
+
+}
+
+.wm-dashboard__card-link:hover {
+
+    color: $color-primary-hover;
+
+}
+
+.wm-dashboard__card-link i {
+
+    font-size: 14px;
+
+}
+
+
+// ============================================================
+// Project Progress
+// ============================================================
+
+.wm-dashboard__project-list {
+
+    padding: 4px $spacing-5 $spacing-2;
+
+}
+
+.wm-dashboard__project {
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+}
+
+.wm-dashboard__project:last-child {
+
+    border-bottom: 0;
+
+}
+
+.wm-dashboard__project-main {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-3;
+
+}
+
+.wm-dashboard__project-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    border-radius: $radius-md;
+
+    font-size: 18px;
+
+}
+
+.wm-dashboard__project-icon--blue {
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+}
+
+.wm-dashboard__project-icon--purple {
+
+    color: $color-purple;
+    background: $color-purple-light;
+
+}
+
+.wm-dashboard__project-icon--green {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__project-icon--orange {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+.wm-dashboard__project-info {
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__project-title {
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.wm-dashboard__project-title:hover {
+
+    color: $color-primary;
+
+}
+
+.wm-dashboard__project-meta {
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-dashboard__project-progress {
+
+    padding-left: 50px;
+
+}
+
+.wm-dashboard__progress-header {
+
+    @include flex-between;
+
+    margin-bottom: 6px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-dashboard__progress-header span:first-child {
+
+    color: $color-text-dark;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__progress {
+
+    width: 100%;
+    height: 6px;
+
+    overflow: hidden;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+
+}
+
+.wm-dashboard__progress-bar {
+
+    display: block;
+
+    height: 100%;
+
+    background: $color-primary;
+
+    border-radius: inherit;
+
+    @include transition(width, 0.4s);
+
+}
+
+
+// ============================================================
+// Activity Chart
+// ============================================================
+
+.wm-dashboard__chart-filter {
+
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    padding: 7px 10px;
+
+    color: $color-text-secondary;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition;
+
+}
+
+.wm-dashboard__chart-filter:hover,
+.wm-dashboard__chart-filter.is-active {
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border-color: $color-primary-soft;
+
+}
+
+.wm-dashboard__chart-wrapper {
+
+    position: relative;
+
+    height: 280px;
+
+    padding: $spacing-5;
+
+}
+
+
+// ============================================================
+// Tasks
+// ============================================================
+
+.wm-dashboard__task-list {
+
+    padding: 4px $spacing-5;
+
+}
+
+.wm-dashboard__task {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+    @include transition;
+
+}
+
+.wm-dashboard__task:last-child {
+
+    border-bottom: 0;
+
+}
+
+.wm-dashboard__task-check {
+
+    flex-shrink: 0;
+
+}
+
+.wm-dashboard__task-checkbox {
+
+    width: 17px;
+    height: 17px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    @include input-accent($color-primary);
+
+}
+
+.wm-dashboard__task-content {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__task-title {
+
+    display: block;
+
+    overflow: hidden;
+
+    margin-bottom: 5px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.wm-dashboard__task-title:hover {
+
+    color: $color-primary;
+
+}
+
+.wm-dashboard__task-meta {
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-dashboard__task-project,
+.wm-dashboard__task-date {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+}
+
+.wm-dashboard__task-date--danger {
+
+    color: $color-danger-dark;
+
+}
+
+.wm-dashboard__task-dot {
+
+    width: 3px;
+    height: 3px;
+
+    flex-shrink: 0;
+
+    background: $color-gray-300;
+
+    border-radius: 50%;
+
+}
+
+.wm-dashboard__priority {
+
+    flex-shrink: 0;
+
+    padding: 4px 8px;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__priority--high {
+
+    color: $color-danger-dark;
+    background: $color-danger-light;
+
+}
+
+.wm-dashboard__priority--medium {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+.wm-dashboard__priority--low {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__task.is-completed {
+
+    opacity: 0.55;
+
+}
+
+.wm-dashboard__task.is-completed .wm-dashboard__task-title {
+
+    color: $color-text-muted;
+
+    text-decoration: line-through;
+
+}
+
+
+// ============================================================
+// Deadlines
+// ============================================================
+
+.wm-dashboard__deadline-list {
+
+    padding: 4px $spacing-5;
+
+}
+
+.wm-dashboard__deadline {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+}
+
+.wm-dashboard__deadline:last-child {
+
+    border-bottom: 0;
+
+}
+
+.wm-dashboard__deadline-date {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-md;
+
+}
+
+.wm-dashboard__deadline-month {
+
+    color: $color-text-muted;
+
+    font-size: 9px;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.06em;
+
+}
+
+.wm-dashboard__deadline-date strong {
+
+    margin-top: 1px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    line-height: 1;
+
+}
+
+.wm-dashboard__deadline-content {
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__deadline-content strong {
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.wm-dashboard__deadline-content span {
+
+    margin-top: 3px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-dashboard__deadline-status {
+
+    padding: 4px 8px;
+
+    color: $color-text-secondary;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__deadline-status--warning {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+
+// ============================================================
+// Team Workload
+// ============================================================
+
+.wm-dashboard__team-list {
+
+    padding: 4px $spacing-5;
+
+}
+
+.wm-dashboard__member {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+}
+
+.wm-dashboard__member:last-child {
+
+    border-bottom: 0;
+
+}
+
+.wm-dashboard__member-avatar {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: $font-weight-bold;
+
+}
+
+.wm-dashboard__member-avatar--blue {
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+}
+
+.wm-dashboard__member-avatar--purple {
+
+    color: $color-purple;
+    background: $color-purple-light;
+
+}
+
+.wm-dashboard__member-avatar--green {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__member-avatar--orange {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+.wm-dashboard__member-info {
+
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__member-info strong {
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+
+.wm-dashboard__member-info span {
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-dashboard__member-progress {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    width: 120px;
+
+}
+
+.wm-dashboard__member-progress-bar {
+
+    flex: 1;
+
+    height: 5px;
+
+    overflow: hidden;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+
+}
+
+.wm-dashboard__member-progress-bar span {
+
+    display: block;
+
+    height: 100%;
+
+    background: $color-primary;
+
+    border-radius: inherit;
+
+}
+
+.wm-dashboard__member-progress strong {
+
+    width: 30px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    text-align: right;
+
+}
+
+
+// ============================================================
+// Activity Feed
+// ============================================================
+
+.wm-dashboard__activity-list {
+
+    padding: 4px $spacing-5;
+
+}
+
+.wm-dashboard__activity-item {
+
+    display: flex;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+}
+
+.wm-dashboard__activity-item:last-child {
+
+    border-bottom: 0;
+
+}
+
+.wm-dashboard__activity-avatar {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    font-size: 10px;
+    font-weight: $font-weight-bold;
+
+}
+
+.wm-dashboard__activity-avatar--blue {
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+}
+
+.wm-dashboard__activity-avatar--purple {
+
+    color: $color-purple;
+    background: $color-purple-light;
+
+}
+
+.wm-dashboard__activity-avatar--green {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__activity-avatar--orange {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+.wm-dashboard__activity-content {
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__activity-content p {
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: 1.5;
+
+}
+
+.wm-dashboard__activity-content p strong {
+
+    color: $color-text-dark;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__activity-content a {
+
+    color: $color-primary;
+
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+
+}
+
+.wm-dashboard__activity-content span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+
+// ============================================================
+// Quick Actions
+// ============================================================
+
+.wm-dashboard__quick-actions {
+
+    margin-top: $spacing-6;
+
+}
+
+.wm-dashboard__quick-action-header {
+
+    margin-bottom: $spacing-4;
+
+}
+
+.wm-dashboard__section-title {
+
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__section-description {
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+}
+
+.wm-dashboard__quick-action-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: $spacing-4;
+
+}
+
+.wm-dashboard__quick-action {
+
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4;
+
+    color: inherit;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    text-decoration: none;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+}
+
+.wm-dashboard__quick-action:hover {
+
+    border-color: $color-primary;
+
+    box-shadow: $shadow-md;
+
+    transform: translateY(-2px);
+
+}
+
+.wm-dashboard__quick-action > i {
+
+    margin-left: auto;
+
+    color: $color-text-muted;
+
+    font-size: 18px;
+
+}
+
+.wm-dashboard__quick-action-icon {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    border-radius: $radius-lg;
+
+    font-size: 18px;
+
+}
+
+.wm-dashboard__quick-action-icon--blue {
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+}
+
+.wm-dashboard__quick-action-icon--green {
+
+    color: $color-success-dark;
+    background: $color-success-light;
+
+}
+
+.wm-dashboard__quick-action-icon--purple {
+
+    color: $color-purple;
+    background: $color-purple-light;
+
+}
+
+.wm-dashboard__quick-action-icon--orange {
+
+    color: $color-warning-dark;
+    background: $color-warning-light;
+
+}
+
+.wm-dashboard__quick-action-content {
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+}
+
+.wm-dashboard__quick-action-content strong {
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-dashboard__quick-action-content small {
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: $breakpoint-xl) {
+
+    .wm-dashboard__stats {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    .wm-dashboard__quick-action-grid {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: $breakpoint-lg) {
+
+    .wm-dashboard__grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .wm-dashboard__header {
+
+        align-items: flex-start;
+
+    }
+
+}
+
+
+@media (max-width: $breakpoint-md) {
+
+    .wm-dashboard-page {
+
+        padding: $spacing-4;
+
+    }
+
+    .wm-dashboard__header {
+
+        flex-direction: column;
+
+    }
+
+    .wm-dashboard__header-actions {
+
+        width: 100%;
+
+    }
+
+    .wm-dashboard__date-button {
+
+        flex: 1;
+
+    }
+
+    .wm-dashboard__header-actions .btn-primary {
+
+        flex-shrink: 0;
+
+    }
+
+    .wm-dashboard__title {
+
+        font-size: $font-size-3xl;
+
+    }
+
+}
+
+
+@media (max-width: $breakpoint-sm) {
+
+    .wm-dashboard__stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .wm-dashboard__quick-action-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .wm-dashboard__header-actions {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+    .wm-dashboard__date-button {
+
+        justify-content: center;
+
+    }
+
+    .wm-dashboard__header-actions .btn-primary {
+
+        justify-content: center;
+
+    }
+
+    .wm-dashboard__card-header {
+
+        align-items: flex-start;
+
+    }
+
+    .wm-dashboard__project-progress {
+
+        padding-left: 0;
+
+    }
+
+    .wm-dashboard__member-progress {
+
+        width: 90px;
+
+    }
+
+    .wm-dashboard__priority {
+
+        display: none;
+
+    }
+
+}

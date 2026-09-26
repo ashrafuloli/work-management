@@ -1,0 +1,73 @@
+// ============================================================
+// WorkManagement
+// Main Content Layout
+// ============================================================
+
+@use "../common" as *;
+
+
+// ============================================================
+// Main
+// ============================================================
+
+.wm-main {
+    min-height: 100vh;
+
+    margin-left: $sidebar-width;
+
+    background: $color-body-bg;
+
+    transition:
+        margin-left 0.25s ease;
+}
+
+
+.wm-sidebar.is-collapsed ~ .wm-main {
+    margin-left: $sidebar-collapsed-width;
+}
+
+
+// ============================================================
+// Content
+// ============================================================
+
+.wm-content {
+    min-height: calc(100vh - #{$header-height});
+
+    padding:
+        calc(#{$header-height} + #{$content-padding})
+        $content-padding
+        $content-padding;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 991.98px) {
+
+    .wm-main {
+        margin-left: 0;
+    }
+
+
+    .wm-sidebar.is-collapsed ~ .wm-main {
+        margin-left: 0;
+    }
+
+
+    .wm-content {
+        padding-right: $spacing-4;
+        padding-left: $spacing-4;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+
+    .wm-content {
+        padding-right: $spacing-3;
+        padding-left: $spacing-3;
+    }
+}

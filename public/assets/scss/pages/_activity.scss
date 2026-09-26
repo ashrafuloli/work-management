@@ -1,0 +1,1258 @@
+@use "../common" as *;
+
+
+// ================================================================
+// Activity Page
+// ================================================================
+
+.wm-activity-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ================================================================
+// Header
+// ================================================================
+
+.wm-activity-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-activity-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-3;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-activity-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-activity-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+
+    @include transition();
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+.wm-activity-page__breadcrumb-current {
+    color: $color-text-muted;
+}
+
+.wm-activity-page__title-row {
+    @include flex-between;
+
+    gap: $spacing-6;
+}
+
+.wm-activity-page__title {
+    margin: 0 0 $spacing-1;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+
+    line-height: $line-height-tight;
+}
+
+.wm-activity-page__subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+}
+
+.wm-activity-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+
+// ================================================================
+// Buttons
+// ================================================================
+
+.wm-activity-page .wm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+
+    padding: 0 $button-padding-x;
+
+    color: $color-text;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $button-radius;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition();
+
+    @include hover {
+        background: $color-gray-50;
+        border-color: $color-border-dark;
+    }
+}
+
+.wm-activity-page .wm-btn--primary {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+}
+
+.wm-activity-page .wm-btn--primary:hover {
+    color: $color-white;
+    background: $color-primary-hover;
+    border-color: $color-primary-hover;
+}
+
+
+// ================================================================
+// Summary
+// ================================================================
+
+.wm-activity-page__summary {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-activity-page__summary-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    min-height: 116px;
+
+    padding: $spacing-5;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-activity-page__summary-icon {
+    @include flex-center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: $radius-lg;
+
+    font-size: 20px;
+}
+
+.wm-activity-page__summary-icon--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-activity-page__summary-icon--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-activity-page__summary-icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-activity-page__summary-icon--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-activity-page__summary-label {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+.wm-activity-page__summary-value {
+    display: block;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+}
+
+.wm-activity-page__summary-meta {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+
+// ================================================================
+// Main Card
+// ================================================================
+
+.wm-activity-page__card {
+    overflow: visible;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+
+// ================================================================
+// Toolbar
+// ================================================================
+
+.wm-activity-page__toolbar {
+    @include flex-between;
+
+    min-height: 72px;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-activity-page__toolbar-left,
+.wm-activity-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-activity-page__search {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 300px;
+}
+
+.wm-activity-page__search > i {
+    position: absolute;
+    left: 12px;
+
+    color: $color-text-muted;
+
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+.wm-activity-page__search-input {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 38px;
+
+    color: $color-text;
+
+    background: $color-gray-50;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-size: $font-size-md;
+
+    outline: none;
+
+    @include transition();
+
+    @include placeholder {
+        color: $color-text-muted;
+    }
+
+    &:focus {
+        background: $color-white;
+        border-color: $color-primary;
+        box-shadow: $input-focus-shadow;
+    }
+}
+
+.wm-activity-page__search-clear {
+    @include button-reset;
+    @include flex-center;
+
+    position: absolute;
+    right: 8px;
+
+    width: 24px;
+    height: 24px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-sm;
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-200;
+    }
+}
+
+.wm-activity-page__filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+
+    padding: 0 12px;
+
+    color: $color-text;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition();
+
+    @include hover {
+        background: $color-gray-50;
+        border-color: $color-border-dark;
+    }
+}
+
+.wm-activity-page__filter-count {
+    @include flex-center;
+
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 5px;
+
+    color: $color-primary;
+    background: $color-primary-light;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__sort {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-activity-page__sort > span {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-activity-page__sort select {
+    height: $input-height-md;
+
+    padding: 0 32px 0 10px;
+
+    color: $color-text;
+
+    background: $color-white;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+// ================================================================
+// Filters
+// ================================================================
+
+.wm-activity-page__filters {
+    display: none;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+
+    align-items: end;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-gray-50;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-activity-page__filters.is-visible {
+    display: grid;
+}
+
+.wm-activity-page__filter-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-activity-page__filter-group select {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 32px 0 12px;
+
+    color: $color-text;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    outline: none;
+
+    cursor: pointer;
+
+    &:focus {
+        border-color: $color-primary;
+        box-shadow: $input-focus-shadow;
+    }
+}
+
+.wm-activity-page__clear-filters {
+    height: $input-height-md;
+
+    padding: 0 12px;
+
+    color: $color-text-secondary;
+
+    background: transparent;
+
+    border: 0;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+
+// ================================================================
+// Active Filters
+// ================================================================
+
+.wm-activity-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+
+    padding: $spacing-3 $spacing-5;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-activity-page__filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 28px;
+
+    padding: 0 9px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border: 0;
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+}
+
+.wm-activity-page__filter-chip i {
+    font-size: 13px;
+}
+
+
+// ================================================================
+// Content
+// ================================================================
+
+.wm-activity-page__content {
+    padding: $spacing-5;
+}
+
+.wm-activity-page__group {
+    margin-bottom: $spacing-6;
+}
+
+.wm-activity-page__group:last-child {
+    margin-bottom: 0;
+}
+
+.wm-activity-page__date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: $spacing-4;
+    padding-bottom: $spacing-3;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-activity-page__date span:first-child {
+    color: $color-text-dark;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__date span:last-child {
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+
+// ================================================================
+// Timeline
+// ================================================================
+
+.wm-activity-page__timeline {
+    position: relative;
+}
+
+.wm-activity-page__item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 40px minmax(0, 1fr) 32px;
+
+    gap: $spacing-4;
+
+    padding-bottom: $spacing-5;
+}
+
+.wm-activity-page__item:last-child {
+    padding-bottom: 0;
+}
+
+.wm-activity-page__timeline-line {
+    position: absolute;
+
+    top: 40px;
+    bottom: 0;
+    left: 19px;
+
+    width: 1px;
+
+    background: $color-border;
+}
+
+.wm-activity-page__item:last-child
+.wm-activity-page__timeline-line {
+    display: none;
+}
+
+.wm-activity-page__icon {
+    position: relative;
+    z-index: 1;
+
+    @include flex-center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 3px solid $color-white;
+    border-radius: $radius-full;
+
+    box-shadow: 0 0 0 1px $color-border;
+
+    font-size: 17px;
+}
+
+.wm-activity-page__icon--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-activity-page__icon--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-activity-page__icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-activity-page__icon--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-activity-page__icon--cyan {
+    color: #0891B2;
+    background: $color-cyan-light;
+}
+
+
+// ================================================================
+// Activity Body
+// ================================================================
+
+.wm-activity-page__body {
+    min-width: 0;
+
+    padding-top: 1px;
+}
+
+.wm-activity-page__activity-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+}
+
+.wm-activity-page__actor {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-activity-page__avatar {
+    @include flex-center;
+
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+
+    border-radius: $radius-full;
+
+    font-size: 9px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__avatar--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-activity-page__avatar--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-activity-page__avatar--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-activity-page__avatar--cyan {
+    color: #0891B2;
+    background: $color-cyan-light;
+}
+
+.wm-activity-page__avatar--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-activity-page__actor strong {
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__actor span {
+    margin-left: 4px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+.wm-activity-page__time {
+    flex-shrink: 0;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+.wm-activity-page__message {
+    margin-top: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+.wm-activity-page__message strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__message a {
+    color: $color-primary;
+
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+
+    @include hover {
+        text-decoration: underline;
+    }
+}
+
+.wm-activity-page__context {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: $spacing-2;
+
+    padding: 5px 8px;
+
+    color: $color-text-muted;
+
+    background: $color-gray-50;
+
+    border-radius: $radius-sm;
+
+    font-size: $font-size-xs;
+}
+
+.wm-activity-page__context i {
+    font-size: 14px;
+}
+
+
+// ================================================================
+// Comment
+// ================================================================
+
+.wm-activity-page__comment {
+    margin-top: $spacing-3;
+    padding: $spacing-3 $spacing-4;
+
+    color: $color-text-secondary;
+
+    background: $color-gray-50;
+
+    border-left: 3px solid $color-purple;
+
+    border-radius: 0 $radius-md $radius-md 0;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+
+// ================================================================
+// File
+// ================================================================
+
+.wm-activity-page__file {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    max-width: 460px;
+
+    margin-top: $spacing-3;
+    padding: $spacing-3;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+}
+
+.wm-activity-page__file-icon {
+    @include flex-center;
+
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+
+    color: $color-danger;
+    background: $color-danger-light;
+
+    border-radius: $radius-md;
+
+    font-size: 18px;
+}
+
+.wm-activity-page__file > div:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-activity-page__file strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-xs;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-activity-page__file span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: 10px;
+}
+
+.wm-activity-page__file button {
+    @include button-reset;
+    @include flex-center;
+
+    width: 30px;
+    height: 30px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-sm;
+
+    @include hover {
+        color: $color-primary;
+        background: $color-white;
+    }
+}
+
+
+// ================================================================
+// Action Menu
+// ================================================================
+
+.wm-activity-page__item-action {
+    position: relative;
+}
+
+.wm-activity-page__item-action > button {
+    @include button-reset;
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-md;
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-activity-page__action-menu {
+    position: absolute;
+    z-index: $z-dropdown;
+
+    top: 0;
+    right: calc(100% + 5px);
+
+    display: none;
+
+    width: 160px;
+
+    padding: 6px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+}
+
+.wm-activity-page__item-action.is-open
+.wm-activity-page__action-menu {
+    display: block;
+}
+
+.wm-activity-page__action-menu button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 34px;
+
+    padding: 0 9px;
+
+    color: $color-text;
+
+    background: transparent;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    font-size: $font-size-xs;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    @include hover {
+        background: $color-gray-50;
+    }
+}
+
+.wm-activity-page__action-menu button i {
+    width: 16px;
+
+    color: $color-text-muted;
+    font-size: 15px;
+}
+
+
+// ================================================================
+// Empty
+// ================================================================
+
+.wm-activity-page__empty {
+    display: none;
+
+    padding: $spacing-12 $spacing-6;
+
+    text-align: center;
+}
+
+.wm-activity-page__empty.is-visible {
+    display: block;
+}
+
+.wm-activity-page__empty-icon {
+    @include flex-center;
+
+    width: 56px;
+    height: 56px;
+
+    margin: 0 auto $spacing-4;
+
+    color: $color-text-muted;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-xl;
+
+    font-size: 25px;
+}
+
+.wm-activity-page__empty h3 {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-activity-page__empty p {
+    max-width: 420px;
+
+    margin: 0 auto $spacing-5;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+
+// ================================================================
+// Footer
+// ================================================================
+
+.wm-activity-page__footer {
+    @include flex-between;
+
+    min-height: 68px;
+
+    padding: 0 $spacing-5;
+
+    border-top: 1px solid $color-border;
+}
+
+.wm-activity-page__footer-info {
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+.wm-activity-page__footer-info strong {
+    color: $color-text-secondary;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ================================================================
+// Pagination
+// ================================================================
+
+.wm-activity-page__pagination {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.wm-activity-page__pagination-btn {
+    @include button-reset;
+    @include flex-center;
+
+    min-width: 32px;
+    height: 32px;
+
+    padding: 0 7px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-activity-page__pagination-btn.is-active {
+    color: $color-white;
+    background: $color-primary;
+}
+
+.wm-activity-page__pagination-btn.is-disabled {
+    color: $color-text-disabled;
+
+    cursor: not-allowed;
+}
+
+.wm-activity-page__pagination-dots {
+    padding: 0 3px;
+
+    color: $color-text-muted;
+}
+
+
+// ================================================================
+// Responsive
+// ================================================================
+
+@media (max-width: 1200px) {
+
+    .wm-activity-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-activity-page__filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .wm-activity-page__title-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-activity-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-activity-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: $spacing-4;
+    }
+
+    .wm-activity-page__toolbar-left,
+    .wm-activity-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-activity-page__toolbar-right {
+        justify-content: flex-end;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .wm-activity-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-activity-page__header-actions {
+        flex-wrap: wrap;
+    }
+
+    .wm-activity-page__filters {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-activity-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .wm-activity-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-activity-page__header-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .wm-activity-page__header-actions .wm-btn {
+        width: 100%;
+    }
+
+    .wm-activity-page__toolbar-left {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-activity-page__search {
+        width: 100%;
+    }
+
+    .wm-activity-page__content {
+        padding: $spacing-4;
+    }
+
+    .wm-activity-page__item {
+        grid-template-columns: 36px minmax(0, 1fr) 28px;
+
+        gap: $spacing-3;
+    }
+
+    .wm-activity-page__icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .wm-activity-page__timeline-line {
+        left: 17px;
+        top: 36px;
+    }
+
+    .wm-activity-page__actor {
+        align-items: flex-start;
+    }
+
+    .wm-activity-page__actor span {
+        display: block;
+        margin-left: 0;
+        margin-top: 1px;
+    }
+
+    .wm-activity-page__activity-header {
+        align-items: flex-start;
+    }
+
+    .wm-activity-page__time {
+        display: none;
+    }
+
+    .wm-activity-page__action-menu {
+        right: 0;
+        top: calc(100% + 5px);
+    }
+
+    .wm-activity-page__footer {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: $spacing-3;
+
+        padding-top: $spacing-4;
+        padding-bottom: $spacing-4;
+    }
+
+}

@@ -1,0 +1,793 @@
+// ------------------------------------------------------------
+// Variables & Mixins
+// ------------------------------------------------------------
+
+@use "../common" as *;
+
+
+// ============================================================
+// Form Group
+// ============================================================
+
+.wm-form-group {
+    margin-bottom: $spacing-4;
+}
+
+
+// ============================================================
+// Form Label
+// ============================================================
+
+.wm-form-label {
+    display: inline-block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+
+    cursor: pointer;
+
+    &.is-required::after {
+        content: " *";
+
+        color: $color-danger;
+    }
+}
+
+
+// ============================================================
+// Form Control
+// ============================================================
+
+.wm-form-control {
+    display: block;
+
+    width: 100%;
+    min-height: $input-height-md;
+
+    padding: 0 $spacing-3;
+
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+
+    background: $input-bg;
+
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    font-weight: $font-weight-regular;
+    line-height: $line-height-normal;
+
+    transition: border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+    &::placeholder {
+        color: $input-placeholder;
+        opacity: 1;
+    }
+
+    &:hover:not(:disabled):not(:focus) {
+        border-color: $color-gray-400;
+    }
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &:disabled,
+    &.is-disabled {
+        background: $color-gray-50;
+        color: $color-text-disabled;
+
+        cursor: not-allowed;
+    }
+
+    &.is-error {
+        border-color: $color-danger;
+
+        &:focus {
+            border-color: $color-danger;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.10);
+        }
+    }
+
+    &.is-success {
+        border-color: $color-success;
+
+        &:focus {
+            border-color: $color-success;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.10);
+        }
+    }
+}
+
+
+// ============================================================
+// Textarea
+// ============================================================
+
+.wm-form-textarea {
+    min-height: 120px;
+
+    padding-top: $spacing-3;
+    padding-bottom: $spacing-3;
+
+    resize: vertical;
+
+    line-height: $line-height-normal;
+}
+
+
+// ============================================================
+// Select
+// ============================================================
+
+.wm-form-select {
+    display: block;
+
+    width: 100%;
+    min-height: $input-height-md;
+
+    padding: 0 $spacing-10 0 $spacing-3;
+
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+
+    background-color: $input-bg;
+    background-image: none;
+
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    font-weight: $font-weight-regular;
+
+    cursor: pointer;
+
+    appearance: none;
+
+    transition: border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+    &:hover:not(:disabled) {
+        border-color: $color-gray-400;
+    }
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &:disabled {
+        background-color: $color-gray-50;
+        color: $color-text-disabled;
+
+        cursor: not-allowed;
+    }
+}
+
+
+// ============================================================
+// Select Wrapper
+// ============================================================
+
+.wm-select {
+    position: relative;
+
+    .wm-form-select {
+        padding-right: $spacing-10;
+    }
+
+    &::after {
+        content: "";
+
+        position: absolute;
+        top: 50%;
+        right: $spacing-3;
+
+        width: 7px;
+        height: 7px;
+
+        border-right: 1.5px solid $color-text-secondary;
+        border-bottom: 1.5px solid $color-text-secondary;
+
+        transform: translateY(-65%) rotate(45deg);
+
+        pointer-events: none;
+    }
+}
+
+
+// ============================================================
+// Input Sizes
+// ============================================================
+
+.wm-form-control--sm,
+.wm-form-select--sm {
+    min-height: $input-height-sm;
+
+    font-size: $font-size-sm;
+}
+
+.wm-form-control--lg,
+.wm-form-select--lg {
+    min-height: $input-height-lg;
+
+    font-size: $font-size-base;
+}
+
+
+// ============================================================
+// Checkbox
+// ============================================================
+
+.wm-check {
+    display: inline-flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    min-height: 20px;
+
+    color: $color-text;
+
+    font-size: $font-size-md;
+
+    cursor: pointer;
+
+    input {
+        width: 16px;
+        height: 16px;
+
+        margin: 0;
+
+        flex: 0 0 auto;
+
+        border: 1px solid $color-border-dark;
+        border-radius: $radius-sm;
+
+        background: $color-white;
+
+        accent-color: $color-primary;
+
+        cursor: pointer;
+
+        &:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+    }
+
+    span {
+        line-height: $line-height-normal;
+    }
+
+    &.is-disabled {
+        color: $color-text-disabled;
+        cursor: not-allowed;
+    }
+}
+
+
+// ============================================================
+// Radio
+// ============================================================
+
+.wm-radio {
+    display: inline-flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    min-height: 20px;
+
+    color: $color-text;
+
+    font-size: $font-size-md;
+
+    cursor: pointer;
+
+    input {
+        width: 16px;
+        height: 16px;
+
+        margin: 0;
+
+        flex: 0 0 auto;
+
+        accent-color: $color-primary;
+
+        cursor: pointer;
+
+        &:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+        }
+    }
+
+    span {
+        line-height: $line-height-normal;
+    }
+
+    &.is-disabled {
+        color: $color-text-disabled;
+        cursor: not-allowed;
+    }
+}
+
+
+// ============================================================
+// Checkbox / Radio Group
+// ============================================================
+
+.wm-check-group,
+.wm-radio-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: $spacing-3;
+}
+
+
+// ============================================================
+// Inline Checkbox / Radio Group
+// ============================================================
+
+.wm-check-group--inline,
+.wm-radio-group--inline {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: $spacing-4;
+}
+
+
+// ============================================================
+// Switch
+// ============================================================
+
+.wm-switch {
+    display: inline-flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    cursor: pointer;
+
+    input {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        opacity: 0;
+
+        pointer-events: none;
+    }
+
+    .wm-switch__track {
+        position: relative;
+
+        width: 38px;
+        height: 22px;
+
+        flex: 0 0 auto;
+
+        border-radius: $radius-full;
+
+        background: $color-gray-300;
+
+        transition: background-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 3px;
+            left: 3px;
+
+            width: 16px;
+            height: 16px;
+
+            border-radius: $radius-full;
+
+            background: $color-white;
+
+            box-shadow: $shadow-sm;
+
+            transition: transform 0.2s ease;
+        }
+    }
+
+    .wm-switch__label {
+        color: $color-text;
+
+        font-size: $font-size-md;
+        line-height: $line-height-normal;
+    }
+
+    input:checked + .wm-switch__track {
+        background: $color-primary;
+
+        &::after {
+            transform: translateX(16px);
+        }
+    }
+
+    input:focus-visible + .wm-switch__track {
+        box-shadow: $input-focus-shadow;
+    }
+
+    input:disabled + .wm-switch__track {
+        opacity: 0.55;
+        cursor: not-allowed;
+    }
+
+    input:disabled ~ .wm-switch__label {
+        color: $color-text-disabled;
+    }
+}
+
+
+// ============================================================
+// Input Group
+// ============================================================
+
+.wm-input-group {
+    display: flex;
+    align-items: stretch;
+
+    width: 100%;
+
+    .wm-form-control {
+        position: relative;
+
+        flex: 1 1 auto;
+
+        min-width: 0;
+
+        border-radius: 0;
+
+        &:focus {
+            z-index: 2;
+        }
+    }
+
+    > :first-child {
+        border-radius: $radius-md 0 0 $radius-md;
+    }
+
+    > :last-child {
+        border-radius: 0 $radius-md $radius-md 0;
+    }
+}
+
+
+// ============================================================
+// Input Group Text
+// ============================================================
+
+.wm-input-group__text {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: $input-height-md;
+
+    padding: 0 $spacing-3;
+
+    border: 1px solid $input-border;
+
+    background: $color-gray-50;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+    white-space: nowrap;
+}
+
+
+// ============================================================
+// Search Input
+// ============================================================
+
+.wm-search {
+    position: relative;
+
+    .wm-search__icon {
+        position: absolute;
+        top: 50%;
+        left: $spacing-3;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 18px;
+        height: 18px;
+
+        color: $color-text-muted;
+
+        transform: translateY(-50%);
+
+        pointer-events: none;
+
+        i,
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .wm-form-control {
+        padding-left: $spacing-10;
+    }
+
+    .wm-search__clear {
+        position: absolute;
+        top: 50%;
+        right: $spacing-2;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 28px;
+        height: 28px;
+
+        padding: 0;
+
+        border: 0;
+        border-radius: $radius-full;
+
+        background: transparent;
+
+        color: $color-text-muted;
+
+        cursor: pointer;
+
+        transform: translateY(-50%);
+
+        &:hover {
+            background: $color-gray-100;
+            color: $color-text;
+        }
+    }
+
+    &.has-clear {
+        .wm-form-control {
+            padding-right: $spacing-10;
+        }
+    }
+}
+
+
+// ============================================================
+// Form Help Text
+// ============================================================
+
+.wm-form-help {
+    display: block;
+
+    margin-top: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+}
+
+
+// ============================================================
+// Form Error
+// ============================================================
+
+.wm-form-error {
+    display: flex;
+    align-items: flex-start;
+
+    gap: $spacing-2;
+
+    margin-top: $spacing-2;
+
+    color: $color-danger-dark;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+
+    .wm-form-error__icon {
+        display: inline-flex;
+
+        width: 16px;
+        height: 16px;
+
+        flex: 0 0 auto;
+
+        margin-top: 1px;
+
+        i,
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+// ============================================================
+// Form Success
+// ============================================================
+
+.wm-form-success {
+    display: flex;
+    align-items: flex-start;
+
+    gap: $spacing-2;
+
+    margin-top: $spacing-2;
+
+    color: $color-success-dark;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+
+    .wm-form-success__icon {
+        display: inline-flex;
+
+        width: 16px;
+        height: 16px;
+
+        flex: 0 0 auto;
+
+        margin-top: 1px;
+
+        i,
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+
+// ============================================================
+// Form Actions
+// ============================================================
+
+.wm-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: $spacing-2;
+
+    margin-top: $spacing-6;
+
+    &--start {
+        justify-content: flex-start;
+    }
+
+    &--between {
+        justify-content: space-between;
+    }
+
+    &--center {
+        justify-content: center;
+    }
+}
+
+
+// ============================================================
+// Form Row
+// ============================================================
+
+.wm-form-row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-right: -$spacing-2;
+    margin-left: -$spacing-2;
+
+    > [class*="col-"] {
+        padding-right: $spacing-2;
+        padding-left: $spacing-2;
+    }
+}
+
+
+// ============================================================
+// Form Check Helper
+// ============================================================
+
+.wm-form-check-help {
+    margin-top: $spacing-1;
+    margin-left: 24px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+}
+
+
+// ============================================================
+// Floating Label
+// ============================================================
+
+.wm-form-floating {
+    position: relative;
+
+    .wm-form-control {
+        padding-top: $spacing-5;
+    }
+
+    .wm-form-label {
+        position: absolute;
+        top: 50%;
+        left: $spacing-3;
+
+        margin: 0;
+
+        color: $color-text-muted;
+
+        pointer-events: none;
+
+        transform: translateY(-50%);
+
+        transition: top 0.2s ease,
+        transform 0.2s ease,
+        font-size 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .wm-form-control:focus ~ .wm-form-label,
+    .wm-form-control:not(:placeholder-shown) ~ .wm-form-label {
+        top: 0;
+
+        padding: 0 $spacing-1;
+
+        background: $color-white;
+
+        color: $color-primary;
+
+        font-size: $font-size-xs;
+
+        transform: translateY(-50%);
+    }
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@include media(md) {
+    .wm-form-actions {
+        gap: $spacing-3;
+    }
+
+    .wm-check-group--inline,
+    .wm-radio-group--inline {
+        gap: $spacing-5;
+    }
+}
+
+
+@include media(sm) {
+    .wm-form-actions {
+        &.is-stacked-sm {
+            flex-direction: column;
+            align-items: stretch;
+
+            .wm-btn {
+                width: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,1152 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Billing Page
+// ============================================================
+
+.wm-billing-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-billing-header {
+    @include flex-between;
+
+    gap: $spacing-6;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-billing-header__content {
+    min-width: 0;
+}
+
+.wm-billing-header__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: $spacing-3;
+
+    font-size: $font-size-xs;
+
+    color: $color-text-muted;
+
+    i {
+        font-size: 13px;
+    }
+
+    a {
+        color: $color-text-secondary;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+.wm-billing-header__title {
+    margin: 0 0 6px;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+
+    letter-spacing: -0.02em;
+
+    color: $color-text-dark;
+}
+
+.wm-billing-header__description {
+    margin: 0;
+
+    font-size: $font-size-sm;
+
+    color: $color-text-secondary;
+}
+
+.wm-billing-header__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    flex: 0 0 auto;
+}
+
+
+// ============================================================
+// Current Plan
+// ============================================================
+
+.wm-billing-plan {
+    @include flex-between;
+
+    gap: $spacing-6;
+
+    padding: $spacing-6;
+
+    margin-bottom: $spacing-5;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary-light 0%,
+            $color-white 60%
+        );
+
+    border: 1px solid rgba(37, 99, 235, 0.14);
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-billing-plan__main {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    min-width: 0;
+}
+
+.wm-billing-plan__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+
+    background: $color-white;
+
+    border: 1px solid rgba(37, 99, 235, 0.12);
+    border-radius: $radius-lg;
+
+    color: $color-primary;
+
+    font-size: 21px;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-billing-plan__content {
+    min-width: 0;
+}
+
+.wm-billing-plan__title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 5px;
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-billing-plan__status {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 23px;
+
+    padding: 0 8px;
+
+    background: $color-success-light;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-success-dark;
+}
+
+.wm-billing-plan__content > p {
+    margin: 0 0 10px;
+
+    font-size: $font-size-sm;
+
+    color: $color-text-secondary;
+}
+
+.wm-billing-plan__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+
+        i {
+            font-size: 14px;
+            color: $color-text-muted;
+        }
+    }
+}
+
+.wm-billing-plan__price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    flex: 0 0 auto;
+
+    strong {
+        font-size: 28px;
+        font-weight: $font-weight-bold;
+
+        letter-spacing: -0.02em;
+
+        color: $color-text-dark;
+    }
+
+    > span {
+        margin-top: -2px;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+
+    small {
+        margin-top: 6px;
+
+        font-size: 10px;
+
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// Summary Cards
+// ============================================================
+
+.wm-billing-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-billing-summary__card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-billing-summary__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+
+    border-radius: $radius-lg;
+
+    font-size: 18px;
+}
+
+.wm-billing-summary__icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-billing-summary__icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-billing-summary__icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-billing-summary__icon--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-billing-summary__card > div:last-child {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wm-billing-summary__card span {
+    margin-bottom: 3px;
+
+    font-size: $font-size-xs;
+
+    color: $color-text-secondary;
+}
+
+.wm-billing-summary__card strong {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-billing-summary__card small {
+    margin-top: 3px;
+
+    font-size: 10px;
+
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// Billing Layout
+// ============================================================
+
+.wm-billing-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: $spacing-5;
+
+    align-items: start;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-billing-layout__main {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+.wm-billing-layout__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+
+// ============================================================
+// Billing Card
+// ============================================================
+
+.wm-billing-card {
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    overflow: hidden;
+}
+
+.wm-billing-card__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+    h2 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-billing-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-primary;
+
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+
+    i {
+        font-size: 13px;
+    }
+}
+
+
+// ============================================================
+// Usage
+// ============================================================
+
+.wm-usage-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+
+    padding: $spacing-5;
+}
+
+.wm-usage-item {
+    @include transition;
+
+    &.is-hovered {
+        transform: translateX(2px);
+    }
+}
+
+.wm-usage-item__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    margin-bottom: 8px;
+}
+
+.wm-usage-item__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-dark;
+
+    i {
+        font-size: 17px;
+        color: $color-text-secondary;
+    }
+}
+
+.wm-usage-item__header > strong {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-secondary;
+}
+
+.wm-usage-item__progress {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+}
+
+.wm-usage-item__progress span {
+    display: block;
+
+    height: 100%;
+
+    background: $color-primary;
+
+    border-radius: inherit;
+
+    @include transition(width, 0.3s, ease);
+}
+
+.wm-usage-item__progress--warning span {
+    background: $color-warning;
+}
+
+.wm-usage-item p {
+    margin: 6px 0 0;
+
+    font-size: 10px;
+
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// Payment Method
+// ============================================================
+
+.wm-payment-method {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    padding: $spacing-5;
+}
+
+.wm-payment-method__brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    color: $color-text-dark;
+
+    font-size: 19px;
+}
+
+.wm-payment-method__details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    min-width: 0;
+
+    strong {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+    }
+
+    span {
+        font-size: $font-size-xs;
+
+        color: $color-text-muted;
+    }
+}
+
+.wm-payment-method__default {
+    margin-left: auto;
+
+    padding: 4px 8px;
+
+    background: $color-success-light;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// Invoice Table
+// ============================================================
+
+.wm-invoice-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.wm-invoice-table {
+    width: 100%;
+    min-width: 680px;
+
+    border-collapse: collapse;
+
+    th,
+    td {
+        padding: 13px 16px;
+
+        border-bottom: 1px solid $color-border-light;
+
+        text-align: left;
+    }
+
+    th {
+        background: $color-gray-50;
+
+        font-size: 10px;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+
+        color: $color-text-secondary;
+    }
+
+    td {
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    tbody tr {
+        @include transition;
+
+        &:hover {
+            background: $color-gray-50;
+        }
+    }
+}
+
+.wm-invoice-table__name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wm-invoice-table__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-md;
+
+    color: $color-text-secondary;
+
+    font-size: 15px;
+}
+
+.wm-invoice-table__name div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.wm-invoice-table__name strong {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-dark;
+}
+
+.wm-invoice-table__name small {
+    font-size: 10px;
+
+    color: $color-text-muted;
+}
+
+.wm-invoice-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 4px 8px;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-invoice-status--paid {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// Icon Button
+// ============================================================
+
+.wm-icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    background: $color-white;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-primary;
+        color: $color-primary;
+        background: $color-primary-light;
+    }
+
+    i {
+        font-size: 15px;
+    }
+}
+
+
+// ============================================================
+// Side Card
+// ============================================================
+
+.wm-billing-side-card {
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-billing-side-card__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-billing-side-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-md;
+
+    color: $color-primary;
+
+    font-size: 17px;
+}
+
+.wm-billing-side-card__header h3 {
+    margin: 0 0 2px;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-billing-side-card__header span {
+    font-size: 10px;
+
+    color: $color-text-muted;
+}
+
+.wm-billing-side-card__heading {
+    margin-bottom: $spacing-3;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+
+// ============================================================
+// Billing Cycle
+// ============================================================
+
+.wm-billing-cycle {
+    margin-bottom: $spacing-5;
+}
+
+.wm-billing-cycle__dates {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+
+    color: $color-text-muted;
+}
+
+.wm-billing-cycle__progress {
+    width: 100%;
+    height: 6px;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+
+    overflow: hidden;
+}
+
+.wm-billing-cycle__progress span {
+    display: block;
+
+    height: 100%;
+
+    background: $color-primary;
+
+    border-radius: inherit;
+}
+
+.wm-billing-cycle p {
+    margin: 7px 0 0;
+
+    font-size: 10px;
+
+    color: $color-text-secondary;
+}
+
+.wm-billing-side-card__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: $spacing-4;
+
+    border-top: 1px solid $color-border-light;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-primary;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+}
+
+
+// ============================================================
+// Quick Actions
+// ============================================================
+
+.wm-billing-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-billing-actions button,
+.wm-billing-actions a {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) 16px;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+
+    padding: 11px 0;
+
+    border: 0;
+    border-bottom: 1px solid $color-border-light;
+
+    background: transparent;
+
+    font-family: $font-family-base;
+    font-size: $font-size-xs;
+    text-align: left;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &:hover {
+        color: $color-primary;
+    }
+
+    > i:first-child {
+        font-size: 16px;
+    }
+
+    > i:last-child {
+        font-size: 12px;
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// Billing Help
+// ============================================================
+
+.wm-billing-help {
+    padding: $spacing-5;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    text-align: center;
+}
+
+.wm-billing-help__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin: 0 auto $spacing-3;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-lg;
+
+    color: $color-primary;
+
+    font-size: 19px;
+}
+
+.wm-billing-help h3 {
+    margin: 0 0 5px;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-billing-help p {
+    margin: 0 0 $spacing-4;
+
+    font-size: $font-size-xs;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Danger Zone
+// ============================================================
+
+.wm-billing-danger {
+    @include flex-between;
+
+    gap: $spacing-5;
+
+    padding: $spacing-5;
+
+    background: $color-danger-light;
+
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: $radius-xl;
+}
+
+.wm-billing-danger > div {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+}
+
+.wm-billing-danger__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    background: $color-white;
+
+    border-radius: $radius-md;
+
+    color: $color-danger;
+
+    font-size: 18px;
+}
+
+.wm-billing-danger h3 {
+    margin: 0 0 3px;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    color: $color-danger-dark;
+}
+
+.wm-billing-danger p {
+    margin: 0;
+
+    font-size: $font-size-xs;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-billing-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-billing-layout {
+        grid-template-columns: minmax(0, 1fr) 290px;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-billing-page {
+        padding: $spacing-6 $spacing-5 $spacing-12;
+    }
+
+    .wm-billing-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-billing-header__actions {
+        width: 100%;
+    }
+
+    .wm-billing-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-billing-layout__sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-billing-page {
+        padding: $spacing-5 $spacing-4 $spacing-10;
+    }
+
+    .wm-billing-header__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-billing-header__actions {
+        flex-direction: column;
+
+        .wm-btn {
+            width: 100%;
+        }
+    }
+
+    .wm-billing-plan {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-billing-plan__price {
+        align-items: flex-start;
+    }
+
+    .wm-billing-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-billing-layout__sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-billing-card__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-billing-danger {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-billing-danger .wm-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-billing-plan {
+        padding: $spacing-5;
+    }
+
+    .wm-billing-plan__main {
+        align-items: flex-start;
+    }
+
+    .wm-billing-plan__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .wm-billing-card__header {
+        padding: $spacing-4;
+    }
+
+    .wm-usage-list,
+    .wm-payment-method {
+        padding: $spacing-4;
+    }
+
+    .wm-billing-summary__card {
+        padding: $spacing-4;
+    }
+}

@@ -1,0 +1,1304 @@
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Project Overview Page
+// ------------------------------------------------------------
+
+.wm-project-overview-page {
+    width: 100%;
+}
+
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+
+.wm-project-overview-page__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-overview-page__header-left {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-overview-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+
+    a {
+        color: $color-text-secondary;
+        text-decoration: none;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    i {
+        font-size: 14px;
+        color: $color-gray-400;
+    }
+
+    span {
+        @include truncate;
+        max-width: 320px;
+    }
+}
+
+.wm-project-overview-page__title-row {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+}
+
+.wm-project-overview-page__project-icon {
+    flex: 0 0 auto;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $color-primary-light;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-xl;
+    color: $color-primary;
+    font-size: 25px;
+}
+
+.wm-project-overview-page__title-content {
+    min-width: 0;
+}
+
+.wm-project-overview-page__title-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+}
+
+.wm-project-overview-page__title {
+    margin: 0;
+    font-family: $font-family-heading;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+    color: $color-text-dark;
+}
+
+.wm-project-overview-page__subtitle {
+    max-width: 760px;
+    margin: $spacing-2 0 0;
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+    color: $color-text-secondary;
+}
+
+.wm-project-overview-page__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+    margin-top: $spacing-3;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-2;
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+    }
+
+    i {
+        color: $color-gray-400;
+        font-size: 15px;
+    }
+}
+
+.wm-project-overview-page__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+}
+
+.wm-project-overview-page__status > span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+}
+
+.wm-project-overview-page__status--active {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__status--active > span {
+    background: $color-success;
+}
+
+.wm-project-overview-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    flex: 0 0 auto;
+}
+
+.wm-project-overview-page__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+    min-height: $button-height-md;
+    border-color: $color-border;
+    color: $color-text;
+    box-shadow: none;
+}
+
+.wm-project-overview-page__action:hover {
+    border-color: $color-border-dark;
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+.wm-project-overview-page__action-menu {
+    position: relative;
+}
+
+.wm-project-overview-page__dropdown {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 210px;
+    padding: 6px;
+    display: none;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+}
+
+.wm-project-overview-page__dropdown.is-open {
+    display: block;
+}
+
+.wm-project-overview-page__dropdown button {
+    width: 100%;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: 0 10px;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text;
+    font-size: $font-size-sm;
+    text-align: left;
+}
+
+.wm-project-overview-page__dropdown button:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-overview-page__dropdown button.is-danger {
+    color: $color-danger;
+}
+
+.wm-project-overview-page__dropdown-divider {
+    height: 1px;
+    margin: 5px 0;
+    background: $color-border-light;
+}
+
+
+// ------------------------------------------------------------
+// Project Navigation
+// ------------------------------------------------------------
+
+.wm-project-overview-page__navigation {
+    margin-bottom: $spacing-5;
+    overflow-x: auto;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-overview-page__nav {
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-overview-page__nav-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 46px;
+    padding: 0 13px;
+    color: $color-text-secondary;
+    text-decoration: none;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+}
+
+.wm-project-overview-page__nav-item:hover {
+    color: $color-text-dark;
+}
+
+.wm-project-overview-page__nav-item.is-active {
+    color: $color-primary;
+}
+
+.wm-project-overview-page__nav-item.is-active::after {
+    position: absolute;
+    right: 8px;
+    bottom: -1px;
+    left: 8px;
+    height: 2px;
+    content: "";
+    background: $color-primary;
+    border-radius: $radius-full $radius-full 0 0;
+}
+
+.wm-project-overview-page__nav-item i {
+    font-size: 17px;
+}
+
+.wm-project-overview-page__nav-item > span {
+    min-width: 21px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+    color: $color-text-secondary;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__nav-item.is-active > span {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Stats
+// ------------------------------------------------------------
+
+.wm-project-overview-page__stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-overview-page__stat-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    min-width: 0;
+    padding: $spacing-4;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-project-overview-page__stat-icon {
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-lg;
+    font-size: 20px;
+}
+
+.wm-project-overview-page__stat-icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-overview-page__stat-icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__stat-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-overview-page__stat-icon--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-overview-page__stat-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-overview-page__stat-label {
+    display: block;
+    margin-bottom: 4px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-overview-page__stat-value {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+}
+
+.wm-project-overview-page__stat-meta {
+    display: block;
+    margin-top: 4px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__stat-progress {
+    width: 100%;
+    height: 5px;
+    margin-top: 8px;
+    overflow: hidden;
+    background: $color-gray-100;
+    border-radius: $radius-full;
+}
+
+.wm-project-overview-page__stat-progress span {
+    display: block;
+    height: 100%;
+    background: $color-primary;
+    border-radius: inherit;
+}
+
+
+// ------------------------------------------------------------
+// Main Grid
+// ------------------------------------------------------------
+
+.wm-project-overview-page__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: $spacing-5;
+    align-items: start;
+}
+
+.wm-project-overview-page__main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+.wm-project-overview-page__sidebar {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+
+// ------------------------------------------------------------
+// Cards
+// ------------------------------------------------------------
+
+.wm-project-overview-page__card,
+.wm-project-overview-page__sidebar-card {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-project-overview-page__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-5;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__card-title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__card-description {
+    margin: 4px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-overview-page__text-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+}
+
+.wm-project-overview-page__text-button:hover {
+    color: $color-primary-hover;
+}
+
+.wm-project-overview-page__text-button i {
+    font-size: 15px;
+}
+
+
+// ------------------------------------------------------------
+// Progress
+// ------------------------------------------------------------
+
+.wm-project-overview-page__progress {
+    padding: $spacing-5;
+}
+
+.wm-project-overview-page__progress-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-overview-page__progress-header div {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+}
+
+.wm-project-overview-page__progress-header strong {
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__progress-header div span {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-overview-page__progress-header > span {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-overview-page__progress-track {
+    width: 100%;
+    height: 12px;
+    overflow: hidden;
+    background: $color-gray-100;
+    border-radius: $radius-full;
+}
+
+.wm-project-overview-page__progress-track span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        $color-primary,
+        $color-cyan
+    );
+    border-radius: inherit;
+}
+
+.wm-project-overview-page__progress-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-5;
+    margin-top: $spacing-4;
+}
+
+.wm-project-overview-page__progress-footer div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__progress-footer strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.wm-project-overview-page__legend-dot--completed {
+    background: $color-primary;
+}
+
+.wm-project-overview-page__legend-dot--progress {
+    background: $color-cyan;
+}
+
+.wm-project-overview-page__legend-dot--remaining {
+    background: $color-gray-300;
+}
+
+
+// ------------------------------------------------------------
+// Tasks
+// ------------------------------------------------------------
+
+.wm-project-overview-page__task-list {
+    padding: 0 $spacing-5;
+}
+
+.wm-project-overview-page__task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    min-height: 72px;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__task:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-overview-page__task-check {
+    position: relative;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.wm-project-overview-page__task-check input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.wm-project-overview-page__task-check span {
+    width: 18px;
+    height: 18px;
+    display: block;
+    border: 1.5px solid $color-gray-300;
+    border-radius: 5px;
+    background: $color-white;
+}
+
+.wm-project-overview-page__task-check input:checked + span {
+    border-color: $color-primary;
+    background: $color-primary;
+}
+
+.wm-project-overview-page__task-check input:checked + span::after {
+    width: 5px;
+    height: 9px;
+    margin: 2px auto 0;
+    display: block;
+    content: "";
+    border: solid $color-white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+.wm-project-overview-page__task-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-overview-page__task-content strong {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-overview-page__task.is-completed .wm-project-overview-page__task-content strong {
+    color: $color-text-muted;
+    text-decoration: line-through;
+}
+
+.wm-project-overview-page__task-meta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    margin-top: 5px;
+}
+
+.wm-project-overview-page__task-meta > span:not(.wm-project-overview-page__priority) {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__priority {
+    padding: 3px 7px;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+}
+
+.wm-project-overview-page__priority--high {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-project-overview-page__priority--medium {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-overview-page__priority--low {
+    background: $color-gray-100;
+    color: $color-text-secondary;
+}
+
+.wm-project-overview-page__task-assignee {
+    flex: 0 0 auto;
+}
+
+.wm-project-overview-page__task-menu {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-overview-page__task-menu:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+
+// ------------------------------------------------------------
+// Avatar
+// ------------------------------------------------------------
+
+.wm-project-overview-page__avatar {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__avatar--sm {
+    width: 32px;
+    height: 32px;
+    font-size: 10px;
+}
+
+.wm-project-overview-page__avatar--xs {
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
+}
+
+.wm-project-overview-page__avatar--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__avatar--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-overview-page__avatar--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+// ------------------------------------------------------------
+// Milestones
+// ------------------------------------------------------------
+
+.wm-project-overview-page__milestones {
+    padding: $spacing-2 $spacing-5;
+}
+
+.wm-project-overview-page__milestone {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    min-height: 66px;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__milestone:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-overview-page__milestone-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: $color-gray-100;
+    color: $color-text-muted;
+    font-size: 15px;
+}
+
+.wm-project-overview-page__milestone.is-completed .wm-project-overview-page__milestone-icon {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__milestone.is-current .wm-project-overview-page__milestone-icon {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-overview-page__milestone-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-overview-page__milestone-content strong {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-overview-page__milestone-content span {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__milestone-status {
+    flex: 0 0 auto;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__milestone.is-completed .wm-project-overview-page__milestone-status {
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__milestone.is-current .wm-project-overview-page__milestone-status {
+    color: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Team
+// ------------------------------------------------------------
+
+.wm-project-overview-page__team {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    padding: 0 $spacing-5;
+}
+
+.wm-project-overview-page__member {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    min-width: 0;
+    padding: $spacing-4 0;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__member:nth-last-child(-n + 2) {
+    border-bottom: 0;
+}
+
+.wm-project-overview-page__member > div {
+    min-width: 0;
+}
+
+.wm-project-overview-page__member strong {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-overview-page__member > div span {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__member-status {
+    width: 8px;
+    height: 8px;
+    margin-left: auto;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: $color-gray-300;
+}
+
+.wm-project-overview-page__member-status.is-online {
+    background: $color-success;
+    box-shadow: 0 0 0 3px $color-success-light;
+}
+
+
+// ------------------------------------------------------------
+// Sidebar
+// ------------------------------------------------------------
+
+.wm-project-overview-page__sidebar-card {
+    overflow: hidden;
+}
+
+.wm-project-overview-page__sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+    min-height: 55px;
+    padding: 0 $spacing-4;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__sidebar-header h2 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-overview-page__sidebar-header button {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-overview-page__sidebar-header button:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-overview-page__sidebar-header a {
+    color: $color-primary;
+    font-size: $font-size-xs;
+    text-decoration: none;
+}
+
+.wm-project-overview-page__sidebar-header a:hover {
+    color: $color-primary-hover;
+}
+
+
+// ------------------------------------------------------------
+// Details
+// ------------------------------------------------------------
+
+.wm-project-overview-page__details {
+    padding: $spacing-2 $spacing-4;
+}
+
+.wm-project-overview-page__details > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+    min-height: 48px;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__details > div:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-overview-page__details > div > span:first-child {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-overview-page__details strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    max-width: 62%;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-align: right;
+}
+
+.wm-project-overview-page__detail-priority {
+    color: $color-danger-dark !important;
+}
+
+.wm-project-overview-page__detail-priority i {
+    font-size: 14px;
+}
+
+
+// ------------------------------------------------------------
+// Activity
+// ------------------------------------------------------------
+
+.wm-project-overview-page__activity-list {
+    padding: $spacing-2 $spacing-4;
+}
+
+.wm-project-overview-page__activity {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-3 0;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-overview-page__activity:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-overview-page__activity-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.wm-project-overview-page__activity-icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-overview-page__activity-icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-overview-page__activity-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-overview-page__activity-icon--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-overview-page__activity > div {
+    min-width: 0;
+}
+
+.wm-project-overview-page__activity p {
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: 1.55;
+}
+
+.wm-project-overview-page__activity p strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-overview-page__activity > div > span {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 11px;
+}
+
+
+// ------------------------------------------------------------
+// Quick Actions
+// ------------------------------------------------------------
+
+.wm-project-overview-page__quick-actions {
+    padding: $spacing-3;
+}
+
+.wm-project-overview-page__quick-actions button {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: 0 10px;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text;
+    font-size: $font-size-sm;
+    text-align: left;
+}
+
+.wm-project-overview-page__quick-actions button:hover {
+    background: $color-gray-50;
+    color: $color-primary;
+}
+
+.wm-project-overview-page__quick-actions button > span {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-overview-page__quick-actions button:hover > span {
+    background: $color-primary;
+    color: $color-white;
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 1199px
+// ------------------------------------------------------------
+
+@media (max-width: 1199px) {
+
+    .wm-project-overview-page__stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-overview-page__grid {
+        grid-template-columns: minmax(0, 1fr) 300px;
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 991px
+// ------------------------------------------------------------
+
+@media (max-width: 991px) {
+
+    .wm-project-overview-page__header {
+        flex-direction: column;
+    }
+
+    .wm-project-overview-page__header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .wm-project-overview-page__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-overview-page__sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-overview-page__sidebar-card:last-child {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 767px
+// ------------------------------------------------------------
+
+@media (max-width: 767px) {
+
+    .wm-project-overview-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-project-overview-page__project-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 21px;
+    }
+
+    .wm-project-overview-page__stats {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-overview-page__team {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-overview-page__member:nth-last-child(-n + 2) {
+        border-bottom: 1px solid $color-border-light;
+    }
+
+    .wm-project-overview-page__member:last-child {
+        border-bottom: 0;
+    }
+
+    .wm-project-overview-page__sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-overview-page__sidebar-card:last-child {
+        grid-column: auto;
+    }
+
+    .wm-project-overview-page__progress-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-overview-page__progress-footer {
+        gap: $spacing-3;
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 575px
+// ------------------------------------------------------------
+
+@media (max-width: 575px) {
+
+    .wm-project-overview-page__title-row {
+        gap: $spacing-3;
+    }
+
+    .wm-project-overview-page__title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-project-overview-page__title-line {
+        gap: $spacing-2;
+    }
+
+    .wm-project-overview-page__subtitle {
+        font-size: $font-size-sm;
+    }
+
+    .wm-project-overview-page__meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .wm-project-overview-page__header-actions {
+        justify-content: stretch;
+    }
+
+    .wm-project-overview-page__header-actions > .wm-project-overview-page__action {
+        flex: 1;
+    }
+
+    .wm-project-overview-page__header-actions
+    .wm-project-overview-page__action-menu {
+        flex: 0 0 auto;
+    }
+
+    .wm-project-overview-page__header-actions
+    .wm-project-overview-page__action-menu
+    .wm-project-overview-page__action {
+        width: 40px;
+    }
+
+    .wm-project-overview-page__card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-overview-page__task {
+        min-height: 68px;
+    }
+
+    .wm-project-overview-page__task-assignee {
+        display: none;
+    }
+
+    .wm-project-overview-page__milestone-status {
+        display: none;
+    }
+
+    .wm-project-overview-page__details > div {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        min-height: 58px;
+    }
+
+    .wm-project-overview-page__details strong {
+        max-width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+}

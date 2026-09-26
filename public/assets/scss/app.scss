@@ -1,0 +1,78 @@
+// ============================================================
+// WorkManagement
+// Application Stylesheet
+// ============================================================
+
+
+// ------------------------------------------------------------
+// Components
+// ------------------------------------------------------------
+
+@use "components/buttons";
+@use "components/forms";
+@use "components/cards";
+@use "components/table";
+
+
+// ------------------------------------------------------------
+// Layout
+// ------------------------------------------------------------
+
+@use "layout/sidebar";
+@use "layout/header";
+@use "layout/content";
+@use "layout/footer";
+
+
+// ------------------------------------------------------------
+// Pages
+// ------------------------------------------------------------
+
+@use "pages/login";
+@use "pages/register";
+@use "pages/forgot-password";
+@use "pages/reset-password";
+@use "pages/verify-email";
+
+@use "pages/home";
+
+
+@use "pages/dashboard";
+@use "pages/projects";
+@use "pages/tasks";
+@use "pages/tasks-details";
+@use "pages/calendar";
+@use "pages/workstreams";
+@use "pages/files";
+@use "pages/documents";
+@use "pages/team";
+@use "pages/team-member";
+@use "pages/activity";
+@use "pages/notifications";
+@use "pages/search";
+@use "pages/reports";
+@use "pages/risks-issues";
+@use "pages/settings";
+@use "pages/settings-profile";
+@use "pages/settings-roles-permissions";
+@use "pages/settings-workspace";
+@use "pages/settings-integrations";
+@use "pages/settings-api";
+@use "pages/pricing";
+@use "pages/billing";
+@use "pages/billing-subscription";
+@use "pages/billing-checkout";
+@use "pages/billing-payment-success";
+@use "pages/project-create";
+@use "pages/projects-overview";
+@use "pages/projects-tasks";
+@use "pages/projects-milestones";
+@use "pages/projects-timeline";
+@use "pages/projects-calendar";
+@use "pages/projects-workstreams";
+@use "pages/projects-files";
+@use "pages/projects-team";
+@use "pages/projects-activity";
+@use "pages/projects-reports";
+@use "pages/projects-risks-issues";
+@use "pages/time-tracking";

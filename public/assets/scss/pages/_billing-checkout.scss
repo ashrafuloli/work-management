@@ -1,0 +1,1072 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Checkout Page
+// ============================================================
+
+.wm-checkout-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-checkout-header {
+    @include flex-between;
+
+    gap: $spacing-5;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-checkout-header__breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    font-size: $font-size-xs;
+
+    color: $color-text-muted;
+
+    i {
+        font-size: 13px;
+    }
+
+    a {
+        color: $color-text-secondary;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+.wm-checkout-header__secure {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    background: $color-success-light;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+
+    color: $color-success-dark;
+
+    i {
+        font-size: 14px;
+    }
+}
+
+
+// ============================================================
+// Layout
+// ============================================================
+
+.wm-checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+
+    gap: $spacing-6;
+
+    align-items: start;
+}
+
+.wm-checkout-layout__main {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+
+// ============================================================
+// Steps
+// ============================================================
+
+.wm-checkout-steps {
+    display: flex;
+    align-items: center;
+
+    padding: $spacing-4 $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-checkout-step {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    flex: 0 0 auto;
+
+    color: $color-text-muted;
+}
+
+.wm-checkout-step.is-active {
+    color: $color-text-dark;
+}
+
+.wm-checkout-step__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+
+    background: $color-gray-100;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-muted;
+}
+
+.wm-checkout-step.is-active
+.wm-checkout-step__number {
+    background: $color-primary;
+
+    color: $color-white;
+}
+
+.wm-checkout-step div {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.wm-checkout-step strong {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-checkout-step small {
+    font-size: 9px;
+
+    color: $color-text-muted;
+}
+
+.wm-checkout-step__line {
+    flex: 1;
+
+    height: 1px;
+
+    margin: 0 $spacing-3;
+
+    background: $color-border;
+}
+
+.wm-checkout-step__line.is-active {
+    background: rgba(37, 99, 235, 0.30);
+}
+
+
+// ============================================================
+// Card
+// ============================================================
+
+.wm-checkout-card {
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    overflow: hidden;
+}
+
+.wm-checkout-card__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+    h2 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-checkout-card__edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-primary;
+
+    &:hover {
+        color: $color-primary-hover;
+    }
+}
+
+
+// ============================================================
+// Selected Plan
+// ============================================================
+
+.wm-checkout-plan {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+}
+
+.wm-checkout-plan__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-lg;
+
+    color: $color-primary;
+
+    font-size: 21px;
+}
+
+.wm-checkout-plan__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wm-checkout-plan__title {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 4px;
+
+    h3 {
+        margin: 0;
+
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    span {
+        padding: 3px 7px;
+
+        background: $color-success-light;
+
+        border-radius: $radius-full;
+
+        font-size: 9px;
+        font-weight: $font-weight-semibold;
+
+        color: $color-success-dark;
+    }
+}
+
+.wm-checkout-plan__content > p {
+    margin: 0 0 10px;
+
+    font-size: $font-size-xs;
+
+    color: $color-text-secondary;
+}
+
+.wm-checkout-plan__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 14px;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        font-size: 10px;
+
+        color: $color-text-secondary;
+
+        i {
+            font-size: 13px;
+
+            color: $color-success;
+        }
+    }
+}
+
+.wm-checkout-plan__price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    flex: 0 0 auto;
+
+    strong {
+        font-size: 24px;
+        font-weight: $font-weight-bold;
+
+        color: $color-text-dark;
+    }
+
+    span {
+        font-size: 9px;
+
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// Form
+// ============================================================
+
+.wm-checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+}
+
+.wm-checkout-form__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: $spacing-4;
+}
+
+.wm-checkout-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.wm-checkout-field label {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-dark;
+
+    span {
+        color: $color-danger;
+    }
+}
+
+.wm-checkout-field input,
+.wm-checkout-field select {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 12px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    outline: 0;
+
+    font-family: $font-family-base;
+    font-size: $font-size-xs;
+
+    color: $color-text-dark;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-gray-400;
+    }
+
+    &:focus {
+        border-color: $color-primary;
+
+        box-shadow: $input-focus-shadow;
+    }
+
+    &::placeholder {
+        color: $input-placeholder;
+    }
+
+    &.is-invalid {
+        border-color: $color-danger;
+
+        box-shadow:
+            0 0 0 3px rgba(239, 68, 68, 0.08);
+    }
+}
+
+.wm-checkout-field select {
+    cursor: pointer;
+}
+
+.wm-checkout-input-icon {
+    position: relative;
+
+    i {
+        position: absolute;
+
+        top: 50%;
+        left: 12px;
+
+        z-index: 1;
+
+        transform: translateY(-50%);
+
+        font-size: 16px;
+
+        color: $color-text-muted;
+
+        pointer-events: none;
+    }
+
+    input {
+        padding-left: 38px;
+    }
+}
+
+
+// ============================================================
+// Payment
+// ============================================================
+
+.wm-payment-brands {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 10px;
+
+    color: $color-text-muted;
+
+    i {
+        font-size: 17px;
+    }
+}
+
+.wm-payment-tabs {
+    display: flex;
+    gap: 0;
+
+    padding: $spacing-4 $spacing-5 0;
+}
+
+.wm-payment-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 38px;
+
+    padding: 0 15px;
+
+    margin-right: 4px;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-bottom-color: $color-border;
+
+    font-family: $font-family-base;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        color: $color-primary;
+    }
+
+    &.is-active {
+        background: $color-primary-light;
+
+        border-color: rgba(37, 99, 235, 0.12);
+
+        color: $color-primary;
+    }
+
+    i {
+        font-size: 16px;
+    }
+}
+
+.wm-payment-panel {
+    padding: $spacing-5;
+}
+
+.wm-payment-panel--paypal {
+    display: none;
+}
+
+.wm-payment-panel > .wm-checkout-field {
+    margin-bottom: $spacing-4;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.wm-payment-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: $spacing-8 $spacing-5;
+
+    text-align: center;
+}
+
+.wm-payment-placeholder__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: $spacing-3;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-xl;
+
+    color: $color-primary;
+
+    font-size: 23px;
+}
+
+.wm-payment-placeholder h3 {
+    margin: 0 0 5px;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-payment-placeholder p {
+    max-width: 420px;
+
+    margin: 0 0 $spacing-4;
+
+    font-size: $font-size-xs;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Checkbox
+// ============================================================
+
+.wm-checkout-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    padding: 0 $spacing-5 $spacing-5;
+
+    font-size: $font-size-xs;
+    line-height: 1.5;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    input {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        opacity: 0;
+    }
+
+    a {
+        color: $color-primary;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.wm-checkout-checkbox__box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+
+    margin-top: 1px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border-dark;
+    border-radius: 4px;
+
+    color: transparent;
+
+    @include transition;
+
+    i {
+        font-size: 12px;
+    }
+}
+
+.wm-checkout-checkbox input:checked
++ .wm-checkout-checkbox__box {
+    background: $color-primary;
+
+    border-color: $color-primary;
+
+    color: $color-white;
+}
+
+.wm-checkout-checkbox--terms {
+    padding: 0;
+
+    margin-bottom: $spacing-2;
+}
+
+
+// ============================================================
+// Checkout Sidebar
+// ============================================================
+
+.wm-checkout-layout__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    position: sticky;
+    top: $spacing-5;
+}
+
+.wm-checkout-summary {
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-md;
+}
+
+.wm-checkout-summary__header {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    padding-bottom: $spacing-4;
+
+    border-bottom: 1px solid $color-border-light;
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    span {
+        padding: 4px 7px;
+
+        background: $color-gray-100;
+
+        border-radius: $radius-full;
+
+        font-size: 9px;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-checkout-summary__plan {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    div strong {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    div span {
+        font-size: 10px;
+
+        color: $color-text-muted;
+    }
+
+    > strong {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-checkout-summary__rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+    > div {
+        @include flex-between;
+
+        gap: $spacing-3;
+
+        font-size: $font-size-xs;
+
+        span {
+            color: $color-text-secondary;
+        }
+
+        strong {
+            font-weight: $font-weight-medium;
+
+            color: $color-text-dark;
+        }
+
+        strong.is-discount {
+            color: $color-success-dark;
+        }
+    }
+}
+
+.wm-checkout-summary__total {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    padding: $spacing-5 0;
+
+    span {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+    }
+
+    strong {
+        font-size: 22px;
+        font-weight: $font-weight-bold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-checkout-summary__renewal {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    padding: 10px;
+
+    margin-bottom: $spacing-4;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-md;
+
+    i {
+        flex: 0 0 auto;
+
+        margin-top: 1px;
+
+        font-size: 15px;
+
+        color: $color-primary;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: 10px;
+        line-height: 1.6;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-checkout-summary__submit {
+    width: 100%;
+
+    justify-content: center;
+
+    &:disabled {
+        opacity: 0.55;
+
+        cursor: not-allowed;
+    }
+}
+
+.wm-checkout-summary__secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    margin-top: 12px;
+
+    font-size: 9px;
+
+    color: $color-text-muted;
+
+    i {
+        font-size: 13px;
+
+        color: $color-success;
+    }
+}
+
+
+// ============================================================
+// Trust
+// ============================================================
+
+.wm-checkout-trust {
+    padding: $spacing-4;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-checkout-trust__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    > i {
+        flex: 0 0 auto;
+
+        margin-top: 2px;
+
+        font-size: 17px;
+
+        color: $color-primary;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    strong {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    span {
+        font-size: 10px;
+        line-height: 1.5;
+
+        color: $color-text-secondary;
+    }
+}
+
+
+// ============================================================
+// Mobile Action
+// ============================================================
+
+.wm-checkout-mobile-action {
+    display: none;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-checkout-layout {
+        grid-template-columns: minmax(0, 1fr) 320px;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-checkout-page {
+        padding: $spacing-6 $spacing-5 $spacing-12;
+    }
+
+    .wm-checkout-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-checkout-layout__sidebar {
+        position: static;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-checkout-page {
+        padding: $spacing-5 $spacing-4 $spacing-10;
+    }
+
+    .wm-checkout-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-checkout-steps {
+        overflow-x: auto;
+    }
+
+    .wm-checkout-step {
+        min-width: max-content;
+    }
+
+    .wm-checkout-step__line {
+        min-width: 35px;
+    }
+
+    .wm-checkout-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-checkout-plan {
+        flex-wrap: wrap;
+    }
+
+    .wm-checkout-plan__content {
+        flex-basis: calc(100% - 62px);
+    }
+
+    .wm-checkout-plan__price {
+        width: 100%;
+        align-items: flex-start;
+
+        padding-top: $spacing-3;
+
+        margin-left: 62px;
+
+        border-top: 1px solid $color-border-light;
+    }
+
+    .wm-checkout-summary__submit {
+        display: none;
+    }
+
+    .wm-checkout-mobile-action {
+        display: block;
+    }
+
+    .wm-checkout-mobile-action .wm-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-checkout-card__header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: $spacing-4;
+    }
+
+    .wm-checkout-form,
+    .wm-payment-panel {
+        padding: $spacing-4;
+    }
+
+    .wm-checkout-plan {
+        padding: $spacing-4;
+    }
+
+    .wm-checkout-steps {
+        padding: 12px;
+    }
+
+    .wm-checkout-step div {
+        display: none;
+    }
+
+    .wm-checkout-step__line {
+        margin: 0 8px;
+    }
+}

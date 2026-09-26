@@ -1,0 +1,969 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Pricing Page
+// ============================================================
+
+.wm-pricing-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-pricing-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: $spacing-10;
+
+    text-align: center;
+}
+
+.wm-pricing-header__content {
+    max-width: 760px;
+}
+
+.wm-pricing-header__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 30px;
+    padding: 0 12px;
+
+    margin-bottom: $spacing-4;
+
+    background: $color-primary-light;
+    border: 1px solid rgba(37, 99, 235, 0.10);
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-primary;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+.wm-pricing-header__title {
+    margin: 0 0 $spacing-3;
+
+    font-family: $font-family-heading;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: $font-weight-bold;
+    line-height: 1.15;
+
+    letter-spacing: -0.03em;
+
+    color: $color-text-dark;
+}
+
+.wm-pricing-header__description {
+    max-width: 650px;
+    margin: 0 auto;
+
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Billing Toggle
+// ============================================================
+
+.wm-billing-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+
+    padding: 4px;
+
+    margin-top: $spacing-6;
+
+    background: $color-gray-100;
+    border: 1px solid $color-border;
+    border-radius: $radius-full;
+}
+
+.wm-billing-toggle__option {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 36px;
+    padding: 0 14px;
+
+    border: 0;
+    border-radius: $radius-full;
+
+    background: transparent;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        color: $color-text-dark;
+    }
+
+    &.is-active {
+        background: $color-white;
+        color: $color-text-dark;
+        box-shadow: $shadow-sm;
+    }
+}
+
+.wm-billing-toggle__save {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 20px;
+    padding: 0 6px;
+
+    background: $color-success-light;
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// Pricing Grid
+// ============================================================
+
+.wm-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    align-items: stretch;
+
+    margin-bottom: $spacing-16;
+}
+
+
+// ============================================================
+// Pricing Card
+// ============================================================
+
+.wm-pricing-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    padding: $spacing-6;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+    }
+}
+
+.wm-pricing-card--featured {
+    border-color: $color-primary;
+
+    box-shadow:
+        0 8px 30px rgba(37, 99, 235, 0.12);
+
+    &:hover {
+        box-shadow:
+            0 12px 35px rgba(37, 99, 235, 0.16);
+    }
+}
+
+.wm-pricing-card__popular {
+    position: absolute;
+    top: 0;
+    right: 20px;
+
+    padding: 5px 10px;
+
+    border-radius: 0 0 $radius-md $radius-md;
+
+    background: $color-primary;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-white;
+}
+
+.wm-pricing-card__header {
+    min-height: 184px;
+}
+
+.wm-pricing-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    margin-bottom: $spacing-4;
+
+    border-radius: $radius-lg;
+
+    font-size: 21px;
+}
+
+.wm-pricing-card__icon--gray {
+    background: $color-gray-100;
+    color: $color-gray-600;
+}
+
+.wm-pricing-card__icon--blue {
+    background: $color-info-light;
+    color: $color-info-dark;
+}
+
+.wm-pricing-card__icon--primary {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-pricing-card__icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-pricing-card__name {
+    margin: 0 0 7px;
+
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-pricing-card__description {
+    margin: 0;
+
+    min-height: 48px;
+
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+.wm-pricing-card__price {
+    display: flex;
+    align-items: baseline;
+
+    min-height: 49px;
+
+    color: $color-text-dark;
+}
+
+.wm-pricing-card__currency {
+    margin-right: 2px;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-pricing-card__price strong {
+    font-size: 34px;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+
+    letter-spacing: -0.03em;
+}
+
+.wm-pricing-card__price > span:last-child {
+    margin-left: 5px;
+
+    font-size: 11px;
+    color: $color-text-muted;
+}
+
+.wm-pricing-card__price--custom strong {
+    font-size: 30px;
+}
+
+.wm-pricing-card__billing {
+    min-height: 20px;
+
+    margin: 5px 0 $spacing-5;
+
+    font-size: 11px;
+    color: $color-text-muted;
+}
+
+.wm-pricing-card__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 42px;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    cursor: pointer;
+
+    @include transition;
+}
+
+.wm-pricing-card__button--outline {
+    background: $color-white;
+    border-color: $color-border-dark;
+
+    color: $color-text-dark;
+
+    &:hover {
+        background: $color-gray-50;
+        border-color: $color-primary;
+        color: $color-primary;
+    }
+}
+
+.wm-pricing-card__button--primary {
+    background: $color-primary;
+    border-color: $color-primary;
+
+    color: $color-white;
+
+    &:hover {
+        background: $color-primary-hover;
+        border-color: $color-primary-hover;
+    }
+}
+
+.wm-pricing-card__divider {
+    height: 1px;
+
+    margin: $spacing-5 0;
+
+    background: $color-border-light;
+}
+
+.wm-pricing-card__features {
+    h3 {
+        margin: 0 0 $spacing-3;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        padding: 0;
+        margin: 0;
+
+        list-style: none;
+    }
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+
+        font-size: $font-size-xs;
+        line-height: 1.5;
+
+        color: $color-text-secondary;
+
+        i {
+            flex: 0 0 auto;
+
+            margin-top: 1px;
+
+            font-size: 15px;
+
+            color: $color-success;
+        }
+    }
+}
+
+
+// ============================================================
+// Shared Section Header
+// ============================================================
+
+.wm-pricing-features__eyebrow {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Included Features
+// ============================================================
+
+.wm-pricing-features {
+    margin-bottom: $spacing-16;
+}
+
+.wm-pricing-features__header {
+    max-width: 680px;
+
+    margin: 0 auto $spacing-8;
+
+    text-align: center;
+
+    h2 {
+        margin: 0 0 $spacing-3;
+
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-semibold;
+
+        letter-spacing: -0.02em;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-md;
+        line-height: $line-height-relaxed;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-pricing-features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-primary;
+        box-shadow: $shadow-sm;
+    }
+}
+
+.wm-pricing-feature__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: $radius-lg;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 19px;
+}
+
+.wm-pricing-feature h3 {
+    margin: 0 0 5px;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-pricing-feature p {
+    margin: 0;
+
+    font-size: $font-size-xs;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Comparison
+// ============================================================
+
+.wm-pricing-comparison {
+    margin-bottom: $spacing-16;
+}
+
+.wm-pricing-comparison__header {
+    @include flex-between;
+
+    gap: $spacing-6;
+
+    margin-bottom: $spacing-5;
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-pricing-comparison__table-wrapper {
+    overflow-x: auto;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-pricing-comparison__table {
+    width: 100%;
+    min-width: 780px;
+
+    border-collapse: collapse;
+
+    th,
+    td {
+        padding: 14px 16px;
+
+        border-bottom: 1px solid $color-border-light;
+
+        font-size: $font-size-sm;
+
+        text-align: center;
+    }
+
+    th {
+        background: $color-gray-50;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    th:first-child,
+    td:first-child {
+        width: 28%;
+
+        text-align: left;
+    }
+
+    td {
+        color: $color-text-secondary;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    .is-highlighted {
+        background: $color-primary-light;
+        color: $color-primary;
+    }
+
+    td.is-highlighted {
+        font-weight: $font-weight-medium;
+    }
+
+    td i {
+        font-size: 17px;
+    }
+
+    td .ph-check {
+        color: $color-success;
+    }
+
+    td .ph-minus {
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// FAQ
+// ============================================================
+
+.wm-pricing-faq {
+    max-width: 850px;
+
+    margin: 0 auto $spacing-16;
+}
+
+.wm-pricing-faq__header {
+    margin-bottom: $spacing-6;
+
+    text-align: center;
+
+    h2 {
+        margin: 0 0 $spacing-2;
+
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-sm;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-pricing-faq__list {
+    display: flex;
+    flex-direction: column;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    overflow: hidden;
+}
+
+.wm-pricing-faq__item {
+    border-bottom: 1px solid $color-border-light;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &.is-open {
+        .wm-pricing-faq__question {
+            color: $color-text-dark;
+        }
+    }
+}
+
+.wm-pricing-faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    width: 100%;
+
+    padding: $spacing-5;
+
+    border: 0;
+
+    background: transparent;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-align: left;
+
+    color: $color-text;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        background: $color-gray-50;
+        color: $color-text-dark;
+    }
+
+    i {
+        flex: 0 0 auto;
+
+        font-size: 18px;
+        color: $color-text-muted;
+    }
+}
+
+.wm-pricing-faq__answer {
+    display: none;
+
+    padding: 0 $spacing-5 $spacing-5;
+
+    p {
+        max-width: 760px;
+
+        margin: 0;
+
+        font-size: $font-size-sm;
+        line-height: $line-height-relaxed;
+
+        color: $color-text-secondary;
+    }
+}
+
+
+// ============================================================
+// CTA
+// ============================================================
+
+.wm-pricing-cta {
+    position: relative;
+
+    padding: $spacing-10 $spacing-6;
+
+    margin-bottom: $spacing-8;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary-light 0%,
+            $color-white 55%,
+            $color-accent-light 100%
+        );
+
+    border: 1px solid $color-border;
+    border-radius: $radius-2xl;
+
+    overflow: hidden;
+}
+
+.wm-pricing-cta__content {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+.wm-pricing-cta__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin-bottom: $spacing-4;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    color: $color-primary;
+
+    font-size: 23px;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-pricing-cta h2 {
+    margin: 0 0 $spacing-2;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-pricing-cta p {
+    margin: 0 0 $spacing-5;
+
+    font-size: $font-size-md;
+
+    color: $color-text-secondary;
+}
+
+.wm-pricing-cta__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-pricing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-pricing-card__header {
+        min-height: auto;
+    }
+
+    .wm-pricing-card__description {
+        min-height: auto;
+
+        margin-bottom: $spacing-5;
+    }
+
+    .wm-pricing-features__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-pricing-page {
+        padding: $spacing-6 $spacing-5 $spacing-12;
+    }
+
+    .wm-pricing-header__title {
+        font-size: 34px;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-pricing-page {
+        padding: $spacing-5 $spacing-4 $spacing-10;
+    }
+
+    .wm-pricing-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 520px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .wm-pricing-features__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-pricing-header {
+        margin-bottom: $spacing-8;
+    }
+
+    .wm-pricing-header__title {
+        font-size: 30px;
+    }
+
+    .wm-pricing-header__description {
+        font-size: $font-size-sm;
+    }
+
+    .wm-pricing-comparison__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-pricing-comparison__header .wm-btn {
+        width: 100%;
+    }
+
+    .wm-pricing-cta {
+        padding: $spacing-8 $spacing-5;
+    }
+
+    .wm-pricing-cta h2 {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-pricing-cta__actions {
+        width: 100%;
+        flex-direction: column;
+
+        .wm-btn {
+            width: 100%;
+        }
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-pricing-header__title {
+        font-size: 27px;
+    }
+
+    .wm-billing-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .wm-billing-toggle__option {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .wm-pricing-card {
+        padding: $spacing-5;
+    }
+
+    .wm-pricing-card__price strong {
+        font-size: 30px;
+    }
+
+    .wm-pricing-features__header h2,
+    .wm-pricing-faq__header h2 {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-pricing-feature {
+        padding: $spacing-4;
+    }
+
+    .wm-pricing-comparison__table th,
+    .wm-pricing-comparison__table td {
+        padding: 12px;
+    }
+}

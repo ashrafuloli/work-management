@@ -1,0 +1,875 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Page
+// ============================================================
+
+.wm-settings-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-settings-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-settings-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-4;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-settings-page__breadcrumb i {
+    color: $color-gray-400;
+}
+
+.wm-settings-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-settings-page__breadcrumb-link:hover {
+    color: $color-primary;
+}
+
+.wm-settings-page__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+}
+
+.wm-settings-page__title {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-settings-page__subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-settings-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+
+// ============================================================
+// Layout
+// ============================================================
+
+.wm-settings-page__layout {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    align-items: start;
+    gap: $spacing-6;
+}
+
+
+// ============================================================
+// Settings Navigation
+// ============================================================
+
+.wm-settings-nav {
+    position: sticky;
+    top: calc($header-height + $spacing-6);
+
+    padding: $spacing-3;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-settings-nav__group {
+    padding-bottom: $spacing-3;
+    margin-bottom: $spacing-3;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-settings-nav__group:last-child {
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    border-bottom: 0;
+}
+
+.wm-settings-nav__label {
+    display: block;
+
+    padding: 8px 10px;
+
+    color: $color-text-muted;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.wm-settings-nav__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    width: 100%;
+    min-height: 40px;
+    padding: 0 10px;
+
+    margin-bottom: 2px;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.wm-settings-nav__item:last-child {
+    margin-bottom: 0;
+}
+
+.wm-settings-nav__item i {
+    width: 18px;
+
+    color: $color-text-muted;
+    font-size: 17px;
+}
+
+.wm-settings-nav__item:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+.wm-settings-nav__item:hover i {
+    color: $color-primary;
+}
+
+.wm-settings-nav__item.is-active {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-settings-nav__item.is-active i {
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Content
+// ============================================================
+
+.wm-settings-page__content {
+    min-width: 0;
+}
+
+.wm-settings-section {
+    display: none;
+}
+
+.wm-settings-section.is-active {
+    display: block;
+}
+
+.wm-settings-section__header {
+    margin-bottom: $spacing-5;
+}
+
+.wm-settings-section__title {
+    margin: 0 0 5px;
+
+    color: $color-text-dark;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-settings-section__description {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ============================================================
+// Card
+// ============================================================
+
+.wm-settings-card {
+    margin-bottom: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-settings-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-settings-card__title {
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-settings-card__description {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-settings-card__body {
+    padding: $spacing-5;
+}
+
+
+// ============================================================
+// Logo
+// ============================================================
+
+.wm-settings-logo-row {
+    margin-bottom: $spacing-6;
+}
+
+.wm-settings-logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.wm-settings-logo__preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+
+    border-radius: $radius-xl;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary,
+            $color-cyan
+        );
+
+    color: $color-white;
+
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+}
+
+.wm-settings-logo__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wm-settings-logo__content strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+}
+
+.wm-settings-logo__content > span {
+    margin-bottom: $spacing-3;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-settings-logo__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+
+// ============================================================
+// Form Fields
+// ============================================================
+
+.wm-settings-field label {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-settings-field .form-control,
+.wm-settings-field .form-select {
+    min-height: $input-height-md;
+
+    border-color: $input-border;
+    border-radius: $radius-md;
+
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-settings-field textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.wm-settings-field .form-control:focus,
+.wm-settings-field .form-select:focus {
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-settings-field__hint {
+    display: block;
+
+    margin-top: 6px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-settings-input-group {
+    display: flex;
+    align-items: stretch;
+
+    overflow: hidden;
+
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+}
+
+.wm-settings-input-group > span {
+    display: flex;
+    align-items: center;
+
+    padding: 0 10px;
+
+    background: $color-gray-50;
+    border-right: 1px solid $color-border;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+
+    white-space: nowrap;
+}
+
+.wm-settings-input-group .form-control {
+    min-width: 0;
+
+    border: 0;
+    border-radius: 0;
+}
+
+.wm-settings-input-group:focus-within {
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+
+// ============================================================
+// Toggle List
+// ============================================================
+
+.wm-settings-toggle-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-settings-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-5;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-settings-toggle:first-child {
+    padding-top: 0;
+}
+
+.wm-settings-toggle:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.wm-settings-toggle__content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.wm-settings-toggle__content strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-settings-toggle__content span {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+
+// ============================================================
+// Switch
+// ============================================================
+
+.wm-settings-switch {
+    position: relative;
+
+    display: inline-flex;
+
+    width: 44px;
+    height: 24px;
+    flex: 0 0 44px;
+
+    cursor: pointer;
+}
+
+.wm-settings-switch input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.wm-settings-switch > span {
+    position: absolute;
+    inset: 0;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-300;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-settings-switch > span::after {
+    content: "";
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: $radius-full;
+
+    background: $color-white;
+
+    box-shadow: $shadow-sm;
+
+    transition: transform 0.2s ease;
+}
+
+.wm-settings-switch input:checked + span {
+    background: $color-primary;
+}
+
+.wm-settings-switch input:checked + span::after {
+    transform: translateX(20px);
+}
+
+.wm-settings-switch input:focus-visible + span {
+    box-shadow: $input-focus-shadow;
+}
+
+
+// ============================================================
+// View Options
+// ============================================================
+
+.wm-settings-view-options {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-3;
+}
+
+.wm-settings-view-option {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+
+    padding: $spacing-4;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    background: $color-white;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.wm-settings-view-option:hover {
+    border-color: $color-border-dark;
+    background: $color-surface-hover;
+}
+
+.wm-settings-view-option.is-selected {
+    border-color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-settings-view-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wm-settings-view-option__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-md;
+
+    background: $color-gray-100;
+    color: $color-text-secondary;
+}
+
+.wm-settings-view-option.is-selected .wm-settings-view-option__icon {
+    background: $color-white;
+    color: $color-primary;
+}
+
+.wm-settings-view-option strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+}
+
+.wm-settings-view-option span {
+    display: block;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    line-height: 1.45;
+}
+
+
+// ============================================================
+// Danger Zone
+// ============================================================
+
+.wm-settings-danger {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+    margin-top: $spacing-6;
+
+    border: 1px solid rgba(239, 68, 68, 0.22);
+    border-radius: $radius-xl;
+
+    background: $color-danger-light;
+}
+
+.wm-settings-danger__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: $radius-lg;
+
+    background: $color-white;
+    color: $color-danger;
+
+    font-size: 20px;
+}
+
+.wm-settings-danger__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wm-settings-danger__content h3 {
+    margin: 0 0 3px;
+
+    color: $color-danger-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-settings-danger__content p {
+    margin: 0;
+
+    color: $color-danger-dark;
+    font-size: $font-size-xs;
+}
+
+
+// ============================================================
+// Save State
+// ============================================================
+
+#saveSettings.is-dirty {
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#saveSettings.is-loading {
+    pointer-events: none;
+}
+
+.wm-settings-spinner {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: $color-white;
+
+    border-radius: $radius-full;
+
+    animation:
+        wm-settings-spin 0.7s linear infinite;
+}
+
+@keyframes wm-settings-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-settings-page__layout {
+        grid-template-columns: 210px minmax(0, 1fr);
+    }
+
+    .wm-settings-view-options {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-settings-page__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-settings-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-settings-page__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-settings-nav {
+        position: static;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: $spacing-3;
+    }
+
+    .wm-settings-nav__group {
+        padding: 0;
+        margin: 0;
+
+        border-bottom: 0;
+    }
+
+    .wm-settings-nav__label {
+        padding-left: 4px;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-settings-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-settings-page__header-actions {
+        flex-wrap: wrap;
+    }
+
+    .wm-settings-nav {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-2;
+    }
+
+    .wm-settings-nav__group {
+        width: 100%;
+    }
+
+    .wm-settings-nav__label {
+        padding-top: 8px;
+    }
+
+    .wm-settings-card__header,
+    .wm-settings-card__body {
+        padding: $spacing-4;
+    }
+
+    .wm-settings-logo {
+        align-items: flex-start;
+    }
+
+    .wm-settings-logo__preview {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+    }
+
+    .wm-settings-danger {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .wm-settings-danger__content {
+        flex-basis: calc(100% - 62px);
+    }
+
+    .wm-settings-danger .btn {
+        width: 100%;
+        margin-left: 58px;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-settings-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-settings-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-settings-logo {
+        flex-direction: column;
+    }
+
+    .wm-settings-logo__actions {
+        flex-wrap: wrap;
+    }
+
+    .wm-settings-input-group {
+        flex-direction: column;
+    }
+
+    .wm-settings-input-group > span {
+        min-height: 32px;
+
+        border-right: 0;
+        border-bottom: 1px solid $color-border;
+    }
+
+    .wm-settings-toggle {
+        align-items: flex-start;
+    }
+
+    .wm-settings-danger {
+        flex-direction: column;
+    }
+
+    .wm-settings-danger__content {
+        width: 100%;
+    }
+
+    .wm-settings-danger .btn {
+        width: 100%;
+        margin-left: 0;
+    }
+
+}

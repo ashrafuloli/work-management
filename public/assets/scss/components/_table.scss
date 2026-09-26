@@ -1,0 +1,898 @@
+// ============================================================
+// WorkManagement
+// Table Components
+// Bootstrap Safe
+// ============================================================
+
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Table Wrapper
+// ------------------------------------------------------------
+
+.wm-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: $color-surface;
+    border: 1px solid $table-border;
+    border-radius: $radius-xl;
+
+    @include scrollbar;
+}
+
+
+// ------------------------------------------------------------
+// Table
+// ------------------------------------------------------------
+
+.wm-table {
+    width: 100%;
+    min-width: 760px;
+
+    margin: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    color: $color-text;
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+
+    th,
+    td {
+        padding: $table-cell-padding-y $table-cell-padding-x;
+
+        border-bottom: 1px solid $table-border;
+
+        vertical-align: middle;
+        text-align: left;
+    }
+
+
+    // --------------------------------------------------------
+    // Table Head
+    // --------------------------------------------------------
+
+    thead {
+
+        th {
+            background: $table-header-bg;
+
+            color: $color-text-secondary;
+
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+
+            line-height: $line-height-normal;
+            white-space: nowrap;
+        }
+
+        tr:first-child {
+
+            th:first-child {
+                border-top-left-radius: $radius-xl;
+            }
+
+            th:last-child {
+                border-top-right-radius: $radius-xl;
+            }
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // Table Body
+    // --------------------------------------------------------
+
+    tbody {
+
+        tr {
+            background: $color-surface;
+
+            transition: background-color 0.15s ease;
+
+            &:last-child {
+
+                td {
+                    border-bottom: 0;
+                }
+            }
+
+            &:hover {
+                background: $table-row-hover;
+            }
+        }
+
+        td {
+            color: $color-text;
+        }
+    }
+
+
+    // --------------------------------------------------------
+    // Table Footer
+    // --------------------------------------------------------
+
+    tfoot {
+
+        td {
+            background: $color-gray-50;
+            border-bottom: 0;
+        }
+    }
+}
+
+
+// ------------------------------------------------------------
+// Table Variations
+// ------------------------------------------------------------
+
+.wm-table--compact {
+
+    th,
+    td {
+        padding-top: $spacing-3;
+        padding-bottom: $spacing-3;
+    }
+}
+
+
+.wm-table--spacious {
+
+    th,
+    td {
+        padding-top: $spacing-5;
+        padding-bottom: $spacing-5;
+    }
+}
+
+
+.wm-table--bordered {
+
+    th,
+    td {
+        border-right: 1px solid $table-border;
+
+        &:last-child {
+            border-right: 0;
+        }
+    }
+
+    tbody {
+
+        tr {
+            &:last-child {
+
+                td {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+
+// ------------------------------------------------------------
+// Checkbox
+// ------------------------------------------------------------
+
+.wm-table__checkbox {
+    width: 44px;
+
+    text-align: center !important;
+
+    input {
+        width: 16px;
+        height: 16px;
+
+        margin: 0;
+
+        accent-color: $color-primary;
+
+        cursor: pointer;
+    }
+}
+
+
+// ------------------------------------------------------------
+// User Cell
+// ------------------------------------------------------------
+
+.wm-table__user {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 180px;
+}
+
+
+.wm-table__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-table__user-info {
+    min-width: 0;
+}
+
+
+.wm-table__user-name {
+    display: block;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+    line-height: $line-height-normal;
+
+    @include truncate;
+}
+
+
+.wm-table__user-email {
+    display: block;
+
+    margin-top: 1px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+
+    line-height: $line-height-normal;
+
+    @include truncate;
+}
+
+
+// ------------------------------------------------------------
+// Project Cell
+// ------------------------------------------------------------
+
+.wm-table__project {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 200px;
+}
+
+
+.wm-table__project-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+
+    border-radius: $radius-md;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: $font-size-lg;
+}
+
+
+.wm-table__project-info {
+    min-width: 0;
+}
+
+
+.wm-table__project-name {
+    display: block;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+    @include truncate;
+}
+
+
+.wm-table__project-meta {
+    display: block;
+
+    margin-top: 1px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Generic Cell
+// ------------------------------------------------------------
+
+.wm-table__primary {
+    display: block;
+
+    color: $color-text-dark;
+
+    font-weight: $font-weight-medium;
+
+    @include truncate;
+}
+
+
+.wm-table__secondary {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+
+.wm-table__muted {
+    color: $color-text-muted;
+}
+
+
+// ------------------------------------------------------------
+// Status
+// ------------------------------------------------------------
+
+.wm-table__status {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-1;
+
+    min-height: 26px;
+
+    padding: 0 $spacing-2;
+
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+}
+
+
+.wm-table__status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: $radius-full;
+
+    background: currentColor;
+}
+
+
+.wm-table__status--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+
+.wm-table__status--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+.wm-table__status--danger {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+
+.wm-table__status--info {
+    background: $color-info-light;
+    color: $color-info-dark;
+}
+
+
+.wm-table__status--neutral {
+    background: $color-gray-100;
+    color: $color-gray-600;
+}
+
+
+// ------------------------------------------------------------
+// Priority
+// ------------------------------------------------------------
+
+.wm-table__priority {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-table__priority-icon {
+    display: inline-flex;
+
+    font-size: $font-size-lg;
+}
+
+
+.wm-table__priority--high {
+    color: $color-danger-dark;
+}
+
+
+.wm-table__priority--medium {
+    color: $color-warning-dark;
+}
+
+
+.wm-table__priority--low {
+    color: $color-success-dark;
+}
+
+
+// ------------------------------------------------------------
+// Progress
+// ------------------------------------------------------------
+
+.wm-table__progress {
+    width: 120px;
+}
+
+
+.wm-table__progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: $spacing-1;
+
+    font-size: $font-size-xs;
+}
+
+
+.wm-table__progress-value {
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-table__progress-bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+}
+
+
+.wm-table__progress-fill {
+    width: 0;
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Sortable Heading
+// ------------------------------------------------------------
+
+.wm-table__sortable {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-1;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: inherit;
+
+    font: inherit;
+    font-weight: inherit;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    &:hover {
+        color: $color-text-dark;
+    }
+}
+
+
+.wm-table__sort-icon {
+    display: inline-flex;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-md;
+}
+
+
+.wm-table__sortable.is-active {
+
+    color: $color-text-dark;
+
+    .wm-table__sort-icon {
+        color: $color-primary;
+    }
+}
+
+
+// ------------------------------------------------------------
+// Action Buttons
+// ------------------------------------------------------------
+
+.wm-table__actions {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: $spacing-1;
+
+    white-space: nowrap;
+}
+
+
+.wm-table__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover {
+        background: $color-gray-100;
+        color: $color-text-dark;
+    }
+
+    &--edit:hover {
+        background: $color-primary-light;
+        color: $color-primary;
+    }
+
+    &--view:hover {
+        background: $color-info-light;
+        color: $color-info-dark;
+    }
+
+    &--delete:hover {
+        background: $color-danger-light;
+        color: $color-danger-dark;
+    }
+}
+
+
+// ------------------------------------------------------------
+// Table Toolbar
+// ------------------------------------------------------------
+
+.wm-table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-bottom: 1px solid $table-border;
+
+    background: $color-surface;
+}
+
+
+.wm-table-toolbar__left,
+.wm-table-toolbar__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+
+.wm-table-toolbar__left {
+    min-width: 0;
+}
+
+
+.wm-table-toolbar__right {
+    flex: 0 0 auto;
+}
+
+
+.wm-table-toolbar__title {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-table-toolbar__description {
+    margin: $spacing-1 0 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Table Search
+// ------------------------------------------------------------
+
+.wm-table-search {
+    position: relative;
+
+    width: 240px;
+}
+
+
+.wm-table-search__icon {
+    position: absolute;
+    top: 50%;
+    left: $spacing-3;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    color: $color-text-muted;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+
+.wm-table-search .wm-form-control {
+    padding-left: $spacing-10;
+}
+
+
+// ------------------------------------------------------------
+// Table Footer
+// ------------------------------------------------------------
+
+.wm-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-top: 1px solid $table-border;
+
+    background: $color-surface;
+}
+
+
+.wm-table-footer__info {
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+
+.wm-table-footer__pagination {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+}
+
+
+// ------------------------------------------------------------
+// Pagination
+// ------------------------------------------------------------
+
+.wm-table-page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 32px;
+    height: 32px;
+
+    padding: 0 $spacing-2;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    background: transparent;
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover {
+        background: $color-gray-100;
+        color: $color-text-dark;
+    }
+
+    &.is-active {
+        border-color: $color-primary;
+        background: $color-primary;
+        color: $color-white;
+    }
+
+    &.is-disabled {
+        color: $color-text-disabled;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+}
+
+
+// ------------------------------------------------------------
+// Empty State
+// ------------------------------------------------------------
+
+.wm-table-empty {
+    padding: $spacing-12 $spacing-6;
+
+    text-align: center;
+}
+
+
+.wm-table-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: $spacing-4;
+
+    border-radius: $radius-lg;
+
+    background: $color-gray-100;
+    color: $color-text-secondary;
+
+    font-size: $font-size-2xl;
+}
+
+
+.wm-table-empty__title {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-table-empty__description {
+    max-width: 420px;
+
+    margin: $spacing-2 auto 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+
+// ------------------------------------------------------------
+// Responsive
+// ------------------------------------------------------------
+
+@include media(sm) {
+
+    .wm-table-toolbar {
+        padding-right: $spacing-4;
+        padding-left: $spacing-4;
+    }
+
+    .wm-table-footer {
+        padding-right: $spacing-4;
+        padding-left: $spacing-4;
+    }
+}
+
+
+@include media(md) {
+
+    .wm-table-toolbar {
+        padding-right: $spacing-5;
+        padding-left: $spacing-5;
+    }
+
+    .wm-table-footer {
+        padding-right: $spacing-5;
+        padding-left: $spacing-5;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+
+    .wm-table-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-table-toolbar__left,
+    .wm-table-toolbar__right {
+        width: 100%;
+    }
+
+    .wm-table-toolbar__right {
+        justify-content: flex-start;
+    }
+
+    .wm-table-search {
+        width: 100%;
+    }
+
+    .wm-table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-table-footer__pagination {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}

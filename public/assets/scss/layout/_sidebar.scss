@@ -1,0 +1,877 @@
+// ============================================================
+// WorkManagement
+// Sidebar
+// ============================================================
+
+@use "../common" as *;
+
+
+// ============================================================
+// Sidebar
+// ============================================================
+
+.wm-sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: $z-sidebar;
+
+    display: flex;
+    flex-direction: column;
+
+    width: $sidebar-width;
+    height: 100vh;
+
+    background: $sidebar-bg;
+
+    border-right: 1px solid $sidebar-border;
+
+    transition:
+        width 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+// ============================================================
+// Sidebar Brand
+// ============================================================
+
+.wm-sidebar__brand {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: $header-height;
+
+    padding: 0 $spacing-4;
+
+    border-bottom: 1px solid $sidebar-border;
+
+    transition:
+        height 0.25s ease,
+        padding 0.25s ease;
+}
+
+
+.wm-sidebar__logo {
+    display: inline-flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    min-width: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+
+    text-decoration: none;
+}
+
+
+.wm-sidebar__logo:hover {
+    color: $color-text-dark;
+}
+
+
+.wm-sidebar__logo img {
+    max-width: 100%;
+}
+
+
+.wm-sidebar__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 auto;
+}
+
+
+.wm-sidebar__logo-text {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    transition: opacity 0.15s ease;
+}
+
+
+// ============================================================
+// Sidebar Toggle
+// ============================================================
+
+.wm-sidebar__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    padding: 0;
+
+    flex: 0 0 auto;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.25s ease;
+}
+
+
+.wm-sidebar__toggle:hover {
+    background: $color-gray-100;
+
+    color: $color-text-dark;
+}
+
+
+// ============================================================
+// Sidebar Navigation
+// ============================================================
+
+.wm-sidebar__nav {
+    flex: 1;
+
+    padding: $spacing-4 $spacing-3;
+
+    overflow-y: auto;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        $color-gray-300
+        transparent;
+}
+
+
+.wm-sidebar__nav::-webkit-scrollbar {
+    width: 5px;
+}
+
+
+.wm-sidebar__nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.wm-sidebar__nav::-webkit-scrollbar-thumb {
+    background: $color-gray-300;
+
+    border-radius: $radius-full;
+}
+
+
+// ============================================================
+// Sidebar Group
+// ============================================================
+
+.wm-sidebar__group {
+    margin-bottom: $spacing-5;
+}
+
+
+.wm-sidebar__group:last-child {
+    margin-bottom: 0;
+}
+
+
+// ============================================================
+// Sidebar Label
+// ============================================================
+
+.wm-sidebar__label {
+    padding: 0 $spacing-2;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-muted;
+
+    font-size: 10px;
+
+    font-weight: $font-weight-bold;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    transition: opacity 0.15s ease;
+}
+
+
+// ============================================================
+// Sidebar Item
+// ============================================================
+
+.wm-sidebar__item {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 40px;
+
+    gap: $spacing-3;
+
+    padding: 0 $spacing-3;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $sidebar-text;
+
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+    text-align: left;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease;
+}
+
+
+.wm-sidebar__item + .wm-sidebar__item {
+    margin-top: 2px;
+}
+
+
+.wm-sidebar__item:hover {
+    background: $sidebar-hover-bg;
+
+    color: $color-text-dark;
+}
+
+
+.wm-sidebar__item.is-active {
+    background: $sidebar-active-bg;
+
+    color: $sidebar-active-text;
+}
+
+
+.wm-sidebar__item.is-active
+.wm-sidebar__item-icon {
+    color: $sidebar-active-text;
+}
+
+
+// ============================================================
+// Sidebar Item Icon
+// ============================================================
+
+.wm-sidebar__item-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    flex: 0 0 auto;
+
+    color: inherit;
+
+    font-size: 18px;
+}
+
+
+// ============================================================
+// Sidebar Item Text
+// ============================================================
+
+.wm-sidebar__item-text {
+    min-width: 0;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+// ============================================================
+// Sidebar Badge
+// ============================================================
+
+.wm-sidebar__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 5px;
+
+    margin-left: auto;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+
+    color: $color-text-secondary;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+
+    line-height: 1;
+}
+
+
+// ============================================================
+// Sidebar Dropdown
+// ============================================================
+
+.wm-sidebar__dropdown {
+    position: relative;
+}
+
+
+.wm-sidebar__dropdown-toggle {
+    text-align: left;
+}
+
+
+.wm-sidebar__item-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+
+    margin-left: auto;
+
+    color: $sidebar-text;
+
+    font-size: 13px;
+
+    transition: transform 0.2s ease;
+}
+
+
+.wm-sidebar__dropdown.is-open
+.wm-sidebar__item-arrow {
+    transform: rotate(180deg);
+}
+
+
+// ============================================================
+// Sidebar Submenu
+// ============================================================
+
+.wm-sidebar__submenu {
+    display: none;
+
+    margin: 4px 0 4px 4px;
+
+    padding-left: 12px;
+
+    border-left: 1px solid $sidebar-border;
+}
+
+
+.wm-sidebar__dropdown.is-open
+.wm-sidebar__submenu {
+    display: block;
+}
+
+
+.wm-sidebar__submenu-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    gap: $spacing-2;
+
+    padding: 0 10px;
+
+    border-radius: $radius-md;
+
+    color: $sidebar-text;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-regular;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.wm-sidebar__submenu-item:hover {
+    background: $sidebar-hover-bg;
+
+    color: $color-text-dark;
+}
+
+
+.wm-sidebar__submenu-item.is-active {
+    background: $sidebar-active-bg;
+
+    color: $sidebar-active-text;
+
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-sidebar__submenu-item i {
+    width: 16px;
+
+    flex: 0 0 16px;
+
+    font-size: 14px;
+}
+
+
+// ============================================================
+// Sidebar User
+// ============================================================
+
+.wm-sidebar__user {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4;
+
+    border-top: 1px solid $sidebar-border;
+
+    background: $sidebar-bg;
+}
+
+
+.wm-sidebar__user-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 auto;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-sidebar__user-info {
+    min-width: 0;
+
+    flex: 1;
+}
+
+
+.wm-sidebar__user-name {
+    display: block;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.wm-sidebar__user-email {
+    display: block;
+
+    margin-top: 1px;
+
+    overflow: hidden;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+// ============================================================
+// User Actions
+// ============================================================
+
+.wm-sidebar__user-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    margin-left: auto;
+}
+
+
+.wm-sidebar__user-menu,
+.wm-sidebar__logout {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.wm-sidebar__user-menu {
+    color: $color-text-secondary;
+}
+
+
+.wm-sidebar__user-menu:hover {
+    background: $sidebar-hover-bg;
+
+    color: $color-text-dark;
+}
+
+
+.wm-sidebar__logout {
+    color: $color-danger;
+}
+
+
+.wm-sidebar__logout:hover {
+    background: $color-danger-light;
+
+    color: $color-danger-dark;
+}
+
+
+.wm-sidebar__logout-form {
+    margin: 0;
+}
+
+
+.wm-sidebar__logout-text {
+    display: none;
+}
+
+
+// ============================================================
+// Collapsed Sidebar
+// ============================================================
+
+.wm-sidebar.is-collapsed {
+    width: $sidebar-collapsed-width;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__brand {
+    justify-content: center;
+
+    padding:
+        0
+        $spacing-2;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__logo {
+    justify-content: center;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__logo-text {
+    display: none;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__toggle {
+    position: absolute;
+
+    right: 6px;
+    bottom: 6px;
+
+    display: inline-flex;
+
+    width: 24px;
+    height: 24px;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+
+    color: $color-text-secondary;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__toggle:hover {
+    background: $color-primary-light;
+
+    border-color: $color-primary-light;
+
+    color: $color-primary;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__label {
+    display: none;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__item {
+    justify-content: center;
+
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__item-text {
+    display: none;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__badge {
+    display: none;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__user {
+    justify-content: center;
+
+    padding:
+        $spacing-2;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__user-info {
+    display: none;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__user-actions {
+    margin-left: 0;
+
+    flex-direction: column;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__user-menu {
+    display: none;
+}
+
+
+// ============================================================
+// Collapsed Dropdown
+// ============================================================
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__dropdown {
+    position: relative;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__dropdown
+.wm-sidebar__submenu {
+    position: absolute;
+
+    top: 0;
+    left: calc(100% + 8px);
+
+    width: 220px;
+
+    margin: 0;
+    padding: 8px;
+
+    border: 1px solid $sidebar-border;
+
+    border-radius: $radius-lg;
+
+    background: $sidebar-bg;
+
+    box-shadow: $shadow-lg;
+
+    z-index: $z-dropdown;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__dropdown.is-open
+.wm-sidebar__submenu {
+    display: block;
+}
+
+
+.wm-sidebar.is-collapsed
+.wm-sidebar__dropdown
+.wm-sidebar__item-arrow {
+    display: none;
+}
+
+
+// ============================================================
+// Responsive Sidebar
+// ============================================================
+
+@media (max-width: 991.98px) {
+
+    .wm-sidebar {
+        transform: translateX(-100%);
+    }
+
+
+    .wm-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+
+    .wm-sidebar.is-collapsed {
+        width: $sidebar-width;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__brand {
+        justify-content: space-between;
+
+        padding:
+            0
+            $spacing-4;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__logo-text {
+        display: inline;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__label {
+        display: block;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__item {
+        justify-content: flex-start;
+
+        padding-right: $spacing-3;
+        padding-left: $spacing-3;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__item-text {
+        display: inline;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__badge {
+        display: inline-flex;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__user {
+        justify-content: flex-start;
+
+        padding: $spacing-4;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__user-info {
+        display: block;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__user-actions {
+        margin-left: auto;
+
+        flex-direction: row;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__user-menu {
+        display: inline-flex;
+    }
+
+
+    .wm-sidebar.is-collapsed
+    .wm-sidebar__toggle {
+        position: static;
+
+        width: 30px;
+        height: 30px;
+
+        background: transparent;
+
+        border: 0;
+    }
+}

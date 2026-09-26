@@ -1,0 +1,1156 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Calendar Page
+// ============================================================
+
+.wm-calendar-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Page Header
+// ============================================================
+
+.wm-calendar-page__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-6;
+}
+
+.wm-calendar-page__header-left {
+    min-width: 0;
+}
+
+.wm-calendar-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-calendar-page__breadcrumb a {
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wm-calendar-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-calendar-page__breadcrumb i {
+    font-size: 14px;
+}
+
+.wm-calendar-page__breadcrumb span {
+    color: $color-text-muted;
+}
+
+.wm-calendar-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-calendar-page__subtitle {
+    margin: $spacing-2 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+}
+
+.wm-calendar-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    flex-shrink: 0;
+}
+
+
+// ============================================================
+// Calendar Card
+// ============================================================
+
+.wm-calendar-card {
+    overflow: hidden;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+}
+
+
+// ============================================================
+// Toolbar
+// ============================================================
+
+.wm-calendar-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-6;
+    padding: $spacing-4 $spacing-5;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-toolbar__left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    min-width: 0;
+}
+
+.wm-calendar-toolbar__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-calendar-toolbar__date {
+    min-width: 190px;
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-calendar-navigation {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-calendar-navigation__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    color: $color-text-secondary;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.wm-calendar-navigation__button:hover {
+    color: $color-text-dark;
+    background: $color-gray-50;
+    border-color: $color-border-dark;
+}
+
+
+// ============================================================
+// Search
+// ============================================================
+
+.wm-calendar-search {
+    position: relative;
+    width: 220px;
+}
+
+.wm-calendar-search > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: $color-text-muted;
+    font-size: 17px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.wm-calendar-search input {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px 0 36px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    background: $color-gray-50;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+    outline: 0;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-calendar-search input:focus {
+    background: $color-white;
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-calendar-search input::placeholder {
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// View Switcher
+// ============================================================
+
+.wm-calendar-view-switcher {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px;
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-calendar-view-switcher__button {
+    min-width: 58px;
+    height: 32px;
+    padding: 0 $spacing-3;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    background: transparent;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-calendar-view-switcher__button:hover {
+    color: $color-text-dark;
+}
+
+.wm-calendar-view-switcher__button.is-active {
+    color: $color-text-dark;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+}
+
+
+// ============================================================
+// Filters
+// ============================================================
+
+.wm-calendar-filters {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-4 $spacing-5;
+    background: $color-gray-50;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-filters__group {
+    display: flex;
+    align-items: flex-end;
+    gap: $spacing-4;
+}
+
+.wm-calendar-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 170px;
+}
+
+.wm-calendar-filter label {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-calendar-filter select {
+    width: 100%;
+    height: 36px;
+    padding: 0 32px 0 10px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    background-color: $color-white;
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+    outline: 0;
+    cursor: pointer;
+}
+
+.wm-calendar-filter select:focus {
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-calendar-filters__clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 12px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    background: transparent;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.wm-calendar-filters__clear:hover {
+    color: $color-danger;
+    background: $color-danger-light;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+
+// ============================================================
+// Calendar Views
+// ============================================================
+
+.wm-calendar-view {
+    display: none;
+}
+
+.wm-calendar-view.is-active {
+    display: block;
+}
+
+
+// ============================================================
+// Weekdays
+// ============================================================
+
+.wm-calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-weekdays > div {
+    padding: 12px 14px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-align: right;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-right: 1px solid $color-border;
+}
+
+.wm-calendar-weekdays > div:last-child {
+    border-right: 0;
+}
+
+
+// ============================================================
+// Month Grid
+// ============================================================
+
+.wm-calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.wm-calendar-day-cell {
+    position: relative;
+    min-height: 138px;
+    padding: 10px;
+    background: $color-white;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-day-cell:nth-child(7n) {
+    border-right: 0;
+}
+
+.wm-calendar-day-cell:nth-last-child(-n + 7) {
+    border-bottom: 0;
+}
+
+.wm-calendar-day-cell.is-other-month {
+    background: $color-gray-50;
+}
+
+.wm-calendar-day-cell__header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.wm-calendar-day-cell__number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border-radius: 50%;
+}
+
+.wm-calendar-day-cell.is-other-month
+.wm-calendar-day-cell__number {
+    color: $color-text-muted;
+}
+
+.wm-calendar-day-cell.is-today
+.wm-calendar-day-cell__number {
+    color: $color-white;
+    background: $color-primary;
+}
+
+.wm-calendar-day-cell__events {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wm-calendar-day-cell__more {
+    padding: 2px 4px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+
+// ============================================================
+// Calendar Events
+// ============================================================
+
+.wm-calendar-event {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 6px 8px;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    text-align: left;
+    border: 0;
+    border-left: 3px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.wm-calendar-event:hover {
+    transform: translateY(-1px);
+    box-shadow: $shadow-sm;
+}
+
+.wm-calendar-event > span {
+    overflow: hidden;
+    font-weight: $font-weight-medium;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-calendar-event--blue {
+    background: $color-primary-light;
+    border-left-color: $color-primary;
+}
+
+.wm-calendar-event--green {
+    background: $color-success-light;
+    border-left-color: $color-success;
+}
+
+.wm-calendar-event--purple {
+    background: $color-purple-light;
+    border-left-color: $color-purple;
+}
+
+.wm-calendar-event--orange {
+    background: $color-warning-light;
+    border-left-color: $color-warning;
+}
+
+.wm-calendar-event--red {
+    background: $color-danger-light;
+    border-left-color: $color-danger;
+}
+
+
+// ============================================================
+// Week View
+// ============================================================
+
+.wm-calendar-week {
+    display: grid;
+    grid-template-columns: 70px minmax(900px, 1fr);
+    min-width: 970px;
+}
+
+.wm-calendar-week__time-column {
+    border-right: 1px solid $color-border;
+}
+
+.wm-calendar-week__time-spacer {
+    height: 66px;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-week__time {
+    height: 70px;
+    padding: 10px 8px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    text-align: right;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-week__days {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(130px, 1fr));
+}
+
+.wm-calendar-week__day-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 66px;
+    gap: 2px;
+    color: $color-text-muted;
+    border-right: 1px solid $color-border;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-week__day-header span {
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-calendar-week__day-header strong {
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-calendar-week__day-header.is-today strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: $color-white;
+    background: $color-primary;
+    border-radius: 50%;
+}
+
+.wm-calendar-week__body {
+    position: relative;
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(7, minmax(130px, 1fr));
+}
+
+.wm-calendar-week__column {
+    position: relative;
+    min-height: 700px;
+    border-right: 1px solid $color-border;
+    background-image:
+        linear-gradient(
+            to bottom,
+            transparent 69px,
+            $color-border 70px
+        );
+    background-size: 100% 70px;
+}
+
+.wm-calendar-week__column:last-child {
+    border-right: 0;
+}
+
+.wm-calendar-week__column .wm-calendar-event {
+    position: absolute;
+    right: 6px;
+    left: 6px;
+    width: auto;
+    min-height: 58px;
+}
+
+
+// ============================================================
+// Day View
+// ============================================================
+
+.wm-calendar-day {
+    padding: $spacing-5;
+}
+
+.wm-calendar-day__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 $spacing-5;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-day__header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wm-calendar-day__header span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.05em;
+}
+
+.wm-calendar-day__header strong {
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+}
+
+.wm-calendar-day__badge {
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 10px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    background: $color-primary-light;
+    border-radius: $radius-full;
+}
+
+.wm-calendar-day__row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    min-height: 72px;
+}
+
+.wm-calendar-day__time {
+    padding: 12px 12px 0 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    text-align: right;
+    border-right: 1px solid $color-border;
+}
+
+.wm-calendar-day__slot {
+    position: relative;
+    padding: 8px 12px;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-day__slot .wm-calendar-event {
+    max-width: 520px;
+    min-height: 52px;
+}
+
+
+// ============================================================
+// Agenda
+// ============================================================
+
+.wm-calendar-agenda {
+    padding: $spacing-5;
+}
+
+.wm-calendar-agenda__group {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: $spacing-5;
+    padding: $spacing-5 0;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-agenda__group:first-child {
+    padding-top: 0;
+}
+
+.wm-calendar-agenda__group:last-child {
+    border-bottom: 0;
+}
+
+.wm-calendar-agenda__date {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.wm-calendar-agenda__date span {
+    color: $color-text-muted;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.06em;
+}
+
+.wm-calendar-agenda__date strong {
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-calendar-agenda__events {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wm-calendar-agenda__event {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    width: 100%;
+    min-height: 64px;
+    padding: 10px 14px;
+    text-align: left;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.wm-calendar-agenda__event:hover {
+    border-color: $color-border-dark;
+    box-shadow: $shadow-sm;
+    transform: translateY(-1px);
+}
+
+.wm-calendar-agenda__event-dot {
+    flex: 0 0 auto;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+}
+
+.wm-calendar-agenda__event-dot--blue {
+    background: $color-primary;
+}
+
+.wm-calendar-agenda__event-dot--green {
+    background: $color-success;
+}
+
+.wm-calendar-agenda__event-dot--purple {
+    background: $color-purple;
+}
+
+.wm-calendar-agenda__event-dot--orange {
+    background: $color-warning;
+}
+
+.wm-calendar-agenda__event-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+
+.wm-calendar-agenda__event-content strong {
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-calendar-agenda__event-content small {
+    overflow: hidden;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-calendar-agenda__event > i {
+    color: $color-text-muted;
+    font-size: 16px;
+}
+
+
+// ============================================================
+// Buttons
+// ============================================================
+
+.wm-calendar-page .wm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: $button-height-md;
+    padding: 0 $button-padding-x;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    border-radius: $button-radius;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-calendar-page .wm-btn--primary {
+    color: $color-white;
+    background: $color-primary;
+    border: 1px solid $color-primary;
+}
+
+.wm-calendar-page .wm-btn--primary:hover {
+    background: $color-primary-hover;
+    border-color: $color-primary-hover;
+}
+
+.wm-calendar-page .wm-btn--secondary {
+    color: $color-text-dark;
+    background: $color-white;
+    border: 1px solid $color-border-dark;
+}
+
+.wm-calendar-page .wm-btn--secondary:hover {
+    background: $color-gray-50;
+}
+
+
+// ============================================================
+// Modal
+// ============================================================
+
+.wm-calendar-modal {
+    position: fixed;
+    z-index: $z-modal;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-5;
+}
+
+.wm-calendar-modal.is-open {
+    display: flex;
+}
+
+.wm-calendar-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.wm-calendar-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 540px;
+    overflow: hidden;
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+}
+
+.wm-calendar-modal__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-5;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-calendar-modal__eyebrow {
+    display: block;
+    margin-bottom: 4px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.wm-calendar-modal__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-calendar-modal__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: $color-text-secondary;
+    background: transparent;
+    border: 0;
+    border-radius: $radius-md;
+    cursor: pointer;
+}
+
+.wm-calendar-modal__close:hover {
+    color: $color-text-dark;
+    background: $color-gray-100;
+}
+
+.wm-calendar-modal__body {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+    padding: $spacing-5;
+}
+
+.wm-calendar-modal__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-calendar-modal__item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.wm-calendar-modal__label {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-calendar-modal__item strong {
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-calendar-modal__item p {
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+.wm-calendar-modal__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-3;
+    padding: $spacing-4 $spacing-5;
+    background: $color-gray-50;
+    border-top: 1px solid $color-border;
+}
+
+body.wm-calendar-modal-open {
+    overflow: hidden;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-calendar-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-calendar-toolbar__right {
+        width: 100%;
+    }
+
+    .wm-calendar-search {
+        flex: 1;
+    }
+
+    .wm-calendar-view-switcher {
+        flex-shrink: 0;
+    }
+
+    .wm-calendar-filters {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-calendar-filters__group {
+        width: 100%;
+    }
+
+    .wm-calendar-filter {
+        flex: 1;
+    }
+
+    .wm-calendar-filters__clear {
+        align-self: flex-end;
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-calendar-page__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-calendar-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-calendar-page__header-actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-calendar-filters__group {
+        flex-wrap: wrap;
+    }
+
+    .wm-calendar-filter {
+        min-width: calc(50% - 8px);
+    }
+
+    .wm-calendar-grid {
+        min-width: 900px;
+    }
+
+    .wm-calendar-month-view {
+        overflow-x: auto;
+    }
+
+    .wm-calendar-weekdays {
+        min-width: 900px;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-calendar-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-calendar-page__subtitle {
+        font-size: $font-size-sm;
+    }
+
+    .wm-calendar-toolbar {
+        padding: $spacing-4;
+    }
+
+    .wm-calendar-toolbar__left {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .wm-calendar-toolbar__date {
+        min-width: 0;
+        font-size: $font-size-lg;
+    }
+
+    .wm-calendar-toolbar__right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-calendar-search {
+        width: 100%;
+    }
+
+    .wm-calendar-view-switcher {
+        width: 100%;
+    }
+
+    .wm-calendar-view-switcher__button {
+        flex: 1;
+    }
+
+    .wm-calendar-filters {
+        padding: $spacing-4;
+    }
+
+    .wm-calendar-filter {
+        min-width: 100%;
+    }
+
+    .wm-calendar-filters__clear {
+        align-self: flex-start;
+    }
+
+    .wm-calendar-agenda {
+        padding: $spacing-4;
+    }
+
+    .wm-calendar-agenda__group {
+        grid-template-columns: 1fr;
+        gap: $spacing-3;
+    }
+
+    .wm-calendar-day {
+        padding: $spacing-4;
+        overflow-x: auto;
+    }
+
+    .wm-calendar-day__timeline {
+        min-width: 650px;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-calendar-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-calendar-page__header-actions .wm-btn {
+        width: 100%;
+    }
+
+    .wm-calendar-toolbar__left {
+        gap: $spacing-2;
+    }
+
+    .wm-calendar-navigation__button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .wm-calendar-toolbar__date {
+        font-size: $font-size-md;
+    }
+
+    .wm-calendar-modal {
+        padding: $spacing-3;
+    }
+
+    .wm-calendar-modal__grid {
+        grid-template-columns: 1fr;
+    }
+
+}

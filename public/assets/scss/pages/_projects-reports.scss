@@ -1,0 +1,1505 @@
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Page
+// ------------------------------------------------------------
+
+.wm-project-reports-page {
+    width: 100%;
+}
+
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+
+.wm-project-reports-page__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-reports-page__header-left {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-reports-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__breadcrumb a {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-project-reports-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-project-reports-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-project-reports-page__breadcrumb span {
+    color: $color-text-secondary;
+}
+
+.wm-project-reports-page__title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.wm-project-reports-page__title-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-xl;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 23px;
+}
+
+.wm-project-reports-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-project-reports-page__subtitle {
+    margin: 5px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-project-reports-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+
+// ------------------------------------------------------------
+// Navigation
+// ------------------------------------------------------------
+
+.wm-project-reports-page__navigation {
+    margin-bottom: $spacing-5;
+    overflow-x: auto;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-reports-page__nav {
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-reports-page__nav-item {
+    position: relative;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 13px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.wm-project-reports-page__nav-item:hover {
+    color: $color-text-dark;
+}
+
+.wm-project-reports-page__nav-item.is-active {
+    color: $color-primary;
+}
+
+.wm-project-reports-page__nav-item.is-active::after {
+    position: absolute;
+    right: 8px;
+    bottom: -1px;
+    left: 8px;
+    height: 2px;
+    content: "";
+    border-radius: $radius-full $radius-full 0 0;
+    background: $color-primary;
+}
+
+.wm-project-reports-page__nav-item i {
+    font-size: 17px;
+}
+
+.wm-project-reports-page__nav-item > span {
+    min-width: 21px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+    color: $color-text-secondary;
+    font-size: 11px;
+}
+
+
+// ------------------------------------------------------------
+// Summary
+// ------------------------------------------------------------
+
+.wm-project-reports-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-reports-page__summary-card {
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-project-reports-page__summary-card:hover {
+    border-color: $color-border-dark;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-reports-page__summary-card.is-active {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.08);
+}
+
+.wm-project-reports-page__summary-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 19px;
+}
+
+.wm-project-reports-page__summary-icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-reports-page__summary-icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-reports-page__summary-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-reports-page__summary-icon--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-reports-page__summary-content {
+    min-width: 0;
+}
+
+.wm-project-reports-page__summary-content > span {
+    display: block;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__summary-content strong {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__summary-content small {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Toolbar
+// ------------------------------------------------------------
+
+.wm-project-reports-page__toolbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-reports-page__toolbar-left,
+.wm-project-reports-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-project-reports-page__search {
+    position: relative;
+    width: 320px;
+}
+
+.wm-project-reports-page__search > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: $color-gray-400;
+    font-size: 17px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.wm-project-reports-page__search input {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 38px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__search input:focus {
+    @include focus-ring;
+}
+
+.wm-project-reports-page__search button {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    width: 27px;
+    height: 27px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+    transform: translateY(-50%);
+}
+
+.wm-project-reports-page__search button.is-visible {
+    display: inline-flex;
+}
+
+.wm-project-reports-page__toolbar-button {
+    height: $button-height-md;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__toolbar-button:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-reports-page__toolbar-button > span {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__view-switcher {
+    height: $button-height-md;
+    display: flex;
+    padding: 3px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-gray-50;
+}
+
+.wm-project-reports-page__view-switcher button {
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__view-switcher button.is-active {
+    background: $color-white;
+    color: $color-primary;
+    box-shadow: $shadow-sm;
+}
+
+
+// ------------------------------------------------------------
+// Filters
+// ------------------------------------------------------------
+
+.wm-project-reports-page__filter-panel {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-3;
+    margin-bottom: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-reports-page__filter-panel.is-open {
+    display: grid;
+}
+
+.wm-project-reports-page__filter-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-reports-page__filter-field select {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 30px 0 10px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__filter-field select:focus {
+    @include focus-ring;
+}
+
+.wm-project-reports-page__clear-filter {
+    height: $button-height-md;
+    padding: 0 13px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-reports-page__filter-chip {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 9px;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Views
+// ------------------------------------------------------------
+
+.wm-project-reports-page__overview,
+.wm-project-reports-page__table-view {
+    display: none;
+}
+
+.wm-project-reports-page__overview.is-visible,
+.wm-project-reports-page__table-view.is-visible {
+    display: block;
+}
+
+
+// ------------------------------------------------------------
+// Generic Card
+// ------------------------------------------------------------
+
+.wm-project-reports-page__card {
+    min-width: 0;
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-project-reports-page__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-reports-page__card-header h2 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__card-header p {
+    margin: 4px 0 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__card-action {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-reports-page__card-action:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-reports-page__card-link {
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+}
+
+
+// ------------------------------------------------------------
+// Overview Grid
+// ------------------------------------------------------------
+
+.wm-project-reports-page__overview {
+    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-project-reports-page__overview.is-visible {
+    display: grid;
+}
+
+.wm-project-reports-page__card--performance {
+    grid-column: 1 / -1;
+}
+
+
+// ------------------------------------------------------------
+// Performance
+// ------------------------------------------------------------
+
+.wm-project-reports-page__performance {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 180px;
+    align-items: center;
+    gap: $spacing-6;
+}
+
+.wm-project-reports-page__performance-chart {
+    min-width: 0;
+    display: flex;
+    height: 240px;
+}
+
+.wm-project-reports-page__chart-y-axis {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 0 27px;
+}
+
+.wm-project-reports-page__chart-y-axis span {
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__chart-area {
+    position: relative;
+    min-width: 0;
+    flex: 1;
+    padding-bottom: 27px;
+}
+
+.wm-project-reports-page__chart-grid {
+    position: absolute;
+    inset: 5px 0 27px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wm-project-reports-page__chart-grid span {
+    width: 100%;
+    height: 1px;
+    background: $color-border-light;
+}
+
+.wm-project-reports-page__chart-bars {
+    position: absolute;
+    inset: 5px 0 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.wm-project-reports-page__chart-bar-group {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.wm-project-reports-page__chart-bar-group > span {
+    width: min(48px, 65%);
+    min-height: 10px;
+    display: block;
+    border-radius: 6px 6px 2px 2px;
+    background: $color-primary-light;
+    transition: height 0.3s ease;
+}
+
+.wm-project-reports-page__chart-bar-group.is-current > span {
+    background: $color-primary;
+}
+
+.wm-project-reports-page__chart-bar-group small {
+    margin-top: 8px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__performance-stat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.wm-project-reports-page__performance-stat-ring {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 10px solid $color-primary-light;
+    border-top-color: $color-primary;
+    border-right-color: $color-primary;
+    border-radius: 50%;
+}
+
+.wm-project-reports-page__performance-stat-ring span {
+    color: $color-text-dark;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+}
+
+.wm-project-reports-page__performance-stat > strong {
+    margin-top: $spacing-3;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+}
+
+.wm-project-reports-page__performance-stat > small {
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Task Completion
+// ------------------------------------------------------------
+
+.wm-project-reports-page__task-completion {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+}
+
+.wm-project-reports-page__donut {
+    width: 145px;
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background:
+        conic-gradient(
+            $color-success 0 67%,
+            $color-primary 67% 84%,
+            $color-warning 84% 92%,
+            $color-gray-200 92% 100%
+        );
+}
+
+.wm-project-reports-page__donut-inner {
+    width: 105px;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50%;
+    background: $color-white;
+}
+
+.wm-project-reports-page__donut-inner strong {
+    color: $color-text-dark;
+    font-size: $font-size-2xl;
+}
+
+.wm-project-reports-page__donut-inner span {
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__legend {
+    flex: 1;
+}
+
+.wm-project-reports-page__legend > div {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.wm-project-reports-page__legend > div:last-child {
+    margin-bottom: 0;
+}
+
+.wm-project-reports-page__legend span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.wm-project-reports-page__legend span.is-completed {
+    background: $color-success;
+}
+
+.wm-project-reports-page__legend span.is-progress {
+    background: $color-primary;
+}
+
+.wm-project-reports-page__legend span.is-review {
+    background: $color-warning;
+}
+
+.wm-project-reports-page__legend span.is-todo {
+    background: $color-gray-300;
+}
+
+.wm-project-reports-page__legend label {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__legend strong {
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Breakdown
+// ------------------------------------------------------------
+
+.wm-project-reports-page__breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.wm-project-reports-page__breakdown-item > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.wm-project-reports-page__breakdown-item strong {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-reports-page__breakdown-item > div:first-child span {
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__bar {
+    height: 7px;
+    overflow: hidden;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-project-reports-page__bar span {
+    height: 100%;
+    display: block;
+    border-radius: inherit;
+    background: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Team Productivity
+// ------------------------------------------------------------
+
+.wm-project-reports-page__team-productivity {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.wm-project-reports-page__team-member {
+    display: grid;
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.wm-project-reports-page__avatar {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__member-info {
+    min-width: 0;
+}
+
+.wm-project-reports-page__member-info strong {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-reports-page__member-info span {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__member-score {
+    text-align: right;
+}
+
+.wm-project-reports-page__member-score strong {
+    display: block;
+    color: $color-success-dark;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__member-score small {
+    display: block;
+    color: $color-text-muted;
+    font-size: 9px;
+}
+
+
+// ------------------------------------------------------------
+// Milestones
+// ------------------------------------------------------------
+
+.wm-project-reports-page__milestones {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.wm-project-reports-page__milestone {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.wm-project-reports-page__milestone-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+.wm-project-reports-page__milestone-icon.is-complete {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-reports-page__milestone-icon.is-progress {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-reports-page__milestone-icon.is-upcoming {
+    background: $color-gray-100;
+    color: $color-text-muted;
+}
+
+.wm-project-reports-page__milestone-info {
+    min-width: 0;
+}
+
+.wm-project-reports-page__milestone-info strong {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__milestone-info span {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__milestone > b {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Recent Reports
+// ------------------------------------------------------------
+
+.wm-project-reports-page__recent {
+    margin-top: $spacing-6;
+}
+
+.wm-project-reports-page__section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-reports-page__section-header h2 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__section-header p {
+    margin: 4px 0 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__section-header .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wm-project-reports-page__report-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-3;
+}
+
+.wm-project-reports-page__report-card {
+    position: relative;
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-project-reports-page__report-card.is-hidden {
+    display: none;
+}
+
+.wm-project-reports-page__report-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 18px;
+}
+
+.wm-project-reports-page__report-icon.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-reports-page__report-icon.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-reports-page__report-icon.is-purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-reports-page__report-content {
+    min-width: 0;
+    padding-right: 25px;
+}
+
+.wm-project-reports-page__report-type {
+    display: block;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__report-content h3 {
+    overflow: hidden;
+    margin: 4px 0;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-reports-page__report-content p {
+    margin: 0;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-reports-page__report-menu {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-reports-page__report-menu:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-reports-page__report-menu-dropdown {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: 42px;
+    right: 10px;
+    width: 165px;
+    display: none;
+    padding: 5px;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-md;
+}
+
+.wm-project-reports-page__report-menu-dropdown.is-open {
+    display: block;
+}
+
+.wm-project-reports-page__report-menu-dropdown button {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-secondary;
+    text-align: left;
+    font-size: $font-size-xs;
+}
+
+.wm-project-reports-page__report-menu-dropdown button:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+
+// ------------------------------------------------------------
+// Table
+// ------------------------------------------------------------
+
+.wm-project-reports-page__table-view {
+    margin-top: $spacing-4;
+}
+
+.wm-project-reports-page__table-wrapper {
+    overflow-x: auto;
+}
+
+.wm-project-reports-page__table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.wm-project-reports-page__table th {
+    padding: 12px 14px;
+    border-bottom: 1px solid $color-border;
+    background: $color-gray-50;
+    color: $color-text-muted;
+    text-align: left;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+}
+
+.wm-project-reports-page__table th:first-child {
+    border-radius: $radius-md 0 0 0;
+}
+
+.wm-project-reports-page__table th:last-child {
+    border-radius: 0 $radius-md 0 0;
+}
+
+.wm-project-reports-page__table td {
+    padding: 13px 14px;
+    border-bottom: 1px solid $color-border-light;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+.wm-project-reports-page__table tbody tr:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-reports-page__table tbody tr.is-hidden {
+    display: none;
+}
+
+.wm-project-reports-page__table-name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.wm-project-reports-page__table-name > span {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-md;
+}
+
+.wm-project-reports-page__table-name > span.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-reports-page__table-name > span.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-reports-page__table-name > span.is-purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-reports-page__table-name > span.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-reports-page__table-name strong {
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-reports-page__status {
+    display: inline-flex;
+    min-height: 23px;
+    align-items: center;
+    padding: 0 7px;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-reports-page__status.is-completed {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-reports-page__status.is-active {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-reports-page__status.is-on-hold {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-reports-page__table-action {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-reports-page__table-action:hover {
+    background: $color-gray-100;
+    color: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Empty
+// ------------------------------------------------------------
+
+.wm-project-reports-page__empty {
+    min-height: 320px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: $spacing-4;
+    padding: $spacing-8;
+    border: 1px dashed $color-border-dark;
+    border-radius: $radius-xl;
+    background: $color-white;
+    text-align: center;
+}
+
+.wm-project-reports-page__empty.is-visible {
+    display: flex;
+}
+
+.wm-project-reports-page__empty-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: $color-gray-100;
+    color: $color-text-muted;
+    font-size: 25px;
+}
+
+.wm-project-reports-page__empty h3 {
+    margin: $spacing-4 0 5px;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-project-reports-page__empty p {
+    margin: 0 0 $spacing-4;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Modal
+// ------------------------------------------------------------
+
+.wm-project-reports-page__modal-field {
+    margin-bottom: $spacing-4;
+}
+
+.wm-project-reports-page__modal-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-reports-page__modal-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.wm-project-reports-page__modal-check input {
+    accent-color: $color-primary;
+}
+
+.wm-project-reports-page__modal-check label {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Responsive
+// ------------------------------------------------------------
+
+@media (max-width: 1199px) {
+
+    .wm-project-reports-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-reports-page__report-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-project-reports-page__header {
+        flex-direction: column;
+    }
+
+    .wm-project-reports-page__header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .wm-project-reports-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-reports-page__toolbar-left,
+    .wm-project-reports-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-project-reports-page__toolbar-right {
+        justify-content: flex-end;
+    }
+
+    .wm-project-reports-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+    .wm-project-reports-page__filter-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-reports-page__performance {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-reports-page__performance-stat {
+        flex-direction: row;
+        justify-content: center;
+        gap: $spacing-3;
+    }
+
+    .wm-project-reports-page__performance-stat > strong,
+    .wm-project-reports-page__performance-stat > small {
+        margin-top: 0;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-project-reports-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-project-reports-page__filter-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-reports-page__clear-filter {
+        width: 100%;
+    }
+
+    .wm-project-reports-page__overview {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-reports-page__card--performance {
+        grid-column: auto;
+    }
+
+    .wm-project-reports-page__task-completion {
+        justify-content: center;
+    }
+
+    .wm-project-reports-page__report-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-project-reports-page__title-row {
+        align-items: flex-start;
+    }
+
+    .wm-project-reports-page__title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-project-reports-page__header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-project-reports-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-project-reports-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-reports-page__toolbar-left {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    .wm-project-reports-page__search {
+        width: 100%;
+    }
+
+    .wm-project-reports-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-project-reports-page__performance-chart {
+        height: 200px;
+    }
+
+    .wm-project-reports-page__performance-stat {
+        flex-wrap: wrap;
+    }
+
+    .wm-project-reports-page__donut {
+        width: 120px;
+        height: 120px;
+    }
+
+    .wm-project-reports-page__donut-inner {
+        width: 88px;
+        height: 88px;
+    }
+
+    .wm-project-reports-page__footer {
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,1235 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Page
+// ============================================================
+
+.wm-time-tracking-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-time-tracking-page__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-5;
+}
+
+.wm-time-tracking-page__header-left {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-time-tracking-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__breadcrumb a {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-time-tracking-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-time-tracking-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-time-tracking-page__title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.wm-time-tracking-page__title-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 23px;
+}
+
+.wm-time-tracking-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-time-tracking-page__subtitle {
+    margin: 5px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-time-tracking-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+
+// ============================================================
+// Summary
+// ============================================================
+
+.wm-time-tracking-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.wm-time-tracking-page__summary-card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-time-tracking-page__summary-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 19px;
+}
+
+.wm-time-tracking-page__summary-icon.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-time-tracking-page__summary-icon.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__summary-icon.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__summary-icon.is-red {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-time-tracking-page__summary-content {
+    min-width: 0;
+}
+
+.wm-time-tracking-page__summary-content span {
+    display: block;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__summary-content strong {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-2xl;
+    line-height: 1.2;
+}
+
+.wm-time-tracking-page__summary-content small {
+    display: block;
+    margin-top: 4px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ============================================================
+// Timeline Health
+// ============================================================
+
+.wm-time-tracking-page__health {
+    margin-bottom: $spacing-5;
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-time-tracking-page__health-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-5;
+}
+
+.wm-time-tracking-page__health-header h2 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-time-tracking-page__health-header p {
+    margin: 4px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__health-date {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__health-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-3;
+}
+
+.wm-time-tracking-page__health-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-lg;
+    background: $color-gray-50;
+}
+
+.wm-time-tracking-page__health-item-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    font-size: 16px;
+}
+
+.wm-time-tracking-page__health-item-icon.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__health-item-icon.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-time-tracking-page__health-item-icon.is-purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-time-tracking-page__health-item-icon.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__health-item strong {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-time-tracking-page__health-item span {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ============================================================
+// Toolbar
+// ============================================================
+
+.wm-time-tracking-page__toolbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-time-tracking-page__toolbar-left,
+.wm-time-tracking-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-time-tracking-page__search {
+    position: relative;
+    width: 300px;
+}
+
+.wm-time-tracking-page__search > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: $color-gray-400;
+    transform: translateY(-50%);
+}
+
+.wm-time-tracking-page__search input {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 38px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__search input:focus {
+    @include focus-ring;
+}
+
+.wm-time-tracking-page__search button {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: $color-text-muted;
+    transform: translateY(-50%);
+}
+
+.wm-time-tracking-page__search button.is-visible {
+    display: inline-flex;
+}
+
+.wm-time-tracking-page__filter-button {
+    height: $button-height-md;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__filter-button > span {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__sort {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.wm-time-tracking-page__sort > span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__sort select {
+    height: $button-height-md;
+    padding: 0 30px 0 10px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    outline: 0;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__view-switcher {
+    height: $button-height-md;
+    display: flex;
+    padding: 3px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-gray-50;
+}
+
+.wm-time-tracking-page__view-switcher button {
+    width: 31px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-time-tracking-page__view-switcher button.is-active {
+    background: $color-white;
+    color: $color-primary;
+    box-shadow: $shadow-sm;
+}
+
+
+// ============================================================
+// Filters
+// ============================================================
+
+.wm-time-tracking-page__filter-panel {
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-3;
+    margin-bottom: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+}
+
+.wm-time-tracking-page__filter-panel.is-open {
+    display: grid;
+}
+
+.wm-time-tracking-page__filter-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__filter-field select {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 10px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    outline: 0;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__filter-field select:focus {
+    @include focus-ring;
+}
+
+.wm-time-tracking-page__clear-filter {
+    height: $button-height-md;
+    padding: 0 13px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+}
+
+.wm-time-tracking-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: $spacing-3;
+}
+
+.wm-time-tracking-page__filter-chip {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 9px;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-xs;
+}
+
+
+// ============================================================
+// List View
+// ============================================================
+
+.wm-time-tracking-page__list-view,
+.wm-time-tracking-page__grid-view {
+    display: none;
+}
+
+.wm-time-tracking-page__list-view.is-visible,
+.wm-time-tracking-page__grid-view.is-visible {
+    display: block;
+}
+
+.wm-time-tracking-page__table-card {
+    overflow: hidden;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-time-tracking-page__table-wrapper {
+    overflow-x: auto;
+}
+
+.wm-time-tracking-page__table {
+    width: 100%;
+    min-width: 1100px;
+    border-collapse: collapse;
+}
+
+.wm-time-tracking-page__table th {
+    padding: 12px 14px;
+    border-bottom: 1px solid $color-border;
+    background: $table-header-bg;
+    color: $color-text-muted;
+    text-align: left;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.wm-time-tracking-page__table td {
+    padding: 15px 14px;
+    border-bottom: 1px solid $color-border-light;
+    color: $color-text;
+    font-size: $font-size-xs;
+    vertical-align: middle;
+}
+
+.wm-time-tracking-page__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.wm-time-tracking-page__table tbody tr:hover td {
+    background: $color-gray-50;
+}
+
+.wm-time-tracking-page__table tbody tr.is-hidden {
+    display: none;
+}
+
+
+// ============================================================
+// Project
+// ============================================================
+
+.wm-time-tracking-page__project {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 220px;
+}
+
+.wm-time-tracking-page__project > div:last-child {
+    min-width: 0;
+}
+
+.wm-time-tracking-page__project strong {
+    display: block;
+    max-width: 240px;
+    overflow: hidden;
+    color: $color-text-dark;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-time-tracking-page__project span {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__project-icon {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 17px;
+}
+
+.wm-time-tracking-page__project-icon.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-time-tracking-page__project-icon.is-cyan {
+    background: $color-cyan-light;
+    color: $color-cyan;
+}
+
+.wm-time-tracking-page__project-icon.is-purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-time-tracking-page__project-icon.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__project-icon.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__project-icon.is-yellow {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+// ============================================================
+// Timeline
+// ============================================================
+
+.wm-time-tracking-page__timeline {
+    min-width: 180px;
+}
+
+.wm-time-tracking-page__dates {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 7px;
+    color: $color-text-secondary;
+    white-space: nowrap;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__dates span {
+    color: $color-gray-400;
+}
+
+.wm-time-tracking-page__timeline-bar {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-time-tracking-page__timeline-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: $color-primary;
+}
+
+.wm-time-tracking-page__timeline-bar.is-warning > span {
+    background: $color-warning;
+}
+
+.wm-time-tracking-page__timeline-bar.is-danger > span {
+    background: $color-danger;
+}
+
+.wm-time-tracking-page__timeline-bar.is-complete > span {
+    background: $color-success;
+}
+
+
+// ============================================================
+// Progress
+// ============================================================
+
+.wm-time-tracking-page__progress {
+    width: 90px;
+}
+
+.wm-time-tracking-page__progress-header {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+
+.wm-time-tracking-page__progress-header span {
+    color: $color-text-secondary;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-time-tracking-page__progress-bar {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-time-tracking-page__progress-bar > span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: $color-primary;
+}
+
+.wm-time-tracking-page__progress-bar.is-warning > span {
+    background: $color-warning;
+}
+
+.wm-time-tracking-page__progress-bar.is-danger > span {
+    background: $color-danger;
+}
+
+.wm-time-tracking-page__progress-bar.is-complete > span {
+    background: $color-success;
+}
+
+
+// ============================================================
+// Remaining
+// ============================================================
+
+.wm-time-tracking-page__remaining {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__remaining.is-green {
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__remaining.is-warning {
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__remaining.is-danger {
+    color: $color-danger-dark;
+}
+
+.wm-time-tracking-page__muted {
+    display: block;
+    margin-top: 4px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ============================================================
+// Status
+// ============================================================
+
+.wm-time-tracking-page__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    border-radius: $radius-full;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-time-tracking-page__status.is-on-track {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__status.is-due-soon {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__status.is-overdue {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-time-tracking-page__status.is-completed {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Owner
+// ============================================================
+
+.wm-time-tracking-page__owner {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    color: $color-text-secondary;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__avatar {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-full;
+    font-size: 9px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-time-tracking-page__avatar.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-time-tracking-page__avatar.is-cyan {
+    background: $color-cyan-light;
+    color: $color-cyan;
+}
+
+.wm-time-tracking-page__avatar.is-purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-time-tracking-page__avatar.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__avatar.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// Action
+// ============================================================
+
+.wm-time-tracking-page__action {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+}
+
+.wm-time-tracking-page__action:hover {
+    border-color: $color-primary;
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Grid
+// ============================================================
+
+.wm-time-tracking-page__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-time-tracking-page__project-card {
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-time-tracking-page__project-card.is-hidden {
+    display: none;
+}
+
+.wm-time-tracking-page__project-card:hover {
+    box-shadow: $shadow-sm;
+}
+
+.wm-time-tracking-page__project-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.wm-time-tracking-page__project-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.wm-time-tracking-page__project-card-title > div {
+    min-width: 0;
+}
+
+.wm-time-tracking-page__project-card-title strong {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__project-card-title span:last-child {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__project-card-progress {
+    margin-bottom: $spacing-5;
+}
+
+.wm-time-tracking-page__project-card-progress > div:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.wm-time-tracking-page__project-card-progress > div:first-child span {
+    color: $color-text-secondary;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__project-card-progress > div:first-child strong {
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+}
+
+.wm-time-tracking-page__project-card-time {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    border-radius: $radius-lg;
+    background: $color-gray-50;
+}
+
+.wm-time-tracking-page__project-card-time span {
+    display: block;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__project-card-time strong {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__project-card-time strong.is-green {
+    color: $color-success-dark;
+}
+
+.wm-time-tracking-page__project-card-time strong.is-warning {
+    color: $color-warning-dark;
+}
+
+.wm-time-tracking-page__project-card-time strong.is-danger {
+    color: $color-danger-dark;
+}
+
+.wm-time-tracking-page__project-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+    margin-top: $spacing-4;
+    padding-top: $spacing-3;
+    border-top: 1px solid $color-border-light;
+}
+
+.wm-time-tracking-page__project-card-footer > span {
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-time-tracking-page__project-card-footer button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $color-primary;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ============================================================
+// Empty
+// ============================================================
+
+.wm-time-tracking-page__empty {
+    display: none;
+    padding: $spacing-12 $spacing-6;
+    border: 1px dashed $color-border-dark;
+    border-radius: $radius-xl;
+    background: $color-white;
+    text-align: center;
+}
+
+.wm-time-tracking-page__empty.is-visible {
+    display: block;
+}
+
+.wm-time-tracking-page__empty-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto $spacing-3;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+    color: $color-text-muted;
+    font-size: 22px;
+}
+
+.wm-time-tracking-page__empty h3 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-time-tracking-page__empty p {
+    margin: 5px 0 $spacing-4;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ============================================================
+// Footer
+// ============================================================
+
+.wm-time-tracking-page__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-4 0;
+}
+
+.wm-time-tracking-page__footer > span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__footer > span strong {
+    color: $color-text-secondary;
+}
+
+.wm-time-tracking-page__pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-time-tracking-page__pagination button {
+    min-width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-time-tracking-page__pagination button.is-active {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-white;
+}
+
+.wm-time-tracking-page__pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1399px) {
+
+    .wm-time-tracking-page__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 1199px) {
+
+    .wm-time-tracking-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-time-tracking-page__health-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    .wm-time-tracking-page__header {
+        flex-direction: column;
+    }
+
+    .wm-time-tracking-page__header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .wm-time-tracking-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-time-tracking-page__toolbar-left,
+    .wm-time-tracking-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-time-tracking-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-time-tracking-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+    .wm-time-tracking-page__filter-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-time-tracking-page__grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .wm-time-tracking-page__summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-time-tracking-page__health-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-time-tracking-page__filter-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-time-tracking-page__health-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .wm-time-tracking-page__title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-time-tracking-page__header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-time-tracking-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-time-tracking-page__health-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-time-tracking-page__toolbar-left {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    .wm-time-tracking-page__toolbar-right {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-time-tracking-page__sort {
+        justify-content: space-between;
+    }
+
+    .wm-time-tracking-page__sort select {
+        flex: 1;
+    }
+
+    .wm-time-tracking-page__view-switcher {
+        width: 100%;
+    }
+
+    .wm-time-tracking-page__view-switcher button {
+        flex: 1;
+    }
+
+    .wm-time-tracking-page__footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,1425 @@
+@use "../common" as *;
+
+
+// ================================================================
+// Documents Page
+// ================================================================
+
+.wm-documents-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ================================================================
+// Page Header
+// ================================================================
+
+.wm-documents-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-documents-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-3;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-documents-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-documents-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+
+    @include transition();
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+.wm-documents-page__breadcrumb-current {
+    color: $color-text-muted;
+}
+
+.wm-documents-page__title-row {
+    @include flex-between;
+
+    gap: $spacing-6;
+}
+
+.wm-documents-page__title {
+    margin: 0 0 $spacing-1;
+
+    color: $color-text-dark;
+    font-family: $font-family-heading;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+}
+
+.wm-documents-page__subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+}
+
+.wm-documents-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    flex-shrink: 0;
+}
+
+
+// ================================================================
+// Buttons
+// ================================================================
+
+.wm-documents-page .wm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+    padding: 0 $button-padding-x;
+
+    border: 1px solid transparent;
+    border-radius: $button-radius;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition();
+}
+
+.wm-documents-page .wm-btn i {
+    font-size: 17px;
+}
+
+.wm-documents-page .wm-btn--primary {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+
+    @include hover {
+        background: $color-primary-hover;
+        border-color: $color-primary-hover;
+    }
+}
+
+.wm-documents-page .wm-btn--secondary {
+    color: $color-text;
+    background: $color-white;
+    border-color: $color-border;
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-50;
+        border-color: $color-border-dark;
+    }
+}
+
+
+// ================================================================
+// Summary
+// ================================================================
+
+.wm-documents-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-documents-page__summary-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    min-height: 124px;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-documents-page__summary-icon {
+    @include flex-center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: $radius-lg;
+
+    font-size: 21px;
+}
+
+.wm-documents-page__summary-icon--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-documents-page__summary-icon--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-documents-page__summary-icon--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-documents-page__summary-icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-documents-page__summary-content {
+    min-width: 0;
+}
+
+.wm-documents-page__summary-label {
+    display: block;
+    margin-bottom: $spacing-1;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-documents-page__summary-value {
+    display: block;
+
+    color: $color-text-dark;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    line-height: 1.3;
+}
+
+.wm-documents-page__summary-meta {
+    display: block;
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ================================================================
+// Main Card
+// ================================================================
+
+.wm-documents-page__card {
+    overflow: visible;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+
+// ================================================================
+// Toolbar
+// ================================================================
+
+.wm-documents-page__toolbar {
+    @include flex-between;
+
+    min-height: 72px;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-documents-page__toolbar-left,
+.wm-documents-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-documents-page__search {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 280px;
+}
+
+.wm-documents-page__search > i {
+    position: absolute;
+    left: 12px;
+
+    color: $color-text-muted;
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+.wm-documents-page__search-input {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 38px;
+
+    color: $color-text;
+
+    background: $color-gray-50;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-size: $font-size-md;
+
+    outline: none;
+
+    @include transition();
+
+    @include placeholder {
+        color: $color-text-muted;
+    }
+
+    &:focus {
+        background: $color-white;
+        border-color: $color-primary;
+        box-shadow: $input-focus-shadow;
+    }
+}
+
+.wm-documents-page__search-clear {
+    @include button-reset;
+    @include flex-center;
+
+    position: absolute;
+    right: 8px;
+
+    width: 24px;
+    height: 24px;
+
+    color: $color-text-muted;
+    border-radius: $radius-sm;
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-200;
+    }
+}
+
+.wm-documents-page__filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+
+    padding: 0 12px;
+
+    color: $color-text;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition();
+
+    @include hover {
+        background: $color-gray-50;
+        border-color: $color-border-dark;
+    }
+}
+
+.wm-documents-page__filter-toggle > i {
+    color: $color-text-secondary;
+    font-size: 16px;
+}
+
+.wm-documents-page__filter-count {
+    @include flex-center;
+
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 5px;
+
+    color: $color-primary;
+    background: $color-primary-light;
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-documents-page__sort {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-documents-page__sort-label {
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-documents-page__sort-select {
+    height: $input-height-md;
+
+    padding: 0 32px 0 10px;
+
+    color: $color-text;
+
+    background: $color-white;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+        border-color: $color-border-dark;
+    }
+}
+
+.wm-documents-page__view-switcher {
+    display: flex;
+    align-items: center;
+
+    padding: 3px;
+
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-documents-page__view-btn {
+    @include button-reset;
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    color: $color-text-muted;
+    border-radius: 5px;
+
+    @include transition();
+
+    &.is-active {
+        color: $color-text-dark;
+        background: $color-white;
+        box-shadow: $shadow-sm;
+    }
+
+    @include hover {
+        color: $color-text-dark;
+    }
+}
+
+
+// ================================================================
+// Filters
+// ================================================================
+
+.wm-documents-page__filters {
+    display: none;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+
+    align-items: end;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-gray-50;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-documents-page__filters.is-visible {
+    display: grid;
+}
+
+.wm-documents-page__filter-group {
+    min-width: 0;
+}
+
+.wm-documents-page__filter-group label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-documents-page__filter-group select {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 32px 0 12px;
+
+    color: $color-text;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    outline: none;
+    cursor: pointer;
+
+    &:focus {
+        border-color: $color-primary;
+        box-shadow: $input-focus-shadow;
+    }
+}
+
+.wm-documents-page__clear-filters {
+    height: $input-height-md;
+
+    padding: 0 12px;
+
+    color: $color-text-secondary;
+
+    background: transparent;
+    border: 0;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+
+// ================================================================
+// Active Filters
+// ================================================================
+
+.wm-documents-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+
+    padding: $spacing-3 $spacing-5;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-documents-page__filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 28px;
+
+    padding: 0 9px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+    border: 0;
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition();
+
+    @include hover {
+        background: #DBEAFE;
+    }
+}
+
+.wm-documents-page__filter-chip i {
+    font-size: 13px;
+}
+
+
+// ================================================================
+// Table
+// ================================================================
+
+.wm-documents-page__table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.wm-documents-page__table {
+    width: 100%;
+    min-width: 1040px;
+
+    border-collapse: collapse;
+}
+
+.wm-documents-page__table th {
+    height: 46px;
+
+    padding: 0 $spacing-4;
+
+    color: $color-text-muted;
+
+    background: $table-header-bg;
+    border-bottom: 1px solid $table-border;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    text-align: left;
+    white-space: nowrap;
+}
+
+.wm-documents-page__table td {
+    height: 72px;
+
+    padding: $spacing-3 $spacing-4;
+
+    color: $color-text;
+
+    border-bottom: 1px solid $table-border;
+
+    font-size: $font-size-sm;
+
+    vertical-align: middle;
+}
+
+.wm-documents-page__table tbody tr {
+    @include transition(background);
+}
+
+.wm-documents-page__table tbody tr:hover {
+    background: $table-row-hover;
+}
+
+.wm-documents-page__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.wm-documents-page__check-column {
+    width: 46px !important;
+
+    padding-right: 4px !important;
+    padding-left: $spacing-5 !important;
+}
+
+.wm-documents-page__action-column {
+    width: 56px;
+}
+
+
+// ================================================================
+// Checkbox
+// ================================================================
+
+.wm-documents-page .wm-checkbox {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    cursor: pointer;
+}
+
+.wm-documents-page .wm-checkbox input {
+    position: absolute;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wm-documents-page .wm-checkbox span {
+    display: block;
+
+    width: 17px;
+    height: 17px;
+
+    background: $color-white;
+    border: 1px solid $color-border-dark;
+    border-radius: 4px;
+
+    @include transition();
+}
+
+.wm-documents-page .wm-checkbox input:checked + span {
+    background: $color-primary;
+    border-color: $color-primary;
+}
+
+.wm-documents-page .wm-checkbox input:checked + span::after {
+    display: block;
+
+    width: 5px;
+    height: 9px;
+
+    margin: 2px 0 0 5px;
+
+    border: solid $color-white;
+    border-width: 0 2px 2px 0;
+
+    content: "";
+
+    transform: rotate(45deg);
+}
+
+
+// ================================================================
+// Document Info
+// ================================================================
+
+.wm-documents-page__document-info {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 260px;
+}
+
+.wm-documents-page__document-icon {
+    @include flex-center;
+
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+
+    border-radius: $radius-md;
+
+    font-size: 20px;
+}
+
+.wm-documents-page__document-icon--protocol {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-documents-page__document-icon--proposal {
+    color: $color-info-dark;
+    background: $color-info-light;
+}
+
+.wm-documents-page__document-icon--report {
+    color: $color-danger;
+    background: $color-danger-light;
+}
+
+.wm-documents-page__document-icon--notes {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-documents-page__document-icon--presentation {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-documents-page__document-content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.wm-documents-page__document-name {
+    display: block;
+
+    max-width: 310px;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    @include transition();
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+.wm-documents-page__document-meta {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ================================================================
+// Project
+// ================================================================
+
+.wm-documents-page__project {
+    color: $color-text-secondary;
+
+    text-decoration: none;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+
+    @include transition();
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+
+// ================================================================
+// Owner
+// ================================================================
+
+.wm-documents-page__owner {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    white-space: nowrap;
+}
+
+.wm-documents-page__avatar {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ================================================================
+// Status
+// ================================================================
+
+.wm-documents-page__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    white-space: nowrap;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-documents-page__status > span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: $radius-full;
+}
+
+.wm-documents-page__status--published {
+    color: $color-success-dark;
+}
+
+.wm-documents-page__status--published > span {
+    background: $color-success;
+}
+
+.wm-documents-page__status--draft {
+    color: $color-warning-dark;
+}
+
+.wm-documents-page__status--draft > span {
+    background: $color-warning;
+}
+
+.wm-documents-page__status--review {
+    color: $color-info-dark;
+}
+
+.wm-documents-page__status--review > span {
+    background: $color-info;
+}
+
+.wm-documents-page__status--archived {
+    color: $color-text-secondary;
+}
+
+.wm-documents-page__status--archived > span {
+    background: $color-gray-400;
+}
+
+
+// ================================================================
+// Version / Date
+// ================================================================
+
+.wm-documents-page__version {
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+}
+
+.wm-documents-page__date {
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    white-space: nowrap;
+}
+
+
+// ================================================================
+// Action Menu
+// ================================================================
+
+.wm-documents-page__action {
+    position: relative;
+
+    display: inline-flex;
+}
+
+.wm-documents-page__action-btn {
+    @include button-reset;
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-md;
+
+    @include transition();
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-documents-page__action-menu {
+    position: absolute;
+    z-index: $z-dropdown;
+
+    top: calc(100% + 5px);
+    right: 0;
+
+    display: none;
+
+    width: 180px;
+
+    padding: 6px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+}
+
+.wm-documents-page__action.is-open .wm-documents-page__action-menu {
+    display: block;
+}
+
+.wm-documents-page__action-menu button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    width: 100%;
+    min-height: 34px;
+
+    padding: 0 9px;
+
+    color: $color-text;
+
+    background: transparent;
+    border: 0;
+    border-radius: $radius-sm;
+
+    font-size: $font-size-sm;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    @include transition();
+
+    @include hover {
+        background: $color-gray-50;
+    }
+}
+
+.wm-documents-page__action-menu button i {
+    width: 17px;
+
+    color: $color-text-muted;
+
+    font-size: 16px;
+}
+
+.wm-documents-page__action-menu button.is-danger {
+    color: $color-danger;
+}
+
+.wm-documents-page__action-menu button.is-danger i {
+    color: $color-danger;
+}
+
+.wm-documents-page__action-divider {
+    height: 1px;
+
+    margin: 5px 0;
+
+    background: $color-border-light;
+}
+
+
+// ================================================================
+// Grid
+// ================================================================
+
+.wm-documents-page__grid-view {
+    padding: $spacing-5;
+}
+
+.wm-documents-page__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: $spacing-4;
+}
+
+.wm-documents-page__grid-card {
+    min-width: 0;
+
+    padding: $spacing-5;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    @include transition();
+
+    @include hover {
+        border-color: $color-border-dark;
+        box-shadow: $shadow-sm;
+    }
+}
+
+.wm-documents-page__grid-card-top {
+    @include flex-between;
+
+    margin-bottom: $spacing-4;
+}
+
+.wm-documents-page__grid-name {
+    display: block;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    @include hover {
+        color: $color-primary;
+    }
+}
+
+.wm-documents-page__grid-type {
+    display: block;
+
+    margin-top: 4px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+.wm-documents-page__grid-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-4;
+    padding-top: $spacing-3;
+
+    border-top: 1px solid $color-border-light;
+}
+
+.wm-documents-page__grid-project {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    min-width: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+}
+
+.wm-documents-page__grid-project i {
+    color: $color-text-muted;
+    font-size: 15px;
+}
+
+.wm-documents-page__grid-project span {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-documents-page__grid-footer {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-4;
+}
+
+.wm-documents-page__grid-footer .wm-documents-page__owner {
+    min-width: 0;
+}
+
+.wm-documents-page__grid-footer .wm-documents-page__owner span {
+    max-width: 130px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: $font-size-xs;
+}
+
+
+// ================================================================
+// Empty State
+// ================================================================
+
+.wm-documents-page__empty {
+    display: none;
+
+    padding: $spacing-12 $spacing-6;
+
+    text-align: center;
+}
+
+.wm-documents-page__empty.is-visible {
+    display: block;
+}
+
+.wm-documents-page__empty-icon {
+    @include flex-center;
+
+    width: 56px;
+    height: 56px;
+
+    margin: 0 auto $spacing-4;
+
+    color: $color-text-muted;
+
+    background: $color-gray-100;
+    border-radius: $radius-xl;
+
+    font-size: 25px;
+}
+
+.wm-documents-page__empty h3 {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-documents-page__empty p {
+    max-width: 430px;
+
+    margin: 0 auto $spacing-5;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+
+// ================================================================
+// Footer
+// ================================================================
+
+.wm-documents-page__footer {
+    @include flex-between;
+
+    min-height: 68px;
+
+    padding: 0 $spacing-5;
+
+    border-top: 1px solid $color-border;
+}
+
+.wm-documents-page__footer-info {
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+.wm-documents-page__footer-info strong {
+    color: $color-text-secondary;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ================================================================
+// Pagination
+// ================================================================
+
+.wm-documents-page__pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-documents-page__pagination-btn {
+    @include button-reset;
+    @include flex-center;
+
+    min-width: 32px;
+    height: 32px;
+
+    padding: 0 7px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    @include transition();
+
+    @include hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-documents-page__pagination-btn.is-active {
+    color: $color-white;
+    background: $color-primary;
+}
+
+.wm-documents-page__pagination-btn.is-disabled {
+    color: $color-text-disabled;
+
+    cursor: not-allowed;
+}
+
+.wm-documents-page__pagination-dots {
+    padding: 0 3px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+
+// ================================================================
+// Responsive
+// ================================================================
+
+@media (max-width: 1200px) {
+
+    .wm-documents-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-documents-page__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-documents-page__filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .wm-documents-page__title-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-documents-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: $spacing-4;
+    }
+
+    .wm-documents-page__toolbar-left,
+    .wm-documents-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-documents-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-documents-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .wm-documents-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-documents-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-documents-page__header-actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-documents-page__filters {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-documents-page__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-documents-page__footer {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: $spacing-3;
+
+        padding-top: $spacing-4;
+        padding-bottom: $spacing-4;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .wm-documents-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-documents-page__subtitle {
+        font-size: $font-size-sm;
+    }
+
+    .wm-documents-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-documents-page__header-actions .wm-btn {
+        width: 100%;
+    }
+
+    .wm-documents-page__toolbar-left {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-documents-page__toolbar-right {
+        align-items: center;
+    }
+
+    .wm-documents-page__search {
+        width: 100%;
+    }
+
+    .wm-documents-page__sort-label {
+        display: none;
+    }
+
+    .wm-documents-page__sort-select {
+        max-width: 170px;
+    }
+
+    .wm-documents-page__grid-view {
+        padding: $spacing-4;
+    }
+
+    .wm-documents-page__summary-card {
+        padding: $spacing-4;
+    }
+
+}

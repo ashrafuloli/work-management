@@ -1,0 +1,1358 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Auth Body
+// ============================================================
+
+.wm-auth-body {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background: $color-body-bg;
+
+}
+
+
+// ============================================================
+// Auth Page
+// ============================================================
+
+.wm-auth-page {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: stretch;
+
+}
+
+
+// ============================================================
+// Main Container
+// ============================================================
+
+.wm-auth-container {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(520px, 0.78fr);
+
+    width: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+// ============================================================
+// Brand Panel
+// ============================================================
+
+.wm-auth__brand {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: $spacing-12;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0F172A 0%,
+            #172554 48%,
+            #1E3A8A 100%
+        );
+
+}
+
+
+// Decorative background
+// ============================================================
+
+.wm-auth__brand::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 480px;
+    height: 480px;
+
+    top: -180px;
+    right: -180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.35),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+.wm-auth__brand::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    bottom: -180px;
+    left: -180px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(16, 185, 129, 0.20),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+// ============================================================
+// Brand Inner
+// ============================================================
+
+.wm-auth__brand-inner {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 600px;
+
+}
+
+
+// ============================================================
+// Logo
+// ============================================================
+
+.wm-auth__logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    color: $color-white;
+
+    text-decoration: none;
+
+}
+
+.wm-auth__logo-mark {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: $color-white;
+
+    background: $color-primary;
+
+    border-radius: $radius-lg;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.30);
+
+    font-size: 21px;
+
+}
+
+.wm-auth__logo-text {
+
+    color: $color-white;
+
+    font-size: $font-size-xl;
+
+    font-weight: $font-weight-bold;
+
+    letter-spacing: -0.02em;
+
+}
+
+
+// ============================================================
+// Brand Content
+// ============================================================
+
+.wm-auth__brand-content {
+
+    margin-top: 120px;
+
+}
+
+.wm-auth__brand-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-2;
+
+    padding: 7px 10px;
+
+    color: #BFDBFE;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-auth__brand-eyebrow i {
+
+    color: #60A5FA;
+
+    font-size: 14px;
+
+}
+
+.wm-auth__brand-title {
+
+    max-width: 570px;
+
+    margin: $spacing-5 0 $spacing-4;
+
+    color: $color-white;
+
+    font-size: clamp(
+        36px,
+        4vw,
+        56px
+    );
+
+    font-weight: $font-weight-bold;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.04em;
+
+}
+
+.wm-auth__brand-title span {
+
+    display: block;
+
+    color: #60A5FA;
+
+}
+
+.wm-auth__brand-description {
+
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #CBD5E1;
+
+    font-size: $font-size-base;
+
+    line-height: 1.7;
+
+}
+
+
+// ============================================================
+// Features
+// ============================================================
+
+.wm-auth__features {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-8;
+
+}
+
+.wm-auth__feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    color: #E2E8F0;
+
+    font-size: $font-size-sm;
+
+}
+
+.wm-auth__feature-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    color: #6EE7B7;
+
+    font-size: 18px;
+
+}
+
+
+// ============================================================
+// Testimonial
+// ============================================================
+
+.wm-auth__testimonial {
+
+    max-width: 500px;
+
+    margin-top: $spacing-12;
+
+    padding-top: $spacing-6;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+}
+
+.wm-auth__testimonial-stars {
+
+    display: flex;
+
+    gap: 3px;
+
+    margin-bottom: $spacing-3;
+
+    color: #FBBF24;
+
+    font-size: 14px;
+
+}
+
+.wm-auth__testimonial blockquote {
+
+    margin: 0;
+
+    color: #E2E8F0;
+
+    font-size: $font-size-md;
+
+    line-height: 1.7;
+
+}
+
+.wm-auth__testimonial-author {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-4;
+
+}
+
+.wm-auth__testimonial-avatar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    color: #DBEAFE;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: 50%;
+
+    font-size: 10px;
+
+    font-weight: $font-weight-bold;
+
+}
+
+.wm-auth__testimonial-author div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.wm-auth__testimonial-author strong {
+
+    color: $color-white;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-auth__testimonial-author span {
+
+    margin-top: 2px;
+
+    color: #94A3B8;
+
+    font-size: $font-size-xs;
+
+}
+
+
+// ============================================================
+// Form Panel
+// ============================================================
+
+.wm-auth__panel {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 0;
+
+    padding: $spacing-8;
+
+    background: $color-white;
+
+}
+
+.wm-auth__form-wrapper {
+
+    width: 100%;
+
+    max-width: 440px;
+
+}
+
+
+// ============================================================
+// Mobile Logo
+// ============================================================
+
+.wm-auth__mobile-logo {
+
+    display: none;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-10;
+
+    color: $color-text-dark;
+
+    text-decoration: none;
+
+}
+
+.wm-auth__mobile-logo .wm-auth__logo-mark {
+
+    color: $color-white;
+
+}
+
+.wm-auth__mobile-logo .wm-auth__logo-text {
+
+    color: $color-text-dark;
+
+}
+
+
+// ============================================================
+// Form Header
+// ============================================================
+
+.wm-auth__form-header {
+
+    margin-bottom: $spacing-6;
+
+}
+
+.wm-auth__form-title {
+
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-3xl;
+
+    font-weight: $font-weight-bold;
+
+    letter-spacing: -0.02em;
+
+}
+
+.wm-auth__form-description {
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+
+}
+
+
+// ============================================================
+// Alert
+// ============================================================
+
+.wm-auth__alert {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-5;
+
+    padding: $spacing-3 $spacing-4;
+
+    border: 1px solid transparent;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+}
+
+.wm-auth__alert > i {
+
+    margin-top: 2px;
+
+    flex-shrink: 0;
+
+    font-size: 18px;
+
+}
+
+.wm-auth__alert--success {
+
+    color: $color-success-dark;
+
+    background: $color-success-light;
+
+    border-color: $color-success;
+
+}
+
+.wm-auth__alert--danger {
+
+    color: $color-danger-dark;
+
+    background: $color-danger-light;
+
+    border-color: rgba(239, 68, 68, 0.20);
+
+}
+
+.wm-auth__alert strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-auth__alert ul {
+
+    margin: 4px 0 0;
+
+    padding-left: 16px;
+
+}
+
+.wm-auth__alert-close {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: auto;
+
+    padding: 2px;
+
+    color: inherit;
+
+    background: transparent;
+
+    border: 0;
+
+    cursor: pointer;
+
+    opacity: 0.65;
+
+}
+
+.wm-auth__alert-close:hover {
+
+    opacity: 1;
+
+}
+
+
+// ============================================================
+// Form
+// ============================================================
+
+.wm-auth__form {
+
+    width: 100%;
+
+}
+
+.wm-auth__field {
+
+    margin-bottom: $spacing-5;
+
+}
+
+.wm-auth__label-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-2;
+
+}
+
+.wm-auth__label {
+
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+.wm-auth__label-row .wm-auth__label {
+
+    margin-bottom: 0;
+
+}
+
+.wm-auth__forgot-link {
+
+    color: $color-primary;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-semibold;
+
+    text-decoration: none;
+
+}
+
+.wm-auth__forgot-link:hover {
+
+    color: $color-primary-hover;
+
+    text-decoration: underline;
+
+}
+
+
+// ============================================================
+// Input
+// ============================================================
+
+.wm-auth__input-wrapper {
+
+    position: relative;
+
+}
+
+.wm-auth__input-icon {
+
+    position: absolute;
+
+    top: 50%;
+    left: 14px;
+
+    z-index: 2;
+
+    color: $color-text-muted;
+
+    font-size: 18px;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+
+    @include transition;
+
+}
+
+.wm-auth__input {
+
+    min-height: $input-height-lg;
+
+    padding-right: 46px;
+
+    padding-left: 44px;
+
+    color: $color-text-dark;
+
+    background: $color-white;
+
+    border: 1px solid $color-border-dark;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-md;
+
+    box-shadow: none;
+
+    @include transition;
+
+}
+
+.wm-auth__input::placeholder {
+
+    color: $color-text-muted;
+
+}
+
+.wm-auth__input:hover {
+
+    border-color: $color-gray-400;
+
+}
+
+.wm-auth__input-wrapper.is-focused .wm-auth__input {
+
+    border-color: $color-primary;
+
+    box-shadow: $input-focus-shadow;
+
+}
+
+.wm-auth__input-wrapper.is-focused .wm-auth__input-icon {
+
+    color: $color-primary;
+
+}
+
+.wm-auth__input.is-invalid {
+
+    border-color: $color-danger;
+
+}
+
+.wm-auth__input-wrapper.is-invalid .wm-auth__input-icon {
+
+    color: $color-danger;
+
+}
+
+.wm-auth__input-wrapper.is-invalid .wm-auth__input {
+
+    box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.08);
+
+}
+
+
+// ============================================================
+// Password Toggle
+// ============================================================
+
+.wm-auth__password-toggle {
+
+    position: absolute;
+
+    top: 50%;
+    right: 10px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    color: $color-text-muted;
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: $radius-md;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    @include transition;
+
+}
+
+.wm-auth__password-toggle:hover {
+
+    color: $color-text-dark;
+
+    background: $color-gray-100;
+
+}
+
+.wm-auth__password-toggle:focus-visible {
+
+    outline: 2px solid $color-primary;
+
+    outline-offset: 1px;
+
+}
+
+
+// ============================================================
+// Field Error
+// ============================================================
+
+.wm-auth__field-error {
+
+    display: block;
+
+    min-height: 18px;
+
+    margin-top: 5px;
+
+    color: $color-danger-dark;
+
+    font-size: $font-size-xs;
+
+}
+
+
+// ============================================================
+// Checkbox
+// ============================================================
+
+.wm-auth__form-options {
+
+    margin-top: -2px;
+
+    margin-bottom: $spacing-5;
+
+}
+
+.wm-auth__checkbox {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    cursor: pointer;
+
+}
+
+.wm-auth__checkbox input {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+
+}
+
+.wm-auth__checkbox-mark {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 17px;
+    height: 17px;
+
+    color: $color-white;
+
+    background: $color-white;
+
+    border: 1px solid $color-border-dark;
+
+    border-radius: 4px;
+
+    font-size: 11px;
+
+    @include transition;
+
+}
+
+.wm-auth__checkbox input:checked + .wm-auth__checkbox-mark {
+
+    background: $color-primary;
+
+    border-color: $color-primary;
+
+}
+
+.wm-auth__checkbox input:focus-visible + .wm-auth__checkbox-mark {
+
+    outline: 2px solid rgba(37, 99, 235, 0.25);
+
+    outline-offset: 2px;
+
+}
+
+
+// ============================================================
+// Submit
+// ============================================================
+
+.wm-auth__submit {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: $button-height-lg;
+
+    justify-content: center;
+
+}
+
+.wm-auth__submit-content {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: $spacing-2;
+
+}
+
+.wm-auth__submit-loading {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: $spacing-2;
+
+}
+
+.wm-auth__submit.is-loading .wm-auth__submit-content {
+
+    display: none;
+
+}
+
+.wm-auth__submit.is-loading .wm-auth__submit-loading {
+
+    display: inline-flex;
+
+}
+
+.wm-auth__spinner {
+
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    border-top-color: $color-white;
+
+    border-radius: 50%;
+
+    animation:
+        wm-auth-spin
+        0.7s
+        linear
+        infinite;
+
+}
+
+@keyframes wm-auth-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+// ============================================================
+// Divider
+// ============================================================
+
+.wm-auth__divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-4;
+
+    margin: $spacing-6 0;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+}
+
+.wm-auth__divider::before,
+.wm-auth__divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: $color-border;
+
+}
+
+
+// ============================================================
+// Social Buttons
+// ============================================================
+
+.wm-auth__socials {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: $spacing-3;
+
+}
+
+.wm-auth__social-button {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+
+    padding: 0 $spacing-4;
+
+    color: $color-text;
+
+    background: $color-white;
+
+    border: 1px solid $color-border-dark;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+
+    @include transition;
+
+}
+
+.wm-auth__social-button:hover {
+
+    color: $color-text-dark;
+
+    background: $color-gray-50;
+
+    border-color: $color-gray-400;
+
+}
+
+.wm-auth__social-button svg {
+
+    width: 18px;
+    height: 18px;
+
+}
+
+.wm-auth__social-button svg path {
+
+    fill: currentColor;
+
+}
+
+.wm-auth__social-button > i {
+
+    font-size: 19px;
+
+}
+
+
+// ============================================================
+// Register
+// ============================================================
+
+.wm-auth__register {
+
+    margin: $spacing-6 0 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    text-align: center;
+
+}
+
+.wm-auth__register a {
+
+    color: $color-primary;
+
+    font-weight: $font-weight-semibold;
+
+    text-decoration: none;
+
+}
+
+.wm-auth__register a:hover {
+
+    color: $color-primary-hover;
+
+    text-decoration: underline;
+
+}
+
+
+// ============================================================
+// Footer
+// ============================================================
+
+.wm-auth__footer {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    margin-top: $spacing-8;
+    padding-top: $spacing-5;
+
+    color: $color-text-muted;
+
+    border-top: 1px solid $color-border-light;
+
+    font-size: 11px;
+
+}
+
+.wm-auth__footer div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-4;
+
+}
+
+.wm-auth__footer a {
+
+    color: $color-text-secondary;
+
+    text-decoration: none;
+
+}
+
+.wm-auth__footer a:hover {
+
+    color: $color-primary;
+
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1200px) {
+
+    .wm-auth-container {
+
+        grid-template-columns:
+            minmax(0, 0.9fr)
+            minmax(480px, 0.75fr);
+
+    }
+
+    .wm-auth__brand {
+
+        padding: $spacing-8;
+
+    }
+
+    .wm-auth__brand-content {
+
+        margin-top: 90px;
+
+    }
+
+    .wm-auth__brand-title {
+
+        font-size: 44px;
+
+    }
+
+}
+
+
+@media (max-width: 992px) {
+
+    .wm-auth-container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .wm-auth__brand {
+
+        display: none;
+
+    }
+
+    .wm-auth__panel {
+
+        min-height: 100vh;
+
+        padding: $spacing-6;
+
+    }
+
+    .wm-auth__mobile-logo {
+
+        display: inline-flex;
+
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .wm-auth__panel {
+
+        align-items: flex-start;
+
+        padding: $spacing-5;
+
+    }
+
+    .wm-auth__form-wrapper {
+
+        max-width: none;
+
+        padding-top: $spacing-4;
+
+    }
+
+    .wm-auth__mobile-logo {
+
+        margin-bottom: $spacing-8;
+
+    }
+
+    .wm-auth__form-title {
+
+        font-size: $font-size-2xl;
+
+    }
+
+    .wm-auth__socials {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .wm-auth__footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+}

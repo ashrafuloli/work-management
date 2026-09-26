@@ -1,0 +1,1236 @@
+// ============================================================
+// WorkManagement
+// Projects Page
+// ============================================================
+
+@use "../common" as *;
+
+
+// ============================================================
+// PROJECTS PAGE
+// ============================================================
+
+.wm-projects-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// PAGE HEADER
+// ============================================================
+
+.wm-projects-page__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: $spacing-6;
+
+    margin-bottom: $spacing-6;
+}
+
+
+.wm-projects-page__heading {
+    min-width: 0;
+}
+
+
+.wm-projects-page__eyebrow {
+    display: inline-block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-primary;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-projects-page__title {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-family: $font-family-heading;
+
+    font-size: $font-size-3xl;
+
+    font-weight: $font-weight-bold;
+
+    line-height: $line-height-tight;
+}
+
+
+.wm-projects-page__description {
+    margin: $spacing-2 0 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+
+    line-height: $line-height-normal;
+}
+
+
+.wm-projects-page__actions {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    flex: 0 0 auto;
+}
+
+
+
+// ============================================================
+// PROJECT SUMMARY
+// ============================================================
+
+.wm-projects-page__summary {
+    margin-bottom: $spacing-6;
+}
+
+
+.wm-project-summary {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 90px;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.wm-project-summary:hover {
+    border-color: $color-border-dark;
+
+    box-shadow: $shadow-sm;
+
+    transform: translateY(-1px);
+}
+
+
+.wm-project-summary.is-active {
+    border-color: rgba(37, 99, 235, 0.35);
+
+    background: $color-primary-light;
+
+    box-shadow: $shadow-sm;
+}
+
+
+.wm-project-summary__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 auto;
+
+    border-radius: $radius-lg;
+
+    font-size: $font-size-xl;
+}
+
+
+.wm-project-summary__icon--blue {
+    background: $color-primary-light;
+
+    color: $color-primary;
+}
+
+
+.wm-project-summary.is-active .wm-project-summary__icon--blue {
+    background: $color-white;
+}
+
+
+.wm-project-summary__icon--green {
+    background: $color-success-light;
+
+    color: $color-success-dark;
+}
+
+
+.wm-project-summary__icon--purple {
+    background: $color-purple-light;
+
+    color: $color-purple;
+}
+
+
+.wm-project-summary__icon--gray {
+    background: $color-gray-100;
+
+    color: $color-gray-600;
+}
+
+
+.wm-project-summary__content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+.wm-project-summary__label {
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-project-summary__value {
+    margin-top: 2px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-2xl;
+
+    font-weight: $font-weight-bold;
+
+    line-height: $line-height-tight;
+}
+
+
+.wm-project-summary__arrow {
+    display: inline-flex;
+
+    margin-left: auto;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-lg;
+}
+
+
+
+// ============================================================
+// PROJECT TOOLBAR
+// ============================================================
+
+.wm-projects-toolbar {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-5;
+
+    padding: $spacing-3;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+}
+
+
+.wm-projects-toolbar__search {
+    width: 280px;
+    flex: 0 0 auto;
+}
+
+
+.wm-projects-toolbar__filters {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-2;
+
+    flex: 1;
+}
+
+
+.wm-projects-toolbar__filters .wm-select {
+    min-width: 150px;
+}
+
+
+.wm-projects-toolbar__view {
+    margin-left: auto;
+}
+
+
+
+// ============================================================
+// PROJECT GRID
+// ============================================================
+
+.wm-projects-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: $spacing-5;
+
+    margin-bottom: $spacing-6;
+}
+
+
+
+// ============================================================
+// PROJECT CARD
+// ============================================================
+
+.wm-project-card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.wm-project-card:hover {
+    border-color: $color-border-dark;
+
+    box-shadow: $shadow-md;
+
+    transform: translateY(-2px);
+}
+
+
+.wm-project-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding:
+        $spacing-5
+        $spacing-5
+        $spacing-3;
+}
+
+
+.wm-project-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: $radius-lg;
+
+    font-size: $font-size-xl;
+}
+
+
+.wm-project-card__icon--blue {
+    background: $color-primary-light;
+
+    color: $color-primary;
+}
+
+
+.wm-project-card__icon--purple {
+    background: $color-purple-light;
+
+    color: $color-purple;
+}
+
+
+.wm-project-card__icon--green {
+    background: $color-success-light;
+
+    color: $color-success-dark;
+}
+
+
+.wm-project-card__icon--orange {
+    background: $color-warning-light;
+
+    color: $color-warning-dark;
+}
+
+
+.wm-project-card__icon--cyan {
+    background: $color-cyan-light;
+
+    color: $color-cyan;
+}
+
+
+.wm-project-card__icon--gray {
+    background: $color-gray-100;
+
+    color: $color-gray-600;
+}
+
+
+.wm-project-card__menu {
+    position: relative;
+}
+
+
+.wm-project-card__menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.wm-project-card__menu-button:hover {
+    background: $color-gray-100;
+
+    color: $color-text-dark;
+}
+
+
+.wm-project-card__body {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    padding:
+        $spacing-2
+        $spacing-5
+        $spacing-5;
+}
+
+
+.wm-project-card__status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-3;
+}
+
+
+.wm-project-card__priority {
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-project-card__title {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+
+    font-weight: $font-weight-semibold;
+
+    line-height: $line-height-tight;
+}
+
+
+.wm-project-card__description {
+    display: -webkit-box;
+
+    min-height: 42px;
+
+    margin: $spacing-2 0 0;
+
+    overflow: hidden;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    line-height: $line-height-normal;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+
+.wm-project-card__progress {
+    margin-top: $spacing-5;
+}
+
+
+.wm-project-card__progress-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+}
+
+
+.wm-project-card__progress-header strong {
+    color: $color-text-dark;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-project-card__progress-bar {
+    width: 100%;
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+}
+
+
+.wm-project-card__progress-fill {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+}
+
+
+.wm-project-card__progress-fill--blue {
+    background: $color-primary;
+}
+
+
+.wm-project-card__progress-fill--purple {
+    background: $color-purple;
+}
+
+
+.wm-project-card__progress-fill--green {
+    background: $color-success;
+}
+
+
+.wm-project-card__progress-fill--orange {
+    background: $color-warning;
+}
+
+
+.wm-project-card__progress-fill--cyan {
+    background: $color-cyan;
+}
+
+
+.wm-project-card__progress-fill--gray {
+    background: $color-gray-500;
+}
+
+
+.wm-project-card__meta {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-4;
+
+    margin-top: $spacing-5;
+}
+
+
+.wm-project-card__meta-item {
+    display: inline-flex;
+    align-items: center;
+
+    gap: $spacing-1;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+
+.wm-project-card__meta-item i {
+    font-size: 15px;
+}
+
+
+.wm-project-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    padding:
+        $spacing-3
+        $spacing-5;
+
+    border-top: 1px solid $color-border-light;
+}
+
+
+.wm-project-card__members {
+    display: flex;
+    align-items: center;
+
+    padding-left: 5px;
+}
+
+
+.wm-project-card__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    margin-left: -5px;
+
+    border: 2px solid $color-white;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 9px;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-project-card__avatar--green {
+    background: $color-success-light;
+
+    color: $color-success-dark;
+}
+
+
+.wm-project-card__avatar--purple {
+    background: $color-purple-light;
+
+    color: $color-purple;
+}
+
+
+.wm-project-card__avatar--orange {
+    background: $color-warning-light;
+
+    color: $color-warning-dark;
+}
+
+
+.wm-project-card__avatar--cyan {
+    background: rgba(6, 182, 212, 0.10);
+
+    color: $color-cyan;
+}
+
+
+.wm-project-card__member-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    height: 28px;
+
+    margin-left: -5px;
+
+    border: 2px solid $color-white;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+
+    color: $color-text-secondary;
+
+    font-size: 9px;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+
+// ============================================================
+// PROJECT STATUS
+// ============================================================
+
+.wm-project-status {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 6px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+}
+
+
+.wm-project-status__dot {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 auto;
+
+    border-radius: $radius-full;
+
+    background: currentColor;
+}
+
+
+.wm-project-status--success {
+    color: $color-success-dark;
+}
+
+
+.wm-project-status--warning {
+    color: $color-warning-dark;
+}
+
+
+.wm-project-status--info {
+    color: $color-info-dark;
+}
+
+
+.wm-project-status--gray {
+    color: $color-gray-500;
+}
+
+
+.wm-project-status--danger {
+    color: $color-danger-dark;
+}
+
+
+
+// ============================================================
+// PROJECT PRIORITY
+// ============================================================
+
+.wm-project-priority {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 24px;
+
+    padding:
+        0
+        $spacing-2;
+
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-medium;
+}
+
+
+.wm-project-priority--high {
+    background: $color-danger-light;
+
+    color: $color-danger-dark;
+}
+
+
+.wm-project-priority--medium {
+    background: $color-warning-light;
+
+    color: $color-warning-dark;
+}
+
+
+.wm-project-priority--normal {
+    background: $color-primary-light;
+
+    color: $color-primary;
+}
+
+
+.wm-project-priority--low {
+    background: $color-gray-100;
+
+    color: $color-gray-600;
+}
+
+
+
+// ============================================================
+// LIST VIEW
+// ============================================================
+
+.wm-projects-list {
+    margin-bottom: $spacing-6;
+}
+
+
+.wm-project-table {
+    min-width: 900px;
+}
+
+
+.wm-project-list-progress {
+    width: 110px;
+}
+
+
+.wm-project-list-progress__header {
+    margin-bottom: 4px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+}
+
+
+.wm-project-list-progress__bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+}
+
+
+.wm-project-list-progress__bar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: $color-primary;
+}
+
+
+
+// ============================================================
+// EMPTY STATE
+// ============================================================
+
+.wm-projects-empty {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding:
+        $spacing-12
+        $spacing-6;
+
+    margin-bottom: $spacing-6;
+
+    border: 1px dashed $color-border-dark;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+
+    text-align: center;
+}
+
+
+.wm-projects-empty__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+
+    margin-bottom: $spacing-4;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-2xl;
+}
+
+
+.wm-projects-empty__title {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-projects-empty__description {
+    max-width: 420px;
+
+    margin:
+        $spacing-2
+        0
+        $spacing-5;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    line-height: $line-height-normal;
+}
+
+
+
+// ============================================================
+// PAGINATION
+// ============================================================
+
+.wm-projects-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+}
+
+
+.wm-projects-pagination__info {
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+
+.wm-projects-pagination__info strong {
+    color: $color-text-dark;
+
+    font-weight: $font-weight-semibold;
+}
+
+
+.wm-projects-pagination__actions {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+
+.wm-projects-pagination__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: 1px solid transparent;
+
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.wm-projects-pagination__button:hover:not(:disabled) {
+    border-color: $color-border;
+
+    background: $color-gray-50;
+
+    color: $color-text-dark;
+}
+
+
+.wm-projects-pagination__button.is-active {
+    border-color: $color-primary;
+
+    background: $color-primary;
+
+    color: $color-white;
+}
+
+
+.wm-projects-pagination__button:disabled {
+    color: $color-text-disabled;
+
+    cursor: not-allowed;
+}
+
+
+.wm-projects-pagination__dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 24px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+
+
+// ============================================================
+// RESPONSIVE
+// ============================================================
+
+@media (max-width: 1199.98px) {
+
+    .wm-projects-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .wm-projects-toolbar {
+        flex-wrap: wrap;
+    }
+
+
+    .wm-projects-toolbar__search {
+        width: 100%;
+    }
+
+
+    .wm-projects-toolbar__filters {
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 991.98px) {
+
+    .wm-projects-page__header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .wm-projects-toolbar__filters {
+        width: 100%;
+    }
+
+
+    .wm-projects-toolbar__filters .wm-select {
+        flex: 1;
+    }
+
+
+    .wm-projects-toolbar__view {
+        margin-left: 0;
+    }
+
+}
+
+
+@media (max-width: 767.98px) {
+
+    .wm-projects-page__title {
+        font-size: $font-size-2xl;
+    }
+
+
+    .wm-projects-page__actions {
+        width: 100%;
+    }
+
+
+    .wm-projects-page__actions .wm-btn {
+        flex: 1;
+    }
+
+
+    .wm-projects-grid {
+        grid-template-columns: 1fr;
+
+        gap: $spacing-4;
+    }
+
+
+    .wm-projects-toolbar {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .wm-projects-toolbar__filters {
+        align-items: stretch;
+
+        flex-direction: column;
+    }
+
+
+    .wm-projects-toolbar__filters .wm-select {
+        width: 100%;
+    }
+
+
+    .wm-projects-toolbar__view {
+        margin-left: auto;
+    }
+
+
+    .wm-projects-pagination {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 575.98px) {
+
+    .wm-projects-page__header {
+        gap: $spacing-4;
+    }
+
+
+    .wm-projects-page__actions {
+        flex-direction: column;
+    }
+
+
+    .wm-projects-page__actions .wm-btn {
+        width: 100%;
+    }
+
+
+    .wm-project-summary {
+        min-height: 78px;
+    }
+
+
+    .wm-project-summary__icon {
+        width: 38px;
+        height: 38px;
+
+        font-size: $font-size-lg;
+    }
+
+
+    .wm-project-summary__value {
+        font-size: $font-size-xl;
+    }
+
+
+    .wm-project-card__header {
+        padding:
+            $spacing-4
+            $spacing-4
+            $spacing-2;
+    }
+
+
+    .wm-project-card__body {
+        padding:
+            $spacing-2
+            $spacing-4
+            $spacing-4;
+    }
+
+
+    .wm-project-card__footer {
+        padding:
+            $spacing-3
+            $spacing-4;
+    }
+
+
+    .wm-projects-pagination__actions {
+        width: 100%;
+    }
+
+
+    .wm-projects-pagination__button {
+        flex: 1;
+    }
+
+}

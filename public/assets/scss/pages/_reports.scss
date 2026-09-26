@@ -1,0 +1,1549 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Reports Page
+// ============================================================
+
+.wm-reports-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-reports-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-reports-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-4;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-reports-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 14px;
+}
+
+.wm-reports-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wm-reports-page__breadcrumb-link:hover {
+    color: $color-primary;
+}
+
+.wm-reports-page__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+}
+
+.wm-reports-page__title {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-reports-page__subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-reports-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+
+// ============================================================
+// Summary
+// ============================================================
+
+.wm-reports-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-report-summary-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-report-summary-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+
+    border-radius: $radius-lg;
+
+    font-size: 20px;
+}
+
+.wm-report-summary-card__icon--primary {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-report-summary-card__icon--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-report-summary-card__icon--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-report-summary-card__icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-report-summary-card__content {
+    min-width: 0;
+}
+
+.wm-report-summary-card__label {
+    display: block;
+
+    margin-bottom: $spacing-1;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-report-summary-card__value {
+    display: block;
+
+    margin-bottom: $spacing-1;
+
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+}
+
+.wm-report-summary-card__change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-report-summary-card__change--positive {
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// Toolbar
+// ============================================================
+
+.wm-reports-page__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+    padding: $spacing-4;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-reports-page__toolbar-left,
+.wm-reports-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-reports-page__date-range,
+.wm-reports-page__project-filter {
+    position: relative;
+}
+
+.wm-reports-page__date-range > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    z-index: 2;
+
+    color: $color-text-secondary;
+    font-size: 16px;
+
+    transform: translateY(-50%);
+}
+
+.wm-reports-page__date-range .form-select {
+    min-width: 150px;
+    padding-left: 36px;
+}
+
+.wm-reports-page__project-filter .form-select {
+    min-width: 210px;
+}
+
+.wm-reports-page__view-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    padding: 3px;
+
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-reports-page__view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: 32px;
+    padding: 0 11px;
+
+    border: 0;
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+}
+
+.wm-reports-page__view-btn:hover {
+    color: $color-text-dark;
+}
+
+.wm-reports-page__view-btn.is-active {
+    background: $color-white;
+    color: $color-primary;
+    box-shadow: $shadow-sm;
+}
+
+.wm-reports-page__filter-toggle.is-active {
+    background: $color-primary-light;
+    border-color: rgba(37, 99, 235, 0.2);
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Filters
+// ============================================================
+
+.wm-reports-page__filters {
+    display: none;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-reports-page__filters.is-open {
+    display: grid;
+}
+
+.wm-reports-page__filter-group label {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-reports-page__filter-group .form-select {
+    height: $input-height-md;
+
+    font-size: $font-size-sm;
+}
+
+.wm-reports-page__filter-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+// ============================================================
+// Active Filters
+// ============================================================
+
+.wm-reports-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-4;
+}
+
+.wm-reports-page__filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: 30px;
+    padding: 0 10px;
+
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+}
+
+.wm-reports-page__filter-chip i {
+    font-size: 13px;
+}
+
+
+// ============================================================
+// Report Card
+// ============================================================
+
+.wm-report-card {
+    height: 100%;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-report-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-report-card__title {
+    margin: 0;
+
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-report-card__subtitle {
+    margin: $spacing-1 0 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-report-card__menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-muted;
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.wm-report-card__menu:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-report-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    color: $color-primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+}
+
+.wm-report-card__link:hover {
+    color: $color-primary-hover;
+}
+
+
+// ============================================================
+// Performance Chart
+// ============================================================
+
+.wm-report-chart {
+    padding: $spacing-5;
+}
+
+.wm-report-chart__legend {
+    display: flex;
+    align-items: center;
+    gap: $spacing-5;
+
+    margin-bottom: $spacing-4;
+
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-report-chart__legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.wm-report-chart__legend-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: $radius-full;
+}
+
+.wm-report-chart__legend-dot--primary {
+    background: $color-primary;
+}
+
+.wm-report-chart__legend-dot--muted {
+    background: $color-gray-300;
+}
+
+.wm-report-chart__area {
+    display: flex;
+
+    min-height: 280px;
+}
+
+.wm-report-chart__y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 44px;
+
+    padding: 0 8px 28px 0;
+
+    color: $color-text-muted;
+    font-size: 10px;
+    text-align: right;
+}
+
+.wm-report-chart__graph {
+    position: relative;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.wm-report-chart__grid-line {
+    position: absolute;
+    right: 0;
+    left: 0;
+
+    height: 1px;
+
+    background: $color-border-light;
+}
+
+.wm-report-chart__grid-line:nth-child(1) {
+    top: 0;
+}
+
+.wm-report-chart__grid-line:nth-child(2) {
+    top: 20%;
+}
+
+.wm-report-chart__grid-line:nth-child(3) {
+    top: 40%;
+}
+
+.wm-report-chart__grid-line:nth-child(4) {
+    top: 60%;
+}
+
+.wm-report-chart__grid-line:nth-child(5) {
+    top: 80%;
+}
+
+.wm-report-chart__bars {
+    position: absolute;
+    inset: 0 0 0 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+
+    padding: 0 8px 28px;
+}
+
+.wm-report-chart__bar-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+
+    height: 100%;
+
+    position: relative;
+
+    min-width: 28px;
+}
+
+.wm-report-chart__bar {
+    width: 9px;
+
+    border-radius: 4px 4px 0 0;
+
+    transition: height 0.3s ease;
+}
+
+.wm-report-chart__bar--target {
+    background: $color-gray-200;
+}
+
+.wm-report-chart__bar--progress {
+    background: $color-primary;
+}
+
+.wm-report-chart__bar-group > span {
+    position: absolute;
+    bottom: 0;
+
+    color: $color-text-muted;
+    font-size: 10px;
+
+    transform: translateY(22px);
+}
+
+
+// ============================================================
+// Task Completion
+// ============================================================
+
+.wm-task-completion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: $spacing-6;
+}
+
+.wm-task-completion__ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 180px;
+    height: 180px;
+    margin-bottom: $spacing-6;
+
+    border-radius: $radius-full;
+
+    background:
+        conic-gradient(
+            $color-primary 0 78%,
+            $color-gray-200 78% 100%
+        );
+
+    position: relative;
+}
+
+.wm-task-completion__ring::before {
+    content: "";
+
+    position: absolute;
+    inset: 14px;
+
+    border-radius: $radius-full;
+    background: $color-white;
+}
+
+.wm-task-completion__ring-inner {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wm-task-completion__ring-inner strong {
+    color: $color-text-dark;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1;
+}
+
+.wm-task-completion__ring-inner span {
+    margin-top: $spacing-2;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-task-completion__legend {
+    width: 100%;
+}
+
+.wm-task-completion__legend-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    padding: 9px 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-task-completion__legend-item strong {
+    margin-left: auto;
+
+    color: $color-text-dark;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-completion__dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: $radius-full;
+}
+
+.wm-task-completion__dot--success {
+    background: $color-success;
+}
+
+.wm-task-completion__dot--primary {
+    background: $color-primary;
+}
+
+.wm-task-completion__dot--warning {
+    background: $color-warning;
+}
+
+.wm-task-completion__dot--danger {
+    background: $color-danger;
+}
+
+
+// ============================================================
+// Project Breakdown
+// ============================================================
+
+.wm-project-breakdown {
+    padding: $spacing-2 $spacing-5;
+}
+
+.wm-project-breakdown__row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-5;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-breakdown__row:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-breakdown__identity {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 260px;
+}
+
+.wm-project-breakdown__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-md;
+
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-breakdown__icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-breakdown__icon--cyan {
+    background: $color-cyan-light;
+    color: $color-cyan;
+}
+
+.wm-project-breakdown__icon--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-breakdown__identity div:last-child {
+    min-width: 0;
+}
+
+.wm-project-breakdown__identity strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-breakdown__identity span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-breakdown__progress {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-breakdown__progress-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 6px;
+}
+
+.wm-project-breakdown__progress-top span {
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-breakdown__progress-top small {
+    color: $color-text-muted;
+    font-size: 11px;
+}
+
+.wm-project-breakdown__progress-bar {
+    width: 100%;
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-project-breakdown__progress-bar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+    background: $color-primary;
+}
+
+
+// ============================================================
+// Team Productivity
+// ============================================================
+
+.wm-team-productivity {
+    padding: $spacing-2 $spacing-5;
+}
+
+.wm-team-productivity__row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-team-productivity__row:last-child {
+    border-bottom: 0;
+}
+
+.wm-team-productivity__member {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 180px;
+}
+
+.wm-team-productivity__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-team-productivity__avatar--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-team-productivity__avatar--cyan {
+    background: $color-cyan-light;
+    color: $color-cyan;
+}
+
+.wm-team-productivity__avatar--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-team-productivity__member div:last-child {
+    min-width: 0;
+}
+
+.wm-team-productivity__member strong {
+    display: block;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-team-productivity__member span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-team-productivity__value {
+    min-width: 90px;
+    margin-left: auto;
+}
+
+.wm-team-productivity__value > strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    text-align: right;
+}
+
+.wm-team-productivity__bar {
+    width: 90px;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-team-productivity__bar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+    background: $color-accent;
+}
+
+
+// ============================================================
+// Milestones
+// ============================================================
+
+.wm-milestone-report {
+    padding: $spacing-2 $spacing-5;
+}
+
+.wm-milestone-report__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-milestone-report__item:last-child {
+    border-bottom: 0;
+}
+
+.wm-milestone-report__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-md;
+}
+
+.wm-milestone-report__icon--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-milestone-report__icon--primary {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-milestone-report__icon--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-milestone-report__content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-milestone-report__content strong {
+    display: block;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-milestone-report__content span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-milestone-report__status {
+    flex: 0 0 auto;
+
+    color: $color-success-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-milestone-report__status--active {
+    color: $color-primary;
+}
+
+.wm-milestone-report__status--warning {
+    color: $color-warning-dark;
+}
+
+
+// ============================================================
+// Recent Reports
+// ============================================================
+
+.wm-recent-reports {
+    padding: $spacing-2 $spacing-5;
+}
+
+.wm-recent-reports__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    padding: $spacing-4 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-recent-reports__item:last-child {
+    border-bottom: 0;
+}
+
+.wm-recent-reports__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-md;
+
+    background: $color-danger-light;
+    color: $color-danger;
+}
+
+.wm-recent-reports__content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-recent-reports__content strong {
+    display: block;
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-recent-reports__content span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-recent-reports__download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+}
+
+.wm-recent-reports__download:hover {
+    background: $color-gray-100;
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Table View
+// ============================================================
+
+.wm-reports-page__table-view {
+    display: none;
+}
+
+.wm-reports-page__table-view.is-empty {
+    display: none;
+}
+
+.wm-reports-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.wm-reports-table {
+    width: 100%;
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+.wm-reports-table thead th {
+    padding:
+        $table-cell-padding-y
+        $table-cell-padding-x;
+
+    background: $table-header-bg;
+    border-bottom: 1px solid $table-border;
+
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.wm-reports-table tbody td {
+    padding:
+        $table-cell-padding-y
+        $table-cell-padding-x;
+
+    border-bottom: 1px solid $table-border;
+
+    color: $color-text;
+    font-size: $font-size-sm;
+    vertical-align: middle;
+}
+
+.wm-reports-table tbody tr:hover {
+    background: $table-row-hover;
+}
+
+.wm-reports-table__project {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 230px;
+}
+
+.wm-reports-table__project-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+
+    border-radius: $radius-md;
+
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-reports-table__project-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-reports-table__project-icon--cyan {
+    background: $color-cyan-light;
+    color: $color-cyan;
+}
+
+.wm-reports-table__project-icon--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-reports-table__project strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-medium;
+}
+
+.wm-reports-table__progress {
+    min-width: 110px;
+}
+
+.wm-reports-table__progress-value {
+    margin-bottom: 5px;
+
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-reports-table__progress-bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+    background: $color-gray-100;
+}
+
+.wm-reports-table__progress-bar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+    background: $color-primary;
+}
+
+.wm-reports-table__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+}
+
+.wm-reports-table__action:hover {
+    background: $color-gray-100;
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Status
+// ============================================================
+
+.wm-report-status {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 24px;
+    padding: 0 9px;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-report-status--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-report-status--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+// ============================================================
+// Empty
+// ============================================================
+
+.wm-reports-page__empty {
+    display: none;
+
+    padding: $spacing-12 $spacing-6;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    text-align: center;
+}
+
+.wm-reports-page__empty.is-visible {
+    display: block;
+}
+
+.wm-reports-page__empty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-4;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+    color: $color-text-muted;
+
+    font-size: 28px;
+}
+
+.wm-reports-page__empty h3 {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-reports-page__empty p {
+    max-width: 430px;
+    margin: 0 auto $spacing-5;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-reports-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-reports-page__filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-reports-page__filter-actions {
+        justify-content: flex-start;
+    }
+
+    .wm-project-breakdown__identity {
+        min-width: 220px;
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-reports-page__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-reports-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-reports-page__toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-reports-page__toolbar-left,
+    .wm-reports-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-reports-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-reports-page__date-range,
+    .wm-reports-page__project-filter {
+        flex: 1;
+    }
+
+    .wm-reports-page__date-range .form-select,
+    .wm-reports-page__project-filter .form-select {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-reports-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-reports-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-reports-page__filters {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-reports-page__toolbar-left {
+        flex-wrap: wrap;
+    }
+
+    .wm-reports-page__toolbar-right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-reports-page__view-switcher {
+        width: 100%;
+    }
+
+    .wm-reports-page__view-btn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .wm-report-chart__area {
+        min-height: 230px;
+    }
+
+    .wm-project-breakdown__row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: $spacing-3;
+    }
+
+    .wm-project-breakdown__identity {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .wm-project-breakdown__progress {
+        width: 100%;
+    }
+
+    .wm-team-productivity__member {
+        min-width: 0;
+        flex: 1;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-reports-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-reports-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-reports-page__toolbar-left {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-reports-page__date-range,
+    .wm-reports-page__project-filter {
+        width: 100%;
+    }
+
+    .wm-reports-page__toolbar-left > .btn {
+        width: 100%;
+    }
+
+    .wm-report-card__header {
+        padding: $spacing-4;
+    }
+
+    .wm-report-chart {
+        padding: $spacing-4;
+    }
+
+    .wm-task-completion {
+        padding: $spacing-5;
+    }
+
+    .wm-task-completion__ring {
+        width: 150px;
+        height: 150px;
+    }
+
+    .wm-task-completion__ring-inner strong {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-team-productivity__row {
+        gap: $spacing-2;
+    }
+
+    .wm-team-productivity__avatar {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+    }
+
+    .wm-team-productivity__member strong {
+        font-size: $font-size-xs;
+    }
+
+    .wm-team-productivity__bar {
+        width: 70px;
+    }
+
+    .wm-team-productivity__value {
+        min-width: 70px;
+    }
+
+    .wm-milestone-report__status {
+        font-size: 10px;
+    }
+
+}

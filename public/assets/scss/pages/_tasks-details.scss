@@ -1,0 +1,1709 @@
+@use "../common" as *;
+
+
+// ============================================================
+// PAGE
+// ============================================================
+
+.wm-task-detail-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ============================================================
+// BREADCRUMB
+// ============================================================
+
+.wm-task-detail-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: $spacing-4;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-detail-breadcrumb i {
+    font-size: 12px;
+}
+
+.wm-task-detail-breadcrumb__link {
+    color: $color-text-secondary;
+
+    text-decoration: none;
+}
+
+.wm-task-detail-breadcrumb__link:hover {
+    color: $color-primary;
+}
+
+.wm-task-detail-breadcrumb__current {
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// HEADER
+// ============================================================
+
+.wm-task-detail-header {
+    @include flex-between;
+
+    gap: $spacing-5;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-task-detail-header__main {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+
+    min-width: 0;
+}
+
+.wm-task-detail-back {
+    @include button-reset;
+    @include flex-center;
+
+    width: 38px;
+    height: 38px;
+
+    flex: 0 0 38px;
+
+    margin-top: 3px;
+
+    color: $color-text-secondary;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    font-size: 17px;
+
+    @include transition(all);
+}
+
+.wm-task-detail-back:hover {
+    color: $color-primary;
+
+    border-color: rgba(37, 99, 235, 0.25);
+
+    background: $color-primary-light;
+}
+
+.wm-task-detail-header__content {
+    min-width: 0;
+}
+
+.wm-task-detail-header__meta {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-bottom: 6px;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-detail-id {
+    color: $color-primary;
+
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-detail-meta-divider {
+    color: $color-border-dark;
+}
+
+.wm-task-detail-project {
+    color: $color-text-muted;
+}
+
+.wm-task-detail-title {
+    margin: 0 0 6px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+}
+
+.wm-task-detail-subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+}
+
+.wm-task-detail-header__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    flex-shrink: 0;
+}
+
+
+// ============================================================
+// ACTION DROPDOWN
+// ============================================================
+
+.wm-task-detail-actions {
+    position: relative;
+
+    display: inline-flex;
+
+    z-index: $z-dropdown;
+}
+
+.wm-task-detail-action-menu {
+    position: absolute;
+
+    top: calc(100% + 7px);
+    right: 0;
+
+    z-index: $z-dropdown;
+
+    width: 190px;
+
+    padding: 6px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-5px);
+
+    pointer-events: none;
+
+    @include transition(all, 0.15s, ease);
+}
+
+.wm-task-detail-actions.is-open
+.wm-task-detail-action-menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+.wm-task-detail-action-menu__item {
+    @include button-reset;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    width: 100%;
+
+    padding: 9px 10px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    text-align: left;
+}
+
+.wm-task-detail-action-menu__item:hover {
+    color: $color-text-dark;
+
+    background: $color-gray-50;
+}
+
+.wm-task-detail-action-menu__item i {
+    width: 18px;
+
+    color: $color-text-muted;
+
+    font-size: 15px;
+}
+
+.wm-task-detail-action-menu__item:hover i {
+    color: $color-primary;
+}
+
+.wm-task-detail-action-menu__item--danger {
+    color: $color-danger-dark;
+}
+
+.wm-task-detail-action-menu__item--danger i {
+    color: $color-danger;
+}
+
+.wm-task-detail-action-menu__item--danger:hover {
+    color: $color-danger-dark;
+
+    background: $color-danger-light;
+}
+
+.wm-task-detail-action-menu__divider {
+    height: 1px;
+
+    margin: 5px 3px;
+
+    background: $color-border-light;
+}
+
+
+// ============================================================
+// STATUS BAR
+// ============================================================
+
+.wm-task-detail-statusbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    margin-bottom: $spacing-5;
+
+    padding: 0;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-task-detail-statusbar__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-height: 68px;
+
+    padding: $spacing-3 $spacing-5;
+
+    border-right: 1px solid $color-border-light;
+}
+
+.wm-task-detail-statusbar__item:last-child {
+    border-right: 0;
+}
+
+.wm-task-detail-statusbar__label {
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+
+// ============================================================
+// STATUS CONTROL
+// ============================================================
+
+.wm-task-detail-status-dropdown,
+.wm-task-priority-dropdown {
+    position: relative;
+}
+
+.wm-task-status-control,
+.wm-task-priority-control {
+    @include button-reset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 34px;
+
+    padding: 5px 8px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-task-status-control:hover,
+.wm-task-priority-control:hover {
+    background: $color-gray-50;
+}
+
+.wm-task-status-control__dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: $radius-full;
+}
+
+.wm-task-status-control--todo {
+    color: $color-gray-600;
+}
+
+.wm-task-status-control--todo
+.wm-task-status-control__dot {
+    background: $color-gray-400;
+}
+
+.wm-task-status-control--progress {
+    color: $color-primary;
+}
+
+.wm-task-status-control--progress
+.wm-task-status-control__dot {
+    background: $color-primary;
+}
+
+.wm-task-status-control--completed {
+    color: $color-success-dark;
+}
+
+.wm-task-status-control--completed
+.wm-task-status-control__dot {
+    background: $color-success;
+}
+
+.wm-task-status-control--overdue {
+    color: $color-danger-dark;
+}
+
+.wm-task-status-control--overdue
+.wm-task-status-control__dot {
+    background: $color-danger;
+}
+
+
+// ============================================================
+// STATUS MENU
+// ============================================================
+
+.wm-task-status-dropdown__menu,
+.wm-task-priority-dropdown__menu {
+    position: absolute;
+
+    top: calc(100% + 5px);
+    left: 0;
+
+    z-index: $z-dropdown;
+
+    min-width: 160px;
+
+    padding: 6px;
+
+    background: $color-white;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-5px);
+
+    pointer-events: none;
+
+    @include transition(all, 0.15s, ease);
+}
+
+.wm-task-detail-status-dropdown.is-open
+.wm-task-status-dropdown__menu,
+
+.wm-task-priority-dropdown.is-open
+.wm-task-priority-dropdown__menu {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+.wm-task-status-option,
+.wm-task-priority-option {
+    @include button-reset;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+
+    padding: 8px 9px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+
+    text-align: left;
+}
+
+.wm-task-status-option:hover,
+.wm-task-priority-option:hover,
+.wm-task-status-option.is-active,
+.wm-task-priority-option.is-active {
+    color: $color-text-dark;
+
+    background: $color-gray-50;
+}
+
+.wm-task-status-option__dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: $radius-full;
+}
+
+.wm-task-status-option__dot--todo {
+    background: $color-gray-400;
+}
+
+.wm-task-status-option__dot--progress {
+    background: $color-primary;
+}
+
+.wm-task-status-option__dot--completed {
+    background: $color-success;
+}
+
+.wm-task-status-option__dot--overdue {
+    background: $color-danger;
+}
+
+
+// ============================================================
+// PRIORITY
+// ============================================================
+
+.wm-task-priority-control--high {
+    color: $color-danger-dark;
+}
+
+.wm-task-priority-control--medium {
+    color: $color-warning-dark;
+}
+
+.wm-task-priority-control--normal {
+    color: $color-info-dark;
+}
+
+.wm-task-priority-control--low {
+    color: $color-text-secondary;
+}
+
+.wm-task-priority-control__icon {
+    font-size: 15px;
+}
+
+.wm-task-priority-option__icon {
+    width: 18px;
+
+    font-size: 14px;
+}
+
+.wm-task-priority-option__icon--high {
+    color: $color-danger;
+}
+
+.wm-task-priority-option__icon--medium {
+    color: $color-warning;
+}
+
+.wm-task-priority-option__icon--normal {
+    color: $color-info;
+}
+
+.wm-task-priority-option__icon--low {
+    color: $color-gray-400;
+}
+
+
+// ============================================================
+// ASSIGNEE
+// ============================================================
+
+.wm-task-assignee-control {
+    @include button-reset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 34px;
+
+    color: $color-text-secondary;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-assignee-control:hover {
+    color: $color-text-dark;
+}
+
+.wm-task-assignee-control__avatar {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+
+    color: $color-white;
+    background: $color-primary;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ============================================================
+// DUE
+// ============================================================
+
+.wm-task-due-control {
+    @include button-reset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-due-control:hover {
+    color: $color-primary;
+}
+
+.wm-task-due-control i {
+    color: $color-text-muted;
+
+    font-size: 16px;
+}
+
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+.wm-task-detail-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        320px;
+
+    gap: $spacing-5;
+
+    align-items: start;
+}
+
+.wm-task-detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+
+    min-width: 0;
+}
+
+.wm-task-detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    min-width: 0;
+}
+
+
+// ============================================================
+// MAIN CARD
+// ============================================================
+
+.wm-task-detail-card {
+    @include card;
+
+    padding: $spacing-5;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-task-detail-card__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+}
+
+.wm-task-detail-card__title {
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-detail-card__subtitle {
+    margin: 0;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-detail-card__title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wm-task-detail-card__edit {
+    @include button-reset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-task-detail-card__edit:hover {
+    color: $color-primary;
+}
+
+
+// ============================================================
+// DESCRIPTION
+// ============================================================
+
+.wm-task-description {
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-relaxed;
+}
+
+.wm-task-description p {
+    margin: 0 0 $spacing-3;
+}
+
+.wm-task-description p:last-child {
+    margin-bottom: 0;
+}
+
+.wm-task-description ul {
+    margin: $spacing-3 0 0;
+    padding-left: 20px;
+}
+
+.wm-task-description li {
+    margin-bottom: 6px;
+}
+
+.wm-task-description-editor {
+    margin-top: $spacing-2;
+}
+
+.wm-task-description-editor__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-2;
+
+    margin-top: $spacing-3;
+}
+
+
+// ============================================================
+// SUBTASKS
+// ============================================================
+
+.wm-task-subtask-count {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px 7px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-progress {
+    margin-bottom: $spacing-4;
+}
+
+.wm-task-progress__header {
+    @include flex-between;
+
+    margin-bottom: 6px;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+}
+
+.wm-task-progress__header strong {
+    color: $color-primary;
+}
+
+.wm-task-progress__bar {
+    width: 100%;
+    height: 6px;
+
+    overflow: hidden;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-full;
+}
+
+.wm-task-progress__bar span {
+    display: block;
+
+    height: 100%;
+
+    background: $color-primary;
+
+    border-radius: inherit;
+
+    @include transition(width, 0.25s, ease);
+}
+
+.wm-task-subtasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-task-subtask {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-task-subtask:last-child {
+    border-bottom: 0;
+}
+
+.wm-task-subtask__check {
+    position: relative;
+
+    display: inline-flex;
+
+    flex: 0 0 auto;
+
+    cursor: pointer;
+}
+
+.wm-task-subtask__check input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.wm-task-subtask__checkmark {
+    @include flex-center;
+
+    width: 19px;
+    height: 19px;
+
+    color: transparent;
+
+    border: 1px solid $color-border-dark;
+    border-radius: 5px;
+
+    font-size: 12px;
+
+    @include transition(all);
+}
+
+.wm-task-subtask__check input:checked
++ .wm-task-subtask__checkmark {
+
+    color: $color-white;
+
+    background: $color-primary;
+
+    border-color: $color-primary;
+}
+
+.wm-task-subtask__content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.wm-task-subtask__title {
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+}
+
+.wm-task-subtask.is-completed
+.wm-task-subtask__title {
+
+    color: $color-text-muted;
+
+    text-decoration: line-through;
+}
+
+.wm-task-subtask__meta {
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: 10px;
+}
+
+.wm-task-subtask__delete {
+    @include button-reset;
+
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-md;
+
+    opacity: 0;
+}
+
+.wm-task-subtask:hover
+.wm-task-subtask__delete {
+    opacity: 1;
+}
+
+.wm-task-subtask__delete:hover {
+    color: $color-danger;
+
+    background: $color-danger-light;
+}
+
+
+// ============================================================
+// ADD SUBTASK
+// ============================================================
+
+.wm-task-add-subtask {
+    margin-top: $spacing-3;
+
+    padding: $spacing-3;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border-light;
+    border-radius: $radius-lg;
+}
+
+.wm-task-add-subtask__input {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-task-add-subtask__input > i {
+    color: $color-text-muted;
+
+    font-size: 17px;
+}
+
+.wm-task-add-subtask__input .wm-form-control {
+    background: $color-white;
+}
+
+.wm-task-add-subtask__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-2;
+
+    margin-top: $spacing-2;
+}
+
+
+// ============================================================
+// COMMENTS
+// ============================================================
+
+.wm-task-comment-form {
+    display: flex;
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-task-comment-form__avatar {
+    @include flex-center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    color: $color-white;
+    background: $color-primary;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-comment-form__body {
+    flex: 1;
+    min-width: 0;
+}
+
+.wm-task-comment-form__footer {
+    @include flex-between;
+
+    margin-top: $spacing-2;
+}
+
+.wm-task-comment-form__tools {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.wm-task-comment-form__tools button {
+    @include button-reset;
+
+    @include flex-center;
+
+    width: 30px;
+    height: 30px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-md;
+}
+
+.wm-task-comment-form__tools button:hover {
+    color: $color-primary;
+
+    background: $color-primary-light;
+}
+
+.wm-task-comments {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-5;
+}
+
+.wm-task-comment {
+    display: flex;
+    gap: $spacing-3;
+}
+
+.wm-task-comment__avatar {
+    @include flex-center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 34px;
+
+    color: $color-white;
+    background: $color-success;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-comment__avatar--purple {
+    background: $color-purple;
+}
+
+.wm-task-comment__avatar--blue {
+    background: $color-primary;
+}
+
+.wm-task-comment__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.wm-task-comment__header {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    margin-bottom: 5px;
+}
+
+.wm-task-comment__header > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.wm-task-comment__header strong {
+    color: $color-text-dark;
+
+    font-size: $font-size-xs;
+}
+
+.wm-task-comment__header span {
+    color: $color-text-muted;
+
+    font-size: 10px;
+}
+
+.wm-task-comment__menu {
+    @include button-reset;
+
+    color: $color-text-muted;
+
+    font-size: 16px;
+}
+
+.wm-task-comment__menu:hover {
+    color: $color-text-dark;
+}
+
+.wm-task-comment__content > p {
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+}
+
+.wm-task-comment__footer {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    margin-top: 8px;
+}
+
+.wm-task-comment__footer button {
+    @include button-reset;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+}
+
+.wm-task-comment__footer button:hover {
+    color: $color-primary;
+}
+
+
+// ============================================================
+// ACTIVITY
+// ============================================================
+
+.wm-task-activity {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-task-activity__item {
+    position: relative;
+
+    display: flex;
+    gap: $spacing-3;
+
+    padding-bottom: $spacing-4;
+}
+
+.wm-task-activity__item:not(:last-child)::before {
+    content: "";
+
+    position: absolute;
+
+    top: 34px;
+    left: 16px;
+
+    width: 1px;
+    height: calc(100% - 18px);
+
+    background: $color-border-light;
+}
+
+.wm-task-activity__icon {
+    @include flex-center;
+
+    position: relative;
+    z-index: 1;
+
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border-radius: $radius-full;
+
+    font-size: 14px;
+}
+
+.wm-task-activity__icon--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-task-activity__icon--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-task-activity__icon--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-task-activity__icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-task-activity__content {
+    min-width: 0;
+}
+
+.wm-task-activity__content p {
+    margin: 4px 0 3px;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    line-height: $line-height-normal;
+}
+
+.wm-task-activity__content p strong {
+    color: $color-text-dark;
+}
+
+.wm-task-activity__content > span {
+    color: $color-text-muted;
+
+    font-size: 10px;
+}
+
+
+// ============================================================
+// SIDEBAR CARD
+// ============================================================
+
+.wm-task-detail-sidebar-card {
+    @include card;
+
+    padding: $spacing-4;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-task-detail-sidebar-card__header {
+    @include flex-between;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-3;
+}
+
+.wm-task-detail-sidebar-card__header > div {
+    min-width: 0;
+}
+
+.wm-task-detail-sidebar-card__header h2 {
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-detail-sidebar-card__count {
+    display: block;
+
+    margin-top: 3px;
+
+    color: $color-text-muted;
+
+    font-size: 10px;
+}
+
+.wm-task-detail-sidebar-card__add {
+    @include button-reset;
+
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+
+    flex: 0 0 28px;
+
+    color: $color-text-muted;
+
+    border-radius: $radius-md;
+}
+
+.wm-task-detail-sidebar-card__add:hover {
+    color: $color-primary;
+
+    background: $color-primary-light;
+}
+
+
+// ============================================================
+// PROPERTIES
+// ============================================================
+
+.wm-task-detail-properties {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-task-detail-property {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-task-detail-property:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.wm-task-detail-property:first-child {
+    padding-top: 0;
+}
+
+.wm-task-detail-property__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: $color-text-muted;
+
+    font-size: 11px;
+}
+
+.wm-task-detail-property__label i {
+    font-size: 14px;
+}
+
+.wm-task-detail-property__value {
+    color: $color-text-secondary;
+
+    font-size: 11px;
+
+    text-align: right;
+}
+
+.wm-task-detail-property__value--link {
+    color: $color-primary;
+
+    text-decoration: none;
+}
+
+.wm-task-detail-property__value--link:hover {
+    text-decoration: underline;
+}
+
+.wm-task-detail-property__person {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    color: $color-text-secondary;
+
+    font-size: 11px;
+}
+
+.wm-task-detail-property__avatar {
+    @include flex-center;
+
+    width: 24px;
+    height: 24px;
+
+    color: $color-white;
+    background: $color-primary;
+
+    border-radius: $radius-full;
+
+    font-size: 8px;
+    font-weight: $font-weight-semibold;
+}
+
+
+// ============================================================
+// TAGS
+// ============================================================
+
+.wm-task-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.wm-task-tag {
+    padding: 5px 8px;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-task-tag--blue {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-task-tag--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-task-tag--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+
+// ============================================================
+// ATTACHMENTS
+// ============================================================
+
+.wm-task-attachments {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-task-attachment {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    padding: 9px 0;
+
+    color: inherit;
+
+    border-bottom: 1px solid $color-border-light;
+
+    text-decoration: none;
+}
+
+.wm-task-attachment:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.wm-task-attachment:first-child {
+    padding-top: 0;
+}
+
+.wm-task-attachment:hover
+.wm-task-attachment__content strong {
+    color: $color-primary;
+}
+
+.wm-task-attachment > i {
+    color: $color-text-muted;
+
+    font-size: 14px;
+}
+
+.wm-task-attachment__icon {
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border-radius: $radius-md;
+
+    font-size: 15px;
+}
+
+.wm-task-attachment__icon--figma {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-task-attachment__icon--image {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-task-attachment__icon--pdf {
+    color: $color-danger;
+    background: $color-danger-light;
+}
+
+.wm-task-attachment__content {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.wm-task-attachment__content strong {
+    color: $color-text-secondary;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+
+    @include truncate;
+}
+
+.wm-task-attachment__content span {
+    margin-top: 2px;
+
+    color: $color-text-muted;
+
+    font-size: 9px;
+}
+
+
+// ============================================================
+// WATCHERS
+// ============================================================
+
+.wm-task-watchers {
+    display: flex;
+    align-items: center;
+}
+
+.wm-task-watcher {
+    margin-right: -6px;
+}
+
+.wm-task-watcher:last-child {
+    margin-right: 0;
+}
+
+.wm-task-watcher__avatar {
+    @include flex-center;
+
+    width: 32px;
+    height: 32px;
+
+    color: $color-white;
+    background: $color-primary;
+
+    border: 2px solid $color-white;
+
+    border-radius: $radius-full;
+
+    font-size: 9px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-task-watcher__avatar--green {
+    background: $color-success;
+}
+
+.wm-task-watcher__avatar--purple {
+    background: $color-purple;
+}
+
+.wm-task-watcher__avatar--orange {
+    background: $color-warning;
+}
+
+
+// ============================================================
+// RESPONSIVE
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-task-detail-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            290px;
+    }
+
+    .wm-task-detail-statusbar__item {
+        padding-left: $spacing-3;
+        padding-right: $spacing-3;
+    }
+
+}
+
+@media (max-width: 991px) {
+
+    .wm-task-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-task-detail-sidebar {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        align-items: start;
+    }
+
+    .wm-task-detail-statusbar {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-task-detail-statusbar__item {
+        border-right: 1px solid $color-border-light;
+        border-bottom: 1px solid $color-border-light;
+    }
+
+    .wm-task-detail-statusbar__item:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .wm-task-detail-statusbar__item:nth-last-child(-n + 2) {
+        border-bottom: 0;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+    .wm-task-detail-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .wm-task-detail-header__actions {
+        width: 100%;
+    }
+
+    .wm-task-detail-header__actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-task-detail-header__actions
+    .wm-task-detail-actions {
+        flex: 0 0 auto;
+    }
+
+    .wm-task-detail-header__actions
+    .wm-task-detail-actions
+    .wm-btn {
+        flex: 0 0 40px;
+    }
+
+    .wm-task-detail-statusbar {
+        display: flex;
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .wm-task-detail-statusbar__item {
+        width: 100%;
+
+        min-height: 58px;
+
+        border-right: 0;
+        border-bottom: 1px solid $color-border-light;
+    }
+
+    .wm-task-detail-statusbar__item:last-child {
+        border-bottom: 0;
+    }
+
+    .wm-task-detail-sidebar {
+        display: flex;
+    }
+
+}
+
+@media (max-width: 575px) {
+
+    .wm-task-detail-card {
+        padding: $spacing-4;
+    }
+
+    .wm-task-detail-title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-task-detail-header__main {
+        gap: $spacing-2;
+    }
+
+    .wm-task-detail-header__actions {
+        flex-wrap: wrap;
+    }
+
+    .wm-task-detail-header__actions
+    > .wm-btn {
+        min-width: 0;
+    }
+
+    .wm-task-comment-form {
+        align-items: flex-start;
+    }
+
+    .wm-task-comment-form__footer {
+        align-items: flex-end;
+
+        flex-direction: column;
+        gap: $spacing-2;
+    }
+
+}

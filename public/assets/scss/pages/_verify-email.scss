@@ -1,0 +1,1395 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Verify Email Page
+// ============================================================
+
+.wm-verify-email-page {
+
+    min-height: 100vh;
+
+    margin: 0;
+
+    background: $color-body-bg;
+
+}
+
+
+// ============================================================
+// Container
+// ============================================================
+
+.wm-verify-email-page__container {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(520px, 0.78fr);
+
+    width: 100%;
+
+    min-height: 100vh;
+
+}
+
+
+// ============================================================
+// Brand Panel
+// ============================================================
+
+.wm-verify-email-page__brand {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: $spacing-12;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0F172A 0%,
+            #172554 48%,
+            #1E3A8A 100%
+        );
+
+}
+
+
+.wm-verify-email-page__brand::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: -220px;
+    right: -220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.35),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+.wm-verify-email-page__brand::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 460px;
+    height: 460px;
+
+    bottom: -220px;
+    left: -220px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(16, 185, 129, 0.18),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+}
+
+
+// ============================================================
+// Brand Inner
+// ============================================================
+
+.wm-verify-email-page__brand-inner {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 600px;
+
+}
+
+
+// ============================================================
+// Logo
+// ============================================================
+
+.wm-verify-email-page__logo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    color: $color-white;
+
+    text-decoration: none;
+
+}
+
+
+.wm-verify-email-page__logo-mark {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: $color-white;
+
+    background: $color-primary;
+
+    border-radius: $radius-lg;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.30);
+
+    font-size: 21px;
+
+}
+
+
+.wm-verify-email-page__logo-text {
+
+    color: $color-white;
+
+    font-size: $font-size-xl;
+
+    font-weight: $font-weight-bold;
+
+    line-height: 1;
+
+    letter-spacing: -0.02em;
+
+}
+
+
+// ============================================================
+// Brand Content
+// ============================================================
+
+.wm-verify-email-page__brand-content {
+
+    margin-top: 110px;
+
+}
+
+
+.wm-verify-email-page__brand-eyebrow {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-2;
+
+    padding: 7px 11px;
+
+    color: #BFDBFE;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+
+    border-radius: $radius-full;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-semibold;
+
+    line-height: 1;
+
+}
+
+
+.wm-verify-email-page__brand-eyebrow i {
+
+    color: #60A5FA;
+
+    font-size: 14px;
+
+}
+
+
+.wm-verify-email-page__brand-title {
+
+    max-width: 570px;
+
+    margin: $spacing-5 0 $spacing-4;
+
+    color: $color-white;
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            56px
+        );
+
+    font-weight: $font-weight-bold;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.045em;
+
+}
+
+
+.wm-verify-email-page__brand-title span {
+
+    display: block;
+
+    color: #60A5FA;
+
+}
+
+
+.wm-verify-email-page__brand-description {
+
+    max-width: 520px;
+
+    margin: 0;
+
+    color: #CBD5E1;
+
+    font-size: $font-size-base;
+
+    line-height: 1.7;
+
+}
+
+
+// ============================================================
+// Features
+// ============================================================
+
+.wm-verify-email-page__features {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-8;
+
+}
+
+
+.wm-verify-email-page__feature {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    color: #E2E8F0;
+
+    font-size: $font-size-sm;
+
+}
+
+
+.wm-verify-email-page__feature-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 22px;
+
+    width: 22px;
+    height: 22px;
+
+    color: #6EE7B7;
+
+    font-size: 18px;
+
+}
+
+
+// ============================================================
+// Security Card
+// ============================================================
+
+.wm-verify-email-page__security-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-4;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin-top: $spacing-10;
+
+    padding: $spacing-4;
+
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: $radius-xl;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+}
+
+
+.wm-verify-email-page__security-card-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    color: #93C5FD;
+
+    background: rgba(37, 99, 235, 0.16);
+
+    border-radius: $radius-lg;
+
+    font-size: 20px;
+
+}
+
+
+.wm-verify-email-page__security-card-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    min-width: 0;
+
+}
+
+
+.wm-verify-email-page__security-card-content strong {
+
+    color: $color-white;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+
+.wm-verify-email-page__security-card-content span {
+
+    color: #94A3B8;
+
+    font-size: $font-size-xs;
+
+    line-height: 1.55;
+
+}
+
+
+// ============================================================
+// Panel
+// ============================================================
+
+.wm-verify-email-page__panel {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 100vh;
+
+    padding: $spacing-8;
+
+    background: $color-white;
+
+}
+
+
+.wm-verify-email-page__form-wrapper {
+
+    width: 100%;
+
+    max-width: 440px;
+
+}
+
+
+// ============================================================
+// Mobile Logo
+// ============================================================
+
+.wm-verify-email-page__mobile-logo {
+
+    display: none;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-10;
+
+    color: $color-text-dark;
+
+    text-decoration: none;
+
+}
+
+
+.wm-verify-email-page__mobile-logo
+.wm-verify-email-page__logo-mark {
+
+    color: $color-white;
+
+}
+
+
+.wm-verify-email-page__mobile-logo
+.wm-verify-email-page__logo-text {
+
+    color: $color-text-dark;
+
+}
+
+
+// ============================================================
+// Verification Icon
+// ============================================================
+
+.wm-verify-email-page__verification-icon {
+
+    position: relative;
+
+    display: inline-flex;
+
+    width: 62px;
+    height: 62px;
+
+    margin-bottom: $spacing-5;
+
+}
+
+
+.wm-verify-email-page__verification-icon-inner {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 62px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border: 1px solid rgba(37, 99, 235, 0.12);
+
+    border-radius: $radius-xl;
+
+    font-size: 27px;
+
+}
+
+
+.wm-verify-email-page__verification-icon-check {
+
+    position: absolute;
+
+    right: -5px;
+    bottom: -5px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 22px;
+    height: 22px;
+
+    color: $color-white;
+
+    background: $color-success;
+
+    border: 3px solid $color-white;
+
+    border-radius: 50%;
+
+    font-size: 11px;
+
+}
+
+
+// ============================================================
+// Form Header
+// ============================================================
+
+.wm-verify-email-page__form-header {
+
+    margin-bottom: $spacing-6;
+
+}
+
+
+.wm-verify-email-page__form-title {
+
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-3xl;
+
+    font-weight: $font-weight-bold;
+
+    line-height: $line-height-tight;
+
+    letter-spacing: -0.025em;
+
+}
+
+
+.wm-verify-email-page__form-description {
+
+    max-width: 420px;
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-md;
+
+    line-height: 1.65;
+
+}
+
+
+// ============================================================
+// Alert
+// ============================================================
+
+.wm-verify-email-page__alert {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-5;
+
+    padding: $spacing-3 $spacing-4;
+
+    border: 1px solid transparent;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-sm;
+
+}
+
+
+.wm-verify-email-page__alert > i {
+
+    flex-shrink: 0;
+
+    margin-top: 2px;
+
+    font-size: 18px;
+
+}
+
+
+.wm-verify-email-page__alert > div {
+
+    min-width: 0;
+
+}
+
+
+.wm-verify-email-page__alert strong {
+
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+
+.wm-verify-email-page__alert span {
+
+    display: block;
+
+    line-height: 1.5;
+
+}
+
+
+.wm-verify-email-page__alert ul {
+
+    margin: 5px 0 0;
+
+    padding-left: 17px;
+
+}
+
+
+.wm-verify-email-page__alert--success {
+
+    color: $color-success-dark;
+
+    background: $color-success-light;
+
+    border-color: rgba(16, 185, 129, 0.20);
+
+}
+
+
+.wm-verify-email-page__alert--danger {
+
+    color: $color-danger-dark;
+
+    background: $color-danger-light;
+
+    border-color: rgba(239, 68, 68, 0.20);
+
+}
+
+
+.wm-verify-email-page__alert-close {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 26px;
+    height: 26px;
+
+    margin-left: auto;
+
+    padding: 0;
+
+    color: inherit;
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: $radius-sm;
+
+    cursor: pointer;
+
+    opacity: 0.6;
+
+}
+
+
+.wm-verify-email-page__alert-close:hover {
+
+    background: rgba(0, 0, 0, 0.04);
+
+    opacity: 1;
+
+}
+
+
+// ============================================================
+// Email Card
+// ============================================================
+
+.wm-verify-email-page__email-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-6;
+
+    padding: $spacing-4;
+
+    background: $color-gray-50;
+
+    border: 1px solid $color-border;
+
+    border-radius: $radius-lg;
+
+}
+
+
+.wm-verify-email-page__email-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    width: 42px;
+    height: 42px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-md;
+
+    font-size: 19px;
+
+}
+
+
+.wm-verify-email-page__email-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
+
+}
+
+
+.wm-verify-email-page__email-content span {
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+
+}
+
+
+.wm-verify-email-page__email-content strong {
+
+    overflow: hidden;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+// ============================================================
+// Instructions
+// ============================================================
+
+.wm-verify-email-page__instructions {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+
+}
+
+
+.wm-verify-email-page__instruction {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+}
+
+
+.wm-verify-email-page__instruction-number {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 28px;
+
+    width: 28px;
+    height: 28px;
+
+    color: $color-primary;
+
+    background: $color-primary-light;
+
+    border-radius: 50%;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-bold;
+
+}
+
+
+.wm-verify-email-page__instruction > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    padding-top: 1px;
+
+}
+
+
+.wm-verify-email-page__instruction strong {
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+
+.wm-verify-email-page__instruction span {
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+
+    line-height: 1.5;
+
+}
+
+
+// ============================================================
+// Form
+// ============================================================
+
+.wm-verify-email-page__form {
+
+    width: 100%;
+
+}
+
+
+// ============================================================
+// Resend Button
+// ============================================================
+
+.wm-verify-email-page__resend-button {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: $button-height-lg;
+
+    padding: 0 $spacing-4;
+
+    color: $color-white;
+
+    background: $color-primary;
+
+    border: 1px solid $color-primary;
+
+    border-radius: $button-radius;
+
+    font-family: $font-family-base;
+
+    font-size: $font-size-md;
+
+    font-weight: $font-weight-semibold;
+
+    cursor: pointer;
+
+    @include transition;
+
+}
+
+
+.wm-verify-email-page__resend-button:hover {
+
+    background: $color-primary-hover;
+
+    border-color: $color-primary-hover;
+
+}
+
+
+.wm-verify-email-page__resend-button:disabled {
+
+    cursor: not-allowed;
+
+    opacity: 0.7;
+
+}
+
+
+.wm-verify-email-page__resend-content {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: $spacing-2;
+
+}
+
+
+.wm-verify-email-page__resend-loading {
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: $spacing-2;
+
+}
+
+
+.wm-verify-email-page__resend-button.is-loading
+.wm-verify-email-page__resend-content {
+
+    display: none;
+
+}
+
+
+.wm-verify-email-page__resend-button.is-loading
+.wm-verify-email-page__resend-loading {
+
+    display: inline-flex;
+
+}
+
+
+.wm-verify-email-page__spinner {
+
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    border-top-color: $color-white;
+
+    border-radius: 50%;
+
+    animation:
+        wm-verify-email-spin
+        0.7s
+        linear
+        infinite;
+
+}
+
+
+// ============================================================
+// Help
+// ============================================================
+
+.wm-verify-email-page__help {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+    margin-top: $spacing-5;
+
+    padding: $spacing-3 $spacing-4;
+
+    background: $color-info-light;
+
+    border: 1px solid rgba(14, 165, 233, 0.15);
+
+    border-radius: $radius-lg;
+
+}
+
+
+.wm-verify-email-page__help-icon {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 24px;
+
+    width: 24px;
+    height: 24px;
+
+    color: $color-info;
+
+    font-size: 17px;
+
+}
+
+
+.wm-verify-email-page__help > div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.wm-verify-email-page__help strong {
+
+    color: $color-text-dark;
+
+    font-size: $font-size-xs;
+
+    font-weight: $font-weight-semibold;
+
+}
+
+
+.wm-verify-email-page__help span {
+
+    color: $color-text-secondary;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+
+}
+
+
+// ============================================================
+// Back Login
+// ============================================================
+
+.wm-verify-email-page__back-login {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: $spacing-5;
+
+}
+
+
+.wm-verify-email-page__back-login a {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+
+    @include transition;
+
+}
+
+
+.wm-verify-email-page__back-login a i {
+
+    font-size: 16px;
+
+    @include transition;
+
+}
+
+
+.wm-verify-email-page__back-login a:hover {
+
+    color: $color-primary;
+
+}
+
+
+.wm-verify-email-page__back-login a:hover i {
+
+    transform: translateX(-3px);
+
+}
+
+
+// ============================================================
+// Footer
+// ============================================================
+
+.wm-verify-email-page__footer {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    margin-top: $spacing-8;
+
+    padding-top: $spacing-5;
+
+    color: $color-text-muted;
+
+    border-top: 1px solid $color-border-light;
+
+    font-size: 11px;
+
+}
+
+
+.wm-verify-email-page__footer > div {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: $spacing-4;
+
+}
+
+
+.wm-verify-email-page__footer a {
+
+    color: $color-text-secondary;
+
+    text-decoration: none;
+
+}
+
+
+.wm-verify-email-page__footer a:hover {
+
+    color: $color-primary;
+
+}
+
+
+// ============================================================
+// Animation
+// ============================================================
+
+@keyframes wm-verify-email-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+// ============================================================
+// 1200px
+// ============================================================
+
+@media (max-width: 1200px) {
+
+    .wm-verify-email-page__container {
+
+        grid-template-columns:
+            minmax(0, 0.9fr)
+            minmax(480px, 0.75fr);
+
+    }
+
+
+    .wm-verify-email-page__brand {
+
+        padding: $spacing-8;
+
+    }
+
+
+    .wm-verify-email-page__brand-content {
+
+        margin-top: 80px;
+
+    }
+
+
+    .wm-verify-email-page__brand-title {
+
+        font-size: 44px;
+
+    }
+
+}
+
+
+// ============================================================
+// 992px
+// ============================================================
+
+@media (max-width: 992px) {
+
+    .wm-verify-email-page__container {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .wm-verify-email-page__brand {
+
+        display: none;
+
+    }
+
+
+    .wm-verify-email-page__panel {
+
+        min-height: 100vh;
+
+        padding: $spacing-6;
+
+    }
+
+
+    .wm-verify-email-page__mobile-logo {
+
+        display: inline-flex;
+
+    }
+
+}
+
+
+// ============================================================
+// 576px
+// ============================================================
+
+@media (max-width: 576px) {
+
+    .wm-verify-email-page__panel {
+
+        align-items: flex-start;
+
+        padding: $spacing-5;
+
+    }
+
+
+    .wm-verify-email-page__form-wrapper {
+
+        max-width: none;
+
+        padding-top: $spacing-4;
+
+    }
+
+
+    .wm-verify-email-page__mobile-logo {
+
+        margin-bottom: $spacing-8;
+
+    }
+
+
+    .wm-verify-email-page__verification-icon {
+
+        width: 54px;
+        height: 54px;
+
+    }
+
+
+    .wm-verify-email-page__verification-icon-inner {
+
+        width: 54px;
+        height: 54px;
+
+        font-size: 23px;
+
+    }
+
+
+    .wm-verify-email-page__form-title {
+
+        font-size: $font-size-2xl;
+
+    }
+
+
+    .wm-verify-email-page__email-card {
+
+        padding: $spacing-3;
+
+    }
+
+
+    .wm-verify-email-page__footer {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+}

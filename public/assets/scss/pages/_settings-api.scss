@@ -1,0 +1,1905 @@
+@use "../common" as *;
+
+
+// ============================================================
+// API Page
+// ============================================================
+
+.wm-api-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+// ============================================================
+// Page Header
+// ============================================================
+
+.wm-page-header {
+    @include flex-between;
+
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+}
+
+.wm-page-header__content {
+    min-width: 0;
+}
+
+.wm-page-header__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-3;
+
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-2;
+
+        color: $color-text-secondary;
+        text-decoration: none;
+
+        @include transition(color);
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    > i {
+        font-size: 13px;
+        color: $color-text-muted;
+    }
+}
+
+.wm-page-header__title {
+    margin: 0 0 $spacing-2;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+
+    color: $color-text-dark;
+}
+
+.wm-page-header__description {
+    max-width: 720px;
+    margin: 0;
+
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+
+    color: $color-text-secondary;
+}
+
+.wm-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    flex-shrink: 0;
+}
+
+
+// ============================================================
+// Buttons
+// ============================================================
+
+.wm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+    padding: 0 $button-padding-x;
+
+    border: 1px solid transparent;
+    border-radius: $button-radius;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    @include transition;
+
+    i {
+        font-size: 17px;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.wm-btn--primary {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+
+    &:hover {
+        color: $color-white;
+        background: $color-primary-hover;
+        border-color: $color-primary-hover;
+    }
+}
+
+.wm-btn--light {
+    color: $color-text;
+    background: $color-white;
+    border-color: $color-border-dark;
+
+    &:hover {
+        color: $color-text-dark;
+        background: $color-gray-50;
+        border-color: $color-gray-300;
+    }
+}
+
+.wm-btn--sm {
+    min-height: $button-height-sm;
+    padding: 0 12px;
+
+    font-size: $font-size-xs;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+
+// ============================================================
+// API Status
+// ============================================================
+
+.wm-api-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-6;
+
+    margin-bottom: $spacing-6;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-api-status__main {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    min-width: 0;
+}
+
+.wm-api-status__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+
+    border-radius: $radius-xl;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 24px;
+}
+
+.wm-api-status__content {
+    min-width: 0;
+}
+
+.wm-api-status__title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    margin-bottom: 5px;
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-api-status__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    min-height: 25px;
+    padding: 0 9px;
+
+    background: $color-success-light;
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+
+    color: $color-success-dark;
+
+    i {
+        font-size: 13px;
+    }
+}
+
+.wm-api-status__content p {
+    margin: 0;
+
+    font-size: $font-size-sm;
+    line-height: 1.5;
+
+    color: $color-text-secondary;
+}
+
+.wm-api-status__meta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-8;
+
+    flex-shrink: 0;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        span {
+            font-size: $font-size-xs;
+            color: $color-text-muted;
+        }
+
+        strong {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $color-text-dark;
+        }
+    }
+}
+
+.wm-copy-value {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: $color-text-dark;
+
+    cursor: pointer;
+
+    &:hover {
+        color: $color-primary;
+    }
+
+    code {
+        font-size: $font-size-xs;
+        color: inherit;
+    }
+
+    i {
+        font-size: 14px;
+    }
+}
+
+
+// ============================================================
+// API Summary
+// ============================================================
+
+.wm-api-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-8;
+}
+
+.wm-api-summary__card {
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-1px);
+    }
+
+    > strong {
+        display: block;
+
+        margin: $spacing-4 0 3px;
+
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-semibold;
+        line-height: 1.2;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-api-summary__top {
+    @include flex-between;
+
+    gap: $spacing-3;
+}
+
+.wm-api-summary__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: $radius-lg;
+
+    font-size: 18px;
+}
+
+.wm-api-summary__icon--primary {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-api-summary__icon--success {
+    color: $color-success;
+    background: $color-success-light;
+}
+
+.wm-api-summary__icon--warning {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-api-summary__icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-api-summary__period {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+}
+
+.wm-api-summary__label {
+    display: block;
+
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+}
+
+.wm-api-summary__trend {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    margin-top: $spacing-3;
+
+    font-size: 11px;
+    color: $color-text-muted;
+
+    i {
+        font-size: 13px;
+    }
+}
+
+.wm-api-summary__trend--up {
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// API Sections
+// ============================================================
+
+.wm-api-section {
+    margin-bottom: $spacing-8;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    overflow: visible;
+}
+
+.wm-api-section__header {
+    @include flex-between;
+
+    gap: $spacing-5;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-api-section__title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    margin-bottom: 4px;
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-api-section__count {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 23px;
+    padding: 0 8px;
+
+    background: $color-gray-100;
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+}
+
+.wm-api-section__header p {
+    margin: 0;
+
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Toolbar
+// ============================================================
+
+.wm-api-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    padding: $spacing-4 $spacing-5;
+
+    background: $color-gray-50;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-api-search {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 320px;
+}
+
+.wm-api-search > i {
+    position: absolute;
+    left: 12px;
+
+    color: $color-text-muted;
+
+    pointer-events: none;
+}
+
+.wm-api-search input {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 38px;
+
+    background: $color-white;
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+
+    color: $color-text;
+
+    outline: 0;
+
+    @include transition;
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+.wm-api-search__clear {
+    position: absolute;
+    right: 7px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    &.is-visible {
+        display: inline-flex;
+    }
+
+    &:hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-form-control {
+    display: block;
+
+    width: 100%;
+    min-height: $input-height-md;
+
+    padding: 8px 12px;
+
+    background: $color-white;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+
+    color: $color-text;
+
+    outline: 0;
+
+    @include transition;
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+.wm-form-control--auto {
+    width: auto;
+    min-width: 140px;
+}
+
+
+// ============================================================
+// API Keys Table
+// ============================================================
+
+.wm-api-keys-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.wm-api-keys-table {
+    width: 100%;
+    min-width: 980px;
+
+    border-collapse: collapse;
+
+    th {
+        padding: 12px 16px;
+
+        background: $color-gray-50;
+        border-bottom: 1px solid $color-border;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        text-align: left;
+        white-space: nowrap;
+
+        color: $color-text-secondary;
+    }
+
+    td {
+        position: relative;
+
+        padding: 14px 16px;
+
+        border-bottom: 1px solid $color-border-light;
+
+        font-size: $font-size-sm;
+
+        color: $color-text;
+
+        vertical-align: middle;
+    }
+
+    tbody tr {
+        @include transition(background);
+
+        &:hover {
+            background: $color-gray-50;
+        }
+
+        &.is-hidden {
+            display: none;
+        }
+
+        &:last-child td {
+            border-bottom: 0;
+        }
+    }
+}
+
+.wm-api-table__action-cell {
+    width: 52px;
+
+    text-align: right !important;
+}
+
+
+// ============================================================
+// API Key
+// ============================================================
+
+.wm-api-key {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 220px;
+}
+
+.wm-api-key__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+
+    background: $color-primary-light;
+    border-radius: $radius-md;
+
+    color: $color-primary;
+
+    font-size: 16px;
+}
+
+.wm-api-key__content {
+    min-width: 0;
+
+    > strong {
+        display: block;
+
+        margin-bottom: 3px;
+
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-api-key__value {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    code {
+        font-family: monospace;
+        font-size: 11px;
+        color: $color-text-muted;
+    }
+}
+
+.wm-copy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        background: $color-gray-100;
+        color: $color-primary;
+    }
+
+    i {
+        font-size: 14px;
+    }
+}
+
+
+// ============================================================
+// Permission Tags
+// ============================================================
+
+.wm-permission-tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+
+        min-height: 23px;
+        padding: 0 7px;
+
+        background: $color-gray-100;
+        border-radius: $radius-sm;
+
+        font-size: 10px;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-secondary;
+    }
+
+    small {
+        font-size: 10px;
+        color: $color-text-muted;
+    }
+}
+
+.wm-table-muted {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+}
+
+.wm-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    min-height: 25px;
+    padding: 0 8px;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+
+    i {
+        font-size: 13px;
+    }
+}
+
+.wm-status-badge--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-status-badge--danger {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-status-badge--muted {
+    background: $color-gray-100;
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// Table Action
+// ============================================================
+
+.wm-table-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        background: $color-gray-100;
+        color: $color-text-dark;
+    }
+
+    i {
+        font-size: 18px;
+    }
+}
+
+
+// ============================================================
+// Action Menu
+// ============================================================
+
+.wm-api-action-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 10px;
+
+    z-index: $z-dropdown;
+
+    display: none;
+
+    min-width: 175px;
+
+    padding: 5px;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+
+    &.is-open {
+        display: block;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        width: 100%;
+
+        padding: 9px 10px;
+
+        border: 0;
+        border-radius: $radius-sm;
+
+        background: transparent;
+
+        font-family: $font-family-base;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+
+        text-align: left;
+
+        color: $color-text-secondary;
+
+        cursor: pointer;
+
+        @include transition;
+
+        &:hover {
+            background: $color-gray-50;
+            color: $color-text-dark;
+        }
+
+        &.is-danger {
+            color: $color-danger;
+
+            &:hover {
+                background: $color-danger-light;
+                color: $color-danger-dark;
+            }
+        }
+
+        i {
+            width: 17px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+// ============================================================
+// Empty State
+// ============================================================
+
+.wm-api-empty {
+    display: none;
+
+    padding: $spacing-10 $spacing-6;
+
+    text-align: center;
+
+    &.is-visible {
+        display: block;
+    }
+}
+
+.wm-api-empty__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 56px;
+    height: 56px;
+
+    margin: 0 auto $spacing-4;
+
+    border-radius: 50%;
+
+    background: $color-gray-100;
+
+    color: $color-text-muted;
+
+    font-size: 24px;
+}
+
+.wm-api-empty h3 {
+    margin: 0 0 5px;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-api-empty p {
+    margin: 0 0 $spacing-4;
+
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Webhooks
+// ============================================================
+
+.wm-webhooks-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.wm-webhook {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+    @include transition(background);
+
+    &:hover {
+        background: $color-gray-50;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.wm-webhook__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+
+    border-radius: $radius-lg;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 21px;
+}
+
+.wm-webhook__content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-webhook__title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: 5px;
+
+    h3 {
+        margin: 0;
+
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-webhook__content > code {
+    display: block;
+
+    overflow: hidden;
+
+    margin-bottom: 9px;
+
+    font-family: monospace;
+    font-size: 11px;
+
+    color: $color-text-muted;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-webhook__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        font-size: 11px;
+        color: $color-text-muted;
+
+        i {
+            font-size: 13px;
+        }
+    }
+}
+
+.wm-webhook__actions {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    flex-shrink: 0;
+}
+
+
+// ============================================================
+// Switch
+// ============================================================
+
+.wm-switch {
+    position: relative;
+
+    display: inline-flex;
+
+    width: 44px;
+    height: 24px;
+    flex: 0 0 44px;
+
+    cursor: pointer;
+
+    input {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        opacity: 0;
+    }
+
+    span {
+        position: absolute;
+        inset: 0;
+
+        background: $color-gray-300;
+        border-radius: $radius-full;
+
+        @include transition;
+
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 3px;
+            left: 3px;
+
+            width: 18px;
+            height: 18px;
+
+            background: $color-white;
+            border-radius: 50%;
+
+            box-shadow: $shadow-sm;
+
+            @include transition;
+        }
+    }
+
+    input:checked + span {
+        background: $color-primary;
+
+        &::after {
+            transform: translateX(20px);
+        }
+    }
+}
+
+
+// ============================================================
+// Developer Resources
+// ============================================================
+
+.wm-developer-resources {
+    margin-bottom: $spacing-8;
+}
+
+.wm-developer-resources__header {
+    margin-bottom: $spacing-4;
+
+    h2 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+    }
+}
+
+.wm-developer-resources__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-developer-resource {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    text-decoration: none;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-primary;
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+
+        .wm-developer-resource__icon {
+            color: $color-white;
+            background: $color-primary;
+        }
+
+        h3 {
+            color: $color-primary;
+        }
+    }
+}
+
+.wm-developer-resource__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+
+    border-radius: $radius-lg;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 20px;
+
+    @include transition;
+}
+
+.wm-developer-resource h3 {
+    margin: 0 0 6px;
+
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+
+    @include transition;
+}
+
+.wm-developer-resource p {
+    margin: 0 0 10px;
+
+    font-size: $font-size-xs;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+.wm-developer-resource span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-primary;
+
+    i {
+        font-size: 13px;
+    }
+}
+
+
+// ============================================================
+// Modal
+// ============================================================
+
+.wm-api-modal .modal-dialog {
+    max-width: 520px;
+}
+
+.wm-api-modal .modal-content {
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-lg;
+
+    overflow: hidden;
+}
+
+.wm-api-modal .modal-header {
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+    h5 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+        color: $color-text-secondary;
+    }
+}
+
+.wm-api-modal .modal-body {
+    padding: $spacing-5;
+}
+
+.wm-api-modal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-2;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-top: 1px solid $color-border-light;
+}
+
+.wm-form-group {
+    margin-bottom: $spacing-5;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    > label {
+        display: block;
+
+        margin-bottom: $spacing-2;
+
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+
+        span {
+            color: $color-danger;
+        }
+    }
+
+    > small {
+        display: block;
+
+        margin-top: 6px;
+
+        font-size: 11px;
+        line-height: 1.5;
+
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// Permission Selector
+// ============================================================
+
+.wm-permission-selector {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    overflow: hidden;
+}
+
+.wm-permission-option {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    padding: 11px 12px;
+
+    margin: 0;
+
+    border-bottom: 1px solid $color-border-light;
+
+    cursor: pointer;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+
+    &:hover {
+        background: $color-gray-50;
+    }
+
+    input {
+        position: absolute;
+
+        width: 1px;
+        height: 1px;
+
+        opacity: 0;
+    }
+}
+
+.wm-permission-option__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 19px;
+    height: 19px;
+    flex: 0 0 19px;
+
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-sm;
+
+    color: transparent;
+
+    @include transition;
+}
+
+.wm-permission-option input:checked + .wm-permission-option__check {
+    background: $color-primary;
+    border-color: $color-primary;
+
+    color: $color-white;
+}
+
+.wm-permission-option__check i {
+    font-size: 13px;
+}
+
+.wm-permission-option > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    strong {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+    }
+
+    small {
+        font-size: 11px;
+        color: $color-text-muted;
+    }
+}
+
+
+// ============================================================
+// Security Note
+// ============================================================
+
+.wm-api-security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+
+    margin-top: $spacing-5;
+    padding: $spacing-3;
+
+    background: $color-warning-light;
+    border: 1px solid rgba(245, 158, 11, 0.18);
+    border-radius: $radius-lg;
+
+    i {
+        flex-shrink: 0;
+
+        margin-top: 1px;
+
+        font-size: 17px;
+
+        color: $color-warning-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+        line-height: 1.6;
+
+        color: $color-text-secondary;
+    }
+}
+
+
+// ============================================================
+// Generated Key
+// ============================================================
+
+.wm-generated-key {
+    padding: $spacing-8;
+
+    text-align: center;
+}
+
+.wm-generated-key__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto $spacing-4;
+
+    border-radius: 50%;
+
+    background: $color-success-light;
+
+    color: $color-success;
+
+    font-size: 26px;
+}
+
+.wm-generated-key h2 {
+    margin: 0 0 7px;
+
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-generated-key > p {
+    max-width: 390px;
+    margin: 0 auto $spacing-5;
+
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+.wm-generated-key__value {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    padding: $spacing-3;
+
+    margin-bottom: $spacing-4;
+
+    background: $color-gray-50;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    text-align: left;
+
+    code {
+        flex: 1;
+
+        overflow: hidden;
+
+        font-family: monospace;
+        font-size: 11px;
+
+        color: $color-text;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .wm-copy-button {
+        flex-shrink: 0;
+    }
+}
+
+.wm-generated-key .wm-api-security-note {
+    text-align: left;
+    margin-bottom: $spacing-5;
+}
+
+.wm-generated-key > .wm-btn {
+    min-width: 120px;
+}
+
+
+// ============================================================
+// Webhook Events
+// ============================================================
+
+.wm-webhook-events {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.wm-webhook-events label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 38px;
+    padding: 0 10px;
+
+    margin: 0;
+
+    background: $color-gray-50;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-border;
+        color: $color-text-dark;
+    }
+
+    input {
+        accent-color: $color-primary;
+    }
+}
+
+
+// ============================================================
+// SweetAlert helper
+// ============================================================
+
+.wm-swal-api-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    padding: $spacing-4;
+
+    background: $color-gray-50;
+    border-radius: $radius-lg;
+
+    text-align: left;
+
+    span {
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+    }
+
+    code {
+        font-size: 12px;
+        color: $color-text-dark;
+    }
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-api-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-developer-resources__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-api-page {
+        padding: $spacing-5;
+    }
+
+    .wm-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-page-header__actions {
+        width: 100%;
+    }
+
+    .wm-page-header__actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-api-status {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-api-status__meta {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+    .wm-webhook {
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-api-page {
+        padding: $spacing-4;
+    }
+
+    .wm-page-header__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-page-header__actions {
+        flex-direction: column;
+    }
+
+    .wm-page-header__actions .wm-btn {
+        width: 100%;
+    }
+
+    .wm-api-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-api-status {
+        padding: $spacing-4;
+    }
+
+    .wm-api-status__main {
+        align-items: flex-start;
+    }
+
+    .wm-api-status__title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .wm-api-status__meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: $spacing-4;
+    }
+
+    .wm-api-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-api-search {
+        width: 100%;
+    }
+
+    .wm-api-toolbar .wm-form-control {
+        width: 100%;
+    }
+
+    .wm-api-section__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-api-section__header > .wm-btn {
+        width: 100%;
+    }
+
+    .wm-developer-resources__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-webhook {
+        flex-wrap: wrap;
+    }
+
+    .wm-webhook__content {
+        width: calc(100% - 65px);
+    }
+
+    .wm-webhook__actions {
+        width: 100%;
+        justify-content: flex-end;
+
+        padding-left: 62px;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-api-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-api-summary__card {
+        padding: $spacing-4;
+    }
+
+    .wm-api-status__icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+
+        font-size: 20px;
+    }
+
+    .wm-api-section__header,
+    .wm-api-toolbar {
+        padding: $spacing-4;
+    }
+
+    .wm-api-section__title-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .wm-webhook {
+        padding: $spacing-4;
+    }
+
+    .wm-webhook__content {
+        width: calc(100% - 58px);
+    }
+
+    .wm-webhook__meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .wm-webhook__actions {
+        padding-left: 0;
+    }
+
+    .wm-webhook-events {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-api-modal .modal-header,
+    .wm-api-modal .modal-body {
+        padding: $spacing-4;
+    }
+
+    .wm-api-modal .modal-footer {
+        padding: $spacing-3 $spacing-4;
+    }
+
+    .wm-api-modal .modal-footer .wm-btn {
+        flex: 1;
+    }
+
+    .wm-generated-key {
+        padding: $spacing-6 $spacing-4;
+    }
+}

@@ -1,0 +1,727 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Payment Success Page
+// ============================================================
+
+.wm-payment-success-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Success Hero
+// ============================================================
+
+.wm-payment-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 720px;
+
+    margin: 0 auto $spacing-10;
+
+    text-align: center;
+}
+
+.wm-payment-success__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 72px;
+    height: 72px;
+
+    margin-bottom: $spacing-5;
+
+    background: $color-success-light;
+
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: 50%;
+
+    color: $color-success-dark;
+
+    font-size: 34px;
+
+    box-shadow:
+        0 8px 25px rgba(16, 185, 129, 0.12);
+}
+
+.wm-payment-success__eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: $spacing-3;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    color: $color-success-dark;
+}
+
+.wm-payment-success__title {
+    margin: 0 0 $spacing-3;
+
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: $font-weight-bold;
+    line-height: 1.15;
+
+    letter-spacing: -0.03em;
+
+    color: $color-text-dark;
+}
+
+.wm-payment-success__description {
+    max-width: 620px;
+
+    margin: 0 auto;
+
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+
+    color: $color-text-secondary;
+}
+
+.wm-payment-success__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    margin-top: $spacing-6;
+}
+
+
+// ============================================================
+// Payment Details Card
+// ============================================================
+
+.wm-payment-success-card {
+    max-width: 900px;
+
+    margin: 0 auto $spacing-10;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    overflow: hidden;
+}
+
+.wm-payment-success-card__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+
+    h2 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-payment-success-card__paid {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px 9px;
+
+    background: $color-success-light;
+
+    border-radius: $radius-full;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-success-dark;
+
+    i {
+        font-size: 14px;
+    }
+}
+
+
+// ============================================================
+// Payment Details
+// ============================================================
+
+.wm-payment-success-details {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-payment-success-details__item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    padding: 0 $spacing-4;
+
+    border-right: 1px solid $color-border-light;
+
+    &:first-child {
+        padding-left: 0;
+    }
+
+    &:last-child {
+        padding-right: 0;
+
+        border-right: 0;
+    }
+
+    span {
+        font-size: 10px;
+
+        color: $color-text-muted;
+    }
+
+    strong {
+        width: fit-content;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+
+        cursor: default;
+    }
+
+    &:first-child strong {
+        cursor: pointer;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}
+
+
+// ============================================================
+// Total
+// ============================================================
+
+.wm-payment-success-card__total {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background: $color-gray-50;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    span {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        color: $color-text-dark;
+    }
+
+    small {
+        font-size: 10px;
+
+        color: $color-text-muted;
+    }
+
+    > strong {
+        font-size: 26px;
+        font-weight: $font-weight-bold;
+
+        letter-spacing: -0.02em;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-payment-success-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: $spacing-2;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-top: 1px solid $color-border-light;
+}
+
+
+// ============================================================
+// Features
+// ============================================================
+
+.wm-payment-success-features {
+    margin-bottom: $spacing-10;
+}
+
+.wm-payment-success-features__header {
+    max-width: 680px;
+
+    margin: 0 auto $spacing-6;
+
+    text-align: center;
+
+    > span {
+        display: block;
+
+        margin-bottom: $spacing-2;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+
+        color: $color-primary;
+    }
+
+    h2 {
+        margin: 0 0 $spacing-2;
+
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-semibold;
+
+        letter-spacing: -0.02em;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-sm;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-payment-success-features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: $spacing-4;
+}
+
+.wm-payment-success-feature {
+    display: flex;
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    @include transition;
+
+    &:hover {
+        border-color: rgba(37, 99, 235, 0.30);
+
+        box-shadow: $shadow-sm;
+    }
+
+    h3 {
+        margin: 0 0 5px;
+
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+        line-height: 1.6;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-payment-success-feature__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    background: $color-primary-light;
+
+    border-radius: $radius-lg;
+
+    color: $color-primary;
+
+    font-size: 19px;
+}
+
+
+// ============================================================
+// Next Steps
+// ============================================================
+
+.wm-payment-success-next {
+    margin-bottom: $spacing-10;
+}
+
+.wm-payment-success-next__header {
+    margin-bottom: $spacing-5;
+
+    > span {
+        display: block;
+
+        margin-bottom: 5px;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+
+        color: $color-primary;
+    }
+
+    h2 {
+        margin: 0;
+
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+}
+
+.wm-payment-success-next__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: $spacing-4;
+}
+
+.wm-payment-success-next__item {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: $spacing-3;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    color: inherit;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-primary;
+
+        box-shadow: $shadow-sm;
+
+        transform: translateY(-2px);
+
+        .wm-payment-success-next__number {
+            background: $color-primary;
+
+            color: $color-white;
+        }
+
+        > i {
+            color: $color-primary;
+
+            transform: translateX(3px);
+        }
+    }
+
+    > i {
+        margin-left: auto;
+        margin-top: 3px;
+
+        font-size: 17px;
+
+        color: $color-text-muted;
+
+        @include transition;
+    }
+
+    h3 {
+        margin: 0 0 5px;
+
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+        line-height: 1.6;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-payment-success-next__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+
+    background: $color-gray-100;
+
+    border-radius: $radius-md;
+
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-secondary;
+
+    @include transition;
+}
+
+
+// ============================================================
+// Support
+// ============================================================
+
+.wm-payment-success-support {
+    @include flex-between;
+
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary-light,
+            $color-white
+        );
+
+    border: 1px solid rgba(37, 99, 235, 0.12);
+
+    border-radius: $radius-xl;
+}
+
+.wm-payment-success-support__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+
+    background: $color-white;
+
+    border-radius: $radius-lg;
+
+    color: $color-primary;
+
+    font-size: 20px;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-payment-success-support > div:nth-child(2) {
+    flex: 1;
+
+    h3 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-xs;
+
+        color: $color-text-secondary;
+    }
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 991px) {
+
+    .wm-payment-success-page {
+        padding: $spacing-6 $spacing-5 $spacing-12;
+    }
+
+    .wm-payment-success-features__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-payment-success-next__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-payment-success-page {
+        padding: $spacing-5 $spacing-4 $spacing-10;
+    }
+
+    .wm-payment-success__title {
+        font-size: 30px;
+    }
+
+    .wm-payment-success__description {
+        font-size: $font-size-sm;
+    }
+
+    .wm-payment-success__actions {
+        width: 100%;
+        flex-direction: column;
+
+        .wm-btn {
+            width: 100%;
+        }
+    }
+
+    .wm-payment-success-details {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: $spacing-4;
+    }
+
+    .wm-payment-success-details__item {
+        padding: 0;
+
+        border-right: 0;
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            padding-bottom: $spacing-4;
+
+            border-bottom: 1px solid $color-border-light;
+        }
+    }
+
+    .wm-payment-success-features__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-payment-success-support {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .wm-payment-success-support .wm-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-payment-success__icon {
+        width: 62px;
+        height: 62px;
+
+        font-size: 29px;
+    }
+
+    .wm-payment-success__title {
+        font-size: 27px;
+    }
+
+    .wm-payment-success-card__header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        padding: $spacing-4;
+    }
+
+    .wm-payment-success-details {
+        grid-template-columns: 1fr;
+
+        padding: $spacing-4;
+    }
+
+    .wm-payment-success-details__item {
+        padding: 0 0 $spacing-3 !important;
+
+        border-bottom: 1px solid $color-border-light !important;
+
+        &:last-child {
+            padding-bottom: 0 !important;
+
+            border-bottom: 0 !important;
+        }
+    }
+
+    .wm-payment-success-card__total {
+        padding: $spacing-4;
+    }
+
+    .wm-payment-success-card__footer {
+        flex-direction: column;
+
+        padding: $spacing-4;
+
+        .wm-btn {
+            width: 100%;
+        }
+    }
+
+    .wm-payment-success-feature {
+        padding: $spacing-4;
+    }
+
+    .wm-payment-success-support {
+        padding: $spacing-4;
+    }
+}

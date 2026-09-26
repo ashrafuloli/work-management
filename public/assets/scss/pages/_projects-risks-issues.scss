@@ -1,0 +1,1212 @@
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Page
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page {
+    width: 100%;
+}
+
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-risks-issues-page__header-left {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-risks-issues-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__breadcrumb a {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-project-risks-issues-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-project-risks-issues-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-project-risks-issues-page__breadcrumb span {
+    color: $color-text-secondary;
+}
+
+.wm-project-risks-issues-page__title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.wm-project-risks-issues-page__title-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid $color-danger-light;
+    border-radius: $radius-xl;
+    background: $color-danger-light;
+    color: $color-danger;
+    font-size: 23px;
+}
+
+.wm-project-risks-issues-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-project-risks-issues-page__subtitle {
+    margin: 5px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-project-risks-issues-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+
+// ------------------------------------------------------------
+// Navigation
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__navigation {
+    margin-bottom: $spacing-5;
+    overflow-x: auto;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-risks-issues-page__nav {
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-risks-issues-page__nav-item {
+    position: relative;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 13px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.wm-project-risks-issues-page__nav-item:hover {
+    color: $color-text-dark;
+}
+
+.wm-project-risks-issues-page__nav-item.is-active {
+    color: $color-primary;
+}
+
+.wm-project-risks-issues-page__nav-item.is-active::after {
+    position: absolute;
+    right: 8px;
+    bottom: -1px;
+    left: 8px;
+    height: 2px;
+    content: "";
+    border-radius: $radius-full $radius-full 0 0;
+    background: $color-primary;
+}
+
+.wm-project-risks-issues-page__nav-item i {
+    font-size: 17px;
+}
+
+.wm-project-risks-issues-page__nav-item > span {
+    min-width: 21px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+    color: $color-text-secondary;
+    font-size: 11px;
+}
+
+
+// ------------------------------------------------------------
+// Summary
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-risks-issues-page__summary-card {
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-project-risks-issues-page__summary-card:hover {
+    border-color: $color-border-dark;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-risks-issues-page__summary-card.is-active {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.08);
+}
+
+.wm-project-risks-issues-page__summary-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 19px;
+}
+
+.wm-project-risks-issues-page__summary-icon.is-blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-risks-issues-page__summary-icon.is-red {
+    background: $color-danger-light;
+    color: $color-danger;
+}
+
+.wm-project-risks-issues-page__summary-icon.is-orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-risks-issues-page__summary-icon.is-green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-risks-issues-page__summary-content {
+    min-width: 0;
+}
+
+.wm-project-risks-issues-page__summary-content > span {
+    display: block;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-risks-issues-page__summary-content strong {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-risks-issues-page__summary-content small {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Risk Health
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__health {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-5;
+    margin-bottom: $spacing-5;
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-project-risks-issues-page__health-main {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-project-risks-issues-page__health-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: $color-warning-light;
+    color: $color-warning-dark;
+    font-size: 23px;
+}
+
+.wm-project-risks-issues-page__health-content > span {
+    display: block;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-risks-issues-page__health-content strong {
+    display: block;
+    margin-top: 2px;
+    color: $color-warning-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-project-risks-issues-page__health-content p {
+    margin: 3px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-risks-issues-page__health-stats {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+}
+
+.wm-project-risks-issues-page__health-stats > div {
+    min-width: 55px;
+    text-align: center;
+}
+
+.wm-project-risks-issues-page__health-stats strong {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+}
+
+.wm-project-risks-issues-page__health-stats span {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Toolbar
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__toolbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-risks-issues-page__toolbar-left,
+.wm-project-risks-issues-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-project-risks-issues-page__search {
+    position: relative;
+    width: 320px;
+}
+
+.wm-project-risks-issues-page__search > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: $color-gray-400;
+    font-size: 17px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.wm-project-risks-issues-page__search input {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 38px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__search input:focus {
+    @include focus-ring;
+}
+
+.wm-project-risks-issues-page__search button {
+    position: absolute;
+    top: 50%;
+    right: 7px;
+    width: 27px;
+    height: 27px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+    transform: translateY(-50%);
+}
+
+.wm-project-risks-issues-page__search button.is-visible {
+    display: inline-flex;
+}
+
+.wm-project-risks-issues-page__toolbar-button {
+    height: $button-height-md;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__toolbar-button:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-risks-issues-page__toolbar-button > span {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Sort
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__sort {
+    position: relative;
+}
+
+.wm-project-risks-issues-page__sort-menu {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: calc(100% + 6px);
+    right: 0;
+    width: 175px;
+    display: none;
+    padding: 5px;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-md;
+}
+
+.wm-project-risks-issues-page__sort-menu.is-open {
+    display: block;
+}
+
+.wm-project-risks-issues-page__sort-menu button {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-secondary;
+    text-align: left;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__sort-menu button:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+
+// ------------------------------------------------------------
+// View Switcher
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__view-switcher {
+    height: $button-height-md;
+    display: flex;
+    padding: 3px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-gray-50;
+}
+
+.wm-project-risks-issues-page__view-switcher button {
+    width: 34px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-secondary;
+}
+
+.wm-project-risks-issues-page__view-switcher button.is-active {
+    background: $color-white;
+    color: $color-primary;
+    box-shadow: $shadow-sm;
+}
+
+
+// ------------------------------------------------------------
+// Filter Panel
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__filter-panel {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-3;
+    margin-bottom: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-risks-issues-page__filter-panel.is-open {
+    display: grid;
+}
+
+.wm-project-risks-issues-page__filter-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-risks-issues-page__filter-field select {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 30px 0 10px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__filter-field select:focus {
+    @include focus-ring;
+}
+
+.wm-project-risks-issues-page__clear-filter {
+    height: $button-height-md;
+    padding: 0 13px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-risks-issues-page__filter-chip {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 9px;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Card
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__card {
+    min-width: 0;
+    overflow: visible;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+
+// ------------------------------------------------------------
+// Views
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__list-view,
+.wm-project-risks-issues-page__grid-view {
+    display: none;
+}
+
+.wm-project-risks-issues-page__list-view.is-visible,
+.wm-project-risks-issues-page__grid-view.is-visible {
+    display: block;
+}
+
+
+// ------------------------------------------------------------
+// Table
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__table-wrapper {
+    overflow-x: auto;
+}
+
+.wm-project-risks-issues-page__table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+}
+
+.wm-project-risks-issues-page__table th {
+    padding: 12px 14px;
+    border-bottom: 1px solid $color-border;
+    background: $color-gray-50;
+    color: $color-text-muted;
+    text-align: left;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    white-space: nowrap;
+}
+
+.wm-project-risks-issues-page__table th:first-child {
+    border-radius: $radius-xl 0 0 0;
+}
+
+.wm-project-risks-issues-page__table th:last-child {
+    border-radius: 0 $radius-xl 0 0;
+}
+
+.wm-project-risks-issues-page__table td {
+    position: relative;
+    padding: 13px 14px;
+    border-bottom: 1px solid $color-border-light;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+.wm-project-risks-issues-page__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.wm-project-risks-issues-page__table tbody tr:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-risks-issues-page__table tbody tr.is-hidden {
+    display: none;
+}
+
+
+// ------------------------------------------------------------
+// Item Name
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__item-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 260px;
+}
+
+.wm-project-risks-issues-page__item-name > span {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 16px;
+}
+
+.wm-project-risks-issues-page__item-name > span.is-risk {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-risks-issues-page__item-name > span.is-issue {
+    background: $color-danger-light;
+    color: $color-danger;
+}
+
+.wm-project-risks-issues-page__item-name div {
+    min-width: 0;
+}
+
+.wm-project-risks-issues-page__item-name strong {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-risks-issues-page__item-name small {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Badges
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__type,
+.wm-project-risks-issues-page__priority,
+.wm-project-risks-issues-page__status,
+.wm-project-risks-issues-page__score {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 0 7px;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-risks-issues-page__type.is-risk {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-risks-issues-page__type.is-issue {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-project-risks-issues-page__priority.is-high,
+.wm-project-risks-issues-page__score.is-high {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-project-risks-issues-page__priority.is-medium,
+.wm-project-risks-issues-page__score.is-medium {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-risks-issues-page__priority.is-low,
+.wm-project-risks-issues-page__score.is-low {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-risks-issues-page__status.is-open {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-risks-issues-page__status.is-progress {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-risks-issues-page__status.is-resolved {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+
+// ------------------------------------------------------------
+// Row Action
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__row-action {
+    position: relative;
+}
+
+.wm-project-risks-issues-page__row-action > button {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-risks-issues-page__row-action > button:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-risks-issues-page__action-menu {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: 34px;
+    right: 0;
+    width: 175px;
+    display: none;
+    padding: 5px;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-md;
+}
+
+.wm-project-risks-issues-page__action-menu.is-open {
+    display: block;
+}
+
+.wm-project-risks-issues-page__action-menu button {
+    width: 100%;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-secondary;
+    text-align: left;
+    font-size: $font-size-sm;
+}
+
+.wm-project-risks-issues-page__action-menu button:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+.wm-project-risks-issues-page__action-menu button:last-child:hover {
+    background: $color-danger-light;
+    color: $color-danger;
+}
+
+
+// ------------------------------------------------------------
+// Grid
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__risk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-project-risks-issues-page__risk-card {
+    position: relative;
+    min-width: 0;
+    padding: $spacing-5;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+    transition: all 0.2s ease;
+}
+
+.wm-project-risks-issues-page__risk-card:hover {
+    border-color: $color-border-dark;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-risks-issues-page__risk-card.is-hidden {
+    display: none;
+}
+
+.wm-project-risks-issues-page__risk-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+}
+
+.wm-project-risks-issues-page__risk-card h3 {
+    margin: $spacing-4 0 7px;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-risks-issues-page__risk-card > p {
+    min-height: 42px;
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: $line-height-normal;
+}
+
+.wm-project-risks-issues-page__risk-card-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3;
+    margin-top: $spacing-5;
+    padding-top: $spacing-4;
+    border-top: 1px solid $color-border-light;
+}
+
+.wm-project-risks-issues-page__risk-card-meta > div {
+    min-width: 0;
+}
+
+.wm-project-risks-issues-page__risk-card-meta span {
+    display: block;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+.wm-project-risks-issues-page__risk-card-meta strong {
+    display: block;
+    overflow: hidden;
+    margin-top: 3px;
+    color: $color-text-dark;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-risks-issues-page__risk-card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-top: $spacing-4;
+}
+
+
+// ------------------------------------------------------------
+// Empty State
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__empty {
+    min-height: 340px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: $spacing-4;
+    padding: $spacing-8;
+    border: 1px dashed $color-border-dark;
+    border-radius: $radius-xl;
+    background: $color-white;
+    text-align: center;
+}
+
+.wm-project-risks-issues-page__empty.is-visible {
+    display: flex;
+}
+
+.wm-project-risks-issues-page__empty-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: $color-danger-light;
+    color: $color-danger;
+    font-size: 25px;
+}
+
+.wm-project-risks-issues-page__empty h3 {
+    margin: $spacing-4 0 5px;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+}
+
+.wm-project-risks-issues-page__empty p {
+    max-width: 430px;
+    margin: 0 0 $spacing-4;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Footer
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-top: $spacing-4;
+}
+
+.wm-project-risks-issues-page__footer > span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-risks-issues-page__footer > span strong {
+    color: $color-text-secondary;
+}
+
+.wm-project-risks-issues-page__pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-risks-issues-page__pagination button {
+    min-width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-risks-issues-page__pagination button:hover:not(:disabled) {
+    border-color: $color-primary;
+    color: $color-primary;
+}
+
+.wm-project-risks-issues-page__pagination button.is-active {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-white;
+}
+
+.wm-project-risks-issues-page__pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+// ------------------------------------------------------------
+// Modal
+// ------------------------------------------------------------
+
+.wm-project-risks-issues-page__modal-subtitle {
+    margin: 3px 0 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Responsive
+// ------------------------------------------------------------
+
+@media (max-width: 1199px) {
+
+    .wm-project-risks-issues-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-risks-issues-page__risk-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-project-risks-issues-page__header {
+        flex-direction: column;
+    }
+
+    .wm-project-risks-issues-page__header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .wm-project-risks-issues-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-risks-issues-page__toolbar-left,
+    .wm-project-risks-issues-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-project-risks-issues-page__toolbar-right {
+        justify-content: flex-end;
+    }
+
+    .wm-project-risks-issues-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+    .wm-project-risks-issues-page__filter-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-risks-issues-page__health {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-risks-issues-page__health-stats {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-project-risks-issues-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-project-risks-issues-page__filter-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-risks-issues-page__clear-filter {
+        width: 100%;
+    }
+
+    .wm-project-risks-issues-page__risk-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-risks-issues-page__health-stats {
+        gap: $spacing-4;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-project-risks-issues-page__title-row {
+        align-items: flex-start;
+    }
+
+    .wm-project-risks-issues-page__title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-project-risks-issues-page__header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-project-risks-issues-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-project-risks-issues-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-risks-issues-page__toolbar-left {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+    }
+
+    .wm-project-risks-issues-page__search {
+        width: 100%;
+    }
+
+    .wm-project-risks-issues-page__health {
+        padding: $spacing-4;
+    }
+
+    .wm-project-risks-issues-page__health-main {
+        align-items: flex-start;
+    }
+
+    .wm-project-risks-issues-page__health-stats {
+        justify-content: space-between;
+    }
+
+    .wm-project-risks-issues-page__footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-risks-issues-page__pagination {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

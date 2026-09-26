@@ -1,0 +1,1073 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Page
+// ============================================================
+
+.wm-profile-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ============================================================
+// Header
+// ============================================================
+
+.wm-profile-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-profile-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-4;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-profile-page__breadcrumb i {
+    color: $color-gray-400;
+}
+
+.wm-profile-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-profile-page__breadcrumb-link:hover {
+    color: $color-primary;
+}
+
+.wm-profile-page__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+}
+
+.wm-profile-page__title {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-profile-page__subtitle {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-profile-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+
+// ============================================================
+// Layout
+// ============================================================
+
+.wm-profile-page__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+    gap: $spacing-6;
+}
+
+.wm-profile-page__main {
+    min-width: 0;
+}
+
+.wm-profile-page__sidebar {
+    position: sticky;
+    top: calc($header-height + $spacing-6);
+
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+}
+
+
+// ============================================================
+// Profile Card
+// ============================================================
+
+.wm-profile-card {
+    margin-bottom: $spacing-5;
+
+    overflow: hidden;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-profile-card__cover {
+    height: 112px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563EB 0%,
+            #06B6D4 55%,
+            #10B981 100%
+        );
+}
+
+.wm-profile-card__body {
+    padding: 0 $spacing-5 $spacing-5;
+}
+
+.wm-profile-card__identity {
+    display: flex;
+    align-items: flex-end;
+    gap: $spacing-4;
+
+    margin-top: -38px;
+}
+
+.wm-profile-card__identity-content {
+    min-width: 0;
+    padding-bottom: 3px;
+}
+
+.wm-profile-card__identity-content h2 {
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-profile-card__identity-content p {
+    margin: 0 0 5px;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-profile-card__identity-content span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-card__identity-content span i {
+    color: $color-primary;
+}
+
+.wm-profile-card__identity-status {
+    margin-left: auto;
+    padding-bottom: 7px;
+}
+
+
+// ============================================================
+// Avatar
+// ============================================================
+
+.wm-profile-avatar {
+    position: relative;
+
+    width: 82px;
+    height: 82px;
+    flex: 0 0 82px;
+}
+
+.wm-profile-avatar__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 82px;
+    height: 82px;
+
+    border: 4px solid $color-white;
+    border-radius: $radius-full;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary,
+            $color-cyan
+        );
+
+    color: $color-white;
+
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+
+    box-shadow: $shadow-md;
+}
+
+.wm-profile-avatar__edit {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border: 2px solid $color-white;
+    border-radius: $radius-full;
+
+    background: $color-primary;
+    color: $color-white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.wm-profile-avatar__edit:hover {
+    background: $color-primary-hover;
+}
+
+.wm-profile-online-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    min-height: 28px;
+    padding: 0 10px;
+
+    border-radius: $radius-full;
+
+    background: $color-success-light;
+    color: $color-success-dark;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-online-status i {
+    width: 6px;
+    height: 6px;
+
+    border-radius: $radius-full;
+
+    background: $color-success;
+}
+
+
+// ============================================================
+// Section
+// ============================================================
+
+.wm-profile-section {
+    margin-bottom: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-profile-section__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-profile-section__title {
+    margin: 0 0 4px;
+
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-profile-section__description {
+    margin: 0;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-profile-section__body {
+    padding: $spacing-5;
+}
+
+
+// ============================================================
+// Form
+// ============================================================
+
+.wm-profile-field label {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-field .form-control,
+.wm-profile-field .form-select {
+    min-height: $input-height-md;
+
+    border-color: $input-border;
+    border-radius: $radius-md;
+
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-profile-field textarea.form-control {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.wm-profile-field .form-control:focus,
+.wm-profile-field .form-select:focus {
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-profile-field__hint {
+    display: block;
+
+    margin-top: 6px;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-input-icon {
+    position: relative;
+}
+
+.wm-profile-input-icon > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    z-index: 2;
+
+    color: $color-text-muted;
+    font-size: 16px;
+
+    transform: translateY(-50%);
+}
+
+.wm-profile-input-icon .form-control {
+    padding-left: 38px;
+}
+
+
+// ============================================================
+// Security
+// ============================================================
+
+.wm-profile-security-list {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+}
+
+.wm-profile-security-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-profile-security-item:last-child {
+    border-bottom: 0;
+}
+
+.wm-profile-security-item__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+
+    border-radius: $radius-lg;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: 19px;
+}
+
+.wm-profile-security-item__icon--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-profile-security-item__icon--info {
+    background: $color-info-light;
+    color: $color-info-dark;
+}
+
+.wm-profile-security-item__content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-profile-security-item__content strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-security-item__content span {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-security-item__status {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-profile-security-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 25px;
+    padding: 0 9px;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-security-badge--warning {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+// ============================================================
+// Sessions
+// ============================================================
+
+.wm-profile-sessions {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-profile-session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-profile-session:last-child {
+    border-bottom: 0;
+}
+
+.wm-profile-session__device {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-width: 0;
+}
+
+.wm-profile-session__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+
+    border-radius: $radius-lg;
+
+    background: $color-gray-100;
+    color: $color-text-secondary;
+
+    font-size: 18px;
+}
+
+.wm-profile-session__device > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+.wm-profile-session__device strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-session__device span {
+    overflow: hidden;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-profile-session__current {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 25px;
+    padding: 0 9px;
+
+    border-radius: $radius-full;
+
+    background: $color-success-light;
+    color: $color-success-dark;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-session__revoke {
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: $color-danger-dark;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+}
+
+.wm-profile-session__revoke:hover {
+    color: $color-danger;
+}
+
+
+// ============================================================
+// Activity
+// ============================================================
+
+.wm-profile-activity {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-profile-activity__item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-profile-activity__item:last-child {
+    border-bottom: 0;
+}
+
+.wm-profile-activity__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-profile-activity__icon--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-profile-activity__content {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-profile-activity__content strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-activity__content span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-activity__item time {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+
+// ============================================================
+// Sidebar Cards
+// ============================================================
+
+.wm-profile-sidebar-card {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+    overflow: hidden;
+}
+
+.wm-profile-sidebar-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+
+    padding: $spacing-4;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-profile-sidebar-card__header h3 {
+    margin: 0;
+
+    color: $color-text-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-profile-sidebar-card__header > strong {
+    color: $color-primary;
+    font-size: $font-size-sm;
+}
+
+
+// ============================================================
+// Account
+// ============================================================
+
+.wm-profile-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: $spacing-5 $spacing-4;
+
+    text-align: center;
+}
+
+.wm-profile-account__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-3;
+
+    border-radius: $radius-full;
+
+    background:
+        linear-gradient(
+            135deg,
+            $color-primary,
+            $color-cyan
+        );
+
+    color: $color-white;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+}
+
+.wm-profile-account strong {
+    margin-bottom: 3px;
+
+    color: $color-text-dark;
+    font-size: $font-size-md;
+}
+
+.wm-profile-account > span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-account-meta {
+    padding: 0 $spacing-4 $spacing-4;
+}
+
+.wm-profile-account-meta > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+
+    padding: 9px 0;
+
+    border-top: 1px solid $color-border-light;
+}
+
+.wm-profile-account-meta span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-profile-account-meta strong {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-align: right;
+}
+
+.wm-profile-account-meta__status {
+    color: $color-success-dark !important;
+}
+
+
+// ============================================================
+// Completion
+// ============================================================
+
+.wm-profile-completion {
+    padding: $spacing-4;
+}
+
+.wm-profile-completion__bar {
+    width: 100%;
+    height: 7px;
+
+    margin-bottom: $spacing-3;
+
+    overflow: hidden;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+}
+
+.wm-profile-completion__bar span {
+    display: block;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: $color-primary;
+}
+
+.wm-profile-completion p {
+    margin: 0;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+
+// ============================================================
+// Quick Links
+// ============================================================
+
+.wm-profile-quick-links {
+    padding: $spacing-2;
+}
+
+.wm-profile-quick-links a {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    min-height: 40px;
+    padding: 0 $spacing-3;
+
+    border-radius: $radius-md;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    text-decoration: none;
+}
+
+.wm-profile-quick-links a:hover {
+    background: $color-gray-50;
+    color: $color-primary;
+}
+
+.wm-profile-quick-links a > i:first-child {
+    width: 18px;
+
+    color: $color-text-muted;
+}
+
+.wm-profile-quick-links a:hover > i:first-child {
+    color: $color-primary;
+}
+
+.wm-profile-quick-links a > span {
+    flex: 1;
+}
+
+.wm-profile-quick-links a > i:last-child {
+    color: $color-text-muted;
+    font-size: 14px;
+}
+
+
+// ============================================================
+// Save State
+// ============================================================
+
+#profileSave.is-dirty {
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+#profileSave.is-loading {
+    pointer-events: none;
+}
+
+.wm-profile-spinner {
+    display: inline-block;
+
+    width: 14px;
+    height: 14px;
+
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: $color-white;
+
+    border-radius: $radius-full;
+
+    animation:
+        wm-profile-spin 0.7s linear infinite;
+}
+
+@keyframes wm-profile-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-profile-page__layout {
+        grid-template-columns: minmax(0, 1fr) 260px;
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-profile-page__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-profile-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-profile-page__layout {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-profile-page__sidebar {
+        position: static;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-profile-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-profile-card__identity {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .wm-profile-card__identity-content {
+        padding-top: 42px;
+    }
+
+    .wm-profile-card__identity-status {
+        width: 100%;
+        margin-left: 0;
+        padding: 0;
+    }
+
+    .wm-profile-page__sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-profile-security-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .wm-profile-security-item__content {
+        flex-basis: calc(100% - 62px);
+    }
+
+    .wm-profile-security-item > .btn,
+    .wm-profile-security-item__status {
+        margin-left: 58px;
+    }
+
+    .wm-profile-activity__item {
+        align-items: flex-start;
+    }
+
+    .wm-profile-activity__item time {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-profile-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-profile-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-profile-card__cover {
+        height: 90px;
+    }
+
+    .wm-profile-card__body {
+        padding: 0 $spacing-4 $spacing-4;
+    }
+
+    .wm-profile-card__identity {
+        margin-top: -30px;
+    }
+
+    .wm-profile-avatar,
+    .wm-profile-avatar__image {
+        width: 68px;
+        height: 68px;
+        flex-basis: 68px;
+    }
+
+    .wm-profile-avatar__image {
+        border-width: 3px;
+    }
+
+    .wm-profile-card__identity-content {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .wm-profile-section__header,
+    .wm-profile-section__body {
+        padding: $spacing-4;
+    }
+
+    .wm-profile-section__header {
+        flex-direction: column;
+    }
+
+    .wm-profile-security-item,
+    .wm-profile-session,
+    .wm-profile-activity__item {
+        padding: $spacing-4;
+    }
+
+    .wm-profile-security-item__status {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-left: 58px;
+    }
+
+    .wm-profile-security-item > .btn {
+        margin-left: 58px;
+    }
+
+    .wm-profile-session {
+        align-items: flex-start;
+    }
+
+}

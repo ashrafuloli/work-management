@@ -1,0 +1,1348 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Integrations Page
+// ============================================================
+
+.wm-integrations-page {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+// ============================================================
+// Page Header
+// ============================================================
+
+.wm-page-header {
+    @include flex-between;
+
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+}
+
+.wm-page-header__content {
+    min-width: 0;
+}
+
+.wm-page-header__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-3;
+
+    font-size: $font-size-sm;
+    color: $color-text-muted;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-2;
+
+        color: $color-text-secondary;
+        text-decoration: none;
+
+        @include transition(color);
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+
+    > i {
+        font-size: 13px;
+        color: $color-text-muted;
+    }
+}
+
+.wm-page-header__title {
+    margin: 0 0 $spacing-2;
+
+    font-family: $font-family-heading;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+
+    color: $color-text-dark;
+}
+
+.wm-page-header__description {
+    max-width: 700px;
+    margin: 0;
+
+    font-size: $font-size-md;
+    line-height: $line-height-relaxed;
+
+    color: $color-text-secondary;
+}
+
+.wm-page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    flex-shrink: 0;
+}
+
+
+// ============================================================
+// Buttons
+// ============================================================
+
+.wm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    min-height: $button-height-md;
+    padding: 0 $button-padding-x;
+
+    border: 1px solid transparent;
+    border-radius: $button-radius;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    @include transition;
+
+    i {
+        font-size: 17px;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+.wm-btn--primary {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+
+    &:hover {
+        color: $color-white;
+        background: $color-primary-hover;
+        border-color: $color-primary-hover;
+    }
+}
+
+.wm-btn--light {
+    color: $color-text;
+    background: $color-white;
+    border-color: $color-border-dark;
+
+    &:hover {
+        color: $color-text-dark;
+        background: $color-gray-50;
+        border-color: $color-gray-300;
+    }
+}
+
+.wm-btn--sm {
+    min-height: $button-height-sm;
+    padding: 0 12px;
+
+    font-size: $font-size-xs;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+
+// ============================================================
+// Summary
+// ============================================================
+
+.wm-integration-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-6;
+}
+
+.wm-integration-summary__card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    min-width: 0;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+    &:hover {
+        box-shadow: $shadow-md;
+        transform: translateY(-1px);
+    }
+}
+
+.wm-integration-summary__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+
+    border-radius: $radius-lg;
+
+    font-size: 21px;
+}
+
+.wm-integration-summary__icon--primary {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-integration-summary__icon--success {
+    color: $color-success;
+    background: $color-success-light;
+}
+
+.wm-integration-summary__icon--warning {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-integration-summary__icon--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-integration-summary__content {
+    min-width: 0;
+
+    span {
+        display: block;
+
+        margin-bottom: 3px;
+
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+    }
+
+    strong {
+        display: block;
+
+        font-size: $font-size-2xl;
+        font-weight: $font-weight-semibold;
+        line-height: 1.2;
+
+        color: $color-text-dark;
+    }
+}
+
+
+// ============================================================
+// Toolbar
+// ============================================================
+
+.wm-integrations-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+}
+
+.wm-integrations-toolbar__left,
+.wm-integrations-toolbar__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-search-box {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 340px;
+}
+
+.wm-search-box > i {
+    position: absolute;
+    left: 12px;
+
+    color: $color-text-muted;
+
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+.wm-search-box input {
+    width: 100%;
+    height: $input-height-md;
+
+    padding: 0 38px 0 38px;
+
+    background: $color-white;
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+
+    color: $color-text;
+
+    outline: 0;
+
+    @include transition;
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+.wm-search-box__clear {
+    position: absolute;
+    right: 8px;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    &.is-visible {
+        display: inline-flex;
+    }
+
+    &:hover {
+        color: $color-text-dark;
+        background: $color-gray-100;
+    }
+}
+
+.wm-integration-view-toggle {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px;
+
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-integration-view-toggle button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 32px;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        color: $color-text-dark;
+    }
+
+    &.is-active {
+        color: $color-primary;
+        background: $color-white;
+        box-shadow: $shadow-sm;
+    }
+
+    i {
+        font-size: 17px;
+    }
+}
+
+
+// ============================================================
+// Categories
+// ============================================================
+
+.wm-integration-categories {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: $spacing-8;
+
+    overflow-x: auto;
+
+    padding-bottom: 3px;
+
+    @include scrollbar(4px);
+}
+
+.wm-integration-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    min-height: 36px;
+    padding: 0 13px;
+
+    flex-shrink: 0;
+
+    border: 1px solid transparent;
+    border-radius: $radius-full;
+
+    background: transparent;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+
+    cursor: pointer;
+
+    @include transition;
+
+    i {
+        font-size: 16px;
+    }
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        min-width: 20px;
+        height: 20px;
+        padding: 0 5px;
+
+        border-radius: $radius-full;
+
+        background: $color-gray-100;
+
+        font-size: 11px;
+        color: $color-text-muted;
+    }
+
+    &:hover {
+        background: $color-gray-50;
+        color: $color-text-dark;
+    }
+
+    &.is-active {
+        background: $color-primary-light;
+        border-color: rgba(37, 99, 235, 0.08);
+
+        color: $color-primary;
+
+        span {
+            background: $color-white;
+            color: $color-primary;
+        }
+    }
+}
+
+
+// ============================================================
+// Section
+// ============================================================
+
+.wm-integrations-section {
+    margin-bottom: $spacing-8;
+}
+
+.wm-integrations-section__header {
+    @include flex-between;
+
+    gap: $spacing-4;
+    margin-bottom: $spacing-4;
+
+    h2 {
+        margin: 0 0 4px;
+
+        font-size: $font-size-xl;
+        font-weight: $font-weight-semibold;
+        line-height: $line-height-tight;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-sm;
+        color: $color-text-secondary;
+    }
+}
+
+.wm-integration-count {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 28px;
+    padding: 0 10px;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-100;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Integration Grid
+// ============================================================
+
+.wm-integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: $spacing-4;
+}
+
+.wm-integration-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 280px;
+
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-sm;
+
+    @include transition;
+
+    &:hover {
+        border-color: $color-gray-300;
+        box-shadow: $shadow-md;
+        transform: translateY(-2px);
+    }
+
+    &.is-hidden {
+        display: none;
+    }
+}
+
+.wm-integration-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-5;
+}
+
+.wm-integration-card__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+
+    border-radius: $radius-lg;
+
+    font-size: 25px;
+}
+
+.wm-integration-card__logo--slack {
+    background: #f4eefa;
+    color: #611f69;
+}
+
+.wm-integration-card__logo--drive {
+    background: #eaf6ee;
+    color: #188038;
+}
+
+.wm-integration-card__logo--calendar {
+    background: #eef4ff;
+    color: #4285f4;
+}
+
+.wm-integration-card__logo--github {
+    background: $color-gray-100;
+    color: $color-gray-900;
+}
+
+.wm-integration-card__logo--teams {
+    background: #eef0ff;
+    color: #6264a7;
+}
+
+.wm-integration-card__logo--dropbox {
+    background: #edf5ff;
+    color: #0061ff;
+}
+
+.wm-integration-card__logo--notion {
+    background: $color-gray-100;
+    color: $color-black;
+
+    span {
+        font-size: 21px;
+        font-weight: $font-weight-bold;
+    }
+}
+
+.wm-integration-card__logo--zapier {
+    background: #fff5eb;
+    color: #ff4f00;
+}
+
+.wm-integration-card__logo--outlook {
+    background: #eef5ff;
+    color: #0078d4;
+}
+
+.wm-integration-card__logo--linear {
+    background: #f3f0ff;
+    color: #5e6ad2;
+}
+
+.wm-integration-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+
+    min-height: 25px;
+    padding: 0 8px;
+
+    border-radius: $radius-full;
+
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+
+    white-space: nowrap;
+
+    i {
+        font-size: 13px;
+    }
+}
+
+.wm-integration-status--connected {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-integration-status--available {
+    background: $color-gray-100;
+    color: $color-text-secondary;
+}
+
+.wm-integration-card__content {
+    flex: 1;
+
+    h3 {
+        margin: 0 0 7px;
+
+        font-size: $font-size-lg;
+        font-weight: $font-weight-semibold;
+        line-height: 1.3;
+
+        color: $color-text-dark;
+    }
+
+    p {
+        margin: 0;
+
+        font-size: $font-size-sm;
+        line-height: 1.65;
+
+        color: $color-text-secondary;
+    }
+}
+
+.wm-integration-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-2;
+
+    padding: $spacing-4 0;
+
+    margin-top: $spacing-4;
+
+    border-top: 1px solid $color-border-light;
+
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+
+    span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+
+        min-width: 0;
+
+        i {
+            font-size: 14px;
+        }
+    }
+}
+
+.wm-integration-card__actions {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-integration-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: $button-height-sm;
+    height: $button-height-sm;
+
+    margin-left: auto;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+
+    background: transparent;
+
+    color: $color-text-muted;
+
+    cursor: pointer;
+
+    @include transition;
+
+    &:hover {
+        background: $color-gray-100;
+        color: $color-text-dark;
+    }
+
+    i {
+        font-size: 18px;
+    }
+}
+
+
+// ============================================================
+// Integration Menu
+// ============================================================
+
+.wm-integration-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+
+    z-index: $z-dropdown;
+
+    display: none;
+
+    min-width: 170px;
+
+    padding: 5px;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    box-shadow: $shadow-lg;
+
+    &.is-open {
+        display: block;
+    }
+
+    button {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+
+        width: 100%;
+
+        padding: 9px 10px;
+
+        border: 0;
+        border-radius: $radius-sm;
+
+        background: transparent;
+
+        font-family: $font-family-base;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+
+        text-align: left;
+
+        color: $color-text-secondary;
+
+        cursor: pointer;
+
+        @include transition;
+
+        &:hover {
+            background: $color-gray-50;
+            color: $color-text-dark;
+        }
+
+        &.is-danger {
+            color: $color-danger;
+
+            &:hover {
+                background: $color-danger-light;
+                color: $color-danger-dark;
+            }
+        }
+
+        i {
+            width: 17px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+// ============================================================
+// Empty State
+// ============================================================
+
+.wm-integrations-empty {
+    display: none;
+
+    padding: $spacing-12 $spacing-6;
+
+    text-align: center;
+
+    background: $color-white;
+    border: 1px dashed $color-border-dark;
+    border-radius: $radius-xl;
+
+    &.is-visible {
+        display: block;
+    }
+}
+
+.wm-integrations-empty__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto $spacing-4;
+
+    border-radius: 50%;
+
+    background: $color-gray-100;
+
+    color: $color-text-muted;
+
+    font-size: 25px;
+}
+
+.wm-integrations-empty h3 {
+    margin: 0 0 6px;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-integrations-empty p {
+    margin: 0 0 $spacing-5;
+
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+}
+
+
+// ============================================================
+// Modal
+// ============================================================
+
+.wm-integration-modal .modal-dialog {
+    max-width: 520px;
+}
+
+.wm-integration-modal .modal-content {
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+
+    box-shadow: $shadow-lg;
+
+    overflow: hidden;
+}
+
+.wm-integration-modal .modal-header {
+    padding: $spacing-5;
+
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-integration-modal__title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-integration-modal__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: $radius-lg;
+
+    background: $color-primary-light;
+
+    color: $color-primary;
+
+    font-size: 20px;
+}
+
+.wm-integration-modal__title h5 {
+    margin: 0 0 3px;
+
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+
+    color: $color-text-dark;
+}
+
+.wm-integration-modal__title span {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+}
+
+.wm-integration-modal .modal-body {
+    padding: $spacing-5;
+}
+
+.wm-integration-modal__description {
+    margin-bottom: $spacing-5;
+
+    padding: $spacing-4;
+
+    background: $color-gray-50;
+    border-radius: $radius-lg;
+}
+
+.wm-integration-modal__description p {
+    margin: 0;
+
+    font-size: $font-size-sm;
+    line-height: 1.6;
+
+    color: $color-text-secondary;
+}
+
+.wm-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+}
+
+.wm-modal-form .wm-form-group {
+    margin: 0;
+}
+
+.wm-form-group label {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    color: $color-text-dark;
+}
+
+.wm-form-control {
+    display: block;
+
+    width: 100%;
+    min-height: $input-height-md;
+
+    padding: 8px 12px;
+
+    background: $color-white;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+
+    color: $color-text;
+
+    outline: 0;
+
+    @include transition;
+
+    &:focus {
+        @include focus-ring;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+.wm-modal-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    margin: 0 !important;
+
+    padding: $spacing-3;
+
+    background: $color-gray-50;
+
+    border-radius: $radius-md;
+}
+
+.wm-modal-toggle > span:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    min-width: 0;
+
+    strong {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $color-text-dark;
+    }
+
+    small {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-regular;
+        color: $color-text-muted;
+    }
+}
+
+.wm-modal-toggle .wm-switch {
+    flex-shrink: 0;
+}
+
+.wm-integration-modal .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-2;
+
+    padding: $spacing-4 $spacing-5;
+
+    border-top: 1px solid $color-border-light;
+}
+
+
+// ============================================================
+// Animations
+// ============================================================
+
+.wm-icon-spin {
+    animation: wm-integrations-spin 0.8s linear infinite;
+}
+
+@keyframes wm-integrations-spin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+// ============================================================
+// List View
+// ============================================================
+
+.wm-integrations-page.is-list-view {
+
+    .wm-integrations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-integration-card {
+        display: grid;
+
+        grid-template-columns: auto minmax(220px, 1fr) auto auto;
+        grid-template-areas:
+            "top content meta actions";
+
+        align-items: center;
+
+        min-height: 0;
+        padding: $spacing-4;
+    }
+
+    .wm-integration-card__top {
+        grid-area: top;
+
+        margin: 0 $spacing-4 0 0;
+    }
+
+    .wm-integration-card__content {
+        grid-area: content;
+    }
+
+    .wm-integration-card__meta {
+        grid-area: meta;
+
+        min-width: 180px;
+
+        padding: 0;
+        margin: 0 $spacing-5 0 0;
+
+        border: 0;
+    }
+
+    .wm-integration-card__actions {
+        grid-area: actions;
+    }
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-integration-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-integrations-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-integrations-page {
+        padding: $spacing-5;
+    }
+
+    .wm-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-page-header__actions {
+        width: 100%;
+    }
+
+    .wm-page-header__actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-search-box {
+        width: 280px;
+    }
+
+    .wm-integrations-page.is-list-view {
+
+        .wm-integration-card {
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            grid-template-areas:
+                "top content actions"
+                "top meta actions";
+        }
+
+        .wm-integration-card__meta {
+            min-width: 0;
+            margin: 5px 0 0;
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-integrations-page {
+        padding: $spacing-4;
+    }
+
+    .wm-page-header__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-page-header__actions {
+        flex-direction: column;
+    }
+
+    .wm-page-header__actions .wm-btn {
+        width: 100%;
+    }
+
+    .wm-integration-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-integration-summary__card {
+        padding: $spacing-4;
+    }
+
+    .wm-integration-summary__icon {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+
+        font-size: 18px;
+    }
+
+    .wm-integrations-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-integrations-toolbar__left {
+        width: 100%;
+    }
+
+    .wm-search-box {
+        width: 100%;
+    }
+
+    .wm-integrations-toolbar__right {
+        justify-content: flex-end;
+    }
+
+    .wm-integrations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-integrations-section__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-integrations-page.is-list-view {
+
+        .wm-integration-card {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .wm-integration-card__top {
+            margin-bottom: $spacing-4;
+        }
+
+        .wm-integration-card__meta {
+            padding: $spacing-3 0;
+            margin-top: $spacing-4;
+            border-top: 1px solid $color-border-light;
+        }
+
+        .wm-integration-card__actions {
+            margin-top: 0;
+        }
+    }
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-integration-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-integration-summary__card {
+        padding: $spacing-4;
+    }
+
+    .wm-integration-category {
+        min-height: 34px;
+        padding: 0 11px;
+
+        font-size: $font-size-xs;
+    }
+
+    .wm-integration-card {
+        padding: $spacing-4;
+    }
+
+    .wm-integration-card__meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-integration-card__actions {
+        width: 100%;
+    }
+
+    .wm-integration-card__actions .wm-btn {
+        flex: 1;
+    }
+
+    .wm-integration-more {
+        flex: 0 0 32px;
+    }
+
+    .wm-integration-modal .modal-body,
+    .wm-integration-modal .modal-header {
+        padding: $spacing-4;
+    }
+
+    .wm-integration-modal .modal-footer {
+        padding: $spacing-3 $spacing-4;
+    }
+
+    .wm-integration-modal .modal-footer .wm-btn {
+        flex: 1;
+    }
+}

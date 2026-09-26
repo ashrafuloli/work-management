@@ -1,0 +1,1197 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Project Create Page
+// ============================================================
+
+.wm-project-create-page {
+    width: 100%;
+}
+
+
+// ============================================================
+// Page Header
+// ============================================================
+
+.wm-project-create-page__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-6;
+}
+
+.wm-project-create-page__header-left {
+    min-width: 0;
+}
+
+.wm-project-create-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-3;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-project-create-page__breadcrumb a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wm-project-create-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-project-create-page__breadcrumb > i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-project-create-page__breadcrumb span {
+    color: $color-text-muted;
+}
+
+.wm-project-create-page__heading {
+    min-width: 0;
+}
+
+.wm-project-create-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-project-create-page__subtitle {
+    max-width: 720px;
+    margin: $spacing-2 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+}
+
+.wm-project-create-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    flex-shrink: 0;
+}
+
+.wm-project-create-page__header-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+
+// ============================================================
+// Progress
+// ============================================================
+
+.wm-project-create-page__progress {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    padding: $spacing-5;
+    margin-bottom: $spacing-6;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-create-page__progress-step {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    min-width: 0;
+    color: $color-text-muted;
+}
+
+.wm-project-create-page__progress-step.is-active {
+    color: $color-primary;
+}
+
+.wm-project-create-page__progress-step.is-active
+.wm-project-create-page__progress-number {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+}
+
+.wm-project-create-page__progress-step.is-active strong {
+    color: $color-text-dark;
+}
+
+.wm-project-create-page__progress-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    background: $color-gray-50;
+    border: 1px solid $color-border-dark;
+    border-radius: 50%;
+}
+
+.wm-project-create-page__progress-step strong {
+    display: block;
+    margin-bottom: 2px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-create-page__progress-step small {
+    display: block;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-create-page__progress-line {
+    width: 100%;
+    height: 1px;
+    min-width: 30px;
+    background: $color-border;
+    flex: 1;
+}
+
+
+// ============================================================
+// Main Cards
+// ============================================================
+
+.wm-project-create-page__card {
+    overflow: hidden;
+    margin-bottom: $spacing-6;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-create-page__card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-5 $spacing-6;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-create-page__card-title {
+    margin: 0 0 5px;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-project-create-page__card-description {
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    line-height: $line-height-normal;
+}
+
+.wm-project-create-page__required-note {
+    flex-shrink: 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+.wm-project-create-page__card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    color: $color-primary;
+    font-size: 18px;
+    background: $color-primary-light;
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__card-body {
+    padding: $spacing-6;
+}
+
+
+// ============================================================
+// Form Fields
+// ============================================================
+
+.wm-project-create-page__field {
+    position: relative;
+}
+
+.wm-project-create-page__label {
+    display: block;
+    margin-bottom: $spacing-2;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-create-page__label span {
+    color: $color-danger;
+}
+
+.wm-project-create-page__field .form-control,
+.wm-project-create-page__field .form-select {
+    min-height: $input-height-md;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    background-color: $input-bg;
+    border-color: $input-border;
+    border-radius: $radius-md;
+    box-shadow: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-project-create-page__field .form-control:focus,
+.wm-project-create-page__field .form-select:focus {
+    border-color: $input-focus;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-project-create-page__field .form-control::placeholder {
+    color: $input-placeholder;
+}
+
+.wm-project-create-page__field textarea.form-control {
+    min-height: 128px;
+    resize: vertical;
+}
+
+.wm-project-create-page__field .form-control.is-invalid,
+.wm-project-create-page__field .form-select.is-invalid {
+    border-color: $color-danger;
+}
+
+.wm-project-create-page__field .form-control.is-invalid:focus,
+.wm-project-create-page__field .form-select.is-invalid:focus {
+    border-color: $color-danger;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.10);
+}
+
+.wm-project-create-page__field-error {
+    display: none;
+    margin-top: 6px;
+    color: $color-danger-dark;
+    font-size: $font-size-xs;
+}
+
+.wm-project-create-page__field-error.is-visible {
+    display: block;
+}
+
+.wm-project-create-page__help-text {
+    display: block;
+    margin-top: 6px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+.wm-project-create-page__field-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+}
+
+.wm-project-create-page__field-footer .wm-project-create-page__help-text {
+    margin-top: 6px;
+}
+
+.wm-project-create-page__character-count {
+    flex-shrink: 0;
+    margin-top: 6px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ============================================================
+// Input Icon
+// ============================================================
+
+.wm-project-create-page__input-icon {
+    position: relative;
+}
+
+.wm-project-create-page__input-icon > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    z-index: 2;
+    color: $color-text-muted;
+    font-size: 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.wm-project-create-page__input-icon .form-control {
+    padding-left: 38px;
+}
+
+
+// ============================================================
+// Timeline Note
+// ============================================================
+
+.wm-project-create-page__timeline-note {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: $spacing-3 $spacing-4;
+    margin-top: $spacing-5;
+    color: $color-info-dark;
+    font-size: $font-size-xs;
+    background: $color-info-light;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__timeline-note > i {
+    flex-shrink: 0;
+    font-size: 16px;
+}
+
+
+// ============================================================
+// Team
+// ============================================================
+
+.wm-project-create-page__team-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+    margin-top: $spacing-5;
+}
+
+.wm-project-create-page__team-member {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    background: $color-gray-50;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.wm-project-create-page__team-member:hover {
+    background: $color-white;
+    border-color: $color-border;
+}
+
+.wm-project-create-page__member-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    background: $color-primary-light;
+    border-radius: 50%;
+}
+
+.wm-project-create-page__member-avatar--green {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-project-create-page__member-avatar--purple {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-project-create-page__member-avatar--orange {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-project-create-page__member-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-create-page__member-info strong {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-create-page__member-info span {
+    display: block;
+    overflow: hidden;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-create-page__member-role {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 9px;
+    color: $color-primary;
+    font-size: 11px;
+    font-weight: $font-weight-medium;
+    background: $color-primary-light;
+    border-radius: $radius-full;
+}
+
+.wm-project-create-page__member-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    padding: 0;
+    color: $color-text-muted;
+    background: transparent;
+    border: 0;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.wm-project-create-page__member-remove:hover {
+    color: $color-danger;
+    background: $color-danger-light;
+}
+
+
+// ============================================================
+// Tags
+// ============================================================
+
+.wm-project-create-page__tag-input {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: $input-height-md;
+    padding: 4px 10px;
+    background: $color-white;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-project-create-page__tag-input:focus-within {
+    border-color: $input-focus;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-project-create-page__tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.wm-project-create-page__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 8px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    background: $color-primary-light;
+    border-radius: $radius-full;
+}
+
+.wm-project-create-page__tag button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    color: inherit;
+    font-size: 11px;
+    background: transparent;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.wm-project-create-page__tag button:hover {
+    color: $color-danger;
+}
+
+.wm-project-create-page__tag-input > input {
+    min-width: 180px;
+    height: 30px;
+    flex: 1;
+    padding: 0;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.wm-project-create-page__tag-input > input::placeholder {
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// File Upload
+// ============================================================
+
+.wm-project-create-page__upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    padding: $spacing-8;
+    text-align: center;
+    background: $color-gray-50;
+    border: 1px dashed $color-border-dark;
+    border-radius: $radius-lg;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.wm-project-create-page__upload:hover {
+    background: $color-primary-light;
+    border-color: $color-primary;
+}
+
+.wm-project-create-page__upload-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: $color-primary;
+    font-size: 23px;
+    background: $color-white;
+    border-radius: 50%;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-create-page__upload h3 {
+    margin: $spacing-3 0 4px;
+    color: $color-text-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-create-page__upload p {
+    margin: 0 0 5px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-create-page__upload > span {
+    display: block;
+    margin-bottom: $spacing-4;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-create-page__upload .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.wm-project-create-page__file-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+    margin-top: $spacing-4;
+}
+
+.wm-project-create-page__file {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-3;
+    background: $color-white;
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    color: $color-primary;
+    font-size: 17px;
+    background: $color-primary-light;
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__file-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-create-page__file-info strong {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-create-page__file-info span {
+    display: block;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-create-page__file-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    padding: 0;
+    color: $color-text-muted;
+    background: transparent;
+    border: 0;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.wm-project-create-page__file-remove:hover {
+    color: $color-danger;
+    background: $color-danger-light;
+}
+
+
+// ============================================================
+// Sidebar Cards
+// ============================================================
+
+.wm-project-create-page__side-card {
+    overflow: hidden;
+    margin-bottom: $spacing-6;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-create-page__side-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-3;
+    padding: $spacing-5;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-create-page__side-card-header h3 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-create-page__side-card-header p {
+    margin: 4px 0 0;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-create-page__side-card-header > i {
+    color: $color-text-muted;
+    font-size: 17px;
+}
+
+
+// ============================================================
+// Project Summary
+// ============================================================
+
+.wm-project-create-page__summary {
+    padding: 0 $spacing-5;
+}
+
+.wm-project-create-page__summary-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-4 0;
+    border-bottom: 1px solid $color-border-light;
+}
+
+.wm-project-create-page__summary-item:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-create-page__summary-item span {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-create-page__summary-item strong {
+    max-width: 58%;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+// ============================================================
+// Project Settings
+// ============================================================
+
+.wm-project-create-page__settings {
+    padding: 0 $spacing-5;
+}
+
+.wm-project-create-page__setting {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-4 0;
+    margin: 0;
+    border-bottom: 1px solid $color-border-light;
+    cursor: pointer;
+}
+
+.wm-project-create-page__setting:last-child {
+    border-bottom: 0;
+}
+
+.wm-project-create-page__setting-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-create-page__setting-content strong {
+    display: block;
+    margin-bottom: 3px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-create-page__setting-content small {
+    display: block;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+.wm-project-create-page__setting .form-check {
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.wm-project-create-page__setting .form-check-input {
+    width: 36px;
+    height: 20px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.wm-project-create-page__setting .form-check-input:checked {
+    background-color: $color-primary;
+    border-color: $color-primary;
+}
+
+
+// ============================================================
+// Tips
+// ============================================================
+
+.wm-project-create-page__tips {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-5;
+    margin-bottom: $spacing-6;
+    background: $color-primary-light;
+    border: 1px solid rgba(37, 99, 235, 0.12);
+    border-radius: $radius-xl;
+}
+
+.wm-project-create-page__tips-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    color: $color-primary;
+    font-size: 18px;
+    background: $color-white;
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__tips h3 {
+    margin: 0 0 $spacing-3;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-create-page__tips ul {
+    margin: 0;
+    padding-left: 17px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: 1.7;
+}
+
+.wm-project-create-page__tips li + li {
+    margin-top: 3px;
+}
+
+
+// ============================================================
+// Help Card
+// ============================================================
+
+.wm-project-create-page__help-card {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-5;
+    margin-bottom: $spacing-6;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-project-create-page__help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    color: $color-text-secondary;
+    font-size: 17px;
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-project-create-page__help-card strong {
+    display: block;
+    margin-bottom: 3px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-create-page__help-card p {
+    margin: 0 0 7px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+.wm-project-create-page__help-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+}
+
+.wm-project-create-page__help-card a:hover {
+    color: $color-primary-hover;
+}
+
+
+// ============================================================
+// Bottom Actions
+// ============================================================
+
+.wm-project-create-page__bottom-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: $spacing-5 0;
+    margin-top: $spacing-2;
+    border-top: 1px solid $color-border;
+}
+
+.wm-project-create-page__bottom-actions > div {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-project-create-page__bottom-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+}
+
+
+// ============================================================
+// Button States
+// ============================================================
+
+.wm-project-create-page .btn {
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-project-create-page .btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.wm-project-create-page .btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+}
+
+.wm-project-create-page .btn-primary:hover {
+    background-color: $color-primary-hover;
+    border-color: $color-primary-hover;
+}
+
+.wm-project-create-page .btn-light {
+    color: $color-text-dark;
+    background-color: $color-white;
+    border-color: $color-border-dark;
+}
+
+.wm-project-create-page .btn-light:hover {
+    color: $color-text-dark;
+    background-color: $color-gray-50;
+    border-color: $color-border-dark;
+}
+
+
+// ============================================================
+// Responsive - XL
+// ============================================================
+
+@media (max-width: 1199px) {
+
+    .wm-project-create-page__header {
+        align-items: flex-start;
+    }
+
+    .wm-project-create-page__progress {
+        overflow-x: auto;
+    }
+
+    .wm-project-create-page__progress-step {
+        flex: 0 0 auto;
+    }
+
+}
+
+
+// ============================================================
+// Responsive - LG
+// ============================================================
+
+@media (max-width: 991px) {
+
+    .wm-project-create-page__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-create-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-project-create-page__header-actions .btn {
+        flex: 1;
+    }
+
+}
+
+
+// ============================================================
+// Responsive - MD
+// ============================================================
+
+@media (max-width: 767px) {
+
+    .wm-project-create-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-project-create-page__subtitle {
+        font-size: $font-size-sm;
+    }
+
+    .wm-project-create-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-project-create-page__progress {
+        gap: $spacing-3;
+        padding: $spacing-4;
+    }
+
+    .wm-project-create-page__progress-step > div {
+        display: none;
+    }
+
+    .wm-project-create-page__progress-number {
+        width: 30px;
+        height: 30px;
+        flex-basis: 30px;
+    }
+
+    .wm-project-create-page__progress-line {
+        min-width: 20px;
+    }
+
+    .wm-project-create-page__card-header {
+        padding: $spacing-4;
+    }
+
+    .wm-project-create-page__card-body {
+        padding: $spacing-4;
+    }
+
+    .wm-project-create-page__card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-create-page__required-note {
+        align-self: flex-start;
+    }
+
+    .wm-project-create-page__field-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .wm-project-create-page__bottom-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-project-create-page__bottom-actions > div {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .wm-project-create-page__bottom-actions > div .btn,
+    .wm-project-create-page__bottom-actions > .btn {
+        width: 100%;
+    }
+
+}
+
+
+// ============================================================
+// Responsive - SM
+// ============================================================
+
+@media (max-width: 575px) {
+
+    .wm-project-create-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-project-create-page__header-actions .btn {
+        width: 100%;
+        flex: none;
+    }
+
+    .wm-project-create-page__progress {
+        justify-content: center;
+    }
+
+    .wm-project-create-page__progress-line {
+        flex: 0 0 20px;
+    }
+
+    .wm-project-create-page__member-role {
+        display: none;
+    }
+
+    .wm-project-create-page__tag-input > input {
+        min-width: 120px;
+    }
+
+    .wm-project-create-page__upload {
+        min-height: 190px;
+        padding: $spacing-5;
+    }
+
+    .wm-project-create-page__tips {
+        padding: $spacing-4;
+    }
+
+    .wm-project-create-page__help-card {
+        padding: $spacing-4;
+    }
+
+}

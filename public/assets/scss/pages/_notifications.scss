@@ -1,0 +1,1005 @@
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Notifications Page
+// ------------------------------------------------------------
+
+.wm-notifications-page {
+    width: 100%;
+    min-width: 0;
+}
+
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+
+.wm-notifications-page__header {
+    margin-bottom: $spacing-6;
+}
+
+.wm-notifications-page__header-content {
+    width: 100%;
+}
+
+.wm-notifications-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-notifications-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 14px;
+}
+
+.wm-notifications-page__breadcrumb-link {
+    color: $color-text-secondary;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.wm-notifications-page__breadcrumb-link:hover {
+    color: $color-primary;
+}
+
+.wm-notifications-page__heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $spacing-6;
+}
+
+.wm-notifications-page__title {
+    margin: 0 0 $spacing-2;
+    color: $color-text-dark;
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-notifications-page__subtitle {
+    margin: 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+    line-height: $line-height-normal;
+}
+
+.wm-notifications-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    flex-shrink: 0;
+}
+
+
+// ------------------------------------------------------------
+// Summary
+// ------------------------------------------------------------
+
+.wm-notifications-page__summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $spacing-4;
+    margin-bottom: $spacing-6;
+}
+
+.wm-notification-summary-card {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+
+    min-width: 0;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+}
+
+.wm-notification-summary-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+
+    border-radius: $radius-lg;
+    font-size: 20px;
+}
+
+.wm-notification-summary-card__icon--primary {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-notification-summary-card__icon--warning {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-notification-summary-card__icon--success {
+    color: $color-success-dark;
+    background: $color-success-light;
+}
+
+.wm-notification-summary-card__icon--info {
+    color: $color-info-dark;
+    background: $color-info-light;
+}
+
+.wm-notification-summary-card__content {
+    min-width: 0;
+}
+
+.wm-notification-summary-card__label {
+    display: block;
+    margin-bottom: $spacing-1;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-notification-summary-card__value {
+    display: block;
+
+    color: $color-text-dark;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+}
+
+
+// ------------------------------------------------------------
+// Toolbar
+// ------------------------------------------------------------
+
+.wm-notifications-page__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+    padding: $spacing-4;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-notifications-page__toolbar-left,
+.wm-notifications-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+}
+
+.wm-notifications-page__search {
+    position: relative;
+    width: 320px;
+}
+
+.wm-notifications-page__search > i {
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    z-index: 2;
+
+    color: $color-text-muted;
+    font-size: 17px;
+
+    transform: translateY(-50%);
+}
+
+.wm-notifications-page__search .form-control {
+    height: $input-height-md;
+    padding-right: 38px;
+    padding-left: 38px;
+
+    background: $color-gray-50;
+    border-color: $color-border;
+    box-shadow: none;
+}
+
+.wm-notifications-page__search .form-control:focus {
+    background: $color-white;
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-notifications-page__search-clear {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 26px;
+
+    border: 0;
+    border-radius: $radius-full;
+    background: transparent;
+
+    color: $color-text-muted;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+}
+
+.wm-notifications-page__search-clear:hover {
+    color: $color-text-dark;
+    background: $color-gray-100;
+}
+
+.wm-notifications-page__filter-toggle.is-active {
+    color: $color-primary;
+    background: $color-primary-light;
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.wm-notifications-page__view-switcher {
+    display: flex;
+    align-items: center;
+
+    padding: 3px;
+
+    background: $color-gray-100;
+    border-radius: $radius-md;
+}
+
+.wm-notifications-page__view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+
+    min-height: 32px;
+    padding: 0 12px;
+
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-notifications-page__view-btn.is-active {
+    background: $color-white;
+    color: $color-text-dark;
+    box-shadow: $shadow-sm;
+}
+
+.wm-notifications-page__view-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+
+    border-radius: $radius-full;
+    background: $color-danger-light;
+
+    color: $color-danger-dark;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-notifications-page__sort .form-select {
+    min-width: 150px;
+    height: $input-height-md;
+
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Filters
+// ------------------------------------------------------------
+
+.wm-notifications-page__filters {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-4;
+
+    margin-bottom: $spacing-4;
+    padding: $spacing-5;
+
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+}
+
+.wm-notifications-page__filters.is-open {
+    display: grid;
+}
+
+.wm-notifications-page__filter-group label {
+    display: block;
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-notifications-page__filter-group .form-select {
+    height: $input-height-md;
+    font-size: $font-size-sm;
+}
+
+.wm-notifications-page__filter-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+// ------------------------------------------------------------
+// Active Filters
+// ------------------------------------------------------------
+
+.wm-notifications-page__active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+
+    margin-bottom: $spacing-4;
+}
+
+.wm-notifications-page__filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    min-height: 30px;
+    padding: 0 10px;
+
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    cursor: pointer;
+}
+
+.wm-notifications-page__filter-chip i {
+    font-size: 13px;
+}
+
+
+// ------------------------------------------------------------
+// Content
+// ------------------------------------------------------------
+
+.wm-notifications-page__content {
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-sm;
+    overflow: visible;
+}
+
+.wm-notifications-page__list {
+    width: 100%;
+}
+
+.wm-notification-group {
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-notification-group:last-child {
+    border-bottom: 0;
+}
+
+.wm-notification-group.is-hidden {
+    display: none;
+}
+
+.wm-notification-group__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: $spacing-4 $spacing-5;
+
+    background: $color-gray-50;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-notification-group__header h2 {
+    margin: 0;
+
+    color: $color-text-dark;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-notification-group__header span {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Notification Item
+// ------------------------------------------------------------
+
+.wm-notification-item {
+    position: relative;
+
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+
+    min-height: 86px;
+    padding: $spacing-4 $spacing-5;
+
+    background: $color-surface;
+    border-bottom: 1px solid $color-border-light;
+
+    transition: background 0.2s ease;
+}
+
+.wm-notification-item:last-child {
+    border-bottom: 0;
+}
+
+.wm-notification-item:hover {
+    background: $color-surface-hover;
+}
+
+.wm-notification-item.is-unread {
+    background: rgba(239, 246, 255, 0.45);
+}
+
+.wm-notification-item.is-unread:hover {
+    background: $color-primary-light;
+}
+
+.wm-notification-item__indicator {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: $radius-full;
+    background: $color-primary;
+
+    transform: translateY(-50%);
+}
+
+.wm-notification-item:not(.is-unread) .wm-notification-item__indicator {
+    display: none;
+}
+
+
+// ------------------------------------------------------------
+// Notification Icon
+// ------------------------------------------------------------
+
+.wm-notification-item__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+
+    border-radius: $radius-lg;
+    font-size: 18px;
+}
+
+.wm-notification-item__icon--task {
+    color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-notification-item__icon--mention {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-notification-item__icon--project {
+    color: $color-info-dark;
+    background: $color-info-light;
+}
+
+.wm-notification-item__icon--comment {
+    color: $color-accent-hover;
+    background: $color-accent-light;
+}
+
+.wm-notification-item__icon--team {
+    color: $color-cyan;
+    background: $color-cyan-light;
+}
+
+.wm-notification-item__icon--file {
+    color: $color-warning-dark;
+    background: $color-warning-light;
+}
+
+.wm-notification-item__icon--milestone {
+    color: $color-purple;
+    background: $color-purple-light;
+}
+
+.wm-notification-item__icon--system {
+    color: $color-info-dark;
+    background: $color-info-light;
+}
+
+
+// ------------------------------------------------------------
+// Notification Content
+// ------------------------------------------------------------
+
+.wm-notification-item__content {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-notification-item__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-4;
+}
+
+.wm-notification-item__message {
+    max-width: 760px;
+
+    color: $color-text;
+    font-size: $font-size-md;
+    line-height: 1.6;
+}
+
+.wm-notification-item__message strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-notification-item__time {
+    flex: 0 0 auto;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+.wm-notification-item__meta {
+    margin: $spacing-1 0 0;
+
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+
+// ------------------------------------------------------------
+// Notification Actions
+// ------------------------------------------------------------
+
+.wm-notification-item__actions {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+
+    flex: 0 0 auto;
+}
+
+.wm-notification-item__action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+    background: transparent;
+
+    color: $color-text-muted;
+    font-size: 16px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-notification-item__action:hover {
+    background: $color-gray-100;
+    border-color: $color-border;
+    color: $color-text-dark;
+}
+
+
+// ------------------------------------------------------------
+// Action Menu
+// ------------------------------------------------------------
+
+.wm-notification-item__menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: $z-dropdown;
+
+    display: none;
+
+    width: 190px;
+    padding: 6px;
+
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-lg;
+}
+
+.wm-notification-item__menu.is-open {
+    display: block;
+}
+
+.wm-notification-item__menu button {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+
+    width: 100%;
+    min-height: 36px;
+    padding: 0 10px;
+
+    border: 0;
+    border-radius: $radius-sm;
+    background: transparent;
+
+    color: $color-text;
+    font-size: $font-size-sm;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.wm-notification-item__menu button:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+.wm-notification-item__menu button i {
+    width: 16px;
+    color: $color-text-secondary;
+}
+
+.wm-notification-item__menu button.is-danger {
+    color: $color-danger-dark;
+}
+
+.wm-notification-item__menu button.is-danger i {
+    color: $color-danger;
+}
+
+
+// ------------------------------------------------------------
+// Empty State
+// ------------------------------------------------------------
+
+.wm-notifications-page__empty {
+    display: none;
+
+    padding: $spacing-12 $spacing-6;
+    text-align: center;
+}
+
+.wm-notifications-page__empty.is-visible {
+    display: block;
+}
+
+.wm-notifications-page__empty-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-4;
+
+    border-radius: $radius-full;
+    background: $color-gray-100;
+
+    color: $color-text-muted;
+    font-size: 28px;
+}
+
+.wm-notifications-page__empty h3 {
+    margin: 0 0 $spacing-2;
+
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-notifications-page__empty p {
+    max-width: 420px;
+    margin: 0 auto $spacing-5;
+
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+
+// ------------------------------------------------------------
+// Footer / Pagination
+// ------------------------------------------------------------
+
+.wm-notifications-page__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+    padding: $spacing-5 0;
+}
+
+.wm-notifications-page__results {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-notifications-page__results strong {
+    color: $color-text-dark;
+    font-weight: $font-weight-medium;
+}
+
+.wm-notifications-page__pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-notifications-page__pagination-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 34px;
+    height: 34px;
+    padding: 0 9px;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-notifications-page__pagination-btn:hover:not(:disabled) {
+    color: $color-primary;
+    border-color: $color-primary;
+    background: $color-primary-light;
+}
+
+.wm-notifications-page__pagination-btn.is-active {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary;
+}
+
+.wm-notifications-page__pagination-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.wm-notifications-page__pagination-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    height: 34px;
+
+    color: $color-text-muted;
+}
+
+
+// ------------------------------------------------------------
+// Responsive
+// ------------------------------------------------------------
+
+@media (max-width: 1199px) {
+
+    .wm-notifications-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-notifications-page__filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-notifications-page__filter-actions {
+        justify-content: flex-start;
+    }
+
+}
+
+
+@media (max-width: 991px) {
+
+    .wm-notifications-page__heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-notifications-page__header-actions {
+        width: 100%;
+    }
+
+    .wm-notifications-page__toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .wm-notifications-page__toolbar-left,
+    .wm-notifications-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-notifications-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-notifications-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .wm-notifications-page__title {
+        font-size: $font-size-3xl;
+    }
+
+    .wm-notifications-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-notifications-page__filters {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-notification-item {
+        padding: $spacing-4;
+    }
+
+    .wm-notification-item__top {
+        flex-direction: column;
+        gap: $spacing-1;
+    }
+
+    .wm-notification-item__time {
+        order: -1;
+    }
+
+    .wm-notification-item__actions {
+        align-self: flex-start;
+    }
+
+    .wm-notification-item__action[data-notification-action="mark-read"] {
+        display: none;
+    }
+
+    .wm-notifications-page__footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 575px) {
+
+    .wm-notifications-page__header-actions {
+        flex-direction: column;
+    }
+
+    .wm-notifications-page__header-actions .btn {
+        width: 100%;
+    }
+
+    .wm-notifications-page__toolbar-left {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-notifications-page__toolbar-right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-notifications-page__search {
+        width: 100%;
+    }
+
+    .wm-notifications-page__filter-toggle {
+        width: 100%;
+    }
+
+    .wm-notifications-page__view-switcher {
+        width: 100%;
+    }
+
+    .wm-notifications-page__view-btn {
+        flex: 1;
+    }
+
+    .wm-notifications-page__sort,
+    .wm-notifications-page__sort .form-select {
+        width: 100%;
+    }
+
+    .wm-notification-item {
+        gap: $spacing-3;
+    }
+
+    .wm-notification-item__icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        font-size: 16px;
+    }
+
+    .wm-notification-item__message {
+        font-size: $font-size-sm;
+    }
+
+    .wm-notification-item__actions {
+        margin-left: auto;
+    }
+
+    .wm-notification-group__header {
+        padding: $spacing-3 $spacing-4;
+    }
+
+    .wm-notification-group__header span {
+        display: none;
+    }
+
+    .wm-notifications-page__pagination {
+        width: 100%;
+        justify-content: center;
+    }
+
+}

@@ -1,0 +1,1584 @@
+@use "../common" as *;
+
+
+// ------------------------------------------------------------
+// Project Tasks Page
+// ------------------------------------------------------------
+
+.wm-project-tasks-page {
+    width: 100%;
+}
+
+
+// ------------------------------------------------------------
+// Header
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: $spacing-6;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-tasks-page__header-left {
+    min-width: 0;
+    flex: 1;
+}
+
+.wm-project-tasks-page__breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    margin-bottom: $spacing-4;
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__breadcrumb a {
+    color: $color-text-secondary;
+    text-decoration: none;
+}
+
+.wm-project-tasks-page__breadcrumb a:hover {
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__breadcrumb i {
+    color: $color-gray-400;
+    font-size: 13px;
+}
+
+.wm-project-tasks-page__breadcrumb span {
+    color: $color-text-secondary;
+}
+
+.wm-project-tasks-page__title-row {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.wm-project-tasks-page__title-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-xl;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 23px;
+}
+
+.wm-project-tasks-page__title {
+    margin: 0;
+    color: $color-text-dark;
+    font-family: $font-family-heading;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.wm-project-tasks-page__subtitle {
+    margin: 5px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-md;
+}
+
+.wm-project-tasks-page__header-actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-project-tasks-page__header-button {
+    min-height: $button-height-md;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__header-button.btn-light {
+    border-color: $color-border;
+    color: $color-text;
+}
+
+.wm-project-tasks-page__header-button.btn-light:hover {
+    border-color: $color-border-dark;
+    background: $color-gray-50;
+}
+
+
+// ------------------------------------------------------------
+// Project Navigation
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__navigation {
+    margin-bottom: $spacing-5;
+    overflow-x: auto;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-tasks-page__nav {
+    min-width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-tasks-page__nav-item {
+    position: relative;
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 13px;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__nav-item:hover {
+    color: $color-text-dark;
+}
+
+.wm-project-tasks-page__nav-item.is-active {
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__nav-item.is-active::after {
+    position: absolute;
+    right: 8px;
+    bottom: -1px;
+    left: 8px;
+    height: 2px;
+    content: "";
+    border-radius: $radius-full $radius-full 0 0;
+    background: $color-primary;
+}
+
+.wm-project-tasks-page__nav-item i {
+    font-size: 17px;
+}
+
+.wm-project-tasks-page__nav-item > span {
+    min-width: 21px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $color-gray-100;
+    color: $color-text-secondary;
+    font-size: 11px;
+}
+
+.wm-project-tasks-page__nav-item.is-active > span {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+
+// ------------------------------------------------------------
+// Summary
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__summary {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: $spacing-3;
+    margin-bottom: $spacing-5;
+}
+
+.wm-project-tasks-page__summary-card {
+    min-width: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-surface;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wm-project-tasks-page__summary-card:hover {
+    border-color: $color-border-dark;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-tasks-page__summary-card.is-active {
+    border-color: $color-primary;
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.08);
+}
+
+.wm-project-tasks-page__summary-icon {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-lg;
+    font-size: 19px;
+}
+
+.wm-project-tasks-page__summary-icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__summary-icon--gray {
+    background: $color-gray-100;
+    color: $color-text-secondary;
+}
+
+.wm-project-tasks-page__summary-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-tasks-page__summary-icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-tasks-page__summary-icon--red {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-project-tasks-page__summary-content {
+    min-width: 0;
+}
+
+.wm-project-tasks-page__summary-content > span {
+    display: block;
+    overflow: hidden;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__summary-content strong {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__summary-content small {
+    display: block;
+    margin-top: 2px;
+    color: $color-text-muted;
+    font-size: 10px;
+}
+
+
+// ------------------------------------------------------------
+// Toolbar
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__toolbar {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-tasks-page__toolbar-left,
+.wm-project-tasks-page__toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+}
+
+.wm-project-tasks-page__search {
+    position: relative;
+    width: 300px;
+}
+
+.wm-project-tasks-page__search > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    color: $color-gray-400;
+    font-size: 17px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.wm-project-tasks-page__search input {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 36px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    outline: 0;
+    background: $input-bg;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__search input::placeholder {
+    color: $input-placeholder;
+}
+
+.wm-project-tasks-page__search input:focus {
+    @include focus-ring;
+}
+
+.wm-project-tasks-page__search-clear {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 26px;
+    height: 26px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+    transform: translateY(-50%);
+}
+
+.wm-project-tasks-page__search-clear.is-visible {
+    display: inline-flex;
+}
+
+.wm-project-tasks-page__search-clear:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-tasks-page__toolbar-button {
+    position: relative;
+    height: $button-height-md;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__toolbar-button:hover {
+    border-color: $color-border-dark;
+    background: $color-gray-50;
+}
+
+.wm-project-tasks-page__filter-count {
+    min-width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__view-switcher {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-gray-50;
+}
+
+.wm-project-tasks-page__view-switcher button {
+    width: 32px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-tasks-page__view-switcher button:hover {
+    color: $color-text-dark;
+}
+
+.wm-project-tasks-page__view-switcher button.is-active {
+    background: $color-white;
+    color: $color-primary;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-tasks-page__sort-menu {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 190px;
+    display: none;
+    padding: 6px;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-lg;
+}
+
+.wm-project-tasks-page__sort-menu.is-open {
+    display: block;
+}
+
+.wm-project-tasks-page__sort-menu button {
+    width: 100%;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text;
+    font-size: $font-size-sm;
+    text-align: left;
+}
+
+.wm-project-tasks-page__sort-menu button:hover {
+    background: $color-gray-50;
+}
+
+
+// ------------------------------------------------------------
+// Filter Panel
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__filter-panel {
+    display: none;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+    align-items: end;
+    gap: $spacing-3;
+    margin-bottom: $spacing-3;
+    padding: $spacing-4;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+}
+
+.wm-project-tasks-page__filter-panel.is-open {
+    display: grid;
+}
+
+.wm-project-tasks-page__filter-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-tasks-page__filter-field select {
+    width: 100%;
+    height: $input-height-md;
+    padding: 0 32px 0 10px;
+    border: 1px solid $input-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text;
+    font-size: $font-size-sm;
+    outline: 0;
+}
+
+.wm-project-tasks-page__filter-field select:focus {
+    @include focus-ring;
+}
+
+.wm-project-tasks-page__clear-filter {
+    height: $button-height-md;
+    padding: 0 12px;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background: $color-white;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__clear-filter:hover {
+    background: $color-gray-50;
+    color: $color-text-dark;
+}
+
+
+// ------------------------------------------------------------
+// Active Filters
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__active-filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-bottom: $spacing-3;
+}
+
+.wm-project-tasks-page__filter-chip {
+    min-height: 28px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 8px 0 10px;
+    border: 1px solid $color-primary-soft;
+    border-radius: $radius-full;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-tasks-page__filter-chip:hover {
+    background: $color-primary-soft;
+}
+
+.wm-project-tasks-page__filter-chip i {
+    font-size: 13px;
+}
+
+
+// ------------------------------------------------------------
+// Table Card
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__table-card {
+    overflow: visible;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-white;
+}
+
+.wm-project-tasks-page__bulk-bar {
+    min-height: 48px;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-3;
+    padding: 0 $spacing-4;
+    border-bottom: 1px solid $color-border;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__bulk-bar.is-visible {
+    display: flex;
+}
+
+.wm-project-tasks-page__bulk-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.wm-project-tasks-page__bulk-actions button {
+    min-height: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 9px;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-primary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-tasks-page__bulk-actions button:hover {
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.wm-project-tasks-page__bulk-actions button:last-child {
+    color: $color-danger;
+}
+
+
+// ------------------------------------------------------------
+// Table
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.wm-project-tasks-page__table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.wm-project-tasks-page__table thead th {
+    height: 46px;
+    padding: 0 $table-cell-padding-x;
+    border-bottom: 1px solid $table-border;
+    background: $table-header-bg;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__table thead th:first-child {
+    padding-left: 18px;
+}
+
+.wm-project-tasks-page__table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.wm-project-tasks-page__table tbody tr:hover {
+    background: $table-row-hover;
+}
+
+.wm-project-tasks-page__table tbody tr.is-hidden {
+    display: none;
+}
+
+.wm-project-tasks-page__table tbody td {
+    height: 70px;
+    padding: 10px $table-cell-padding-x;
+    border-bottom: 1px solid $table-border;
+    color: $color-text;
+    font-size: $font-size-sm;
+    vertical-align: middle;
+}
+
+.wm-project-tasks-page__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.wm-project-tasks-page__checkbox-column {
+    width: 48px;
+}
+
+.wm-project-tasks-page__checkbox {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.wm-project-tasks-page__checkbox input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.wm-project-tasks-page__checkbox span {
+    width: 18px;
+    height: 18px;
+    display: block;
+    border: 1.5px solid $color-gray-300;
+    border-radius: 5px;
+    background: $color-white;
+}
+
+.wm-project-tasks-page__checkbox input:checked + span {
+    border-color: $color-primary;
+    background: $color-primary;
+}
+
+.wm-project-tasks-page__checkbox input:checked + span::after {
+    width: 5px;
+    height: 9px;
+    margin: 2px auto 0;
+    display: block;
+    content: "";
+    border: solid $color-white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+
+// ------------------------------------------------------------
+// Task Cell
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__task-cell {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    min-width: 260px;
+}
+
+.wm-project-tasks-page__task-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: $radius-md;
+    font-size: 15px;
+}
+
+.wm-project-tasks-page__task-icon--blue {
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__task-icon--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-tasks-page__task-icon--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-tasks-page__task-icon--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-tasks-page__task-cell > div {
+    min-width: 0;
+}
+
+.wm-project-tasks-page__task-name {
+    display: block;
+    overflow: hidden;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__task-name:hover {
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__task-code {
+    display: block;
+    margin-top: 3px;
+    color: $color-text-muted;
+    font-size: 11px;
+}
+
+
+// ------------------------------------------------------------
+// Status
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-tasks-page__status > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.wm-project-tasks-page__status--todo {
+    color: $color-text-secondary;
+}
+
+.wm-project-tasks-page__status--todo > span {
+    background: $color-gray-400;
+}
+
+.wm-project-tasks-page__status--progress {
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__status--progress > span {
+    background: $color-primary;
+}
+
+.wm-project-tasks-page__status--review {
+    color: $color-purple;
+}
+
+.wm-project-tasks-page__status--review > span {
+    background: $color-purple;
+}
+
+.wm-project-tasks-page__status--completed {
+    color: $color-success-dark;
+}
+
+.wm-project-tasks-page__status--completed > span {
+    background: $color-success;
+}
+
+
+// ------------------------------------------------------------
+// Priority
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__priority {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: $radius-full;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__priority--high {
+    background: $color-danger-light;
+    color: $color-danger-dark;
+}
+
+.wm-project-tasks-page__priority--medium {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-project-tasks-page__priority--low {
+    background: $color-gray-100;
+    color: $color-text-secondary;
+}
+
+
+// ------------------------------------------------------------
+// Assignee
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__assignee {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__assignee > span:last-child {
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-tasks-page__avatar {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: $color-primary-light;
+    color: $color-primary;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__avatar--sm {
+    width: 28px;
+    height: 28px;
+    font-size: 9px;
+}
+
+.wm-project-tasks-page__avatar--green {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-project-tasks-page__avatar--purple {
+    background: $color-purple-light;
+    color: $color-purple;
+}
+
+.wm-project-tasks-page__avatar--orange {
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+
+// ------------------------------------------------------------
+// Date
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    white-space: nowrap;
+}
+
+.wm-project-tasks-page__date i {
+    color: $color-gray-400;
+}
+
+.wm-project-tasks-page__date--today {
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-tasks-page__date--overdue {
+    color: $color-danger-dark;
+    font-weight: $font-weight-medium;
+}
+
+
+// ------------------------------------------------------------
+// Row Actions
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__row-actions {
+    position: relative;
+    display: inline-flex;
+}
+
+.wm-project-tasks-page__row-actions > button {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-tasks-page__row-actions > button:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-tasks-page__action-dropdown {
+    position: absolute;
+    z-index: $z-dropdown;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 170px;
+    display: none;
+    padding: 5px;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-lg;
+}
+
+.wm-project-tasks-page__row-actions.is-open .wm-project-tasks-page__action-dropdown {
+    display: block;
+}
+
+.wm-project-tasks-page__action-dropdown button {
+    width: 100%;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text;
+    font-size: $font-size-xs;
+    text-align: left;
+}
+
+.wm-project-tasks-page__action-dropdown button:hover {
+    background: $color-gray-50;
+}
+
+.wm-project-tasks-page__action-dropdown button.is-danger {
+    color: $color-danger;
+}
+
+.wm-project-tasks-page__action-dropdown > div {
+    height: 1px;
+    margin: 4px 0;
+    background: $color-border-light;
+}
+
+
+// ------------------------------------------------------------
+// Empty State
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__empty {
+    display: none;
+    padding: 60px $spacing-5;
+    text-align: center;
+}
+
+.wm-project-tasks-page__empty.is-visible {
+    display: block;
+}
+
+.wm-project-tasks-page__empty-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0 auto $spacing-4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: $color-gray-100;
+    color: $color-gray-500;
+    font-size: 23px;
+}
+
+.wm-project-tasks-page__empty h3 {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__empty p {
+    max-width: 400px;
+    margin: 6px auto $spacing-4;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+
+// ------------------------------------------------------------
+// Pagination
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__pagination {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-4;
+    padding: 0 $spacing-4;
+    border-top: 1px solid $color-border;
+}
+
+.wm-project-tasks-page__pagination-info {
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+.wm-project-tasks-page__pagination-info strong {
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-tasks-page__pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.wm-project-tasks-page__pagination-controls button {
+    min-width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 7px;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+}
+
+.wm-project-tasks-page__pagination-controls button:hover:not(:disabled) {
+    border-color: $color-border;
+    background: $color-gray-50;
+}
+
+.wm-project-tasks-page__pagination-controls button.is-active {
+    border-color: $color-primary;
+    background: $color-primary;
+    color: $color-white;
+}
+
+.wm-project-tasks-page__pagination-controls button:disabled {
+    color: $color-text-disabled;
+    cursor: not-allowed;
+}
+
+.wm-project-tasks-page__pagination-controls > span {
+    padding: 0 3px;
+    color: $color-text-muted;
+    font-size: $font-size-xs;
+}
+
+
+// ------------------------------------------------------------
+// Board View
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__list-view,
+.wm-project-tasks-page__board-view {
+    display: none;
+}
+
+.wm-project-tasks-page__list-view.is-visible,
+.wm-project-tasks-page__board-view.is-visible {
+    display: block;
+}
+
+.wm-project-tasks-page__board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    gap: $spacing-4;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.wm-project-tasks-page__column {
+    min-width: 240px;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    background: $color-gray-50;
+}
+
+.wm-project-tasks-page__column-header {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-3;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-tasks-page__column-header > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wm-project-tasks-page__column-header strong {
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__column-header > div > span:last-child {
+    min-width: 21px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+    border-radius: $radius-full;
+    background: $color-gray-200;
+    color: $color-text-secondary;
+    font-size: 10px;
+}
+
+.wm-project-tasks-page__column-header > button {
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-tasks-page__column-header > button:hover {
+    background: $color-white;
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__column-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.wm-project-tasks-page__column-dot--todo {
+    background: $color-gray-400;
+}
+
+.wm-project-tasks-page__column-dot--progress {
+    background: $color-primary;
+}
+
+.wm-project-tasks-page__column-dot--review {
+    background: $color-purple;
+}
+
+.wm-project-tasks-page__column-dot--completed {
+    background: $color-success;
+}
+
+.wm-project-tasks-page__column-body {
+    min-height: 300px;
+    padding: $spacing-3;
+}
+
+.wm-project-tasks-page__board-card {
+    position: relative;
+    margin-bottom: $spacing-3;
+    padding: $spacing-3;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    background: $color-white;
+    box-shadow: $shadow-sm;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.wm-project-tasks-page__board-card:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+}
+
+.wm-project-tasks-page__board-card.is-completed {
+    opacity: 0.75;
+}
+
+.wm-project-tasks-page__board-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-2;
+    margin-bottom: $spacing-2;
+}
+
+.wm-project-tasks-page__board-card-top > button {
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: $radius-md;
+    background: transparent;
+    color: $color-text-muted;
+}
+
+.wm-project-tasks-page__board-card-top > button:hover {
+    background: $color-gray-100;
+    color: $color-text-dark;
+}
+
+.wm-project-tasks-page__board-card > a {
+    display: block;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+.wm-project-tasks-page__board-card > a:hover {
+    color: $color-primary;
+}
+
+.wm-project-tasks-page__board-card.is-completed > a {
+    text-decoration: line-through;
+}
+
+.wm-project-tasks-page__board-card > p {
+    margin: 6px 0 14px;
+    color: $color-text-secondary;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+.wm-project-tasks-page__board-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $spacing-2;
+    color: $color-text-muted;
+    font-size: 11px;
+}
+
+.wm-project-tasks-page__board-date--today {
+    color: $color-primary;
+    font-weight: $font-weight-medium;
+}
+
+
+// ------------------------------------------------------------
+// Modal
+// ------------------------------------------------------------
+
+.wm-project-tasks-page__modal .modal-content {
+    overflow: hidden;
+    border: 1px solid $color-border;
+    border-radius: $radius-xl;
+    box-shadow: $shadow-lg;
+}
+
+.wm-project-tasks-page__modal .modal-header {
+    padding: $spacing-5;
+    border-bottom: 1px solid $color-border;
+}
+
+.wm-project-tasks-page__modal .modal-header > div {
+    min-width: 0;
+}
+
+.wm-project-tasks-page__modal .modal-title {
+    margin: 0;
+    color: $color-text-dark;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-project-tasks-page__modal .modal-header p {
+    margin: 4px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__modal .modal-body {
+    padding: $spacing-5;
+}
+
+.wm-project-tasks-page__modal .modal-footer {
+    padding: $spacing-4 $spacing-5;
+    border-top: 1px solid $color-border;
+}
+
+.wm-project-tasks-page__modal .form-label {
+    margin-bottom: 6px;
+    color: $color-text-dark;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-project-tasks-page__modal .form-label > span {
+    color: $color-danger;
+}
+
+.wm-project-tasks-page__modal .form-control,
+.wm-project-tasks-page__modal .form-select {
+    min-height: $input-height-md;
+    border-color: $input-border;
+    border-radius: $radius-md;
+    color: $color-text;
+    font-size: $font-size-sm;
+}
+
+.wm-project-tasks-page__modal textarea.form-control {
+    min-height: 100px;
+}
+
+.wm-project-tasks-page__modal .form-control:focus,
+.wm-project-tasks-page__modal .form-select:focus {
+    border-color: $color-primary;
+    box-shadow: $input-focus-shadow;
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 1199px
+// ------------------------------------------------------------
+
+@media (max-width: 1199px) {
+
+    .wm-project-tasks-page__summary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .wm-project-tasks-page__board {
+        grid-template-columns: repeat(4, minmax(260px, 1fr));
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 991px
+// ------------------------------------------------------------
+
+@media (max-width: 991px) {
+
+    .wm-project-tasks-page__header {
+        flex-direction: column;
+    }
+
+    .wm-project-tasks-page__header-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .wm-project-tasks-page__toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .wm-project-tasks-page__toolbar-left,
+    .wm-project-tasks-page__toolbar-right {
+        width: 100%;
+    }
+
+    .wm-project-tasks-page__toolbar-right {
+        justify-content: space-between;
+    }
+
+    .wm-project-tasks-page__search {
+        flex: 1;
+        width: auto;
+    }
+
+    .wm-project-tasks-page__filter-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 767px
+// ------------------------------------------------------------
+
+@media (max-width: 767px) {
+
+    .wm-project-tasks-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-project-tasks-page__title-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 20px;
+    }
+
+    .wm-project-tasks-page__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wm-project-tasks-page__summary-card {
+        padding: $spacing-3;
+    }
+
+    .wm-project-tasks-page__summary-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
+
+    .wm-project-tasks-page__filter-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-tasks-page__clear-filter {
+        width: 100%;
+    }
+
+    .wm-project-tasks-page__pagination {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: $spacing-3;
+    }
+
+}
+
+
+// ------------------------------------------------------------
+// Responsive — 575px
+// ------------------------------------------------------------
+
+@media (max-width: 575px) {
+
+    .wm-project-tasks-page__title-row {
+        align-items: flex-start;
+    }
+
+    .wm-project-tasks-page__title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-project-tasks-page__subtitle {
+        font-size: $font-size-sm;
+    }
+
+    .wm-project-tasks-page__header-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-project-tasks-page__header-button {
+        width: 100%;
+    }
+
+    .wm-project-tasks-page__summary {
+        grid-template-columns: 1fr;
+    }
+
+    .wm-project-tasks-page__toolbar-left {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wm-project-tasks-page__search {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .wm-project-tasks-page__toolbar-button {
+        justify-content: center;
+    }
+
+    .wm-project-tasks-page__toolbar-right {
+        justify-content: flex-end;
+    }
+
+    .wm-project-tasks-page__bulk-bar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: $spacing-3;
+    }
+
+    .wm-project-tasks-page__bulk-actions {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .wm-project-tasks-page__bulk-actions button {
+        white-space: nowrap;
+    }
+
+    .wm-project-tasks-page__task-cell {
+        min-width: 220px;
+    }
+
+    .wm-project-tasks-page__pagination-controls button:nth-of-type(2),
+    .wm-project-tasks-page__pagination-controls button:nth-of-type(3) {
+        display: none;
+    }
+
+}

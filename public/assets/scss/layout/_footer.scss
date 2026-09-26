@@ -1,0 +1,83 @@
+// ============================================================
+// WorkManagement
+// Footer
+// ============================================================
+
+@use "../common" as *;
+
+
+// ============================================================
+// Footer
+// ============================================================
+
+.wm-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: $spacing-4;
+
+    padding:
+        $spacing-4
+        $content-padding;
+
+    border-top: 1px solid $color-border;
+
+    background: $color-white;
+
+    color: $color-text-muted;
+
+    font-size: $font-size-sm;
+}
+
+
+// ============================================================
+// Footer Links
+// ============================================================
+
+.wm-footer__links {
+    display: flex;
+    align-items: center;
+
+    gap: $spacing-4;
+}
+
+
+.wm-footer__links a {
+    color: $color-text-secondary;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+
+.wm-footer__links a:hover {
+    color: $color-primary;
+}
+
+
+// ============================================================
+// Responsive
+// ============================================================
+
+@media (max-width: 767.98px) {
+
+    .wm-footer {
+        padding:
+            $spacing-4;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+
+    .wm-footer {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding:
+            $spacing-3;
+    }
+}
