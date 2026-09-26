@@ -8,7 +8,6 @@
 
         <div class="wm-verify-email-page__container">
 
-
             {{-- =====================================================
                 Brand Panel
             ====================================================== --}}
@@ -17,14 +16,12 @@
 
                 <div class="wm-verify-email-page__brand-inner">
 
-
                     {{-- Logo --}}
 
                     <a
                         href="{{ route('home') }}"
                         class="wm-verify-email-page__logo"
                     >
-
                         <span class="wm-verify-email-page__logo-mark">
                             <i class="ph ph-kanban"></i>
                         </span>
@@ -32,115 +29,71 @@
                         <span class="wm-verify-email-page__logo-text">
                             WorkManagement
                         </span>
-
                     </a>
-
 
                     {{-- Brand Content --}}
 
                     <div class="wm-verify-email-page__brand-content">
 
-
-                        {{-- Eyebrow --}}
-
                         <span class="wm-verify-email-page__brand-eyebrow">
-
                             <i class="ph ph-seal-check"></i>
-
                             Secure your workspace
-
                         </span>
 
-
-                        {{-- Title --}}
-
                         <h1 class="wm-verify-email-page__brand-title">
-
                             One quick step to
-
-                            <span>
-                                get started.
-                            </span>
-
+                            <span>get started.</span>
                         </h1>
 
-
-                        {{-- Description --}}
-
                         <p class="wm-verify-email-page__brand-description">
-
                             Verify your email address to activate your
                             account and start managing projects,
                             tasks, and collaboration in WorkManagement.
-
                         </p>
-
-
-                        {{-- Features --}}
 
                         <div class="wm-verify-email-page__features">
 
-
                             <div class="wm-verify-email-page__feature">
-
                                 <span class="wm-verify-email-page__feature-icon">
-
                                     <i class="ph ph-check-circle"></i>
-
                                 </span>
 
                                 <span>
                                     Secure account verification
                                 </span>
-
                             </div>
 
-
                             <div class="wm-verify-email-page__feature">
-
                                 <span class="wm-verify-email-page__feature-icon">
-
                                     <i class="ph ph-check-circle"></i>
-
                                 </span>
 
                                 <span>
                                     Protect your workspace and account
                                 </span>
-
                             </div>
 
-
                             <div class="wm-verify-email-page__feature">
-
                                 <span class="wm-verify-email-page__feature-icon">
-
                                     <i class="ph ph-check-circle"></i>
-
                                 </span>
 
                                 <span>
                                     Get access to your team workspace
                                 </span>
-
                             </div>
-
 
                         </div>
 
                     </div>
-
 
                     {{-- Security Card --}}
 
                     <div class="wm-verify-email-page__security-card">
 
                         <div class="wm-verify-email-page__security-card-icon">
-
                             <i class="ph ph-shield-check"></i>
-
                         </div>
-
 
                         <div class="wm-verify-email-page__security-card-content">
 
@@ -157,7 +110,6 @@
 
                     </div>
 
-
                 </div>
 
             </section>
@@ -171,7 +123,6 @@
 
                 <div class="wm-verify-email-page__form-wrapper">
 
-
                     {{-- Mobile Logo --}}
 
                     <a
@@ -180,9 +131,7 @@
                     >
 
                         <span class="wm-verify-email-page__logo-mark">
-
                             <i class="ph ph-kanban"></i>
-
                         </span>
 
                         <span class="wm-verify-email-page__logo-text">
@@ -197,15 +146,11 @@
                     <div class="wm-verify-email-page__verification-icon">
 
                         <span class="wm-verify-email-page__verification-icon-inner">
-
                             <i class="ph ph-envelope-simple"></i>
-
                         </span>
 
                         <span class="wm-verify-email-page__verification-icon-check">
-
                             <i class="ph ph-check"></i>
-
                         </span>
 
                     </div>
@@ -216,17 +161,12 @@
                     <div class="wm-verify-email-page__form-header">
 
                         <h2 class="wm-verify-email-page__form-title">
-
                             Verify your email
-
                         </h2>
 
-
                         <p class="wm-verify-email-page__form-description">
-
                             Thanks for signing up. Before getting started,
                             please verify your email address.
-
                         </p>
 
                     </div>
@@ -243,7 +183,6 @@
                             <i class="ph ph-check-circle"></i>
 
                             <div>
-
                                 <strong>
                                     Email sent
                                 </strong>
@@ -251,7 +190,6 @@
                                 <span>
                                     {{ session('status') }}
                                 </span>
-
                             </div>
 
                             <button
@@ -260,9 +198,7 @@
                                 data-alert-close
                                 aria-label="Close"
                             >
-
                                 <i class="ph ph-x"></i>
-
                             </button>
 
                         </div>
@@ -306,14 +242,22 @@
                                 data-alert-close
                                 aria-label="Close"
                             >
-
                                 <i class="ph ph-x"></i>
-
                             </button>
 
                         </div>
 
                     @endif
+
+
+                    {{-- =================================================
+                        AJAX Alert Container
+                    ================================================== --}}
+
+                    <div
+                        class="wm-verify-email-page__ajax-alert"
+                        id="wm-verify-email-alert"
+                    ></div>
 
 
                     {{-- =================================================
@@ -323,11 +267,8 @@
                     <div class="wm-verify-email-page__email-card">
 
                         <div class="wm-verify-email-page__email-icon">
-
                             <i class="ph ph-envelope"></i>
-
                         </div>
-
 
                         <div class="wm-verify-email-page__email-content">
 
@@ -357,7 +298,6 @@
                             </span>
 
                             <div>
-
                                 <strong>
                                     Check your inbox
                                 </strong>
@@ -365,7 +305,6 @@
                                 <span>
                                     Look for an email from WorkManagement.
                                 </span>
-
                             </div>
 
                         </div>
@@ -378,7 +317,6 @@
                             </span>
 
                             <div>
-
                                 <strong>
                                     Open the verification email
                                 </strong>
@@ -386,7 +324,6 @@
                                 <span>
                                     Click the verification button inside.
                                 </span>
-
                             </div>
 
                         </div>
@@ -399,7 +336,6 @@
                             </span>
 
                             <div>
-
                                 <strong>
                                     Return to your workspace
                                 </strong>
@@ -407,7 +343,6 @@
                                 <span>
                                     Your account will be ready to use.
                                 </span>
-
                             </div>
 
                         </div>
@@ -421,13 +356,12 @@
 
                     <form
                         method="POST"
-                        action="#"
+                        action="{{ route('verification.send') }}"
                         class="wm-verify-email-page__form"
                         id="wm-verify-email-form"
                     >
 
                         @csrf
-
 
                         <button
                             type="submit"
@@ -444,7 +378,6 @@
                                 </span>
 
                             </span>
-
 
                             <span class="wm-verify-email-page__resend-loading">
 
@@ -466,11 +399,8 @@
                     <div class="wm-verify-email-page__help">
 
                         <div class="wm-verify-email-page__help-icon">
-
                             <i class="ph ph-info"></i>
-
                         </div>
-
 
                         <div>
 
@@ -517,7 +447,6 @@
                             © {{ date('Y') }} WorkManagement
                         </span>
 
-
                         <div>
 
                             <a href="#">
@@ -562,77 +491,140 @@
 
                     event.preventDefault();
 
+                    const $form = $(this);
 
-                    const $form =
-                        $(this);
-
-                    const $button =
-                        $('#wm-verify-email-submit');
-
+                    const $button = $('#wm-verify-email-submit');
 
                     if ($button.hasClass('is-loading')) {
                         return;
                     }
 
-
                     setLoading(true);
 
-
-                    /*
-                     * Laravel AJAX verification request:
-                     *
-                     * $.ajax({
-                     *
-                     *     url: "",
-                     *     method: "POST",
-                     *     data: $form.serialize(),
-                     *
-                     *     success: function (response) {
-                     *
-                     *         showSuccess(
-                     *             response.message
-                     *         );
-                     *
-                     *     },
-                     *
-                     *     error: function (xhr) {
-                     *
-                     *         ...
-                     *
-                     *     }
-                     *
-                     * });
-                     */
+                    clearAlert();
 
 
-                    // Demo loading state
+                    $.ajax({
 
-                    setTimeout(
-                        function () {
+                        url: $form.attr('action'),
+
+                        method: 'POST',
+
+                        data: $form.serialize(),
+
+                        dataType: 'json',
+
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+
+                        success: function (response) {
 
                             setLoading(false);
 
-                            showSuccess(
-                                'A new verification email has been sent to your inbox.'
+
+                            if (response.success) {
+
+                                showSuccess(
+                                    response.message ||
+                                    'A new verification email has been sent to your inbox.'
+                                );
+
+                                startResendCooldown();
+
+                                return;
+                            }
+
+
+                            showError(
+                                response.message ||
+                                'Unable to send the verification email.'
                             );
 
-                            startResendCooldown();
-
                         },
-                        1200
-                    );
+
+
+                        error: function (xhr) {
+
+                            setLoading(false);
+
+
+                            // -------------------------------------------------
+                            // Validation / Laravel Error
+                            // -------------------------------------------------
+
+                            if (xhr.status === 422) {
+
+                                const response =
+                                    xhr.responseJSON;
+
+                                let message =
+                                    response?.message ||
+                                    'Please check your request and try again.';
+
+                                showError(message);
+
+                                return;
+                            }
+
+
+                            // -------------------------------------------------
+                            // Rate Limit
+                            // -------------------------------------------------
+
+                            if (xhr.status === 429) {
+
+                                const response =
+                                    xhr.responseJSON;
+
+                                showError(
+                                    response?.message ||
+                                    'Please wait before requesting another verification email.'
+                                );
+
+                                return;
+                            }
+
+
+                            // -------------------------------------------------
+                            // Unauthorized
+                            // -------------------------------------------------
+
+                            if (xhr.status === 401) {
+
+                                showError(
+                                    'Your session has expired. Please sign in again.'
+                                );
+
+                                return;
+                            }
+
+
+                            // -------------------------------------------------
+                            // Generic Error
+                            // -------------------------------------------------
+
+                            const response =
+                                xhr.responseJSON;
+
+                            showError(
+                                response?.message ||
+                                'Something went wrong while sending the verification email.'
+                            );
+
+                        }
+
+                    });
 
                 }
             );
 
 
             // =========================================================
-            // Loading
+            // Loading State
             // =========================================================
 
-            function setLoading(
-                loading
-            ) {
+            function setLoading(loading) {
 
                 const $button =
                     $('#wm-verify-email-submit');
@@ -653,53 +645,105 @@
 
 
             // =========================================================
-            // Success Message
+            // Success Alert
             // =========================================================
 
-            function showSuccess(
-                message
-            ) {
-
-                $('.wm-verify-email-page__alert')
-                    .remove();
-
+            function showSuccess(message) {
 
                 const html = `
 
-            <div class="wm-verify-email-page__alert wm-verify-email-page__alert--success">
+                <div class="wm-verify-email-page__alert wm-verify-email-page__alert--success">
 
-                <i class="ph ph-check-circle"></i>
+                    <i class="ph ph-check-circle"></i>
 
-                <div>
+                    <div>
 
-                    <strong>
-                        Email sent
-                    </strong>
+                        <strong>
+                            Email sent
+                        </strong>
 
-                    <span>
-                        ${message}
-                    </span>
+                        <span>
+                            ${escapeHtml(message)}
+                        </span>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="wm-verify-email-page__alert-close"
+                        data-alert-close
+                        aria-label="Close"
+                    >
+
+                        <i class="ph ph-x"></i>
+
+                    </button>
 
                 </div>
 
-                <button
-                    type="button"
-                    class="wm-verify-email-page__alert-close"
-                    data-alert-close
-                    aria-label="Close"
-                >
-
-                    <i class="ph ph-x"></i>
-
-                </button>
-
-            </div>
-
-        `;
+            `;
 
 
-                $('.wm-verify-email-page__form-header')
-                    .after(html);
+                $('#wm-verify-email-alert')
+                    .html(html);
+
+            }
+
+
+            // =========================================================
+            // Error Alert
+            // =========================================================
+
+            function showError(message) {
+
+                const html = `
+
+                <div class="wm-verify-email-page__alert wm-verify-email-page__alert--danger">
+
+                    <i class="ph ph-warning-circle"></i>
+
+                    <div>
+
+                        <strong>
+                            Unable to send email
+                        </strong>
+
+                        <span>
+                            ${escapeHtml(message)}
+                        </span>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="wm-verify-email-page__alert-close"
+                        data-alert-close
+                        aria-label="Close"
+                    >
+
+                        <i class="ph ph-x"></i>
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+                $('#wm-verify-email-alert')
+                    .html(html);
+
+            }
+
+
+            // =========================================================
+            // Clear Alert
+            // =========================================================
+
+            function clearAlert() {
+
+                $('#wm-verify-email-alert')
+                    .empty();
 
             }
 
@@ -736,42 +780,54 @@
                 );
 
 
-                resendTimer =
-                    setInterval(
-                        function () {
+                $text.text(
+                    'Resend available in ' +
+                    seconds +
+                    's'
+                );
 
-                            $text.text(
-                                'Resend available in ' +
-                                seconds +
-                                's'
+
+                resendTimer = setInterval(
+                    function () {
+
+                        seconds--;
+
+                        if (seconds <= 0) {
+
+                            clearInterval(
+                                resendTimer
                             );
 
 
-                            seconds--;
+                            $button.prop(
+                                'disabled',
+                                false
+                            );
 
 
-                            if (seconds < 0) {
-
-                                clearInterval(
-                                    resendTimer
-                                );
+                            $button.removeClass(
+                                'is-loading'
+                            );
 
 
-                                $button.prop(
-                                    'disabled',
-                                    false
-                                );
+                            $text.text(
+                                'Resend verification email'
+                            );
 
 
-                                $text.text(
-                                    'Resend verification email'
-                                );
+                            return;
+                        }
 
-                            }
 
-                        },
-                        1000
-                    );
+                        $text.text(
+                            'Resend available in ' +
+                            seconds +
+                            's'
+                        );
+
+                    },
+                    1000
+                );
 
             }
 
@@ -792,14 +848,25 @@
                         .fadeOut(
                             180,
                             function () {
-
                                 $(this).remove();
-
                             }
                         );
 
                 }
             );
+
+
+            // =========================================================
+            // Escape HTML
+            // =========================================================
+
+            function escapeHtml(value) {
+
+                return $('<div>')
+                    .text(value ?? '')
+                    .html();
+
+            }
 
         });
 

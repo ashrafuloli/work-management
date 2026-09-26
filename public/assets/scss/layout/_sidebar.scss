@@ -605,6 +605,47 @@
 }
 
 
+.wm-sidebar__logout-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.wm-sidebar__logout-loading {
+    display: none;
+    align-items: center;
+    gap: 8px;
+}
+
+.wm-sidebar__logout.is-loading .wm-sidebar__logout-content {
+    display: none;
+}
+
+.wm-sidebar__logout.is-loading .wm-sidebar__logout-loading {
+    display: inline-flex;
+}
+
+.wm-sidebar__logout.is-loading {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.wm-sidebar__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: wm-sidebar-spin 0.7s linear infinite;
+}
+
+@keyframes wm-sidebar-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 // ============================================================
 // Collapsed Sidebar
 // ============================================================

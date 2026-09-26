@@ -334,7 +334,7 @@
 
                     <form
                         method="POST"
-                        action="#"
+                        action="{{ route('password.email') }}"
                         class="wm-forgot-password-page__form"
                         id="wm-forgot-password-form"
                         novalidate
@@ -514,145 +514,371 @@
             'use strict';
 
 
-            // =========================================================
+            // =============================================================
+            // Configuration
+            // =============================================================
+
+            const $form = $('#wm-forgot-password-form');
+            const $email = $('#email');
+            const $submit = $('#wm-forgot-password-submit');
+
+            let resetLinkSent = false;
+
+
+            // =============================================================
             // Forgot Password Form
-            // =========================================================
+            // =============================================================
 
-            $('#wm-forgot-password-form').on(
-                'submit',
-                function (event) {
+            $form.on('submit', function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
+
+                if ($submit.hasClass('is-loading')) {
+                    return;
+                }
+
+                clearValidation();
+
+                const email = $.trim(
+                    $email.val()
+                );
 
 
-                    const $form = $(this);
+                // ---------------------------------------------------------
+                // Client Validation
+                // ---------------------------------------------------------
 
-                    const $email = $('#email');
+                if (!email) {
 
-                    let isValid = true;
-
-
-                    // -----------------------------------------------------
-                    // Reset Validation
-                    // -----------------------------------------------------
-
-                    $email.removeClass(
-                        'is-invalid'
+                    showError(
+                        $email,
+                        'Email address is required.'
                     );
 
-
-                    $email
-                        .closest(
-                            '.wm-forgot-password-page__input-wrapper'
-                        )
-                        .removeClass(
-                            'is-invalid'
-                        );
+                    return;
+                }
 
 
-                    $('[data-error-for="email"]')
-                        .text('');
+                if (!isValidEmail(email)) {
+
+                    showError(
+                        $email,
+                        'Please enter a valid email address.'
+                    );
+
+                    return;
+                }
 
 
-                    // -----------------------------------------------------
-                    // Validate Email
-                    // -----------------------------------------------------
+                // ---------------------------------------------------------
+                // Submit
+                // ---------------------------------------------------------
 
-                    const email = $.trim(
+                sendResetLink();
+
+            });
+
+
+            // =============================================================
+            // Send Reset Link
+            // =============================================================
+
+            function sendResetLink() {
+
+                setLoading(true);
+
+                $.ajax({
+
+                    url: $form.attr('action'),
+
+                    method: 'POST',
+
+                    data: $form.serialize(),
+
+                    dataType: 'json',
+
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+
+                    success: function (response) {
+
+                        if (!response.success) {
+
+                            showServerError(
+                                response.message ||
+                                'Unable to send the reset link.'
+                            );
+
+                            return;
+                        }
+
+
+                        resetLinkSent = true;
+
+                        showSuccessState();
+
+                    },
+
+                    error: function (xhr) {
+
+                        handleServerError(xhr);
+
+                    },
+
+                    complete: function () {
+
+                        setLoading(false);
+
+                    }
+
+                });
+
+            }
+
+
+            // =============================================================
+            // Handle Server Error
+            // =============================================================
+
+            function handleServerError(xhr) {
+
+                const response =
+                    xhr.responseJSON || {};
+
+
+                // ---------------------------------------------------------
+                // Validation
+                // ---------------------------------------------------------
+
+                if (
+                    xhr.status === 422 &&
+                    response.errors
+                ) {
+
+                    $.each(
+                        response.errors,
+                        function (field, messages) {
+
+                            const $input =
+                                $('#' + field);
+
+                            if ($input.length) {
+
+                                showError(
+                                    $input,
+                                    messages[0]
+                                );
+
+                            }
+
+                        }
+                    );
+
+                    return;
+                }
+
+
+                // ---------------------------------------------------------
+                // Too Many Requests
+                // ---------------------------------------------------------
+
+                if (xhr.status === 429) {
+
+                    showAlert(
+                        'danger',
+                        'Too many requests. Please wait a moment and try again.'
+                    );
+
+                    return;
+                }
+
+
+                // ---------------------------------------------------------
+                // CSRF / Session Expired
+                // ---------------------------------------------------------
+
+                if (xhr.status === 419) {
+
+                    showAlert(
+                        'danger',
+                        'Your session has expired. Please refresh the page and try again.'
+                    );
+
+                    return;
+                }
+
+
+                // ---------------------------------------------------------
+                // Unauthorized
+                // ---------------------------------------------------------
+
+                if (xhr.status === 401) {
+
+                    showAlert(
+                        'danger',
+                        'Your session is no longer valid. Please refresh the page and try again.'
+                    );
+
+                    return;
+                }
+
+
+                // ---------------------------------------------------------
+                // General Error
+                // ---------------------------------------------------------
+
+                showAlert(
+                    'danger',
+                    response.message ||
+                    'Something went wrong. Please try again.'
+                );
+
+            }
+
+
+            // =============================================================
+            // Show Success State
+            // =============================================================
+
+            function showSuccessState() {
+
+                if (
+                    $('.wm-forgot-password-page__success').length
+                ) {
+                    return;
+                }
+
+
+                const email =
+                    $.trim(
                         $email.val()
                     );
 
 
-                    if (!email) {
-
-                        showError(
-                            $email,
-                            'Email address is required.'
-                        );
-
-                        isValid = false;
-
-                    } else if (!isValidEmail(email)) {
-
-                        showError(
-                            $email,
-                            'Please enter a valid email address.'
-                        );
-
-                        isValid = false;
-
-                    }
+                const safeEmail =
+                    escapeHtml(email);
 
 
-                    if (!isValid) {
+                const successHtml = `
 
+                <div class="wm-forgot-password-page__success">
+
+                    <div class="wm-forgot-password-page__success-icon">
+
+                        <i class="ph ph-check"></i>
+
+                    </div>
+
+
+                    <h3>
+                        Check your inbox
+                    </h3>
+
+
+                    <p>
+
+                        We've sent a password reset link to
+
+                        <strong>
+                            ${safeEmail}
+                        </strong>.
+
+                        Please check your email and follow the
+                        instructions to reset your password.
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="wm-forgot-password-page__resend"
+                        id="wm-resend-reset-link"
+                    >
+
+                        <i class="ph ph-arrow-clockwise"></i>
+
+                        <span>
+                            Send again
+                        </span>
+
+                    </button>
+
+                </div>
+
+            `;
+
+
+                $form
+                    .stop(true, true)
+                    .fadeOut(180, function () {
+
+                        $(this)
+                            .after(successHtml);
+
+                    });
+
+
+                $('.wm-forgot-password-page__recovery-help')
+                    .stop(true, true)
+                    .fadeOut(180);
+
+            }
+
+
+            // =============================================================
+            // Resend Reset Link
+            // =============================================================
+
+            $(document).on(
+                'click',
+                '#wm-resend-reset-link',
+                function () {
+
+                    const $button = $(this);
+
+                    if ($button.hasClass('is-loading')) {
                         return;
-
                     }
 
 
                     // -----------------------------------------------------
-                    // Loading
+                    // Restore Form
                     // -----------------------------------------------------
 
-                    setLoading(
-                        true
-                    );
+                    $('.wm-forgot-password-page__success')
+                        .remove();
 
 
-                    /*
-                     * Laravel AJAX implementation:
-                     *
-                     * $.ajax({
-                     *
-                     *     url: "#",
-             *     method: "POST",
-             *     data: $form.serialize(),
-             *
-             *     success: function (response) {
-             *
-             *         showSuccessState();
-             *
-             *     },
-             *
-             *     error: function (xhr) {
-             *
-             *         handleServerError(xhr);
-             *
-             *     }
-             *
-             * });
-             */
+                    $form
+                        .stop(true, true)
+                        .fadeIn(180);
+
+
+                    $('.wm-forgot-password-page__recovery-help')
+                        .stop(true, true)
+                        .fadeIn(180);
 
 
                     // -----------------------------------------------------
-                    // Demo
+                    // Submit Again
                     // -----------------------------------------------------
 
-                    setTimeout(
-                        function () {
+                    setTimeout(function () {
 
-                            setLoading(
-                                false
-                            );
+                        sendResetLink();
 
-                            showSuccessState();
-
-                        },
-                        1200
-                    );
+                    }, 200);
 
                 }
             );
 
 
-            // =========================================================
+            // =============================================================
             // Email Validation
-            // =========================================================
+            // =============================================================
 
-            function isValidEmail(
-                email
-            ) {
+            function isValidEmail(email) {
 
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
                     email
@@ -661,9 +887,9 @@
             }
 
 
-            // =========================================================
-            // Show Error
-            // =========================================================
+            // =============================================================
+            // Show Field Error
+            // =============================================================
 
             function showError(
                 $input,
@@ -701,25 +927,45 @@
             }
 
 
-            // =========================================================
-            // Loading
-            // =========================================================
+            // =============================================================
+            // Clear Validation
+            // =============================================================
 
-            function setLoading(
-                loading
-            ) {
+            function clearValidation() {
 
-                const $button =
-                    $('#wm-forgot-password-submit');
+                $email.removeClass(
+                    'is-invalid'
+                );
 
 
-                $button.prop(
+                $email
+                    .closest(
+                        '.wm-forgot-password-page__input-wrapper'
+                    )
+                    .removeClass(
+                        'is-invalid'
+                    );
+
+
+                $('[data-error-for="email"]')
+                    .text('');
+
+            }
+
+
+            // =============================================================
+            // Loading State
+            // =============================================================
+
+            function setLoading(loading) {
+
+                $submit.prop(
                     'disabled',
                     loading
                 );
 
 
-                $button.toggleClass(
+                $submit.toggleClass(
                     'is-loading',
                     loading
                 );
@@ -727,147 +973,88 @@
             }
 
 
-            // =========================================================
-            // Success State
-            // =========================================================
+            // =============================================================
+            // Show Alert
+            // =============================================================
 
-            function showSuccessState() {
+            function showAlert(
+                type,
+                message
+            ) {
 
-                const email =
-                    $.trim(
-                        $('#email').val()
-                    );
-
-
-                const safeEmail =
-                    escapeHtml(
-                        email
-                    );
+                $('.wm-forgot-password-page__ajax-alert')
+                    .remove();
 
 
-                const successHtml = `
+                const icon =
+                    type === 'success'
+                        ? 'ph-check-circle'
+                        : 'ph-warning-circle';
 
-            <div class="wm-forgot-password-page__success">
 
-                <div class="wm-forgot-password-page__success-icon">
+                const alertHtml = `
 
-                    <i class="ph ph-check"></i>
+                <div
+                    class="wm-forgot-password-page__alert
+                    wm-forgot-password-page__alert--${type}
+                    wm-forgot-password-page__ajax-alert"
+                >
+
+                    <i class="ph ${icon}"></i>
+
+                    <div>
+
+                        <strong>
+                            ${type === 'success'
+                    ? 'Success'
+                    : 'Something went wrong'}
+                        </strong>
+
+                        <span>
+                            ${escapeHtml(message)}
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="wm-forgot-password-page__alert-close"
+                        data-alert-close
+                        aria-label="Close"
+                    >
+
+                        <i class="ph ph-x"></i>
+
+                    </button>
 
                 </div>
 
-
-                <h3>
-                    Check your inbox
-                </h3>
+            `;
 
 
-                <p>
-
-                    We've sent a password reset link to
-
-                    <strong>
-                        ${safeEmail}
-                    </strong>.
-
-                    Please check your email and follow the
-                    instructions to reset your password.
-
-                </p>
-
-
-                <button
-                    type="button"
-                    class="wm-forgot-password-page__resend"
-                    id="wm-resend-reset-link"
-                >
-
-                    <i class="ph ph-arrow-clockwise"></i>
-
-                    Send again
-
-                </button>
-
-            </div>
-
-        `;
-
-
-                $('#wm-forgot-password-form')
-                    .hide()
-                    .after(
-                        successHtml
-                    );
-
-
-                $('.wm-forgot-password-page__recovery-help')
-                    .hide();
+                $('.wm-forgot-password-page__form-header')
+                    .after(alertHtml);
 
             }
 
 
-            // =========================================================
-            // Resend
-            // =========================================================
-
-            $(document).on(
-                'click',
-                '#wm-resend-reset-link',
-                function () {
-
-                    const $button =
-                        $(this);
-
-
-                    $button
-                        .prop(
-                            'disabled',
-                            true
-                        )
-                        .addClass(
-                            'is-loading'
-                        );
-
-
-                    setTimeout(
-                        function () {
-
-                            $button
-                                .prop(
-                                    'disabled',
-                                    false
-                                )
-                                .removeClass(
-                                    'is-loading'
-                                );
-
-                        },
-                        1200
-                    );
-
-                }
-            );
-
-
-            // =========================================================
+            // =============================================================
             // Escape HTML
-            // =========================================================
+            // =============================================================
 
-            function escapeHtml(
-                value
-            ) {
+            function escapeHtml(value) {
 
                 return $('<div>')
-                    .text(
-                        value
-                    )
+                    .text(value)
                     .html();
 
             }
 
 
-            // =========================================================
+            // =============================================================
             // Alert Close
-            // =========================================================
+            // =============================================================
 
             $(document).on(
                 'click',
@@ -891,9 +1078,9 @@
             );
 
 
-            // =========================================================
+            // =============================================================
             // Input Focus
-            // =========================================================
+            // =============================================================
 
             $(document).on(
                 'focus',
@@ -929,9 +1116,9 @@
             );
 
 
-            // =========================================================
-            // Clear Error
-            // =========================================================
+            // =============================================================
+            // Clear Error While Typing
+            // =============================================================
 
             $(document).on(
                 'input',

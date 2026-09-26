@@ -8,7 +8,6 @@
 
         <div class="wm-auth-container">
 
-
             {{-- =====================================================
                 Brand / Introduction
             ====================================================== --}}
@@ -17,114 +16,88 @@
 
                 <div class="wm-auth__brand-inner">
 
-
                     {{-- Logo --}}
 
                     <a
                         href="{{ route('home') }}"
                         class="wm-auth__logo"
                     >
-
-                    <span class="wm-auth__logo-mark">
-                        <i class="ph ph-kanban"></i>
-                    </span>
+                        <span class="wm-auth__logo-mark">
+                            <i class="ph ph-kanban"></i>
+                        </span>
 
                         <span class="wm-auth__logo-text">
-                        WorkManagement
-                    </span>
-
+                            WorkManagement
+                        </span>
                     </a>
-
 
                     {{-- Brand Content --}}
 
                     <div class="wm-auth__brand-content">
 
-                    <span class="wm-auth__brand-eyebrow">
-
-                        <i class="ph ph-sparkle"></i>
-
-                        Built for productive teams
-
-                    </span>
-
+                        <span class="wm-auth__brand-eyebrow">
+                            <i class="ph ph-sparkle"></i>
+                            Built for productive teams
+                        </span>
 
                         <h1 class="wm-auth__brand-title">
-
                             Bring your team's
                             <span>work together.</span>
-
                         </h1>
 
-
                         <p class="wm-auth__brand-description">
-
                             Create a workspace where projects,
                             tasks, conversations, and progress
                             stay organized and connected.
-
                         </p>
-
 
                         {{-- Benefits --}}
 
                         <div class="wm-auth__features">
 
                             <div class="wm-auth__feature">
-
-                            <span class="wm-auth__feature-icon">
-                                <i class="ph ph-check-circle"></i>
-                            </span>
+                                <span class="wm-auth__feature-icon">
+                                    <i class="ph ph-check-circle"></i>
+                                </span>
 
                                 <span>
-                                Organize projects in one workspace
-                            </span>
-
+                                    Organize projects in one workspace
+                                </span>
                             </div>
 
-
                             <div class="wm-auth__feature">
-
-                            <span class="wm-auth__feature-icon">
-                                <i class="ph ph-check-circle"></i>
-                            </span>
+                                <span class="wm-auth__feature-icon">
+                                    <i class="ph ph-check-circle"></i>
+                                </span>
 
                                 <span>
-                                Collaborate with your entire team
-                            </span>
-
+                                    Collaborate with your entire team
+                                </span>
                             </div>
 
-
                             <div class="wm-auth__feature">
-
-                            <span class="wm-auth__feature-icon">
-                                <i class="ph ph-check-circle"></i>
-                            </span>
+                                <span class="wm-auth__feature-icon">
+                                    <i class="ph ph-check-circle"></i>
+                                </span>
 
                                 <span>
-                                Track work from planning to completion
-                            </span>
-
+                                    Track work from planning to completion
+                                </span>
                             </div>
 
-
                             <div class="wm-auth__feature">
-
-                            <span class="wm-auth__feature-icon">
-                                <i class="ph ph-check-circle"></i>
-                            </span>
+                                <span class="wm-auth__feature-icon">
+                                    <i class="ph ph-check-circle"></i>
+                                </span>
 
                                 <span>
-                                Stay on top of deadlines and progress
-                            </span>
-
+                                    Stay on top of deadlines and progress
+                                </span>
                             </div>
 
                         </div>
 
                     </div>
-
 
                     {{-- Workspace Preview --}}
 
@@ -133,63 +106,37 @@
                         <div class="wm-auth__workspace-header">
 
                             <div>
-
-                            <span class="wm-auth__workspace-label">
-                                Workspace overview
-                            </span>
+                                <span class="wm-auth__workspace-label">
+                                    Workspace overview
+                                </span>
 
                                 <strong>
                                     Research Team
                                 </strong>
-
                             </div>
 
                             <span class="wm-auth__workspace-status">
-                            <i class="ph ph-circle"></i>
-                            Active
-                        </span>
+                                <i class="ph ph-circle"></i>
+                                Active
+                            </span>
 
                         </div>
-
 
                         <div class="wm-auth__workspace-stats">
 
                             <div class="wm-auth__workspace-stat">
-
-                                <strong>
-                                    24
-                                </strong>
-
-                                <span>
-                                Projects
-                            </span>
-
+                                <strong>24</strong>
+                                <span>Projects</span>
                             </div>
 
-
                             <div class="wm-auth__workspace-stat">
-
-                                <strong>
-                                    86
-                                </strong>
-
-                                <span>
-                                Tasks
-                            </span>
-
+                                <strong>86</strong>
+                                <span>Tasks</span>
                             </div>
 
-
                             <div class="wm-auth__workspace-stat">
-
-                                <strong>
-                                    12
-                                </strong>
-
-                                <span>
-                                Members
-                            </span>
-
+                                <strong>12</strong>
+                                <span>Members</span>
                             </div>
 
                         </div>
@@ -209,22 +156,19 @@
 
                 <div class="wm-auth__form-wrapper">
 
-
                     {{-- Mobile Logo --}}
 
                     <a
                         href="{{ route('home') }}"
                         class="wm-auth__mobile-logo"
                     >
-
-                    <span class="wm-auth__logo-mark">
-                        <i class="ph ph-kanban"></i>
-                    </span>
+                        <span class="wm-auth__logo-mark">
+                            <i class="ph ph-kanban"></i>
+                        </span>
 
                         <span class="wm-auth__logo-text">
-                        WorkManagement
-                    </span>
-
+                            WorkManagement
+                        </span>
                     </a>
 
 
@@ -243,72 +187,50 @@
                     </div>
 
 
-                    {{-- Session Status --}}
+                    {{-- AJAX Global Alert --}}
 
-                    @if (session('status'))
+                    <div
+                        class="wm-auth__alert wm-auth__alert--success d-none"
+                        id="wm-register-success"
+                    >
+                        <i class="ph ph-check-circle"></i>
 
-                        <div class="wm-auth__alert wm-auth__alert--success">
+                        <span data-alert-message></span>
 
-                            <i class="ph ph-check-circle"></i>
+                        <button
+                            type="button"
+                            class="wm-auth__alert-close"
+                            data-alert-close
+                            aria-label="Close"
+                        >
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
 
-                            <span>
-                            {{ session('status') }}
-                        </span>
 
-                            <button
-                                type="button"
-                                class="wm-auth__alert-close"
-                                data-alert-close
-                                aria-label="Close"
-                            >
-                                <i class="ph ph-x"></i>
-                            </button>
+                    <div
+                        class="wm-auth__alert wm-auth__alert--danger d-none"
+                        id="wm-register-error"
+                    >
+                        <i class="ph ph-warning-circle"></i>
 
+                        <div>
+                            <strong>
+                                Please check your details.
+                            </strong>
+
+                            <ul data-alert-errors></ul>
                         </div>
 
-                    @endif
-
-
-                    {{-- Validation Errors --}}
-
-                    @if ($errors->any())
-
-                        <div class="wm-auth__alert wm-auth__alert--danger">
-
-                            <i class="ph ph-warning-circle"></i>
-
-                            <div>
-
-                                <strong>
-                                    Please check your details.
-                                </strong>
-
-                                <ul>
-
-                                    @foreach ($errors->all() as $error)
-
-                                        <li>
-                                            {{ $error }}
-                                        </li>
-
-                                    @endforeach
-
-                                </ul>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                class="wm-auth__alert-close"
-                                data-alert-close
-                                aria-label="Close"
-                            >
-                                <i class="ph ph-x"></i>
-                            </button>
-
-                        </div>
-
-                    @endif
+                        <button
+                            type="button"
+                            class="wm-auth__alert-close"
+                            data-alert-close
+                            aria-label="Close"
+                        >
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
 
 
                     {{-- =================================================
@@ -317,7 +239,7 @@
 
                     <form
                         method="POST"
-                        action="#"
+                        action="{{ route('register.store') }}"
                         class="wm-auth__form"
                         id="wm-register-form"
                         novalidate
@@ -327,40 +249,89 @@
 
 
                         {{-- =================================================
-                            Full Name
+                            Name
                         ================================================== --}}
 
-                        <div class="wm-auth__field">
+                        <div class="row">
 
-                            <label
-                                for="name"
-                                class="wm-auth__label"
-                            >
-                                Full name
-                            </label>
+                            {{-- First Name --}}
 
-                            <div class="wm-auth__input-wrapper">
+                            <div class="col-md-6">
 
-                                <i class="ph ph-user wm-auth__input-icon"></i>
+                                <div class="wm-auth__field">
 
-                                <input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    class="form-control wm-auth__input"
-                                    placeholder="Alex Morgan"
-                                    value="{{ old('name') }}"
-                                    autocomplete="name"
-                                    required
-                                    autofocus
-                                >
+                                    <label
+                                        for="first_name"
+                                        class="wm-auth__label"
+                                    >
+                                        First name
+                                    </label>
+
+                                    <div class="wm-auth__input-wrapper">
+
+                                        <i class="ph ph-user wm-auth__input-icon"></i>
+
+                                        <input
+                                            type="text"
+                                            name="first_name"
+                                            id="first_name"
+                                            class="form-control wm-auth__input"
+                                            placeholder="Alex"
+                                            value="{{ old('first_name') }}"
+                                            autocomplete="given-name"
+                                            required
+                                            autofocus
+                                        >
+
+                                    </div>
+
+                                    <span
+                                        class="wm-auth__field-error"
+                                        data-error-for="first_name"
+                                    ></span>
+
+                                </div>
 
                             </div>
 
-                            <span
-                                class="wm-auth__field-error"
-                                data-error-for="name"
-                            ></span>
+
+                            {{-- Last Name --}}
+
+                            <div class="col-md-6">
+
+                                <div class="wm-auth__field">
+
+                                    <label
+                                        for="last_name"
+                                        class="wm-auth__label"
+                                    >
+                                        Last name
+                                    </label>
+
+                                    <div class="wm-auth__input-wrapper">
+
+                                        <i class="ph ph-user wm-auth__input-icon"></i>
+
+                                        <input
+                                            type="text"
+                                            name="last_name"
+                                            id="last_name"
+                                            class="form-control wm-auth__input"
+                                            placeholder="Morgan"
+                                            value="{{ old('last_name') }}"
+                                            autocomplete="family-name"
+                                        >
+
+                                    </div>
+
+                                    <span
+                                        class="wm-auth__field-error"
+                                        data-error-for="last_name"
+                                    ></span>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -416,7 +387,6 @@
                                 Password
                             </label>
 
-
                             <div class="wm-auth__input-wrapper">
 
                                 <i class="ph ph-lock-key wm-auth__input-icon"></i>
@@ -431,20 +401,14 @@
                                     required
                                 >
 
-
                                 <button
                                     type="button"
                                     class="wm-auth__password-toggle"
-                                    id="wm-password-toggle"
+                                    data-password-toggle="password"
                                     aria-label="Show password"
                                     aria-pressed="false"
                                 >
-
-                                    <i
-                                        class="ph ph-eye"
-                                        id="wm-password-icon"
-                                    ></i>
-
+                                    <i class="ph ph-eye"></i>
                                 </button>
 
                             </div>
@@ -458,23 +422,20 @@
                             >
 
                                 <div class="wm-auth__password-strength-bars">
-
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                     <span></span>
-
                                 </div>
 
                                 <span
                                     class="wm-auth__password-strength-text"
                                     id="wm-password-strength-text"
                                 >
-                                Use 8 or more characters
-                            </span>
+                                    Use 8 or more characters
+                                </span>
 
                             </div>
-
 
                             <span
                                 class="wm-auth__field-error"
@@ -511,7 +472,6 @@
                                     required
                                 >
 
-
                                 <button
                                     type="button"
                                     class="wm-auth__password-toggle"
@@ -519,9 +479,7 @@
                                     aria-label="Show password"
                                     aria-pressed="false"
                                 >
-
                                     <i class="ph ph-eye"></i>
-
                                 </button>
 
                             </div>
@@ -551,24 +509,24 @@
                                 >
 
                                 <span class="wm-auth__checkbox-mark">
-                                <i class="ph ph-check"></i>
-                            </span>
+                                    <i class="ph ph-check"></i>
+                                </span>
 
                                 <span class="wm-auth__checkbox-label">
 
-                                I agree to the
+                                    I agree to the
 
-                                <a href="#">
-                                    Terms of Service
-                                </a>
+                                    <a href="#">
+                                        Terms of Service
+                                    </a>
 
-                                and
+                                    and
 
-                                <a href="#">
-                                    Privacy Policy
-                                </a>
+                                    <a href="#">
+                                        Privacy Policy
+                                    </a>
 
-                            </span>
+                                </span>
 
                             </label>
 
@@ -590,24 +548,18 @@
                             id="wm-register-submit"
                         >
 
-                        <span class="wm-auth__submit-content">
+                            <span class="wm-auth__submit-content">
+                                <span>
+                                    Create account
+                                </span>
 
-                            <span>
-                                Create account
+                                <i class="ph ph-arrow-right"></i>
                             </span>
 
-                            <i class="ph ph-arrow-right"></i>
-
-                        </span>
-
-
                             <span class="wm-auth__submit-loading">
-
-                            <span class="wm-auth__spinner"></span>
-
-                            Creating account...
-
-                        </span>
+                                <span class="wm-auth__spinner"></span>
+                                Creating account...
+                            </span>
 
                         </button>
 
@@ -617,11 +569,9 @@
                         ================================================== --}}
 
                         <div class="wm-auth__divider">
-
-                        <span>
-                            Or sign up with
-                        </span>
-
+                            <span>
+                                Or sign up with
+                            </span>
                         </div>
 
 
@@ -631,12 +581,16 @@
 
                         <div class="wm-auth__socials">
 
-                            <button
-                                type="button"
+                            {{-- Google --}}
+
+                            <a
+                                href="{{ route('google.redirect') }}"
                                 class="wm-auth__social-button"
+                                aria-label="Continue with Google"
                             >
 
                                 <svg
+                                    class="wm-auth__social-icon wm-auth__social-icon--google"
                                     viewBox="0 0 24 24"
                                     aria-hidden="true"
                                 >
@@ -659,21 +613,31 @@
 
                                 </svg>
 
-                                Google
+                                <span>
+            Continue with Google
+        </span>
 
-                            </button>
+                            </a>
 
 
-                            <button
-                                type="button"
+                            {{-- GitHub --}}
+
+                            <a
+                                href="{{ route('github.redirect') }}"
                                 class="wm-auth__social-button"
+                                aria-label="Continue with GitHub"
                             >
 
-                                <i class="ph-fill ph-github-logo"></i>
+                                <i
+                                    class="ph-fill ph-github-logo wm-auth__social-icon wm-auth__social-icon--github"
+                                    aria-hidden="true"
+                                ></i>
 
-                                GitHub
+                                <span>
+            Continue with GitHub
+        </span>
 
-                            </button>
+                            </a>
 
                         </div>
 
@@ -699,20 +663,13 @@
 
                     <div class="wm-auth__footer">
 
-                    <span>
-                        © {{ date('Y') }} WorkManagement
-                    </span>
+                        <span>
+                            © {{ date('Y') }} WorkManagement
+                        </span>
 
                         <div>
-
-                            <a href="#">
-                                Privacy
-                            </a>
-
-                            <a href="#">
-                                Terms
-                            </a>
-
+                            <a href="#">Privacy</a>
+                            <a href="#">Terms</a>
                         </div>
 
                     </div>
@@ -737,9 +694,11 @@
             'use strict';
 
 
-            // =========================================================
-            // Password Visibility
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Password Visibility
+            |--------------------------------------------------------------------------
+            */
 
             $(document).on(
                 'click',
@@ -753,7 +712,6 @@
                     );
 
                     const $input = $('#' + targetId);
-
                     const $icon = $button.find('i');
 
                     const isPassword =
@@ -762,10 +720,7 @@
 
                     if (isPassword) {
 
-                        $input.attr(
-                            'type',
-                            'text'
-                        );
+                        $input.attr('type', 'text');
 
                         $icon
                             .removeClass('ph-eye')
@@ -783,10 +738,7 @@
 
                     } else {
 
-                        $input.attr(
-                            'type',
-                            'password'
-                        );
+                        $input.attr('type', 'password');
 
                         $icon
                             .removeClass('ph-eye-slash')
@@ -801,16 +753,16 @@
                             'aria-pressed',
                             'false'
                         );
-
                     }
-
                 }
             );
 
 
-            // =========================================================
-            // Clear Field Errors
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Clear Field Error
+            |--------------------------------------------------------------------------
+            */
 
             $(document).on(
                 'input change',
@@ -819,22 +771,14 @@
 
                     const $input = $(this);
 
-                    const field = $input.attr(
-                        'id'
-                    );
+                    const field = $input.attr('id');
 
 
-                    $input.removeClass(
-                        'is-invalid'
-                    );
-
+                    $input.removeClass('is-invalid');
 
                     $input
                         .closest('.wm-auth__input-wrapper')
-                        .removeClass(
-                            'is-invalid'
-                        );
-
+                        .removeClass('is-invalid');
 
                     $('[data-error-for="' + field + '"]')
                         .text('');
@@ -843,35 +787,36 @@
             );
 
 
-            // =========================================================
-            // Password Strength
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Password Strength
+            |--------------------------------------------------------------------------
+            */
 
             $('#password').on(
                 'input',
                 function () {
 
-                    const password = $(this).val();
-
                     updatePasswordStrength(
-                        password
+                        $(this).val()
                     );
 
                 }
             );
 
 
-            function updatePasswordStrength(
-                password
-            ) {
+            function updatePasswordStrength(password) {
 
-                const $strength = $('#wm-password-strength');
+                const $strength =
+                    $('#wm-password-strength');
 
-                const $bars = $strength.find(
-                    '.wm-auth__password-strength-bars span'
-                );
+                const $bars =
+                    $strength.find(
+                        '.wm-auth__password-strength-bars span'
+                    );
 
-                const $text = $('#wm-password-strength-text');
+                const $text =
+                    $('#wm-password-strength-text');
 
 
                 $bars.removeClass(
@@ -886,7 +831,6 @@
                     );
 
                     return;
-
                 }
 
 
@@ -935,12 +879,9 @@
 
                 } else {
 
-                    level = 'weak';
-
                     $text.text(
                         'Weak password — add more characters'
                     );
-
                 }
 
 
@@ -950,24 +891,19 @@
                         if (index < Math.min(score, 4)) {
 
                             $(this)
-                                .addClass(
-                                    'is-active'
-                                )
-                                .addClass(
-                                    'is-' + level
-                                );
-
+                                .addClass('is-active')
+                                .addClass('is-' + level);
                         }
-
                     }
                 );
-
             }
 
 
-            // =========================================================
-            // Register Validation
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Register Form
+            |--------------------------------------------------------------------------
+            */
 
             $('#wm-register-form').on(
                 'submit',
@@ -978,71 +914,91 @@
 
                     const $form = $(this);
 
-                    const $name = $('#name');
+                    const $firstName =
+                        $('#first_name');
 
-                    const $email = $('#email');
+                    const $lastName =
+                        $('#last_name');
 
-                    const $password = $('#password');
+                    const $email =
+                        $('#email');
+
+                    const $password =
+                        $('#password');
 
                     const $confirmation =
                         $('#password_confirmation');
 
-                    const $terms = $('#terms');
+                    const $terms =
+                        $('#terms');
 
 
                     let isValid = true;
 
 
-                    // Reset
+                    clearValidationErrors();
 
-                    $('.wm-auth__input')
-                        .removeClass('is-invalid');
-
-                    $('.wm-auth__input-wrapper')
-                        .removeClass('is-invalid');
-
-                    $('.wm-auth__field-error')
-                        .text('');
+                    hideAlerts();
 
 
-                    // =====================================================
-                    // Name
-                    // =====================================================
+                    /*
+                    |--------------------------------------------------------------------------
+                    | Frontend Validation
+                    |--------------------------------------------------------------------------
+                    */
 
-                    const name = $.trim(
-                        $name.val()
-                    );
+                    const firstName =
+                        $.trim($firstName.val());
+
+                    const lastName =
+                        $.trim($lastName.val());
+
+                    const email =
+                        $.trim($email.val());
+
+                    const password =
+                        $password.val();
+
+                    const confirmation =
+                        $confirmation.val();
 
 
-                    if (!name) {
+                    // First Name
+
+                    if (!firstName) {
 
                         showError(
-                            $name,
-                            'Full name is required.'
+                            $firstName,
+                            'First name is required.'
                         );
 
                         isValid = false;
 
-                    } else if (name.length < 2) {
+                    } else if (firstName.length < 2) {
 
                         showError(
-                            $name,
-                            'Please enter your full name.'
+                            $firstName,
+                            'First name must be at least 2 characters.'
                         );
 
                         isValid = false;
-
                     }
 
 
-                    // =====================================================
+                    // Last Name
+
+                    if (lastName && lastName.length > 100) {
+
+                        showError(
+                            $lastName,
+                            'Last name is too long.'
+                        );
+
+                        isValid = false;
+                    }
+
+
                     // Email
-                    // =====================================================
-
-                    const email = $.trim(
-                        $email.val()
-                    );
-
 
                     if (!email) {
 
@@ -1061,17 +1017,10 @@
                         );
 
                         isValid = false;
-
                     }
 
 
-                    // =====================================================
                     // Password
-                    // =====================================================
-
-                    const password =
-                        $password.val();
-
 
                     if (!password) {
 
@@ -1090,17 +1039,10 @@
                         );
 
                         isValid = false;
-
                     }
 
 
-                    // =====================================================
-                    // Confirm Password
-                    // =====================================================
-
-                    const confirmation =
-                        $confirmation.val();
-
+                    // Confirmation
 
                     if (!confirmation) {
 
@@ -1119,13 +1061,10 @@
                         );
 
                         isValid = false;
-
                     }
 
 
-                    // =====================================================
                     // Terms
-                    // =====================================================
 
                     if (!$terms.is(':checked')) {
 
@@ -1135,98 +1074,155 @@
                             );
 
                         isValid = false;
-
                     }
 
 
                     if (!isValid) {
 
                         return;
-
                     }
 
 
-                    // =====================================================
-                    // Loading
-                    // =====================================================
-
-                    setLoading(
-                        true
-                    );
-
-
                     /*
-                     * Laravel AJAX registration will be connected here.
-                     *
-                     * Example:
-                     *
-                     * $.ajax({
-                     *
-                     *     url: "",
-             *     method: "POST",
-             *     data: $form.serialize(),
-             *
-             *     success: function (response) {
-             *
-             *         window.location.href =
-             *             response.redirect;
-             *
-             *     },
-             *
-             *     error: function (xhr) {
-             *
-             *         ...
-             *
-             *     }
-             *
-             * });
-             */
+                    |--------------------------------------------------------------------------
+                    | AJAX Registration
+                    |--------------------------------------------------------------------------
+                    */
+
+                    setLoading(true);
 
 
-                    // Demo loading state
+                    $.ajax({
 
-                    setTimeout(
-                        function () {
+                        url: $form.attr('action'),
 
-                            setLoading(
-                                false
+                        method: 'POST',
+
+                        data: $form.serialize(),
+
+                        dataType: 'json',
+
+                        success: function (response) {
+
+                            if (!response.success) {
+
+                                showGlobalError(
+                                    response.message ||
+                                    'Something went wrong.'
+                                );
+
+                                return;
+                            }
+
+
+                            showGlobalSuccess(
+                                response.message
                             );
 
+
+                            /*
+                             * Registration successful.
+                             *
+                             * Account has been created and
+                             * verification email has been queued.
+                             */
+
+                            setTimeout(
+                                function () {
+
+                                    window.location.href =
+                                        "{{ route('verification.notice') }}";
+
+                                },
+                                1000
+                            );
                         },
-                        1200
-                    );
+
+                        error: function (xhr) {
+
+                            const response =
+                                xhr.responseJSON;
+
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | Validation Error
+                            |--------------------------------------------------------------------------
+                            */
+
+                            if (xhr.status === 422) {
+
+                                if (
+                                    response &&
+                                    response.errors
+                                ) {
+
+                                    showValidationErrors(
+                                        response.errors
+                                    );
+
+                                } else {
+
+                                    showGlobalError(
+                                        response?.message ||
+                                        'Please check your details.'
+                                    );
+                                }
+
+                                return;
+                            }
+
+
+                            /*
+                            |--------------------------------------------------------------------------
+                            | Other Errors
+                            |--------------------------------------------------------------------------
+                            */
+
+                            showGlobalError(
+                                response?.message ||
+                                'Something went wrong. Please try again.'
+                            );
+                        },
+
+                        complete: function () {
+
+                            setLoading(false);
+                        }
+
+                    });
 
                 }
             );
 
 
-            // =========================================================
-            // Email Validation
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Email Validation
+            |--------------------------------------------------------------------------
+            */
 
-            function isValidEmail(
-                email
-            ) {
+            function isValidEmail(email) {
 
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
                     email
                 );
-
             }
 
 
-            // =========================================================
-            // Show Error
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Show Field Error
+            |--------------------------------------------------------------------------
+            */
 
             function showError(
                 $input,
                 message
             ) {
 
-                const field = $input.attr(
-                    'id'
-                );
+                const field =
+                    $input.attr('id');
 
 
                 $input.addClass(
@@ -1242,20 +1238,75 @@
 
 
                 $('[data-error-for="' + field + '"]')
-                    .text(
-                        message
-                    );
-
+                    .text(message);
             }
 
 
-            // =========================================================
-            // Loading
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Server Validation Errors
+            |--------------------------------------------------------------------------
+            */
 
-            function setLoading(
-                loading
-            ) {
+            function showValidationErrors(errors) {
+
+                $.each(
+                    errors,
+                    function (field, messages) {
+
+                        const $input =
+                            $('#' + field);
+
+
+                        if ($input.length) {
+
+                            showError(
+                                $input,
+                                messages[0]
+                            );
+
+                        } else if (field === 'terms') {
+
+                            $('[data-error-for="terms"]')
+                                .text(messages[0]);
+                        }
+
+                    }
+                );
+
+
+                showGlobalError(
+                    'Please check your details.'
+                );
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Clear Validation Errors
+            |--------------------------------------------------------------------------
+            */
+
+            function clearValidationErrors() {
+
+                $('.wm-auth__input')
+                    .removeClass('is-invalid');
+
+                $('.wm-auth__input-wrapper')
+                    .removeClass('is-invalid');
+
+                $('.wm-auth__field-error')
+                    .text('');
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Loading
+            |--------------------------------------------------------------------------
+            */
+
+            function setLoading(loading) {
 
                 const $button =
                     $('#wm-register-submit');
@@ -1271,13 +1322,81 @@
                     'is-loading',
                     loading
                 );
-
             }
 
 
-            // =========================================================
-            // Alert Close
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Global Success Alert
+            |--------------------------------------------------------------------------
+            */
+
+            function showGlobalSuccess(message) {
+
+                const $alert =
+                    $('#wm-register-success');
+
+
+                $alert
+                    .find('[data-alert-message]')
+                    .text(message);
+
+
+                $alert.removeClass('d-none');
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Global Error Alert
+            |--------------------------------------------------------------------------
+            */
+
+            function showGlobalError(message) {
+
+                const $alert =
+                    $('#wm-register-error');
+
+                const $errors =
+                    $alert.find('[data-alert-errors]');
+
+
+                $errors.empty();
+
+
+                if (message) {
+
+                    $('<li>')
+                        .text(message)
+                        .appendTo($errors);
+                }
+
+
+                $alert.removeClass('d-none');
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Hide Alerts
+            |--------------------------------------------------------------------------
+            */
+
+            function hideAlerts() {
+
+                $('#wm-register-success')
+                    .addClass('d-none');
+
+                $('#wm-register-error')
+                    .addClass('d-none');
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Alert Close
+            |--------------------------------------------------------------------------
+            */
 
             $(document).on(
                 'click',
@@ -1286,22 +1405,17 @@
 
                     $(this)
                         .closest('.wm-auth__alert')
-                        .fadeOut(
-                            180,
-                            function () {
-
-                                $(this).remove();
-
-                            }
-                        );
+                        .addClass('d-none');
 
                 }
             );
 
 
-            // =========================================================
-            // Input Focus
-            // =========================================================
+            /*
+            |--------------------------------------------------------------------------
+            | Input Focus
+            |--------------------------------------------------------------------------
+            */
 
             $(document).on(
                 'focus',
@@ -1310,9 +1424,7 @@
 
                     $(this)
                         .closest('.wm-auth__input-wrapper')
-                        .addClass(
-                            'is-focused'
-                        );
+                        .addClass('is-focused');
 
                 }
             );
@@ -1325,9 +1437,7 @@
 
                     $(this)
                         .closest('.wm-auth__input-wrapper')
-                        .removeClass(
-                            'is-focused'
-                        );
+                        .removeClass('is-focused');
 
                 }
             );

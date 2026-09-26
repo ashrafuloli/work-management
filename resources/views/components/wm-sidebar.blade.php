@@ -576,15 +576,19 @@
 
 
         <div class="wm-sidebar__user-info">
-
-        <span class="wm-sidebar__user-name">
-            Alex Morgan
-        </span>
+            <span class="wm-sidebar__user-name">
+                {{ auth()->user()->profile?->display_name
+                    ?? trim(
+                        (auth()->user()->profile?->first_name ?? '') . ' ' .
+                        (auth()->user()->profile?->last_name ?? '')
+                    )
+                    ?: auth()->user()->email
+                }}
+            </span>
 
             <span class="wm-sidebar__user-email">
-            alex@workmanagement.com
-        </span>
-
+                {{ auth()->user()->email }}
+            </span>
         </div>
 
 
@@ -596,6 +600,7 @@
                 method="POST"
                 action="{{ route('logout') }}"
                 class="wm-sidebar__logout-form"
+                id="wm-logout-form"
             >
 
                 @csrf
@@ -603,15 +608,24 @@
                 <button
                     type="submit"
                     class="wm-sidebar__logout"
+                    id="wm-logout-button"
                     aria-label="Logout"
                     title="Logout"
                 >
 
+                <span class="wm-sidebar__logout-content">
+
                     <i class="ph ph-sign-out"></i>
 
                     <span class="wm-sidebar__logout-text">
-                    Logout
+                        Logout
+                    </span>
                 </span>
+
+
+                    <span class="wm-sidebar__logout-loading">
+                        <span class="wm-sidebar__spinner"></span>
+                    </span>
 
                 </button>
 
@@ -626,6 +640,7 @@
 
 
 @push('script')
+
     <script>
 
         $(document).ready(function () {
@@ -645,13 +660,15 @@
                     event.preventDefault();
                     event.stopPropagation();
 
-                    const $dropdown = $(this).closest(
-                        '[data-sidebar-dropdown]'
-                    );
+                    const $dropdown =
+                        $(this).closest(
+                            '[data-sidebar-dropdown]'
+                        );
 
-                    const isOpen = $dropdown.hasClass(
-                        'is-open'
-                    );
+                    const isOpen =
+                        $dropdown.hasClass(
+                            'is-open'
+                        );
 
 
                     // Close other dropdowns
@@ -660,14 +677,19 @@
                         .not($dropdown)
                         .removeClass('is-open')
                         .find('[data-sidebar-dropdown-toggle]')
-                        .attr('aria-expanded', 'false');
+                        .attr(
+                            'aria-expanded',
+                            'false'
+                        );
 
 
                     // Toggle current dropdown
 
                     if (isOpen) {
 
-                        $dropdown.removeClass('is-open');
+                        $dropdown.removeClass(
+                            'is-open'
+                        );
 
                         $(this).attr(
                             'aria-expanded',
@@ -676,7 +698,9 @@
 
                     } else {
 
-                        $dropdown.addClass('is-open');
+                        $dropdown.addClass(
+                            'is-open'
+                        );
 
                         $(this).attr(
                             'aria-expanded',
@@ -747,7 +771,133 @@
                 }
             );
 
+
+            // =========================================================
+            // Logout
+            // =========================================================
+
+            $('#wm-logout-form').on(
+                'submit',
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    const $form = $(this);
+
+                    const $button =
+                        $('#wm-logout-button');
+
+
+                    if ($button.hasClass('is-loading')) {
+                        return;
+                    }
+
+
+                    // -------------------------------------------------
+                    // Loading
+                    // -------------------------------------------------
+
+                    $button
+                        .prop('disabled', true)
+                        .addClass('is-loading');
+
+
+                    // -------------------------------------------------
+                    // AJAX Logout
+                    // -------------------------------------------------
+
+                    $.ajax({
+
+                        url: $form.attr('action'),
+
+                        method: 'POST',
+
+                        data: $form.serialize(),
+
+                        dataType: 'json',
+
+                        headers: {
+                            'Accept': 'application/json'
+                        },
+
+
+                        success: function (response) {
+
+                            if (
+                                response.success &&
+                                response.redirect
+                            ) {
+
+                                window.location.href =
+                                    response.redirect;
+
+                                return;
+                            }
+
+
+                            resetLogoutButton();
+
+                        },
+
+
+                        error: function (xhr) {
+
+                            resetLogoutButton();
+
+
+                            // -------------------------------------------------
+                            // Session Expired
+                            // -------------------------------------------------
+
+                            if (
+                                xhr.status === 401 ||
+                                xhr.status === 419
+                            ) {
+
+                                window.location.href =
+                                    '{{ route('login') }}';
+
+                                return;
+                            }
+
+
+                            const response =
+                                xhr.responseJSON || {};
+
+
+                            console.error(
+                                response.message ||
+                                'Unable to logout.'
+                            );
+
+                        }
+
+                    });
+
+
+                    // -------------------------------------------------
+                    // Reset Button
+                    // -------------------------------------------------
+
+                    function resetLogoutButton() {
+
+                        $button
+                            .prop(
+                                'disabled',
+                                false
+                            )
+                            .removeClass(
+                                'is-loading'
+                            );
+
+                    }
+
+                }
+            );
+
         });
 
     </script>
+
 @endpush

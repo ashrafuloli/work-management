@@ -2167,6 +2167,45 @@
   display: none;
 }
 
+.wm-sidebar__logout-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wm-sidebar__logout-loading {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.wm-sidebar__logout.is-loading .wm-sidebar__logout-content {
+  display: none;
+}
+
+.wm-sidebar__logout.is-loading .wm-sidebar__logout-loading {
+  display: inline-flex;
+}
+
+.wm-sidebar__logout.is-loading {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.wm-sidebar__spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: wm-sidebar-spin 0.7s linear infinite;
+}
+
+@keyframes wm-sidebar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .wm-sidebar.is-collapsed {
   width: 76px;
 }
@@ -2736,6 +2775,45 @@
   color: inherit;
 }
 
+.wm-header__logout-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wm-header__logout-loading {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.wm-header__profile-dropdown-item.is-loading {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.wm-header__profile-dropdown-item.is-loading .wm-header__logout-content {
+  display: none;
+}
+
+.wm-header__profile-dropdown-item.is-loading .wm-header__logout-loading {
+  display: inline-flex;
+}
+
+.wm-header__logout-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: wm-header-logout-spin 0.7s linear infinite;
+}
+
+@keyframes wm-header-logout-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 @media (max-width: 1199.98px) {
   .wm-header__search {
     width: 210px;
@@ -3444,36 +3522,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 0 16px;
-  color: #374151;
+  gap: 9px;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: #111827;
   background: #FFFFFF;
-  border: 1px solid #D1D5DB;
+  border: 1px solid #E5E7EB;
   border-radius: 8px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-
 .wm-auth__social-button:hover {
   color: #111827;
   background: #F9FAFB;
-  border-color: #9CA3AF;
+  border-color: #D1D5DB;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  text-decoration: none;
+}
+.wm-auth__social-button:active {
+  transform: translateY(1px);
+}
+.wm-auth__social-button:focus-visible {
+  outline: 0;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.wm-auth__social-button svg {
+.wm-auth__social-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+.wm-auth__social-icon--google {
   width: 18px;
   height: 18px;
 }
 
-.wm-auth__social-button svg path {
-  fill: currentColor;
-}
-
-.wm-auth__social-button > i {
-  font-size: 19px;
+.wm-auth__social-icon--github {
+  font-size: 20px;
 }
 
 .wm-auth__register {

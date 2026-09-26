@@ -153,17 +153,31 @@
             >
 
                 <span class="wm-header__profile-avatar">
-                    AM
+                    {{ strtoupper(substr(
+                        auth()->user()->profile?->first_name ?? auth()->user()->email,
+                        0,
+                        1
+                    )) }}{{ strtoupper(substr(
+                        auth()->user()->profile?->last_name ?? '',
+                        0,
+                        1
+                    )) }}
                 </span>
 
-                <span class="wm-header__profile-info">
+                                <span class="wm-header__profile-info">
 
                     <span class="wm-header__profile-name">
-                        Alex Morgan
+                        {{ auth()->user()->profile?->display_name
+                            ?? trim(
+                                (auth()->user()->profile?->first_name ?? '') . ' ' .
+                                (auth()->user()->profile?->last_name ?? '')
+                            )
+                            ?: auth()->user()->email
+                        }}
                     </span>
 
                     <span class="wm-header__profile-role">
-                        Administrator
+                        {{ ucfirst(str_replace('_', ' ', auth()->user()->user_type)) }}
                     </span>
 
                 </span>
@@ -180,23 +194,28 @@
                 data-header-profile-menu
             >
 
-
                 <!-- User -->
 
                 <div class="wm-header__profile-dropdown-user">
 
                     <span class="wm-header__profile-dropdown-avatar">
-                        AM
+                        {{ strtoupper(substr(auth()->user()->profile?->first_name ?? auth()->user()->email,0,1)) }}{{ strtoupper(substr(auth()->user()->profile?->last_name ?? '',0,1)) }}
                     </span>
 
                     <div class="wm-header__profile-dropdown-info">
 
                         <strong>
-                            Alex Morgan
+                            {{ auth()->user()->profile?->display_name
+                                ?? trim(
+                                    (auth()->user()->profile?->first_name ?? '') . ' ' .
+                                    (auth()->user()->profile?->last_name ?? '')
+                                )
+                                ?: auth()->user()->email
+                            }}
                         </strong>
 
                         <span>
-                            alex@workmanagement.com
+                            {{ auth()->user()->email }}
                         </span>
 
                     </div>
@@ -217,8 +236,8 @@
                     <i class="ph ph-user-circle"></i>
 
                     <span>
-                        My Profile
-                    </span>
+            My Profile
+        </span>
 
                 </a>
 
@@ -233,8 +252,8 @@
                     <i class="ph ph-gear"></i>
 
                     <span>
-                        Settings
-                    </span>
+            Settings
+        </span>
 
                 </a>
 
@@ -249,8 +268,8 @@
                     <i class="ph ph-credit-card"></i>
 
                     <span>
-                        Billing
-                    </span>
+            Billing
+        </span>
 
                 </a>
 
@@ -264,6 +283,7 @@
                     method="POST"
                     action="{{ route('logout') }}"
                     class="wm-header__logout-form"
+                    id="wm-header-logout-form"
                 >
 
                     @csrf
@@ -271,12 +291,27 @@
                     <button
                         type="submit"
                         class="wm-header__profile-dropdown-item wm-header__profile-dropdown-item--danger"
+                        id="wm-header-logout-button"
                     >
 
-                        <i class="ph ph-sign-out"></i>
+                        <span class="wm-header__logout-content">
 
-                        <span>
-                            Logout
+                            <i class="ph ph-sign-out"></i>
+
+                            <span>
+                                Logout
+                            </span>
+
+                        </span>
+
+                        <span class="wm-header__logout-loading">
+
+                            <span class="wm-header__logout-spinner"></span>
+
+                            <span>
+                                Signing out...
+                            </span>
+
                         </span>
 
                     </button>
@@ -284,7 +319,6 @@
                 </form>
 
             </div>
-
         </div>
 
 
@@ -514,6 +548,63 @@
                 }
 
             }
+
+            // =========================================================
+            // logout
+            // =========================================================
+
+            $('#wm-header-logout-form').on('submit', function (event) {
+                event.preventDefault();
+
+                const $form = $(this);
+                const $button = $('#wm-header-logout-button');
+
+                if ($button.hasClass('is-loading')) {
+                    return;
+                }
+
+                $button
+                    .prop('disabled', true)
+                    .addClass('is-loading');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    method: 'POST',
+                    data: $form.serialize(),
+                    dataType: 'json',
+
+                    success: function (response) {
+
+                        if (response.success && response.redirect) {
+                            window.location.href = response.redirect;
+                            return;
+                        }
+
+                        resetLogoutButton();
+                    },
+
+                    error: function (xhr) {
+
+                        resetLogoutButton();
+
+                        if (xhr.status === 401 || xhr.status === 419) {
+                            window.location.href = '{{ route('login') }}';
+                            return;
+                        }
+
+                        console.error(
+                            xhr.responseJSON?.message ||
+                            'Unable to logout.'
+                        );
+                    }
+                });
+
+                function resetLogoutButton() {
+                    $button
+                        .prop('disabled', false)
+                        .removeClass('is-loading');
+                }
+            });
 
         });
 
