@@ -634,8 +634,8 @@
                                 ></i>
 
                                 <span>
-            Continue with GitHub
-        </span>
+                                    Continue with GitHub
+                                </span>
 
                             </a>
 
