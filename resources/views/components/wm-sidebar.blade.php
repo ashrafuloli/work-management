@@ -12,14 +12,21 @@
         <a
             href="{{ route('dashboard') }}"
             class="wm-sidebar__logo"
+            aria-label="{{ __('common.dashboard') }}"
         >
 
             <span class="wm-sidebar__logo-mark">
-                <img src="{{asset('assets/img/logo/favicon.png')}}" alt="img">
+                <img
+                    src="{{ asset('assets/img/logo/favicon.png') }}"
+                    alt="WorkManagement"
+                >
             </span>
 
             <span class="wm-sidebar__logo-text">
-                <img src="{{asset('assets/img/logo/logo-text.png')}}" alt="img">
+                <img
+                    src="{{ asset('assets/img/logo/logo-text.png') }}"
+                    alt="WorkManagement"
+                >
             </span>
 
         </a>
@@ -29,8 +36,9 @@
             type="button"
             class="wm-sidebar__toggle"
             id="wm-sidebar-toggle"
-            aria-label="Collapse sidebar"
+            aria-label="{{ __('sidebar.collapse_sidebar') }}"
             aria-expanded="true"
+            title="{{ __('sidebar.collapse_sidebar') }}"
         >
 
             <i
@@ -47,7 +55,10 @@
          Sidebar Navigation
          ==================================================== -->
 
-    <nav class="wm-sidebar__nav">
+    <nav
+        class="wm-sidebar__nav"
+        aria-label="{{ __('sidebar.main_navigation') }}"
+    >
 
 
         <!-- =================================================
@@ -57,7 +68,7 @@
         <div class="wm-sidebar__group">
 
             <div class="wm-sidebar__label">
-                Overview
+                {{ __('sidebar.overview') }}
             </div>
 
 
@@ -73,7 +84,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Dashboard
+                    {{ __('common.dashboard') }}
                 </span>
 
             </a>
@@ -91,7 +102,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Notifications
+                    {{ __('common.notifications') }}
                 </span>
 
                 <span class="wm-sidebar__badge">
@@ -110,7 +121,7 @@
         <div class="wm-sidebar__group">
 
             <div class="wm-sidebar__label">
-                Work Management
+                {{ __('sidebar.work_management') }}
             </div>
 
 
@@ -126,7 +137,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Tasks
+                    {{ __('sidebar.tasks') }}
                 </span>
 
                 <span class="wm-sidebar__badge">
@@ -148,6 +159,7 @@
                     class="wm-sidebar__item wm-sidebar__dropdown-toggle {{ request()->routeIs('projects.*') ? 'is-active' : '' }}"
                     data-sidebar-dropdown-toggle
                     aria-expanded="{{ request()->routeIs('projects.*') ? 'true' : 'false' }}"
+                    aria-label="{{ __('sidebar.projects') }}"
                 >
 
                     <span class="wm-sidebar__item-icon">
@@ -155,7 +167,7 @@
                     </span>
 
                     <span class="wm-sidebar__item-text">
-                        Projects
+                        {{ __('sidebar.projects') }}
                     </span>
 
                     <span class="wm-sidebar__item-arrow">
@@ -171,8 +183,13 @@
                         href="{{ route('projects.index') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('projects.index') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-kanban"></i>
-                        <span>All Projects</span>
+
+                        <span>
+                            {{ __('sidebar.all_projects') }}
+                        </span>
+
                     </a>
 
 
@@ -180,8 +197,13 @@
                         href="{{ route('projects.create') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('projects.create') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-plus-circle"></i>
-                        <span>Create Project</span>
+
+                        <span>
+                            {{ __('sidebar.create_project') }}
+                        </span>
+
                     </a>
 
                 </div>
@@ -201,7 +223,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Calendar
+                    {{ __('sidebar.calendar') }}
                 </span>
 
             </a>
@@ -219,7 +241,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Time Tracking
+                    {{ __('sidebar.time_tracking') }}
                 </span>
 
             </a>
@@ -237,7 +259,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Workstreams
+                    {{ __('sidebar.workstreams') }}
                 </span>
 
             </a>
@@ -252,7 +274,7 @@
         <div class="wm-sidebar__group">
 
             <div class="wm-sidebar__label">
-                Workspace
+                {{ __('sidebar.workspace') }}
             </div>
 
 
@@ -268,7 +290,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Team Members
+                    {{ __('sidebar.team_members') }}
                 </span>
 
             </a>
@@ -286,7 +308,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Documents
+                    {{ __('sidebar.documents') }}
                 </span>
 
             </a>
@@ -304,7 +326,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Files
+                    {{ __('sidebar.files') }}
                 </span>
 
             </a>
@@ -319,7 +341,7 @@
         <div class="wm-sidebar__group">
 
             <div class="wm-sidebar__label">
-                Insights
+                {{ __('sidebar.insights') }}
             </div>
 
 
@@ -335,7 +357,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Reports
+                    {{ __('sidebar.reports') }}
                 </span>
 
             </a>
@@ -353,7 +375,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Risks & Issues
+                    {{ __('sidebar.risks_issues') }}
                 </span>
 
             </a>
@@ -371,7 +393,7 @@
                 </span>
 
                 <span class="wm-sidebar__item-text">
-                    Activity
+                    {{ __('sidebar.activity') }}
                 </span>
 
             </a>
@@ -386,7 +408,7 @@
         <div class="wm-sidebar__group">
 
             <div class="wm-sidebar__label">
-                Administration
+                {{ __('sidebar.administration') }}
             </div>
 
 
@@ -402,6 +424,7 @@
                     class="wm-sidebar__item wm-sidebar__dropdown-toggle {{ request()->routeIs('settings.*') ? 'is-active' : '' }}"
                     data-sidebar-dropdown-toggle
                     aria-expanded="{{ request()->routeIs('settings.*') ? 'true' : 'false' }}"
+                    aria-label="{{ __('common.settings') }}"
                 >
 
                     <span class="wm-sidebar__item-icon">
@@ -409,7 +432,7 @@
                     </span>
 
                     <span class="wm-sidebar__item-text">
-                        Settings
+                        {{ __('common.settings') }}
                     </span>
 
                     <span class="wm-sidebar__item-arrow">
@@ -427,8 +450,13 @@
                         href="{{ route('settings.index') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.index') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-sliders-horizontal"></i>
-                        <span>General</span>
+
+                        <span>
+                            {{ __('sidebar.general') }}
+                        </span>
+
                     </a>
 
 
@@ -438,8 +466,13 @@
                         href="{{ route('settings.profile') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.profile') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-user-circle"></i>
-                        <span>Profile</span>
+
+                        <span>
+                            {{ __('sidebar.profile') }}
+                        </span>
+
                     </a>
 
 
@@ -449,8 +482,13 @@
                         href="{{ route('settings.roles-permissions') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.roles-permissions') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-shield-check"></i>
-                        <span>Roles & Permissions</span>
+
+                        <span>
+                            {{ __('sidebar.roles_permissions') }}
+                        </span>
+
                     </a>
 
 
@@ -460,8 +498,13 @@
                         href="{{ route('settings.workspace') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.workspace') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-buildings"></i>
-                        <span>Workspace</span>
+
+                        <span>
+                            {{ __('sidebar.workspace_settings') }}
+                        </span>
+
                     </a>
 
 
@@ -471,8 +514,13 @@
                         href="{{ route('settings.integrations') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.integrations') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-plugs-connected"></i>
-                        <span>Integrations</span>
+
+                        <span>
+                            {{ __('common.integrations') }}
+                        </span>
+
                     </a>
 
 
@@ -482,8 +530,13 @@
                         href="{{ route('settings.api') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('settings.api') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-code"></i>
-                        <span>API / Developer</span>
+
+                        <span>
+                            {{ __('sidebar.api_developer') }}
+                        </span>
+
                     </a>
 
                 </div>
@@ -503,6 +556,7 @@
                     class="wm-sidebar__item wm-sidebar__dropdown-toggle {{ request()->routeIs('billing.*') || request()->routeIs('pricing') ? 'is-active' : '' }}"
                     data-sidebar-dropdown-toggle
                     aria-expanded="{{ request()->routeIs('billing.*') || request()->routeIs('pricing') ? 'true' : 'false' }}"
+                    aria-label="{{ __('sidebar.billing') }}"
                 >
 
                     <span class="wm-sidebar__item-icon">
@@ -510,7 +564,7 @@
                     </span>
 
                     <span class="wm-sidebar__item-text">
-                        Billing
+                        {{ __('sidebar.billing') }}
                     </span>
 
                     <span class="wm-sidebar__item-arrow">
@@ -528,8 +582,13 @@
                         href="{{ route('billing.index') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('billing.index') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-credit-card"></i>
-                        <span>Billing Overview</span>
+
+                        <span>
+                            {{ __('sidebar.billing_overview') }}
+                        </span>
+
                     </a>
 
 
@@ -539,8 +598,13 @@
                         href="{{ route('billing.subscription') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('billing.subscription') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-repeat"></i>
-                        <span>Subscription</span>
+
+                        <span>
+                            {{ __('sidebar.subscription') }}
+                        </span>
+
                     </a>
 
 
@@ -550,8 +614,13 @@
                         href="{{ route('pricing') }}"
                         class="wm-sidebar__submenu-item {{ request()->routeIs('pricing') ? 'is-active' : '' }}"
                     >
+
                         <i class="ph ph-tag"></i>
-                        <span>Pricing</span>
+
+                        <span>
+                            {{ __('sidebar.pricing') }}
+                        </span>
+
                     </a>
 
                 </div>
@@ -559,7 +628,6 @@
             </div>
 
         </div>
-
 
     </nav>
 
@@ -570,25 +638,49 @@
 
     <div class="wm-sidebar__user">
 
+        @php
+            $profile = auth()->user()->profile;
+
+            $displayName =
+                $profile?->display_name
+                ?: trim(
+                    ($profile?->first_name ?? '') . ' ' .
+                    ($profile?->last_name ?? '')
+                )
+                ?: auth()->user()->email;
+
+            $avatarInitials = collect(
+                preg_split(
+                    '/\s+/',
+                    trim($displayName)
+                )
+            )
+                ->filter()
+                ->take(2)
+                ->map(
+                    fn ($name) => mb_strtoupper(
+                        mb_substr($name, 0, 1)
+                    )
+                )
+                ->implode('');
+        @endphp
+
+
         <div class="wm-sidebar__user-avatar">
-            AM
+            {{ $avatarInitials ?: 'U' }}
         </div>
 
 
         <div class="wm-sidebar__user-info">
+
             <span class="wm-sidebar__user-name">
-                {{ auth()->user()->profile?->display_name
-                    ?? trim(
-                        (auth()->user()->profile?->first_name ?? '') . ' ' .
-                        (auth()->user()->profile?->last_name ?? '')
-                    )
-                    ?: auth()->user()->email
-                }}
+                {{ $displayName }}
             </span>
 
             <span class="wm-sidebar__user-email">
                 {{ auth()->user()->email }}
             </span>
+
         </div>
 
 
@@ -609,22 +701,25 @@
                     type="submit"
                     class="wm-sidebar__logout"
                     id="wm-logout-button"
-                    aria-label="Logout"
-                    title="Logout"
+                    aria-label="{{ __('sidebar.logout') }}"
+                    title="{{ __('sidebar.logout') }}"
                 >
 
-                <span class="wm-sidebar__logout-content">
+                    <span class="wm-sidebar__logout-content">
 
-                    <i class="ph ph-sign-out"></i>
+                        <i class="ph ph-sign-out"></i>
 
-                    <span class="wm-sidebar__logout-text">
-                        Logout
+                        <span class="wm-sidebar__logout-text">
+                            {{ __('sidebar.logout') }}
+                        </span>
+
                     </span>
-                </span>
 
 
                     <span class="wm-sidebar__logout-loading">
+
                         <span class="wm-sidebar__spinner"></span>
+
                     </span>
 
                 </button>
@@ -868,7 +963,7 @@
 
                             console.error(
                                 response.message ||
-                                'Unable to logout.'
+                                '{{ __("common.something_went_wrong") }}'
                             );
 
                         }
