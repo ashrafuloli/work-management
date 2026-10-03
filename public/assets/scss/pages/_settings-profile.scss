@@ -22,6 +22,7 @@
 .wm-profile-page__breadcrumb {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: $spacing-2;
 
     margin-bottom: $spacing-4;
@@ -32,11 +33,15 @@
 
 .wm-profile-page__breadcrumb i {
     color: $color-gray-400;
+    font-size: 13px;
 }
 
 .wm-profile-page__breadcrumb-link {
     color: $color-text-secondary;
     text-decoration: none;
+
+    transition:
+        color 0.2s ease;
 }
 
 .wm-profile-page__breadcrumb-link:hover {
@@ -64,6 +69,7 @@
 
     color: $color-text-secondary;
     font-size: $font-size-md;
+    line-height: $line-height-normal;
 }
 
 .wm-profile-page__header-actions {
@@ -95,6 +101,8 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-4;
+
+    min-width: 0;
 }
 
 
@@ -115,7 +123,11 @@
 }
 
 .wm-profile-card__cover {
-    height: 112px;
+    position: relative;
+
+    height: 20px;
+
+    overflow: hidden;
 
     background:
         linear-gradient(
@@ -126,8 +138,22 @@
         );
 }
 
+.wm-profile-card__cover::after {
+    position: absolute;
+    inset: 0;
+
+    content: "";
+
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255, 255, 255, 0.18),
+            transparent 35%
+        );
+}
+
 .wm-profile-card__body {
-    padding: 0 $spacing-5 $spacing-5;
+    padding: 50px $spacing-5 $spacing-5;
 }
 
 .wm-profile-card__identity {
@@ -135,6 +161,7 @@
     align-items: flex-end;
     gap: $spacing-4;
 
+    min-width: 0;
     margin-top: -38px;
 }
 
@@ -144,34 +171,59 @@
 }
 
 .wm-profile-card__identity-content h2 {
+    overflow: hidden;
+
     margin: 0 0 4px;
 
     color: $color-text-dark;
     font-size: $font-size-xl;
     font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wm-profile-card__identity-content p {
+    overflow: hidden;
+
     margin: 0 0 5px;
 
     color: $color-text-secondary;
     font-size: $font-size-sm;
+    line-height: $line-height-normal;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.wm-profile-card__identity-content span {
+.wm-profile-card__identity-content > span {
     display: inline-flex;
     align-items: center;
     gap: 5px;
+
+    max-width: 100%;
 
     color: $color-text-muted;
     font-size: $font-size-xs;
 }
 
+.wm-profile-card__identity-content > span > span {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .wm-profile-card__identity-content span i {
+    flex: 0 0 auto;
+
     color: $color-primary;
 }
 
 .wm-profile-card__identity-status {
+    flex: 0 0 auto;
+
     margin-left: auto;
     padding-bottom: 7px;
 }
@@ -197,6 +249,8 @@
     width: 82px;
     height: 82px;
 
+    overflow: hidden;
+
     border: 4px solid $color-white;
     border-radius: $radius-full;
 
@@ -213,6 +267,21 @@
     font-weight: $font-weight-bold;
 
     box-shadow: $shadow-md;
+}
+
+.wm-profile-avatar__image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.wm-profile-avatar__image span {
+    display: block;
+
+    line-height: 1;
 }
 
 .wm-profile-avatar__edit {
@@ -236,10 +305,26 @@
     font-size: 13px;
 
     cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
 }
 
 .wm-profile-avatar__edit:hover {
     background: $color-primary-hover;
+    transform: scale(1.05);
+}
+
+.wm-profile-avatar__edit:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.wm-profile-avatar__edit.is-loading {
+    pointer-events: none;
 }
 
 .wm-profile-online-status {
@@ -262,6 +347,7 @@
 .wm-profile-online-status i {
     width: 6px;
     height: 6px;
+    flex: 0 0 6px;
 
     border-radius: $radius-full;
 
@@ -276,12 +362,13 @@
 .wm-profile-section {
     margin-bottom: $spacing-5;
 
+    overflow: hidden;
+
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-xl;
 
     box-shadow: $shadow-sm;
-    overflow: hidden;
 }
 
 .wm-profile-section__header {
@@ -301,6 +388,7 @@
     color: $color-text-dark;
     font-size: $font-size-lg;
     font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
 }
 
 .wm-profile-section__description {
@@ -308,6 +396,7 @@
 
     color: $color-text-secondary;
     font-size: $font-size-sm;
+    line-height: $line-height-normal;
 }
 
 .wm-profile-section__body {
@@ -319,6 +408,10 @@
 // Form
 // ============================================================
 
+.wm-profile-field {
+    position: relative;
+}
+
 .wm-profile-field label {
     display: block;
 
@@ -327,6 +420,13 @@
     color: $color-text-dark;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
+    line-height: $line-height-normal;
+}
+
+.wm-profile-field label > span {
+    margin-left: 2px;
+
+    color: $color-danger;
 }
 
 .wm-profile-field .form-control,
@@ -336,19 +436,45 @@
     border-color: $input-border;
     border-radius: $radius-md;
 
+    background-color: $input-bg;
     color: $color-text;
+
     font-size: $font-size-sm;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
-.wm-profile-field textarea.form-control {
-    min-height: 110px;
-    resize: vertical;
+.wm-profile-field .form-control::placeholder {
+    color: $input-placeholder;
+}
+
+.wm-profile-field .form-control:hover,
+.wm-profile-field .form-select:hover {
+    border-color: $color-border-dark;
 }
 
 .wm-profile-field .form-control:focus,
 .wm-profile-field .form-select:focus {
     border-color: $color-primary;
+
     box-shadow: $input-focus-shadow;
+}
+
+.wm-profile-field textarea.form-control {
+    min-height: 110px;
+
+    resize: vertical;
+    line-height: $line-height-normal;
+}
+
+.wm-profile-field .form-control:disabled,
+.wm-profile-field .form-control[readonly] {
+    background-color: $color-gray-50;
+    color: $color-text-secondary;
+    cursor: not-allowed;
 }
 
 .wm-profile-field__hint {
@@ -358,7 +484,40 @@
 
     color: $color-text-muted;
     font-size: $font-size-xs;
+    line-height: 1.5;
 }
+
+.wm-profile-field__error {
+    display: none;
+
+    margin-top: 6px;
+
+    color: $color-danger-dark;
+    font-size: $font-size-xs;
+    line-height: 1.5;
+}
+
+.wm-profile-field.has-error .form-control,
+.wm-profile-field.has-error .form-select {
+    border-color: $color-danger;
+}
+
+.wm-profile-field.has-error .form-control:focus,
+.wm-profile-field.has-error .form-select:focus {
+    border-color: $color-danger;
+
+    box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.10);
+}
+
+.wm-profile-field.has-error .wm-profile-field__error {
+    display: block;
+}
+
+
+// ============================================================
+// Input Icon
+// ============================================================
 
 .wm-profile-input-icon {
     position: relative;
@@ -373,6 +532,8 @@
     color: $color-text-muted;
     font-size: 16px;
 
+    pointer-events: none;
+
     transform: translateY(-50%);
 }
 
@@ -386,6 +547,8 @@
 // ============================================================
 
 .wm-profile-security-list {
+    overflow: hidden;
+
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-xl;
@@ -453,17 +616,21 @@
 .wm-profile-security-item__content span {
     color: $color-text-secondary;
     font-size: $font-size-xs;
+    line-height: $line-height-normal;
 }
 
 .wm-profile-security-item__status {
     display: flex;
     align-items: center;
     gap: $spacing-3;
+
+    flex: 0 0 auto;
 }
 
 .wm-profile-security-badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     min-height: 25px;
     padding: 0 9px;
@@ -472,11 +639,108 @@
 
     font-size: 11px;
     font-weight: $font-weight-medium;
+    white-space: nowrap;
 }
 
 .wm-profile-security-badge--warning {
     background: $color-warning-light;
     color: $color-warning-dark;
+}
+
+.wm-profile-security-badge--success {
+    background: $color-success-light;
+    color: $color-success-dark;
+}
+
+.wm-profile-security-badge--muted {
+    background: $color-gray-100;
+    color: $color-text-muted;
+}
+
+
+// ============================================================
+// Security Buttons
+// ============================================================
+
+.wm-profile-security-item .btn {
+    flex: 0 0 auto;
+
+    min-height: 36px;
+
+    border-radius: $radius-md;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.wm-profile-security-item .btn-light {
+    border-color: $color-border;
+    background: $color-white;
+    color: $color-text-secondary;
+}
+
+.wm-profile-security-item .btn-light:hover {
+    border-color: $color-primary;
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-profile-security-item .btn-danger {
+    border-color: $color-danger;
+    background: $color-danger;
+    color: $color-white;
+}
+
+.wm-profile-security-item .btn-danger:hover {
+    border-color: $color-danger-dark;
+    background: $color-danger-dark;
+}
+
+.wm-profile-security-item .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.wm-profile-security-item .btn.is-loading {
+    position: relative;
+
+    pointer-events: none;
+}
+
+.wm-profile-security-item .btn.is-loading::after {
+    display: inline-block;
+
+    width: 13px;
+    height: 13px;
+
+    margin-left: 7px;
+
+    content: "";
+
+    vertical-align: -2px;
+
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+
+    border-radius: $radius-full;
+
+    animation:
+        wm-profile-security-spin 0.65s linear infinite;
+}
+
+@keyframes wm-profile-security-spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
 }
 
 
@@ -485,12 +749,13 @@
 // ============================================================
 
 .wm-profile-sessions {
+    overflow: hidden;
+
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-xl;
 
     box-shadow: $shadow-sm;
-    overflow: hidden;
 }
 
 .wm-profile-session {
@@ -543,9 +808,14 @@
 .wm-profile-session__device strong {
     margin-bottom: 3px;
 
+    overflow: hidden;
+
     color: $color-text-dark;
     font-size: $font-size-sm;
     font-weight: $font-weight-medium;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wm-profile-session__device span {
@@ -561,6 +831,7 @@
 .wm-profile-session__current {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     min-height: 25px;
     padding: 0 9px;
@@ -572,20 +843,26 @@
 
     font-size: 11px;
     font-weight: $font-weight-medium;
+    white-space: nowrap;
 }
 
 .wm-profile-session__revoke {
+    flex: 0 0 auto;
+
     padding: 0;
 
     border: 0;
-    background: transparent;
 
+    background: transparent;
     color: $color-danger-dark;
 
     font-size: $font-size-xs;
     font-weight: $font-weight-medium;
 
     cursor: pointer;
+
+    transition:
+        color 0.2s ease;
 }
 
 .wm-profile-session__revoke:hover {
@@ -598,12 +875,13 @@
 // ============================================================
 
 .wm-profile-activity {
+    overflow: hidden;
+
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-xl;
 
     box-shadow: $shadow-sm;
-    overflow: hidden;
 }
 
 .wm-profile-activity__item {
@@ -657,11 +935,18 @@
 }
 
 .wm-profile-activity__content span {
+    overflow: hidden;
+
     color: $color-text-muted;
     font-size: $font-size-xs;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wm-profile-activity__item time {
+    flex: 0 0 auto;
+
     color: $color-text-muted;
     font-size: $font-size-xs;
     white-space: nowrap;
@@ -673,12 +958,13 @@
 // ============================================================
 
 .wm-profile-sidebar-card {
+    overflow: hidden;
+
     background: $color-surface;
     border: 1px solid $color-border;
     border-radius: $radius-xl;
 
     box-shadow: $shadow-sm;
-    overflow: hidden;
 }
 
 .wm-profile-sidebar-card__header {
@@ -727,7 +1013,11 @@
 
     width: 64px;
     height: 64px;
+    flex: 0 0 64px;
+
     margin-bottom: $spacing-3;
+
+    overflow: hidden;
 
     border-radius: $radius-full;
 
@@ -744,11 +1034,27 @@
     font-weight: $font-weight-bold;
 }
 
+.wm-profile-account__avatar img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
 .wm-profile-account strong {
+    max-width: 100%;
+
     margin-bottom: 3px;
+
+    overflow: hidden;
 
     color: $color-text-dark;
     font-size: $font-size-md;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wm-profile-account > span {
@@ -777,10 +1083,17 @@
 }
 
 .wm-profile-account-meta strong {
+    max-width: 60%;
+
+    overflow: hidden;
+
     color: $color-text-secondary;
     font-size: $font-size-xs;
     font-weight: $font-weight-medium;
     text-align: right;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .wm-profile-account-meta__status {
@@ -812,11 +1125,20 @@
 .wm-profile-completion__bar span {
     display: block;
 
+    width: 0;
     height: 100%;
 
     border-radius: inherit;
 
-    background: $color-primary;
+    background:
+        linear-gradient(
+            90deg,
+            $color-primary,
+            $color-cyan
+        );
+
+    transition:
+        width 0.3s ease;
 }
 
 .wm-profile-completion p {
@@ -850,6 +1172,10 @@
 
     font-size: $font-size-sm;
     text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .wm-profile-quick-links a:hover {
@@ -859,8 +1185,12 @@
 
 .wm-profile-quick-links a > i:first-child {
     width: 18px;
+    flex: 0 0 18px;
 
     color: $color-text-muted;
+
+    transition:
+        color 0.2s ease;
 }
 
 .wm-profile-quick-links a:hover > i:first-child {
@@ -868,10 +1198,13 @@
 }
 
 .wm-profile-quick-links a > span {
+    min-width: 0;
     flex: 1;
 }
 
 .wm-profile-quick-links a > i:last-child {
+    flex: 0 0 auto;
+
     color: $color-text-muted;
     font-size: 14px;
 }
@@ -881,6 +1214,16 @@
 // Save State
 // ============================================================
 
+#profileSave {
+    position: relative;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
 #profileSave.is-dirty {
     box-shadow:
         0 0 0 3px rgba(37, 99, 235, 0.12);
@@ -888,6 +1231,10 @@
 
 #profileSave.is-loading {
     pointer-events: none;
+}
+
+#profileSave:disabled {
+    opacity: 0.75;
 }
 
 .wm-profile-spinner {
@@ -915,17 +1262,1236 @@
 
 
 // ============================================================
-// Responsive
+// Avatar Loading
+// ============================================================
+
+.wm-profile-avatar__edit.is-loading {
+    opacity: 0.75;
+}
+
+.wm-profile-avatar__edit.is-loading::after {
+    display: block;
+
+    width: 12px;
+    height: 12px;
+
+    content: "";
+
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    border-top-color: $color-white;
+
+    border-radius: $radius-full;
+
+    animation:
+        wm-profile-spin 0.7s linear infinite;
+}
+
+.wm-profile-avatar__edit.is-loading i {
+    display: none;
+}
+
+
+// ============================================================
+// Unsaved State
+// ============================================================
+
+.wm-profile-page.has-unsaved-changes
+.wm-profile-page__subtitle::after {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-left: 8px;
+
+    content: "";
+
+    vertical-align: middle;
+
+    border-radius: $radius-full;
+
+    background: $color-warning;
+}
+
+
+// ============================================================
+// SweetAlert Profile Form
+// ============================================================
+
+.wm-profile-swal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    width: 100%;
+
+    padding-top: 4px;
+
+    text-align: left;
+}
+
+
+// ============================================================
+// SweetAlert Field
+// ============================================================
+
+.wm-profile-swal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    width: 100%;
+}
+
+.wm-profile-swal-field label {
+    display: block;
+
+    margin: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    line-height: 1.4;
+}
+
+
+// ============================================================
+// SweetAlert Input Wrapper
+// ============================================================
+
+.wm-profile-swal-input-wrapper {
+    position: relative;
+
+    width: 100%;
+}
+
+.wm-profile-swal-input-wrapper > i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    z-index: 3;
+
+    color: $color-text-muted;
+
+    font-size: 16px;
+
+    pointer-events: none;
+
+    transform: translateY(-50%);
+}
+
+
+// ============================================================
+// SweetAlert Input
+// ============================================================
+
+.wm-profile-swal-input-wrapper .swal2-input {
+    display: block;
+
+    width: 100%;
+    height: $input-height-md;
+    min-height: $input-height-md;
+
+    margin: 0;
+
+    padding: 0 42px 0 38px;
+
+    box-sizing: border-box;
+
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    background: $color-white;
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-regular;
+    line-height: 40px;
+
+    box-shadow: none;
+
+    outline: 0;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.wm-profile-swal-input-wrapper .swal2-input:hover {
+    border-color: $color-gray-300;
+}
+
+.wm-profile-swal-input-wrapper .swal2-input:focus {
+    border-color: $color-primary;
+
+    background: $color-white;
+
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-profile-swal-input-wrapper .swal2-input::placeholder {
+    color: $color-text-muted;
+    opacity: 1;
+}
+
+
+// ============================================================
+// SweetAlert Password Toggle
+// ============================================================
+
+.wm-profile-swal-password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: $radius-sm;
+
+    background: transparent;
+    color: $color-text-muted;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.wm-profile-swal-password-toggle:hover {
+    background: $color-gray-50;
+    color: $color-primary;
+}
+
+.wm-profile-swal-password-toggle:focus {
+    outline: 0;
+}
+
+.wm-profile-swal-password-toggle:focus-visible {
+    background: $color-primary-light;
+    color: $color-primary;
+
+    box-shadow:
+        0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.wm-profile-swal-password-toggle i {
+    pointer-events: none;
+}
+
+
+// ============================================================
+// SweetAlert Field Error
+// ============================================================
+
+.wm-profile-swal-field-error {
+    display: none;
+
+    margin: 0;
+
+    color: $color-danger-dark;
+
+    font-size: $font-size-xs;
+    line-height: 1.4;
+}
+
+.wm-profile-swal-field-error.is-visible {
+    display: block;
+}
+
+.wm-profile-swal-field.has-error
+.wm-profile-swal-input-wrapper .swal2-input {
+    border-color: $color-danger;
+}
+
+.wm-profile-swal-field.has-error
+.wm-profile-swal-input-wrapper .swal2-input:focus {
+    border-color: $color-danger;
+
+    box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.10);
+}
+
+.wm-profile-swal-field.has-error
+.wm-profile-swal-input-wrapper > i {
+    color: $color-danger;
+}
+
+
+// ============================================================
+// SweetAlert Password Strength
+// ============================================================
+
+.wm-profile-swal-password-strength {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    width: 100%;
+
+    margin-top: -1px;
+}
+
+.wm-profile-swal-password-strength__bars {
+    display: flex;
+    gap: 4px;
+
+    width: 100%;
+    height: 4px;
+}
+
+.wm-profile-swal-password-strength__bars span {
+    display: block;
+
+    width: 25%;
+    height: 4px;
+
+    border-radius: $radius-full;
+
+    background: $color-gray-200;
+
+    transition:
+        background-color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-weak {
+    background: $color-danger;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-medium {
+    background: $color-warning;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-good {
+    background: $color-primary;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-strong {
+    background: $color-success;
+}
+
+.wm-profile-swal-password-strength__text {
+    display: block;
+
+    margin: 0;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: 1.4;
+
+    transition:
+        color 0.2s ease;
+}
+
+
+// ============================================================
+// SweetAlert Password Strength State
+// ============================================================
+
+.wm-profile-swal-password-strength.is-weak
+.wm-profile-swal-password-strength__text {
+    color: $color-danger-dark;
+}
+
+.wm-profile-swal-password-strength.is-medium
+.wm-profile-swal-password-strength__text {
+    color: $color-warning-dark;
+}
+
+.wm-profile-swal-password-strength.is-good
+.wm-profile-swal-password-strength__text {
+    color: $color-primary;
+}
+
+.wm-profile-swal-password-strength.is-strong
+.wm-profile-swal-password-strength__text {
+    color: $color-success-dark;
+}
+
+
+// ============================================================
+// SweetAlert Validation Message
+// ============================================================
+
+.wm-profile-swal-form
+~ .swal2-validation-message {
+    margin-top: $spacing-3;
+}
+
+.swal2-validation-message {
+    font-size: $font-size-xs;
+}
+
+
+// ============================================================
+// 2FA Setup Modal
+// ============================================================
+
+.wm-profile-2fa-setup {
+    width: 100%;
+
+    padding-top: 2px;
+
+    text-align: center;
+}
+
+.wm-profile-2fa-setup__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto $spacing-3;
+
+    border-radius: $radius-full;
+
+    background: $color-primary-light;
+    color: $color-primary;
+
+    font-size: 24px;
+}
+
+.wm-profile-2fa-setup__description {
+    max-width: 470px;
+
+    margin: 0 auto $spacing-2;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: 1.6;
+}
+
+.wm-profile-2fa-setup__email {
+    margin: 0 0 $spacing-5;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+}
+
+.wm-profile-2fa-setup__verification {
+    width: 100%;
+
+    margin-top: $spacing-5;
+
+    text-align: left;
+}
+
+.wm-profile-2fa-setup__verification label {
+    display: block;
+
+    margin-bottom: $spacing-2;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input {
+    display: block;
+
+    width: 100%;
+    height: $input-height-md;
+    min-height: $input-height-md;
+
+    margin: 0;
+
+    padding: 0 $spacing-3;
+
+    box-sizing: border-box;
+
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    background: $color-white;
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.18em;
+    line-height: $input-height-md;
+
+    text-align: center;
+
+    box-shadow: none;
+
+    outline: 0;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input:hover {
+    border-color: $color-gray-300;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input:focus {
+    border-color: $color-primary;
+
+    box-shadow: $input-focus-shadow;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input.is-invalid {
+    border-color: $color-danger;
+
+    box-shadow:
+        0 0 0 3px rgba(239, 68, 68, 0.10);
+}
+
+.wm-profile-2fa-code-error {
+    display: none;
+
+    margin-top: 7px;
+
+    color: $color-danger-dark;
+
+    font-size: $font-size-xs;
+    line-height: 1.45;
+    text-align: left;
+}
+
+.wm-profile-2fa-code-error.is-visible {
+    display: block;
+}
+
+
+// ============================================================
+// Email 2FA Resend
+// ============================================================
+
+#resendEmailTwoFactorCode {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    margin-top: $spacing-3;
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+    color: $color-primary;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+#resendEmailTwoFactorCode:hover {
+    color: $color-primary-hover;
+    text-decoration: underline;
+}
+
+#resendEmailTwoFactorCode:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+#resendEmailTwoFactorCode.is-loading {
+    pointer-events: none;
+}
+
+#resendEmailTwoFactorCode.is-loading::after {
+    display: inline-block;
+
+    width: 11px;
+    height: 11px;
+
+    content: "";
+
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+
+    border-radius: $radius-full;
+
+    animation:
+        wm-profile-security-spin 0.65s linear infinite;
+}
+
+
+// ============================================================
+// 2FA Disable Modal
+// ============================================================
+
+.wm-profile-2fa-disable {
+    width: 100%;
+
+    padding-top: 2px;
+
+    text-align: left;
+}
+
+.wm-profile-2fa-disable p {
+    margin: 0 0 $spacing-4;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-sm;
+    line-height: 1.6;
+}
+
+.wm-profile-2fa-disable .swal2-input {
+    display: block;
+
+    width: 100%;
+    height: $input-height-md;
+    min-height: $input-height-md;
+
+    margin: 0;
+
+    padding: 0 $spacing-3;
+
+    box-sizing: border-box;
+
+    border: 1px solid $color-border-dark;
+    border-radius: $radius-md;
+
+    background: $color-white;
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.18em;
+    line-height: $input-height-md;
+
+    text-align: center;
+
+    box-shadow: none;
+
+    outline: 0;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.wm-profile-2fa-disable .swal2-input:focus {
+    border-color: $color-primary;
+
+    box-shadow: $input-focus-shadow;
+}
+
+
+// ============================================================
+// TOTP QR
+// ============================================================
+
+.wm-profile-2fa-setup__qr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: $spacing-5 0 $spacing-3;
+}
+
+.wm-profile-2fa-setup__qr-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 220px;
+    height: 220px;
+
+    padding: 12px;
+
+    overflow: hidden;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    background: $color-white;
+
+    box-shadow:
+        0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+.wm-profile-2fa-setup__qr-code img,
+.wm-profile-2fa-setup__qr-code svg {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;
+}
+
+.wm-profile-2fa-setup__qr-code img {
+    image-rendering: auto;
+}
+
+.wm-profile-2fa-qr-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: $radius-md;
+
+    background: $color-gray-50;
+    color: $color-text-muted;
+
+    font-size: 42px;
+}
+
+.wm-profile-2fa-setup__scan-text {
+    max-width: 420px;
+
+    margin: 0 auto $spacing-4;
+
+    color: $color-text-secondary;
+
+    font-size: $font-size-xs;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.wm-profile-2fa-setup__manual {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    margin: 0 auto;
+
+    padding: $spacing-3;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+
+    background: $color-gray-50;
+
+    text-align: left;
+}
+
+.wm-profile-2fa-setup__manual > span {
+    color: $color-text-muted;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-2fa-setup__manual code {
+    display: block;
+
+    overflow-x: auto;
+
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+
+    white-space: nowrap;
+}
+
+
+// ============================================================
+// Recovery Codes
+// ============================================================
+
+.wm-profile-recovery-modal {
+    width: 100%;
+
+    padding-top: 2px;
+
+    text-align: left;
+}
+
+.wm-profile-recovery-modal__warning {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-3;
+
+    margin-bottom: $spacing-4;
+
+    padding: $spacing-3;
+
+    border: 1px solid rgba(245, 158, 11, 0.22);
+    border-radius: $radius-md;
+
+    background: $color-warning-light;
+    color: $color-warning-dark;
+}
+
+.wm-profile-recovery-modal__warning i {
+    flex: 0 0 auto;
+
+    margin-top: 2px;
+
+    font-size: 17px;
+}
+
+.wm-profile-recovery-modal__warning span {
+    min-width: 0;
+
+    font-size: $font-size-xs;
+    line-height: 1.55;
+}
+
+.wm-profile-recovery-modal__codes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+
+    max-height: 260px;
+
+    margin-bottom: $spacing-4;
+    padding: $spacing-3;
+
+    overflow-y: auto;
+
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+
+    background: $color-gray-50;
+}
+
+.wm-profile-recovery-code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 8px;
+
+    border: 1px solid $color-border-light;
+    border-radius: $radius-md;
+
+    background: $color-white;
+    color: $color-text-dark;
+
+    font-family: $font-family-base;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
+}
+
+.wm-profile-recovery-modal__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    flex-wrap: wrap;
+}
+
+.wm-profile-recovery-modal__actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    min-height: 34px;
+
+    border-color: $color-border;
+
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+}
+
+.wm-profile-recovery-modal__actions .btn:hover {
+    border-color: $color-primary;
+    background: $color-primary-light;
+    color: $color-primary;
+}
+
+.wm-profile-recovery-modal__actions .btn i {
+    font-size: 14px;
+}
+
+
+// ============================================================
+// Recovery Button Disabled
+// ============================================================
+
+#generateRecovery:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+#generateRecovery:not(:disabled) {
+    cursor: pointer;
+}
+
+
+// ============================================================
+// Generic SweetAlert 2FA Popup
+// ============================================================
+
+.swal2-popup.wm-profile-2fa-swal-popup {
+    width: min(500px, calc(100% - 32px));
+
+    padding: 28px;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+
+    box-shadow: $shadow-lg;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-title {
+    margin: 0;
+
+    padding: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-html-container {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 20px 0 0;
+
+    overflow: visible;
+
+    color: $color-text;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: $spacing-2;
+
+    width: 100%;
+
+    margin: 22px 0 0;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-actions
+.swal2-confirm {
+    min-height: $button-height-lg;
+
+    margin: 0;
+
+    border-radius: $button-radius;
+
+    background: $color-primary;
+    color: $color-white;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    box-shadow: none;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-actions
+.swal2-confirm:hover {
+    background: $color-primary-hover;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-actions
+.swal2-cancel {
+    min-height: $button-height-lg;
+
+    margin: 0;
+
+    border-radius: $button-radius;
+
+    background: $color-gray-500;
+    color: $color-white;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    box-shadow: none;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-actions
+.swal2-cancel:hover {
+    background: $color-gray-600;
+}
+
+
+// ============================================================
+// SweetAlert Profile Password Popup
+// ============================================================
+
+.swal2-popup.wm-profile-password-swal-popup {
+    width: min(520px, calc(100% - 32px));
+
+    padding: 30px 28px 26px;
+
+    border-radius: $radius-xl;
+
+    background: $color-white;
+
+    box-shadow: $shadow-lg;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-title {
+    margin: 0;
+
+    padding: 0;
+
+    color: $color-text-dark;
+
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-tight;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-html-container {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 22px 0 0;
+
+    overflow: visible;
+
+    color: $color-text;
+}
+
+
+// ============================================================
+// SweetAlert Actions
+// ============================================================
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions {
+    display: flex;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: $spacing-2;
+
+    width: 100%;
+
+    margin: 24px 0 0;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-confirm {
+    min-width: 165px;
+    min-height: $button-height-lg;
+
+    margin: 0;
+
+    padding: 0 $spacing-4;
+
+    border: 1px solid $color-primary;
+    border-radius: $button-radius;
+
+    background: $color-primary;
+
+    color: $color-white;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-confirm:hover {
+    background: $color-primary-hover;
+    border-color: $color-primary-hover;
+
+    transform: translateY(-1px);
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-confirm:focus {
+    outline: 0;
+
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-confirm:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-cancel {
+    min-width: 86px;
+    min-height: $button-height-lg;
+
+    margin: 0;
+
+    padding: 0 $spacing-4;
+
+    border: 1px solid $color-gray-500;
+    border-radius: $button-radius;
+
+    background: $color-gray-500;
+
+    color: $color-white;
+
+    font-family: $font-family-base;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+
+    box-shadow: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-cancel:hover {
+    background: $color-gray-600;
+    border-color: $color-gray-600;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-actions
+.swal2-cancel:focus {
+    outline: 0;
+
+    box-shadow:
+        0 0 0 3px rgba(107, 114, 128, 0.14);
+}
+
+
+// ============================================================
+// SweetAlert Loader
+// ============================================================
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-loader {
+    border-color:
+        $color-primary
+        transparent
+        $color-primary
+        transparent;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-loader {
+    border-color:
+        $color-primary
+        transparent
+        $color-primary
+        transparent;
+}
+
+
+// ============================================================
+// SweetAlert Close
+// ============================================================
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-close,
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-close {
+    color: $color-text-muted;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup
+.swal2-close:hover,
+.swal2-popup.wm-profile-2fa-swal-popup
+.swal2-close:hover {
+    color: $color-text-dark;
+}
+
+
+// ============================================================
+// Responsive - Large
 // ============================================================
 
 @media (max-width: 1199px) {
 
     .wm-profile-page__layout {
-        grid-template-columns: minmax(0, 1fr) 260px;
+        grid-template-columns: minmax(0, 1fr) 270px;
     }
 
 }
 
+
+// ============================================================
+// Responsive - Tablet
+// ============================================================
 
 @media (max-width: 991px) {
 
@@ -953,6 +2519,10 @@
 }
 
 
+// ============================================================
+// Responsive - Mobile Landscape / Tablet Small
+// ============================================================
+
 @media (max-width: 767px) {
 
     .wm-profile-page__title {
@@ -970,6 +2540,7 @@
 
     .wm-profile-card__identity-status {
         width: 100%;
+
         margin-left: 0;
         padding: 0;
     }
@@ -987,7 +2558,10 @@
         flex-basis: calc(100% - 62px);
     }
 
-    .wm-profile-security-item > .btn,
+    .wm-profile-security-item > .btn {
+        margin-left: 58px;
+    }
+
     .wm-profile-security-item__status {
         margin-left: 58px;
     }
@@ -1003,7 +2577,31 @@
 }
 
 
+// ============================================================
+// Responsive - Mobile
+// ============================================================
+
 @media (max-width: 575px) {
+
+    .wm-profile-page__header {
+        margin-bottom: $spacing-5;
+    }
+
+    .wm-profile-page__breadcrumb {
+        margin-bottom: $spacing-3;
+    }
+
+    .wm-profile-page__heading {
+        gap: $spacing-4;
+    }
+
+    .wm-profile-page__title {
+        font-size: $font-size-2xl;
+    }
+
+    .wm-profile-page__subtitle {
+        font-size: $font-size-sm;
+    }
 
     .wm-profile-page__header-actions {
         flex-direction: column;
@@ -1011,10 +2609,6 @@
 
     .wm-profile-page__header-actions .btn {
         width: 100%;
-    }
-
-    .wm-profile-card__cover {
-        height: 90px;
     }
 
     .wm-profile-card__body {
@@ -1036,9 +2630,23 @@
         border-width: 3px;
     }
 
+    .wm-profile-avatar__edit {
+        right: -3px;
+        bottom: -3px;
+
+        width: 26px;
+        height: 26px;
+
+        border-width: 2px;
+    }
+
     .wm-profile-card__identity-content {
         width: 100%;
         padding-top: 0;
+    }
+
+    .wm-profile-card__identity-content h2 {
+        font-size: $font-size-lg;
     }
 
     .wm-profile-section__header,
@@ -1050,24 +2658,263 @@
         flex-direction: column;
     }
 
+    .wm-profile-section__title {
+        font-size: $font-size-md;
+    }
+
     .wm-profile-security-item,
     .wm-profile-session,
     .wm-profile-activity__item {
         padding: $spacing-4;
     }
 
+    .wm-profile-security-item {
+        gap: $spacing-3;
+    }
+
     .wm-profile-security-item__status {
         align-items: flex-start;
         flex-direction: column;
-        margin-left: 58px;
+
+        margin-left: 54px;
     }
 
     .wm-profile-security-item > .btn {
-        margin-left: 58px;
+        margin-left: 54px;
     }
 
     .wm-profile-session {
         align-items: flex-start;
+    }
+
+    .wm-profile-session__device {
+        align-items: flex-start;
+    }
+
+    .wm-profile-session__current {
+        flex: 0 0 auto;
+    }
+
+    .wm-profile-activity__item {
+        align-items: flex-start;
+    }
+
+
+    // --------------------------------------------------------
+    // 2FA
+    // --------------------------------------------------------
+
+    .wm-profile-2fa-setup__qr-code {
+        width: 190px;
+        height: 190px;
+
+        padding: 10px;
+    }
+
+    .wm-profile-2fa-setup__manual {
+        padding: $spacing-3;
+    }
+
+    .wm-profile-recovery-modal__codes {
+        grid-template-columns: 1fr;
+
+        max-height: 230px;
+    }
+
+    .wm-profile-recovery-modal__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wm-profile-recovery-modal__actions .btn {
+        width: 100%;
+    }
+
+
+    // --------------------------------------------------------
+    // Password Modal
+    // --------------------------------------------------------
+
+    .swal2-popup.wm-profile-password-swal-popup,
+    .swal2-popup.wm-profile-2fa-swal-popup {
+        width: calc(100% - 24px);
+
+        padding: 24px 18px 20px;
+    }
+
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-title,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-title {
+        font-size: $font-size-2xl;
+    }
+
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-html-container,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-html-container {
+        padding-top: 18px;
+    }
+
+    .wm-profile-swal-form {
+        gap: 16px;
+    }
+
+    .wm-profile-swal-password-strength__text {
+        font-size: $font-size-xs;
+    }
+
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-actions,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+
+        gap: $spacing-2;
+
+        margin-top: 20px;
+    }
+
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-actions
+    .swal2-confirm,
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-actions
+    .swal2-cancel,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-actions
+    .swal2-confirm,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-actions
+    .swal2-cancel {
+        width: 100%;
+        min-width: 0;
+    }
+
+}
+
+
+// ============================================================
+// Responsive - Extra Small
+// ============================================================
+
+@media (max-width: 399px) {
+
+    .wm-profile-card__identity-content {
+        width: calc(100% - 84px);
+    }
+
+    .wm-profile-card__identity-content h2 {
+        max-width: 100%;
+    }
+
+    .wm-profile-card__identity-status {
+        margin-top: $spacing-2;
+    }
+
+    .wm-profile-security-item__content {
+        flex-basis: calc(100% - 54px);
+    }
+
+    .wm-profile-security-item > .btn,
+    .wm-profile-security-item__status {
+        margin-left: 0;
+    }
+
+    .wm-profile-session {
+        flex-direction: column;
+    }
+
+    .wm-profile-session__device {
+        width: 100%;
+    }
+
+    .wm-profile-session__current,
+    .wm-profile-session__revoke {
+        margin-left: 52px;
+    }
+
+    .wm-profile-activity__content span {
+        white-space: normal;
+    }
+
+
+    // --------------------------------------------------------
+    // 2FA
+    // --------------------------------------------------------
+
+    .wm-profile-2fa-setup__qr-code {
+        width: 170px;
+        height: 170px;
+
+        padding: 8px;
+    }
+
+    .wm-profile-2fa-setup__description {
+        font-size: $font-size-xs;
+    }
+
+    .wm-profile-2fa-setup__manual code {
+        font-size: 10px;
+    }
+
+    .wm-profile-recovery-modal__warning {
+        gap: $spacing-2;
+    }
+
+    .wm-profile-recovery-modal__warning span {
+        font-size: 10px;
+    }
+
+    .wm-profile-recovery-code {
+        min-height: 36px;
+
+        font-size: 10px;
+    }
+
+
+    // --------------------------------------------------------
+    // Password Modal
+    // --------------------------------------------------------
+
+    .swal2-popup.wm-profile-password-swal-popup,
+    .swal2-popup.wm-profile-2fa-swal-popup {
+        width: calc(100% - 16px);
+
+        padding: 22px 14px 18px;
+    }
+
+    .swal2-popup.wm-profile-password-swal-popup
+    .swal2-title,
+    .swal2-popup.wm-profile-2fa-swal-popup
+    .swal2-title {
+        font-size: $font-size-xl;
+    }
+
+    .wm-profile-swal-input-wrapper .swal2-input {
+        height: 38px;
+        min-height: 38px;
+
+        padding-left: 36px;
+        padding-right: 40px;
+
+        font-size: $font-size-xs;
+    }
+
+    .wm-profile-swal-input-wrapper > i {
+        left: 11px;
+
+        font-size: 15px;
+    }
+
+    .wm-profile-swal-password-toggle {
+        right: 6px;
+
+        width: 30px;
+        height: 30px;
+
+        font-size: 16px;
     }
 
 }

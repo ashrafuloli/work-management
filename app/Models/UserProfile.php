@@ -15,18 +15,34 @@ class UserProfile extends Model
     protected $fillable = [
         'user_id',
 
-        // Personal Information
+        /*
+        |--------------------------------------------------------------------------
+        | Personal Information
+        |--------------------------------------------------------------------------
+        */
+
         'first_name',
         'last_name',
         'display_name',
         'avatar',
 
-        // Professional Information
+        /*
+        |--------------------------------------------------------------------------
+        | Professional Information
+        |--------------------------------------------------------------------------
+        */
+
         'job_title',
+        'department',
         'phone',
         'bio',
 
-        // Address
+        /*
+        |--------------------------------------------------------------------------
+        | Address
+        |--------------------------------------------------------------------------
+        */
+
         'address_line_1',
         'address_line_2',
         'city',
@@ -34,9 +50,16 @@ class UserProfile extends Model
         'postal_code',
         'country',
 
-        // Preferences
+        /*
+        |--------------------------------------------------------------------------
+        | Account Preferences
+        |--------------------------------------------------------------------------
+        */
+
         'timezone',
         'locale',
+        'date_format',
+        'theme',
     ];
 
     /**

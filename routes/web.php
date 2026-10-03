@@ -5,7 +5,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SocialAuthController;
-
+use App\Http\Controllers\Auth\TwoFactorController;
+use App\Http\Controllers\Settings\ProfileController;
+use App\Http\Controllers\Settings\SecurityController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -44,9 +46,6 @@ Route::get('/components', function () {
 |--------------------------------------------------------------------------
 | Authentication Routes
 |--------------------------------------------------------------------------
-|
-| Login, registration, password reset and social authentication.
-|
 */
 
 Route::prefix('auth')->group(function () {
@@ -163,11 +162,70 @@ Route::prefix('auth')->group(function () {
 
 /*
 |--------------------------------------------------------------------------
-| Email Verification Routes
+| Login Two-Factor Authentication
 |--------------------------------------------------------------------------
 |
-| These routes require authentication.
+| These routes are intentionally outside the /auth prefix.
 |
+| Normal login:
+|
+| Email + Password
+|        ↓
+| Check Email 2FA
+|        ↓
+| Login Two-Factor Page
+|        ↓
+| Email OTP
+|        ↓
+| Dashboard
+|
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Login Two-Factor Page
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/login/two-factor', [
+    TwoFactorController::class,
+    'show',
+])->name('login.two-factor');
+
+
+/*
+|--------------------------------------------------------------------------
+| Login Two-Factor Verification
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/login/two-factor', [
+    TwoFactorController::class,
+    'verify',
+])
+    ->middleware('throttle:6,1')
+    ->name('login.two-factor.verify');
+
+
+/*
+|--------------------------------------------------------------------------
+| Login Email OTP Resend
+|--------------------------------------------------------------------------
+*/
+
+Route::post('/login/two-factor/email/resend', [
+    TwoFactorController::class,
+    'resendEmailCode',
+])
+    ->middleware('throttle:3,1')
+    ->name('login.two-factor.email.resend');
+
+
+/*
+|--------------------------------------------------------------------------
+| Email Verification Routes
+|--------------------------------------------------------------------------
 */
 
 Route::middleware('auth')->group(function () {
@@ -192,7 +250,6 @@ Route::middleware('auth')->group(function () {
     Route::get(
         '/auth/email/verify/{id}/{hash}',
         function (EmailVerificationRequest $request) {
-
             $request->fulfill();
 
             return redirect()
@@ -216,7 +273,6 @@ Route::middleware('auth')->group(function () {
     Route::post(
         '/auth/email/verification-notification',
         function (Request $request) {
-
             $user = $request->user();
 
             if ($user->hasVerifiedEmail()) {
@@ -244,9 +300,6 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 | Authenticated Application Routes
 |--------------------------------------------------------------------------
-|
-| All application/dashboard pages require authentication.
-|
 */
 
 Route::middleware('auth')->group(function () {
@@ -272,33 +325,13 @@ Route::middleware('auth')->group(function () {
         ->name('projects.')
         ->group(function () {
 
-            /*
-            |--------------------------------------------------------------------------
-            | Project List
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/', function () {
                 return view('pages.projects.index');
             })->name('index');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Create Project
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/create', function () {
                 return view('pages.projects.create');
             })->name('create');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Overview
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}', function ($project) {
                 return view('pages.projects.overview');
@@ -306,25 +339,11 @@ Route::middleware('auth')->group(function () {
                 ->whereNumber('project')
                 ->name('overview');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Tasks
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/{project}/tasks', function ($project) {
                 return view('pages.projects.tasks');
             })
                 ->whereNumber('project')
                 ->name('tasks');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Milestones
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}/milestones', function ($project) {
                 return view('pages.projects.milestones');
@@ -332,25 +351,11 @@ Route::middleware('auth')->group(function () {
                 ->whereNumber('project')
                 ->name('milestones');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Timeline
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/{project}/timeline', function ($project) {
                 return view('pages.projects.timeline');
             })
                 ->whereNumber('project')
                 ->name('timeline');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Calendar
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}/calendar', function ($project) {
                 return view('pages.projects.calendar');
@@ -358,25 +363,11 @@ Route::middleware('auth')->group(function () {
                 ->whereNumber('project')
                 ->name('calendar');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Workstreams
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/{project}/workstreams', function ($project) {
                 return view('pages.projects.workstreams');
             })
                 ->whereNumber('project')
                 ->name('workstreams');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Files
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}/files', function ($project) {
                 return view('pages.projects.files');
@@ -384,25 +375,11 @@ Route::middleware('auth')->group(function () {
                 ->whereNumber('project')
                 ->name('files');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Team
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/{project}/team', function ($project) {
                 return view('pages.projects.team');
             })
                 ->whereNumber('project')
                 ->name('team');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Activity
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}/activity', function ($project) {
                 return view('pages.projects.activity');
@@ -410,25 +387,11 @@ Route::middleware('auth')->group(function () {
                 ->whereNumber('project')
                 ->name('activity');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Reports
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/{project}/reports', function ($project) {
                 return view('pages.projects.reports');
             })
                 ->whereNumber('project')
                 ->name('reports');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Project Risks & Issues
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{project}/risks-issues', function ($project) {
                 return view('pages.projects.risks-issues');
@@ -460,22 +423,9 @@ Route::middleware('auth')->group(function () {
         ->name('tasks.')
         ->group(function () {
 
-            /*
-            |--------------------------------------------------------------------------
-            | Task List
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/', function () {
                 return view('pages.tasks.index');
             })->name('index');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Task Detail
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{task}', function ($task) {
                 return view('pages.tasks.detail');
@@ -533,22 +483,9 @@ Route::middleware('auth')->group(function () {
         ->name('team.')
         ->group(function () {
 
-            /*
-            |--------------------------------------------------------------------------
-            | Team List
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/', function () {
                 return view('pages.team.index');
             })->name('index');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Team Member
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/{member}', function ($member) {
                 return view('pages.team.member');
@@ -647,9 +584,130 @@ Route::middleware('auth')->group(function () {
             |--------------------------------------------------------------------------
             */
 
-            Route::get('/profile', function () {
-                return view('pages.settings.profile');
-            })->name('profile');
+            Route::prefix('profile')->group(function () {
+
+                Route::get('/', [
+                    ProfileController::class,
+                    'index',
+                ])->name('profile');
+
+                Route::put('/', [
+                    ProfileController::class,
+                    'update',
+                ])->name('profile.update');
+
+                Route::put('/password', [
+                    ProfileController::class,
+                    'updatePassword',
+                ])->name('profile.password.update');
+
+                Route::post('/avatar', [
+                    ProfileController::class,
+                    'updateAvatar',
+                ])->name('profile.avatar.update');
+
+                Route::delete('/avatar', [
+                    ProfileController::class,
+                    'removeAvatar',
+                ])->name('profile.avatar.remove');
+
+            });
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Security / Two-Factor Authentication
+            |--------------------------------------------------------------------------
+            */
+
+            Route::prefix('security')
+                ->name('security.')
+                ->group(function () {
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | 2FA Status
+                    |--------------------------------------------------------------------------
+                    */
+
+                    Route::get('/2fa/status', [
+                        SecurityController::class,
+                        'twoFactorStatus',
+                    ])->name('2fa.status');
+
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | Email 2FA
+                    |--------------------------------------------------------------------------
+                    */
+
+                    Route::prefix('2fa/email')
+                        ->name('2fa.email.')
+                        ->group(function () {
+
+                            /*
+                            | Send Email OTP
+                            */
+
+                            Route::post('/send', [
+                                SecurityController::class,
+                                'sendEmailTwoFactorCode',
+                            ])
+                                ->middleware('throttle:3,1')
+                                ->name('send');
+
+
+                            /*
+                            | Verify Email OTP
+                            */
+
+                            Route::post('/verify', [
+                                SecurityController::class,
+                                'verifyEmailTwoFactorCode',
+                            ])
+                                ->middleware('throttle:6,1')
+                                ->name('verify');
+
+
+                            /*
+                            | Resend Email OTP
+                            */
+
+                            Route::post('/resend', [
+                                SecurityController::class,
+                                'resendEmailTwoFactorCode',
+                            ])
+                                ->middleware('throttle:3,1')
+                                ->name('resend');
+
+
+                            /*
+                            | Send OTP Before Disabling Email 2FA
+                            */
+
+                            Route::post('/disable/send', [
+                                SecurityController::class,
+                                'sendEmailTwoFactorDisableCode',
+                            ])
+                                ->middleware('throttle:3,1')
+                                ->name('disable.send');
+
+
+                            /*
+                            | Verify OTP + Disable Email 2FA
+                            */
+
+                            Route::post('/disable', [
+                                SecurityController::class,
+                                'disableEmailTwoFactor',
+                            ])
+                                ->middleware('throttle:6,1')
+                                ->name('disable');
+
+                        });
+
+                });
 
 
             /*
@@ -708,44 +766,17 @@ Route::middleware('auth')->group(function () {
         ->name('billing.')
         ->group(function () {
 
-            /*
-            |--------------------------------------------------------------------------
-            | Billing Overview
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/', function () {
                 return view('pages.billing.index');
             })->name('index');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Subscription
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/subscription', function () {
                 return view('pages.billing.subscription');
             })->name('subscription');
 
-
-            /*
-            |--------------------------------------------------------------------------
-            | Checkout
-            |--------------------------------------------------------------------------
-            */
-
             Route::get('/checkout', function () {
                 return view('pages.billing.checkout');
             })->name('checkout');
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | Payment Success
-            |--------------------------------------------------------------------------
-            */
 
             Route::get('/success', function () {
                 return view('pages.billing.success');

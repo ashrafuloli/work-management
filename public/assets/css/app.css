@@ -6032,6 +6032,410 @@
     align-items: center;
   }
 }
+.wm-auth-page--two-factor {
+  min-height: 100vh;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-icon {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 30px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+}
+.wm-auth-page--two-factor .wm-auth__form-header .wm-auth__form-title {
+  margin-bottom: 10px;
+}
+.wm-auth-page--two-factor .wm-auth__form-header .wm-auth__form-description {
+  max-width: 430px;
+  margin-bottom: 0;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-email {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 15px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background: #EFF6FF;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-email-icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #DBEAFE;
+  color: #2563EB;
+  font-size: 20px;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-email-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-email-label {
+  display: block;
+  color: #6B7280;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-email-content strong {
+  display: block;
+  overflow: hidden;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-form {
+  width: 100%;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-input {
+  height: 58px;
+  padding-left: 52px;
+  padding-right: 16px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-input::placeholder {
+  color: #9CA3AF;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  opacity: 1;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-input:focus {
+  letter-spacing: 0.32em;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-expiry {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+  color: #6B7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-expiry i {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #2563EB;
+  font-size: 16px;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-expiry strong {
+  color: #111827;
+  font-weight: 600;
+}
+.wm-auth-page--two-factor .wm-auth__submit {
+  width: 100%;
+  min-height: 52px;
+  position: relative;
+}
+.wm-auth-page--two-factor .wm-auth__submit-content {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.wm-auth-page--two-factor .wm-auth__submit-content i {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+.wm-auth-page--two-factor .wm-auth__submit:hover .wm-auth__submit-content i {
+  transform: translateX(3px);
+}
+.wm-auth-page--two-factor .wm-auth__submit-loading {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.wm-auth-page--two-factor .wm-auth__submit.is-loading .wm-auth__submit-content {
+  display: none;
+}
+.wm-auth-page--two-factor .wm-auth__submit.is-loading .wm-auth__submit-loading {
+  display: inline-flex;
+}
+.wm-auth-page--two-factor .wm-auth__spinner {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #FFFFFF;
+  border-radius: 9999px;
+  animation: wm-two-factor-spin 0.7s linear infinite;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-resend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 20px;
+  color: #6B7280;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-resend-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2563EB;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-resend-button:hover {
+  color: #1D4ED8;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-resend-button:disabled {
+  color: #9CA3AF;
+  cursor: not-allowed;
+  text-decoration: none;
+  opacity: 0.7;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-resend-button.is-loading {
+  color: #9CA3AF;
+  cursor: wait;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: #6B7280;
+  font-size: 12px;
+  text-align: center;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-countdown[hidden] {
+  display: none;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-countdown i {
+  color: #2563EB;
+  font-size: 14px;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-countdown strong {
+  min-width: 18px;
+  color: #111827;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-back {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+  color: #6B7280;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-back i {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-back:hover {
+  color: #2563EB;
+}
+.wm-auth-page--two-factor .wm-auth__two-factor-back:hover i {
+  transform: translateX(-3px);
+}
+.wm-auth-page--two-factor .wm-auth__ajax-alert {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.wm-auth-page--two-factor .wm-auth__ajax-alert:empty {
+  display: none;
+}
+.wm-auth-page--two-factor .wm-auth__alert {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 13px 42px 13px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.wm-auth-page--two-factor .wm-auth__alert > i {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  font-size: 16px;
+}
+.wm-auth-page--two-factor .wm-auth__alert--success {
+  border-color: rgba(16, 185, 129, 0.2);
+  background: #ECFDF5;
+  color: #047857;
+}
+.wm-auth-page--two-factor .wm-auth__alert--danger {
+  border-color: rgba(239, 68, 68, 0.2);
+  background: #FEF2F2;
+  color: #B91C1C;
+}
+.wm-auth-page--two-factor .wm-auth__alert-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: currentColor;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.wm-auth-page--two-factor .wm-auth__alert-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+  opacity: 1;
+}
+.wm-auth-page--two-factor .wm-auth__field-error {
+  display: block;
+  min-height: 18px;
+  margin-top: 6px;
+  color: #B91C1C;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.wm-auth-page--two-factor .wm-auth__input-wrapper.is-invalid {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.08);
+}
+.wm-auth-page--two-factor .wm-auth__input.is-invalid {
+  border-color: transparent;
+}
+.wm-auth-page--two-factor .wm-auth__mobile-logo {
+  margin-bottom: 28px;
+}
+@media (max-width: 991px) {
+  .wm-auth-page--two-factor .wm-auth__brand {
+    display: none;
+  }
+  .wm-auth-page--two-factor .wm-auth__panel {
+    width: 100%;
+  }
+  .wm-auth-page--two-factor .wm-auth__form-wrapper {
+    max-width: 520px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (max-width: 767px) {
+  .wm-auth-page--two-factor .wm-auth__panel {
+    padding: 36px 24px;
+  }
+  .wm-auth-page--two-factor .wm-auth__form-wrapper {
+    max-width: 100%;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    font-size: 27px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-input {
+    height: 54px;
+    font-size: 21px;
+  }
+}
+@media (max-width: 575px) {
+  .wm-auth-page--two-factor .wm-auth__panel {
+    padding: 28px 18px;
+  }
+  .wm-auth-page--two-factor .wm-auth__mobile-logo {
+    margin-bottom: 24px;
+  }
+  .wm-auth-page--two-factor .wm-auth__form-title {
+    font-size: 24px;
+  }
+  .wm-auth-page--two-factor .wm-auth__form-description {
+    font-size: 13px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-email {
+    gap: 11px;
+    padding: 13px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-email-icon {
+    flex-basis: 38px;
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-email-content strong {
+    font-size: 13px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-input {
+    height: 52px;
+    padding-right: 12px;
+    padding-left: 46px;
+    font-size: 20px;
+    letter-spacing: 0.28em;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-input::placeholder {
+    font-size: 18px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-expiry {
+    font-size: 12px;
+  }
+  .wm-auth-page--two-factor .wm-auth__two-factor-resend {
+    flex-direction: column;
+    gap: 3px;
+  }
+  .wm-auth-page--two-factor .wm-auth__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@keyframes wm-two-factor-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .wm-landing-page {
   min-height: 100vh;
   background: #FFFFFF;
@@ -25272,6 +25676,7 @@ body.wm-calendar-modal-open {
 .wm-profile-page__breadcrumb {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
   color: #9CA3AF;
@@ -25280,11 +25685,13 @@ body.wm-calendar-modal-open {
 
 .wm-profile-page__breadcrumb i {
   color: #9CA3AF;
+  font-size: 13px;
 }
 
 .wm-profile-page__breadcrumb-link {
   color: #6B7280;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .wm-profile-page__breadcrumb-link:hover {
@@ -25310,6 +25717,7 @@ body.wm-calendar-modal-open {
   margin: 0;
   color: #6B7280;
   font-size: 14px;
+  line-height: 1.5;
 }
 
 .wm-profile-page__header-actions {
@@ -25335,6 +25743,7 @@ body.wm-calendar-modal-open {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  min-width: 0;
 }
 
 .wm-profile-card {
@@ -25347,18 +25756,28 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-card__cover {
-  height: 112px;
+  position: relative;
+  height: 20px;
+  overflow: hidden;
   background: linear-gradient(135deg, #2563EB 0%, #06B6D4 55%, #10B981 100%);
 }
 
+.wm-profile-card__cover::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.18), transparent 35%);
+}
+
 .wm-profile-card__body {
-  padding: 0 20px 20px;
+  padding: 50px 20px 20px;
 }
 
 .wm-profile-card__identity {
   display: flex;
   align-items: flex-end;
   gap: 16px;
+  min-width: 0;
   margin-top: -38px;
 }
 
@@ -25368,31 +25787,48 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-card__identity-content h2 {
+  overflow: hidden;
   margin: 0 0 4px;
   color: #111827;
   font-size: 18px;
   font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wm-profile-card__identity-content p {
+  overflow: hidden;
   margin: 0 0 5px;
   color: #6B7280;
   font-size: 13px;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.wm-profile-card__identity-content span {
+.wm-profile-card__identity-content > span {
   display: inline-flex;
   align-items: center;
   gap: 5px;
+  max-width: 100%;
   color: #9CA3AF;
   font-size: 12px;
 }
 
+.wm-profile-card__identity-content > span > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .wm-profile-card__identity-content span i {
+  flex: 0 0 auto;
   color: #2563EB;
 }
 
 .wm-profile-card__identity-status {
+  flex: 0 0 auto;
   margin-left: auto;
   padding-bottom: 7px;
 }
@@ -25410,6 +25846,7 @@ body.wm-calendar-modal-open {
   justify-content: center;
   width: 82px;
   height: 82px;
+  overflow: hidden;
   border: 4px solid #FFFFFF;
   border-radius: 9999px;
   background: linear-gradient(135deg, #2563EB, #06B6D4);
@@ -25417,6 +25854,18 @@ body.wm-calendar-modal-open {
   font-size: 18px;
   font-weight: 700;
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.wm-profile-avatar__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wm-profile-avatar__image span {
+  display: block;
+  line-height: 1;
 }
 
 .wm-profile-avatar__edit {
@@ -25434,10 +25883,22 @@ body.wm-calendar-modal-open {
   color: #FFFFFF;
   font-size: 13px;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
 }
 
 .wm-profile-avatar__edit:hover {
   background: #1D4ED8;
+  transform: scale(1.05);
+}
+
+.wm-profile-avatar__edit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.wm-profile-avatar__edit.is-loading {
+  pointer-events: none;
 }
 
 .wm-profile-online-status {
@@ -25456,17 +25917,18 @@ body.wm-calendar-modal-open {
 .wm-profile-online-status i {
   width: 6px;
   height: 6px;
+  flex: 0 0 6px;
   border-radius: 9999px;
   background: #10B981;
 }
 
 .wm-profile-section {
   margin-bottom: 20px;
+  overflow: hidden;
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
 }
 
 .wm-profile-section__header {
@@ -25483,16 +25945,22 @@ body.wm-calendar-modal-open {
   color: #111827;
   font-size: 16px;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 .wm-profile-section__description {
   margin: 0;
   color: #6B7280;
   font-size: 13px;
+  line-height: 1.5;
 }
 
 .wm-profile-section__body {
   padding: 20px;
+}
+
+.wm-profile-field {
+  position: relative;
 }
 
 .wm-profile-field label {
@@ -25501,6 +25969,12 @@ body.wm-calendar-modal-open {
   color: #111827;
   font-size: 13px;
   font-weight: 500;
+  line-height: 1.5;
+}
+
+.wm-profile-field label > span {
+  margin-left: 2px;
+  color: #EF4444;
 }
 
 .wm-profile-field .form-control,
@@ -25508,13 +25982,19 @@ body.wm-calendar-modal-open {
   min-height: 40px;
   border-color: #D1D5DB;
   border-radius: 8px;
+  background-color: #FFFFFF;
   color: #374151;
   font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.wm-profile-field textarea.form-control {
-  min-height: 110px;
-  resize: vertical;
+.wm-profile-field .form-control::placeholder {
+  color: #9CA3AF;
+}
+
+.wm-profile-field .form-control:hover,
+.wm-profile-field .form-select:hover {
+  border-color: #D1D5DB;
 }
 
 .wm-profile-field .form-control:focus,
@@ -25523,11 +26003,48 @@ body.wm-calendar-modal-open {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+.wm-profile-field textarea.form-control {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.wm-profile-field .form-control:disabled,
+.wm-profile-field .form-control[readonly] {
+  background-color: #F9FAFB;
+  color: #6B7280;
+  cursor: not-allowed;
+}
+
 .wm-profile-field__hint {
   display: block;
   margin-top: 6px;
   color: #9CA3AF;
   font-size: 12px;
+  line-height: 1.5;
+}
+
+.wm-profile-field__error {
+  display: none;
+  margin-top: 6px;
+  color: #B91C1C;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.wm-profile-field.has-error .form-control,
+.wm-profile-field.has-error .form-select {
+  border-color: #EF4444;
+}
+
+.wm-profile-field.has-error .form-control:focus,
+.wm-profile-field.has-error .form-select:focus {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.wm-profile-field.has-error .wm-profile-field__error {
+  display: block;
 }
 
 .wm-profile-input-icon {
@@ -25541,6 +26058,7 @@ body.wm-calendar-modal-open {
   z-index: 2;
   color: #9CA3AF;
   font-size: 16px;
+  pointer-events: none;
   transform: translateY(-50%);
 }
 
@@ -25549,6 +26067,7 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-security-list {
+  overflow: hidden;
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
@@ -25607,22 +26126,26 @@ body.wm-calendar-modal-open {
 .wm-profile-security-item__content span {
   color: #6B7280;
   font-size: 12px;
+  line-height: 1.5;
 }
 
 .wm-profile-security-item__status {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 0 0 auto;
 }
 
 .wm-profile-security-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 25px;
   padding: 0 9px;
   border-radius: 9999px;
   font-size: 11px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .wm-profile-security-badge--warning {
@@ -25630,12 +26153,82 @@ body.wm-calendar-modal-open {
   color: #B45309;
 }
 
+.wm-profile-security-badge--success {
+  background: #ECFDF5;
+  color: #047857;
+}
+
+.wm-profile-security-badge--muted {
+  background: #F3F4F6;
+  color: #9CA3AF;
+}
+
+.wm-profile-security-item .btn {
+  flex: 0 0 auto;
+  min-height: 36px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.wm-profile-security-item .btn-light {
+  border-color: #E5E7EB;
+  background: #FFFFFF;
+  color: #6B7280;
+}
+
+.wm-profile-security-item .btn-light:hover {
+  border-color: #2563EB;
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.wm-profile-security-item .btn-danger {
+  border-color: #EF4444;
+  background: #EF4444;
+  color: #FFFFFF;
+}
+
+.wm-profile-security-item .btn-danger:hover {
+  border-color: #B91C1C;
+  background: #B91C1C;
+}
+
+.wm-profile-security-item .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.wm-profile-security-item .btn.is-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.wm-profile-security-item .btn.is-loading::after {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  margin-left: 7px;
+  content: "";
+  vertical-align: -2px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 9999px;
+  animation: wm-profile-security-spin 0.65s linear infinite;
+}
+
+@keyframes wm-profile-security-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .wm-profile-sessions {
+  overflow: hidden;
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
 }
 
 .wm-profile-session {
@@ -25679,9 +26272,12 @@ body.wm-calendar-modal-open {
 
 .wm-profile-session__device strong {
   margin-bottom: 3px;
+  overflow: hidden;
   color: #111827;
   font-size: 13px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wm-profile-session__device span {
@@ -25695,6 +26291,7 @@ body.wm-calendar-modal-open {
 .wm-profile-session__current {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 25px;
   padding: 0 9px;
   border-radius: 9999px;
@@ -25702,9 +26299,11 @@ body.wm-calendar-modal-open {
   color: #047857;
   font-size: 11px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .wm-profile-session__revoke {
+  flex: 0 0 auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -25712,6 +26311,7 @@ body.wm-calendar-modal-open {
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .wm-profile-session__revoke:hover {
@@ -25719,11 +26319,11 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-activity {
+  overflow: hidden;
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
 }
 
 .wm-profile-activity__item {
@@ -25770,22 +26370,26 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-activity__content span {
+  overflow: hidden;
   color: #9CA3AF;
   font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wm-profile-activity__item time {
+  flex: 0 0 auto;
   color: #9CA3AF;
   font-size: 12px;
   white-space: nowrap;
 }
 
 .wm-profile-sidebar-card {
+  overflow: hidden;
   background: #FFFFFF;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  overflow: hidden;
 }
 
 .wm-profile-sidebar-card__header {
@@ -25823,7 +26427,9 @@ body.wm-calendar-modal-open {
   justify-content: center;
   width: 64px;
   height: 64px;
+  flex: 0 0 64px;
   margin-bottom: 12px;
+  overflow: hidden;
   border-radius: 9999px;
   background: linear-gradient(135deg, #2563EB, #06B6D4);
   color: #FFFFFF;
@@ -25831,10 +26437,21 @@ body.wm-calendar-modal-open {
   font-weight: 700;
 }
 
+.wm-profile-account__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .wm-profile-account strong {
+  max-width: 100%;
   margin-bottom: 3px;
+  overflow: hidden;
   color: #111827;
   font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wm-profile-account > span {
@@ -25861,10 +26478,14 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-account-meta strong {
+  max-width: 60%;
+  overflow: hidden;
   color: #6B7280;
   font-size: 12px;
   font-weight: 500;
   text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .wm-profile-account-meta__status {
@@ -25886,9 +26507,11 @@ body.wm-calendar-modal-open {
 
 .wm-profile-completion__bar span {
   display: block;
+  width: 0;
   height: 100%;
   border-radius: inherit;
-  background: #2563EB;
+  background: linear-gradient(90deg, #2563EB, #06B6D4);
+  transition: width 0.3s ease;
 }
 
 .wm-profile-completion p {
@@ -25912,6 +26535,7 @@ body.wm-calendar-modal-open {
   color: #6B7280;
   font-size: 13px;
   text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .wm-profile-quick-links a:hover {
@@ -25921,7 +26545,9 @@ body.wm-calendar-modal-open {
 
 .wm-profile-quick-links a > i:first-child {
   width: 18px;
+  flex: 0 0 18px;
   color: #9CA3AF;
+  transition: color 0.2s ease;
 }
 
 .wm-profile-quick-links a:hover > i:first-child {
@@ -25929,12 +26555,19 @@ body.wm-calendar-modal-open {
 }
 
 .wm-profile-quick-links a > span {
+  min-width: 0;
   flex: 1;
 }
 
 .wm-profile-quick-links a > i:last-child {
+  flex: 0 0 auto;
   color: #9CA3AF;
   font-size: 14px;
+}
+
+#profileSave {
+  position: relative;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 #profileSave.is-dirty {
@@ -25943,6 +26576,10 @@ body.wm-calendar-modal-open {
 
 #profileSave.is-loading {
   pointer-events: none;
+}
+
+#profileSave:disabled {
+  opacity: 0.75;
 }
 
 .wm-profile-spinner {
@@ -25960,9 +26597,796 @@ body.wm-calendar-modal-open {
     transform: rotate(360deg);
   }
 }
+.wm-profile-avatar__edit.is-loading {
+  opacity: 0.75;
+}
+
+.wm-profile-avatar__edit.is-loading::after {
+  display: block;
+  width: 12px;
+  height: 12px;
+  content: "";
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #FFFFFF;
+  border-radius: 9999px;
+  animation: wm-profile-spin 0.7s linear infinite;
+}
+
+.wm-profile-avatar__edit.is-loading i {
+  display: none;
+}
+
+.wm-profile-page.has-unsaved-changes .wm-profile-page__subtitle::after {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 8px;
+  content: "";
+  vertical-align: middle;
+  border-radius: 9999px;
+  background: #F59E0B;
+}
+
+.wm-profile-swal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  padding-top: 4px;
+  text-align: left;
+}
+
+.wm-profile-swal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 100%;
+}
+
+.wm-profile-swal-field label {
+  display: block;
+  margin: 0;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.wm-profile-swal-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.wm-profile-swal-input-wrapper > i {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  z-index: 3;
+  color: #9CA3AF;
+  font-size: 16px;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.wm-profile-swal-input-wrapper .swal2-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 42px 0 38px;
+  box-sizing: border-box;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #111827;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 40px;
+  box-shadow: none;
+  outline: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.wm-profile-swal-input-wrapper .swal2-input:hover {
+  border-color: #D1D5DB;
+}
+
+.wm-profile-swal-input-wrapper .swal2-input:focus {
+  border-color: #2563EB;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.wm-profile-swal-input-wrapper .swal2-input::placeholder {
+  color: #9CA3AF;
+  opacity: 1;
+}
+
+.wm-profile-swal-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #9CA3AF;
+  font-size: 17px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.wm-profile-swal-password-toggle:hover {
+  background: #F9FAFB;
+  color: #2563EB;
+}
+
+.wm-profile-swal-password-toggle:focus {
+  outline: 0;
+}
+
+.wm-profile-swal-password-toggle:focus-visible {
+  background: #EFF6FF;
+  color: #2563EB;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+.wm-profile-swal-password-toggle i {
+  pointer-events: none;
+}
+
+.wm-profile-swal-field-error {
+  display: none;
+  margin: 0;
+  color: #B91C1C;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.wm-profile-swal-field-error.is-visible {
+  display: block;
+}
+
+.wm-profile-swal-field.has-error .wm-profile-swal-input-wrapper .swal2-input {
+  border-color: #EF4444;
+}
+
+.wm-profile-swal-field.has-error .wm-profile-swal-input-wrapper .swal2-input:focus {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.wm-profile-swal-field.has-error .wm-profile-swal-input-wrapper > i {
+  color: #EF4444;
+}
+
+.wm-profile-swal-password-strength {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  margin-top: -1px;
+}
+
+.wm-profile-swal-password-strength__bars {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  height: 4px;
+}
+
+.wm-profile-swal-password-strength__bars span {
+  display: block;
+  width: 25%;
+  height: 4px;
+  border-radius: 9999px;
+  background: #E5E7EB;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-weak {
+  background: #EF4444;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-medium {
+  background: #F59E0B;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-good {
+  background: #2563EB;
+}
+
+.wm-profile-swal-password-strength__bars span.is-active.is-strong {
+  background: #10B981;
+}
+
+.wm-profile-swal-password-strength__text {
+  display: block;
+  margin: 0;
+  color: #6B7280;
+  font-size: 13px;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.wm-profile-swal-password-strength.is-weak .wm-profile-swal-password-strength__text {
+  color: #B91C1C;
+}
+
+.wm-profile-swal-password-strength.is-medium .wm-profile-swal-password-strength__text {
+  color: #B45309;
+}
+
+.wm-profile-swal-password-strength.is-good .wm-profile-swal-password-strength__text {
+  color: #2563EB;
+}
+
+.wm-profile-swal-password-strength.is-strong .wm-profile-swal-password-strength__text {
+  color: #047857;
+}
+
+.wm-profile-swal-form ~ .swal2-validation-message {
+  margin-top: 12px;
+}
+
+.swal2-validation-message {
+  font-size: 12px;
+}
+
+.wm-profile-2fa-setup {
+  width: 100%;
+  padding-top: 2px;
+  text-align: center;
+}
+
+.wm-profile-2fa-setup__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 12px;
+  border-radius: 9999px;
+  background: #EFF6FF;
+  color: #2563EB;
+  font-size: 24px;
+}
+
+.wm-profile-2fa-setup__description {
+  max-width: 470px;
+  margin: 0 auto 8px;
+  color: #6B7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.wm-profile-2fa-setup__email {
+  margin: 0 0 20px;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.wm-profile-2fa-setup__verification {
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.wm-profile-2fa-setup__verification label {
+  display: block;
+  margin-bottom: 8px;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #111827;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 40px;
+  text-align: center;
+  box-shadow: none;
+  outline: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input:hover {
+  border-color: #D1D5DB;
+}
+
+.wm-profile-2fa-setup__verification .swal2-input:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.wm-profile-2fa-setup__verification .swal2-input.is-invalid {
+  border-color: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.wm-profile-2fa-code-error {
+  display: none;
+  margin-top: 7px;
+  color: #B91C1C;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.wm-profile-2fa-code-error.is-visible {
+  display: block;
+}
+
+#resendEmailTwoFactorCode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2563EB;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+#resendEmailTwoFactorCode:hover {
+  color: #1D4ED8;
+  text-decoration: underline;
+}
+
+#resendEmailTwoFactorCode:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#resendEmailTwoFactorCode.is-loading {
+  pointer-events: none;
+}
+
+#resendEmailTwoFactorCode.is-loading::after {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  content: "";
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 9999px;
+  animation: wm-profile-security-spin 0.65s linear infinite;
+}
+
+.wm-profile-2fa-disable {
+  width: 100%;
+  padding-top: 2px;
+  text-align: left;
+}
+
+.wm-profile-2fa-disable p {
+  margin: 0 0 16px;
+  color: #6B7280;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.wm-profile-2fa-disable .swal2-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #111827;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 40px;
+  text-align: center;
+  box-shadow: none;
+  outline: 0;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wm-profile-2fa-disable .swal2-input:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.wm-profile-2fa-setup__qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0 12px;
+}
+
+.wm-profile-2fa-setup__qr-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+.wm-profile-2fa-setup__qr-code img,
+.wm-profile-2fa-setup__qr-code svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.wm-profile-2fa-setup__qr-code img {
+  image-rendering: auto;
+}
+
+.wm-profile-2fa-qr-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: #F9FAFB;
+  color: #9CA3AF;
+  font-size: 42px;
+}
+
+.wm-profile-2fa-setup__scan-text {
+  max-width: 420px;
+  margin: 0 auto 16px;
+  color: #6B7280;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.wm-profile-2fa-setup__manual {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #F9FAFB;
+  text-align: left;
+}
+
+.wm-profile-2fa-setup__manual > span {
+  color: #9CA3AF;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.wm-profile-2fa-setup__manual code {
+  display: block;
+  overflow-x: auto;
+  color: #111827;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.wm-profile-recovery-modal {
+  width: 100%;
+  padding-top: 2px;
+  text-align: left;
+}
+
+.wm-profile-recovery-modal__warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.22);
+  border-radius: 8px;
+  background: #FFFBEB;
+  color: #B45309;
+}
+
+.wm-profile-recovery-modal__warning i {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  font-size: 17px;
+}
+
+.wm-profile-recovery-modal__warning span {
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.wm-profile-recovery-modal__codes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  max-height: 260px;
+  margin-bottom: 16px;
+  padding: 12px;
+  overflow-y: auto;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  background: #F9FAFB;
+}
+
+.wm-profile-recovery-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 8px;
+  border: 1px solid #EEF0F3;
+  border-radius: 8px;
+  background: #FFFFFF;
+  color: #111827;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.wm-profile-recovery-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wm-profile-recovery-modal__actions .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  border-color: #E5E7EB;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.wm-profile-recovery-modal__actions .btn:hover {
+  border-color: #2563EB;
+  background: #EFF6FF;
+  color: #2563EB;
+}
+
+.wm-profile-recovery-modal__actions .btn i {
+  font-size: 14px;
+}
+
+#generateRecovery:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+#generateRecovery:not(:disabled) {
+  cursor: pointer;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup {
+  width: min(500px, 100% - 32px);
+  padding: 28px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-title {
+  margin: 0;
+  padding: 0;
+  color: #111827;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-html-container {
+  width: 100%;
+  margin: 0;
+  padding: 20px 0 0;
+  overflow: visible;
+  color: #374151;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+  margin: 22px 0 0;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-confirm {
+  min-height: 44px;
+  margin: 0;
+  border-radius: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-confirm:hover {
+  background: #1D4ED8;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-cancel {
+  min-height: 44px;
+  margin: 0;
+  border-radius: 8px;
+  background: #6B7280;
+  color: #FFFFFF;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-cancel:hover {
+  background: #4B5563;
+}
+
+.swal2-popup.wm-profile-password-swal-popup {
+  width: min(520px, 100% - 32px);
+  padding: 30px 28px 26px;
+  border-radius: 12px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-title {
+  margin: 0;
+  padding: 0;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-html-container {
+  width: 100%;
+  margin: 0;
+  padding: 22px 0 0;
+  overflow: visible;
+  color: #374151;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+  margin: 24px 0 0;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-confirm {
+  min-width: 165px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid #2563EB;
+  border-radius: 8px;
+  background: #2563EB;
+  color: #FFFFFF;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-confirm:hover {
+  background: #1D4ED8;
+  border-color: #1D4ED8;
+  transform: translateY(-1px);
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-confirm:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-confirm:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-cancel {
+  min-width: 86px;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid #6B7280;
+  border-radius: 8px;
+  background: #6B7280;
+  color: #FFFFFF;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-cancel:hover {
+  background: #4B5563;
+  border-color: #4B5563;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-cancel:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.14);
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-loader {
+  border-color: #2563EB transparent #2563EB transparent;
+}
+
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-loader {
+  border-color: #2563EB transparent #2563EB transparent;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-close,
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-close {
+  color: #9CA3AF;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.swal2-popup.wm-profile-password-swal-popup .swal2-close:hover,
+.swal2-popup.wm-profile-2fa-swal-popup .swal2-close:hover {
+  color: #111827;
+}
+
 @media (max-width: 1199px) {
   .wm-profile-page__layout {
-    grid-template-columns: minmax(0, 1fr) 260px;
+    grid-template-columns: minmax(0, 1fr) 270px;
   }
 }
 @media (max-width: 991px) {
@@ -26009,7 +27433,9 @@ body.wm-calendar-modal-open {
   .wm-profile-security-item__content {
     flex-basis: calc(100% - 62px);
   }
-  .wm-profile-security-item > .btn,
+  .wm-profile-security-item > .btn {
+    margin-left: 58px;
+  }
   .wm-profile-security-item__status {
     margin-left: 58px;
   }
@@ -26021,14 +27447,26 @@ body.wm-calendar-modal-open {
   }
 }
 @media (max-width: 575px) {
+  .wm-profile-page__header {
+    margin-bottom: 20px;
+  }
+  .wm-profile-page__breadcrumb {
+    margin-bottom: 12px;
+  }
+  .wm-profile-page__heading {
+    gap: 16px;
+  }
+  .wm-profile-page__title {
+    font-size: 20px;
+  }
+  .wm-profile-page__subtitle {
+    font-size: 13px;
+  }
   .wm-profile-page__header-actions {
     flex-direction: column;
   }
   .wm-profile-page__header-actions .btn {
     width: 100%;
-  }
-  .wm-profile-card__cover {
-    height: 90px;
   }
   .wm-profile-card__body {
     padding: 0 16px 16px;
@@ -26045,9 +27483,19 @@ body.wm-calendar-modal-open {
   .wm-profile-avatar__image {
     border-width: 3px;
   }
+  .wm-profile-avatar__edit {
+    right: -3px;
+    bottom: -3px;
+    width: 26px;
+    height: 26px;
+    border-width: 2px;
+  }
   .wm-profile-card__identity-content {
     width: 100%;
     padding-top: 0;
+  }
+  .wm-profile-card__identity-content h2 {
+    font-size: 16px;
   }
   .wm-profile-section__header,
   .wm-profile-section__body {
@@ -26056,21 +27504,166 @@ body.wm-calendar-modal-open {
   .wm-profile-section__header {
     flex-direction: column;
   }
+  .wm-profile-section__title {
+    font-size: 14px;
+  }
   .wm-profile-security-item,
   .wm-profile-session,
   .wm-profile-activity__item {
     padding: 16px;
   }
+  .wm-profile-security-item {
+    gap: 12px;
+  }
   .wm-profile-security-item__status {
     align-items: flex-start;
     flex-direction: column;
-    margin-left: 58px;
+    margin-left: 54px;
   }
   .wm-profile-security-item > .btn {
-    margin-left: 58px;
+    margin-left: 54px;
   }
   .wm-profile-session {
     align-items: flex-start;
+  }
+  .wm-profile-session__device {
+    align-items: flex-start;
+  }
+  .wm-profile-session__current {
+    flex: 0 0 auto;
+  }
+  .wm-profile-activity__item {
+    align-items: flex-start;
+  }
+  .wm-profile-2fa-setup__qr-code {
+    width: 190px;
+    height: 190px;
+    padding: 10px;
+  }
+  .wm-profile-2fa-setup__manual {
+    padding: 12px;
+  }
+  .wm-profile-recovery-modal__codes {
+    grid-template-columns: 1fr;
+    max-height: 230px;
+  }
+  .wm-profile-recovery-modal__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .wm-profile-recovery-modal__actions .btn {
+    width: 100%;
+  }
+  .swal2-popup.wm-profile-password-swal-popup,
+  .swal2-popup.wm-profile-2fa-swal-popup {
+    width: calc(100% - 24px);
+    padding: 24px 18px 20px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup .swal2-title,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-title {
+    font-size: 20px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup .swal2-html-container,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-html-container {
+    padding-top: 18px;
+  }
+  .wm-profile-swal-form {
+    gap: 16px;
+  }
+  .wm-profile-swal-password-strength__text {
+    font-size: 12px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup .swal2-actions,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-confirm,
+  .swal2-popup.wm-profile-password-swal-popup .swal2-actions .swal2-cancel,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-confirm,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-actions .swal2-cancel {
+    width: 100%;
+    min-width: 0;
+  }
+}
+@media (max-width: 399px) {
+  .wm-profile-card__identity-content {
+    width: calc(100% - 84px);
+  }
+  .wm-profile-card__identity-content h2 {
+    max-width: 100%;
+  }
+  .wm-profile-card__identity-status {
+    margin-top: 8px;
+  }
+  .wm-profile-security-item__content {
+    flex-basis: calc(100% - 54px);
+  }
+  .wm-profile-security-item > .btn,
+  .wm-profile-security-item__status {
+    margin-left: 0;
+  }
+  .wm-profile-session {
+    flex-direction: column;
+  }
+  .wm-profile-session__device {
+    width: 100%;
+  }
+  .wm-profile-session__current,
+  .wm-profile-session__revoke {
+    margin-left: 52px;
+  }
+  .wm-profile-activity__content span {
+    white-space: normal;
+  }
+  .wm-profile-2fa-setup__qr-code {
+    width: 170px;
+    height: 170px;
+    padding: 8px;
+  }
+  .wm-profile-2fa-setup__description {
+    font-size: 12px;
+  }
+  .wm-profile-2fa-setup__manual code {
+    font-size: 10px;
+  }
+  .wm-profile-recovery-modal__warning {
+    gap: 8px;
+  }
+  .wm-profile-recovery-modal__warning span {
+    font-size: 10px;
+  }
+  .wm-profile-recovery-code {
+    min-height: 36px;
+    font-size: 10px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup,
+  .swal2-popup.wm-profile-2fa-swal-popup {
+    width: calc(100% - 16px);
+    padding: 22px 14px 18px;
+  }
+  .swal2-popup.wm-profile-password-swal-popup .swal2-title,
+  .swal2-popup.wm-profile-2fa-swal-popup .swal2-title {
+    font-size: 18px;
+  }
+  .wm-profile-swal-input-wrapper .swal2-input {
+    height: 38px;
+    min-height: 38px;
+    padding-left: 36px;
+    padding-right: 40px;
+    font-size: 12px;
+  }
+  .wm-profile-swal-input-wrapper > i {
+    left: 11px;
+    font-size: 15px;
+  }
+  .wm-profile-swal-password-toggle {
+    right: 6px;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
   }
 }
 .wm-roles-page {
