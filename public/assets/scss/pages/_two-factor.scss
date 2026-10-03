@@ -1,0 +1,934 @@
+@use "../common" as *;
+
+
+// ============================================================
+// Two-Factor Authentication Page
+// ============================================================
+
+.wm-auth-page--two-factor {
+
+    min-height: 100vh;
+
+
+    // ========================================================
+    // Two-Factor Icon
+    // ========================================================
+
+    .wm-auth__two-factor-icon {
+
+        width: 64px;
+        height: 64px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-bottom: $spacing-5;
+
+        border-radius: $radius-2xl;
+
+        background: $color-primary-light;
+
+        color: $color-primary;
+
+        font-size: 30px;
+
+        box-shadow:
+            0 8px 24px rgba(37, 99, 235, 0.10);
+
+    }
+
+
+    // ========================================================
+    // Form Header
+    // ========================================================
+
+    .wm-auth__form-header {
+
+        .wm-auth__form-title {
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .wm-auth__form-description {
+
+            max-width: 430px;
+
+            margin-bottom: 0;
+
+        }
+
+    }
+
+
+    // ========================================================
+    // Email Information
+    // ========================================================
+
+    .wm-auth__two-factor-email {
+
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        gap: $spacing-3;
+
+        margin-bottom: $spacing-6;
+
+        padding: 15px $spacing-4;
+
+        border: 1px solid $color-border;
+
+        border-radius: $radius-xl;
+
+        background: $color-primary-light;
+
+    }
+
+
+    .wm-auth__two-factor-email-icon {
+
+        flex: 0 0 42px;
+
+        width: 42px;
+        height: 42px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: $radius-lg;
+
+        background: $color-primary-soft;
+
+        color: $color-primary;
+
+        font-size: 20px;
+
+    }
+
+
+    .wm-auth__two-factor-email-content {
+
+        min-width: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 3px;
+
+    }
+
+
+    .wm-auth__two-factor-email-label {
+
+        display: block;
+
+        color: $color-text-secondary;
+
+        font-size: $font-size-xs;
+        font-weight: $font-weight-medium;
+
+        line-height: $line-height-normal;
+
+    }
+
+
+    .wm-auth__two-factor-email-content strong {
+
+        display: block;
+
+        overflow: hidden;
+
+        color: $color-text-dark;
+
+        font-size: $font-size-md;
+        font-weight: $font-weight-semibold;
+
+        line-height: $line-height-normal;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+    }
+
+
+    // ========================================================
+    // Two-Factor Form
+    // ========================================================
+
+    .wm-auth__two-factor-form {
+
+        width: 100%;
+
+    }
+
+
+    // ========================================================
+    // OTP Input
+    // ========================================================
+
+    .wm-auth__two-factor-input {
+
+        height: 58px;
+
+        padding-left: 52px;
+        padding-right: $spacing-4;
+
+        color: $color-text-dark;
+
+        font-size: 22px;
+        font-weight: $font-weight-semibold;
+
+        letter-spacing: 0.32em;
+
+        text-align: center;
+
+        font-variant-numeric: tabular-nums;
+
+        -webkit-appearance: none;
+        appearance: none;
+
+    }
+
+
+    .wm-auth__two-factor-input::placeholder {
+
+        color: $color-text-muted;
+
+        font-size: 20px;
+        font-weight: $font-weight-medium;
+
+        letter-spacing: 0.25em;
+
+        opacity: 1;
+
+    }
+
+
+    .wm-auth__two-factor-input:focus {
+
+        letter-spacing: 0.32em;
+
+    }
+
+
+    // ========================================================
+    // Expiry Information
+    // ========================================================
+
+    .wm-auth__two-factor-expiry {
+
+        display: flex;
+        align-items: flex-start;
+
+        gap: $spacing-2;
+
+        margin-top: $spacing-3;
+        margin-bottom: $spacing-6;
+
+        color: $color-text-secondary;
+
+        font-size: $font-size-sm;
+
+        line-height: $line-height-normal;
+
+    }
+
+
+    .wm-auth__two-factor-expiry i {
+
+        flex: 0 0 auto;
+
+        margin-top: 2px;
+
+        color: $color-primary;
+
+        font-size: $font-size-lg;
+
+    }
+
+
+    .wm-auth__two-factor-expiry strong {
+
+        color: $color-text-dark;
+
+        font-weight: $font-weight-semibold;
+
+    }
+
+
+    // ========================================================
+    // Submit Button
+    // ========================================================
+
+    .wm-auth__submit {
+
+        width: 100%;
+
+        min-height: 52px;
+
+        position: relative;
+
+    }
+
+
+    .wm-auth__submit-content {
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: $spacing-2;
+
+    }
+
+
+    .wm-auth__submit-content i {
+
+        font-size: $font-size-lg;
+
+        transition:
+            transform 0.2s ease;
+
+    }
+
+
+    .wm-auth__submit:hover
+    .wm-auth__submit-content i {
+
+        transform: translateX(3px);
+
+    }
+
+
+    // ========================================================
+    // Submit Loading
+    // ========================================================
+
+    .wm-auth__submit-loading {
+
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: $spacing-2;
+
+    }
+
+
+    .wm-auth__submit.is-loading
+    .wm-auth__submit-content {
+
+        display: none;
+
+    }
+
+
+    .wm-auth__submit.is-loading
+    .wm-auth__submit-loading {
+
+        display: inline-flex;
+
+    }
+
+
+    .wm-auth__spinner {
+
+        width: 17px;
+        height: 17px;
+
+        display: inline-block;
+
+        border: 2px solid rgba(255, 255, 255, 0.35);
+
+        border-top-color: $color-white;
+
+        border-radius: $radius-full;
+
+        animation:
+            wm-two-factor-spin
+            0.7s linear infinite;
+
+    }
+
+
+    // ========================================================
+    // Resend
+    // ========================================================
+
+    .wm-auth__two-factor-resend {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 5px;
+
+        margin-top: $spacing-5;
+
+        color: $color-text-secondary;
+
+        font-size: $font-size-sm;
+
+        line-height: $line-height-normal;
+
+        text-align: center;
+
+    }
+
+
+    .wm-auth__two-factor-resend-button {
+
+        padding: 0;
+
+        border: 0;
+
+        background: transparent;
+
+        color: $color-primary;
+
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: $font-weight-semibold;
+
+        cursor: pointer;
+
+        transition:
+            color 0.2s ease,
+            opacity 0.2s ease;
+
+    }
+
+
+    .wm-auth__two-factor-resend-button:hover {
+
+        color: $color-primary-hover;
+
+        text-decoration: underline;
+
+        text-underline-offset: 3px;
+
+    }
+
+
+    .wm-auth__two-factor-resend-button:disabled {
+
+        color: $color-text-muted;
+
+        cursor: not-allowed;
+
+        text-decoration: none;
+
+        opacity: 0.7;
+
+    }
+
+
+    .wm-auth__two-factor-resend-button.is-loading {
+
+        color: $color-text-muted;
+
+        cursor: wait;
+
+    }
+
+
+    // ========================================================
+    // Countdown
+    // ========================================================
+
+    .wm-auth__two-factor-countdown {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px;
+
+        margin-top: $spacing-2;
+
+        color: $color-text-secondary;
+
+        font-size: $font-size-xs;
+
+        text-align: center;
+
+    }
+
+
+    .wm-auth__two-factor-countdown[hidden] {
+
+        display: none;
+
+    }
+
+
+    .wm-auth__two-factor-countdown i {
+
+        color: $color-primary;
+
+        font-size: $font-size-md;
+
+    }
+
+
+    .wm-auth__two-factor-countdown strong {
+
+        min-width: 18px;
+
+        color: $color-text-dark;
+
+        font-weight: $font-weight-semibold;
+
+        font-variant-numeric: tabular-nums;
+
+    }
+
+
+    // ========================================================
+    // Back To Login
+    // ========================================================
+
+    .wm-auth__two-factor-back {
+
+        width: 100%;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 7px;
+
+        margin-top: $spacing-5;
+
+        color: $color-text-secondary;
+
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+
+        text-decoration: none;
+
+        transition:
+            color 0.2s ease;
+
+    }
+
+
+    .wm-auth__two-factor-back i {
+
+        font-size: $font-size-lg;
+
+        transition:
+            transform 0.2s ease;
+
+    }
+
+
+    .wm-auth__two-factor-back:hover {
+
+        color: $color-primary;
+
+    }
+
+
+    .wm-auth__two-factor-back:hover i {
+
+        transform: translateX(-3px);
+
+    }
+
+
+    // ========================================================
+    // AJAX Alert
+    // ========================================================
+
+    .wm-auth__ajax-alert {
+
+        width: 100%;
+
+        margin-bottom: $spacing-4;
+
+    }
+
+
+    .wm-auth__ajax-alert:empty {
+
+        display: none;
+
+    }
+
+
+    // ========================================================
+    // Alert
+    // ========================================================
+
+    .wm-auth__alert {
+
+        position: relative;
+
+        display: flex;
+        align-items: flex-start;
+
+        gap: $spacing-2;
+
+        width: 100%;
+
+        padding: 13px 42px 13px 14px;
+
+        border: 1px solid transparent;
+
+        border-radius: $radius-lg;
+
+        font-size: $font-size-sm;
+
+        line-height: $line-height-normal;
+
+    }
+
+
+    .wm-auth__alert > i {
+
+        flex: 0 0 auto;
+
+        margin-top: 1px;
+
+        font-size: $font-size-lg;
+
+    }
+
+
+    .wm-auth__alert--success {
+
+        border-color: rgba(16, 185, 129, 0.20);
+
+        background: $color-success-light;
+
+        color: $color-success-dark;
+
+    }
+
+
+    .wm-auth__alert--danger {
+
+        border-color: rgba(239, 68, 68, 0.20);
+
+        background: $color-danger-light;
+
+        color: $color-danger-dark;
+
+    }
+
+
+    .wm-auth__alert-close {
+
+        position: absolute;
+
+        top: 10px;
+        right: 10px;
+
+        width: 25px;
+        height: 25px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+
+        border: 0;
+
+        border-radius: $radius-sm;
+
+        background: transparent;
+
+        color: currentColor;
+
+        font-size: $font-size-md;
+
+        cursor: pointer;
+
+        opacity: 0.65;
+
+        transition:
+            background-color 0.2s ease,
+            opacity 0.2s ease;
+
+    }
+
+
+    .wm-auth__alert-close:hover {
+
+        background: rgba(0, 0, 0, 0.05);
+
+        opacity: 1;
+
+    }
+
+
+    // ========================================================
+    // Field Error
+    // ========================================================
+
+    .wm-auth__field-error {
+
+        display: block;
+
+        min-height: 18px;
+
+        margin-top: 6px;
+
+        color: $color-danger-dark;
+
+        font-size: $font-size-xs;
+
+        line-height: $line-height-normal;
+
+    }
+
+
+    .wm-auth__input-wrapper.is-invalid {
+
+        border-color: $color-danger;
+
+        box-shadow:
+            0 0 0 3px rgba(239, 68, 68, 0.08);
+
+    }
+
+
+    .wm-auth__input.is-invalid {
+
+        border-color: transparent;
+
+    }
+
+
+    // ========================================================
+    // Mobile Logo
+    // ========================================================
+
+    .wm-auth__mobile-logo {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    // ========================================================
+    // Large Tablet / Desktop
+    // ========================================================
+
+    @media (max-width: $breakpoint-lg - 1px) {
+
+        .wm-auth__brand {
+
+            display: none;
+
+        }
+
+
+        .wm-auth__panel {
+
+            width: 100%;
+
+        }
+
+
+        .wm-auth__form-wrapper {
+
+            max-width: 520px;
+
+            margin-right: auto;
+            margin-left: auto;
+
+        }
+
+    }
+
+
+    // ========================================================
+    // Tablet
+    // ========================================================
+
+    @media (max-width: $breakpoint-md - 1px) {
+
+        .wm-auth__panel {
+
+            padding: 36px $spacing-6;
+
+        }
+
+
+        .wm-auth__form-wrapper {
+
+            max-width: 100%;
+
+        }
+
+
+        .wm-auth__two-factor-icon {
+
+            width: 58px;
+            height: 58px;
+
+            margin-bottom: 18px;
+
+            border-radius: $radius-2xl;
+
+            font-size: 27px;
+
+        }
+
+
+        .wm-auth__two-factor-input {
+
+            height: 54px;
+
+            font-size: 21px;
+
+        }
+
+    }
+
+
+    // ========================================================
+    // Mobile
+    // ========================================================
+
+    @media (max-width: $breakpoint-sm - 1px) {
+
+        .wm-auth__panel {
+
+            padding: 28px 18px;
+
+        }
+
+
+        .wm-auth__mobile-logo {
+
+            margin-bottom: $spacing-6;
+
+        }
+
+
+        .wm-auth__form-title {
+
+            font-size: $font-size-3xl;
+
+        }
+
+
+        .wm-auth__form-description {
+
+            font-size: $font-size-sm;
+
+        }
+
+
+        .wm-auth__two-factor-email {
+
+            gap: 11px;
+
+            padding: 13px;
+
+        }
+
+
+        .wm-auth__two-factor-email-icon {
+
+            flex-basis: 38px;
+
+            width: 38px;
+            height: 38px;
+
+            font-size: $font-size-lg;
+
+        }
+
+
+        .wm-auth__two-factor-email-content strong {
+
+            font-size: $font-size-sm;
+
+        }
+
+
+        .wm-auth__two-factor-input {
+
+            height: 52px;
+
+            padding-right: 12px;
+            padding-left: 46px;
+
+            font-size: $font-size-2xl;
+
+            letter-spacing: 0.28em;
+
+        }
+
+
+        .wm-auth__two-factor-input::placeholder {
+
+            font-size: $font-size-xl;
+
+        }
+
+
+        .wm-auth__two-factor-expiry {
+
+            font-size: $font-size-xs;
+
+        }
+
+
+        .wm-auth__two-factor-resend {
+
+            flex-direction: column;
+
+            gap: 3px;
+
+        }
+
+
+        .wm-auth__footer {
+
+            flex-direction: column;
+            align-items: center;
+
+            gap: 10px;
+
+            text-align: center;
+
+        }
+
+    }
+
+}
+
+
+// ============================================================
+// Two-Factor Spinner Animation
+// ============================================================
+
+@keyframes wm-two-factor-spin {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
