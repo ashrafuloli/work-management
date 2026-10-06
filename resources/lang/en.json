@@ -239,5 +239,20 @@
     "two_factor.session_expired": "Your verification session has expired. Please sign in again.",
     "two_factor.too_many_attempts": "Too many attempts. Please wait a moment and try again.",
     "two_factor.too_many_requests": "Too many requests. Please wait before requesting another code.",
-    "two_factor.csrf_expired": "Your session has expired. Please refresh the page and try again."
+    "two_factor.csrf_expired": "Your session has expired. Please refresh the page and try again.",
+
+    "profile.sign_out": "Sign Out",
+    "profile.js.sign_out_other_sessions_title": "Sign Out Other Sessions?",
+    "profile.js.sign_out_other_sessions_message": "This will sign you out from all other devices and browsers. Your current session will remain active.",
+    "profile.js.other_sessions_signed_out": "All other sessions have been signed out.",
+    "profile.js.session_signed_out": "Session signed out successfully.",
+    "profile.js.session_not_found": "The selected session could not be found.",
+    "profile.js.unable_to_load_sessions": "Unable to load your active sessions.",
+    "profile.js.unable_to_sign_out_session": "Unable to sign out the selected session.",
+    "profile.js.no_other_sessions": "You are not signed in on any other devices.",
+    "profile.js.loading_sessions": "Loading active sessions...",
+    "profile.js.just_now": "Just now",
+    "profile.js.active_session": "Active session",
+    "profile.js.confirm_sign_out": "Sign Out Session?",
+    "profile.js.confirm_sign_out_message": "Are you sure you want to sign out this session?"
 }

@@ -101,6 +101,16 @@
         data-email-2fa-disable-send-url="{{ route('settings.security.2fa.email.disable.send') }}"
 
         data-email-2fa-disable-url="{{ route('settings.security.2fa.email.disable') }}"
+
+        {{-- =========================================================
+            sessions
+        ========================================================== --}}
+
+        data-sessions-url="{{ route('settings.profile.sessions') }}"
+
+        data-session-destroy-url="{{ url('/settings/profile/sessions/__SESSION__') }}"
+
+        data-logout-other-sessions-url="{{ route('settings.profile.sessions.logout-others') }}"
     >
 
         {{-- ============================================================
@@ -1732,7 +1742,71 @@
                 @json(__('profile.js.disable_email_two_factor_button')),
 
                 unableToDisableEmailTwoFactor:
-                @json(__('profile.js.unable_to_disable_email_two_factor'))
+                @json(__('profile.js.unable_to_disable_email_two_factor')),
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Active Sessions
+                |--------------------------------------------------------------------------
+                */
+
+                current:
+                @json(__('common.current')),
+
+                active:
+                @json(__('common.active')),
+
+                currentBrowser:
+                @json(__('profile.current_browser')),
+
+                currentAuthenticatedSession:
+                @json(__('profile.current_authenticated_session')),
+
+                signOut:
+                @json(__('profile.sign_out')),
+
+                signOutOtherSessions:
+                @json(__('profile.sign_out_other_sessions')),
+
+                signOutOtherSessionsTitle:
+                @json(__('profile.js.sign_out_other_sessions_title')),
+
+                signOutOtherSessionsMessage:
+                @json(__('profile.js.sign_out_other_sessions_message')),
+
+                sessionsSignedOut:
+                @json(__('profile.js.other_sessions_signed_out')),
+
+                sessionSignedOut:
+                @json(__('profile.js.session_signed_out')),
+
+                sessionNotFound:
+                @json(__('profile.js.session_not_found')),
+
+                unableToLoadSessions:
+                @json(__('profile.js.unable_to_load_sessions')),
+
+                unableToSignOutSession:
+                @json(__('profile.js.unable_to_sign_out_session')),
+
+                noOtherSessions:
+                @json(__('profile.js.no_other_sessions')),
+
+                loadingSessions:
+                @json(__('profile.js.loading_sessions')),
+
+                justNow:
+                @json(__('profile.js.just_now')),
+
+                activeSession:
+                @json(__('profile.js.active_session')),
+
+                confirmSignOut:
+                @json(__('profile.js.confirm_sign_out')),
+
+                confirmSignOutMessage:
+                @json(__('profile.js.confirm_sign_out_message'))
 
             };
 
@@ -1758,6 +1832,12 @@
             const $avatarPreview =
                 $('#profileAvatarPreview');
 
+            const $sessionsContainer =
+                $('.wm-profile-sessions');
+
+            const $logoutOtherSessions =
+                $('#logoutOtherSessions');
+
 
             /*
             |--------------------------------------------------------------------------
@@ -1773,6 +1853,22 @@
 
             const passwordUpdateUrl =
                 $page.data('password-update-url');
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Active Sessions URLs
+            |--------------------------------------------------------------------------
+            */
+
+            const sessionsUrl =
+                $page.data('sessions-url');
+
+            const destroySessionUrl =
+                $page.data('session-destroy-url');
+
+            const logoutOtherSessionsUrl =
+                $page.data('logout-other-sessions-url');
 
 
             /*
@@ -1816,6 +1912,8 @@
             let hasChanges = false;
 
             let emailTwoFactorEnabled = false;
+
+            let sessionsLoading = false;
 
 
             /*
@@ -3763,12 +3861,6 @@
                     return;
                 }
 
-                /*
-                |--------------------------------------------------------------------------
-                | Send OTP for disable confirmation
-                |--------------------------------------------------------------------------
-                */
-
                 $button
                     .prop('disabled', true)
                     .addClass('is-loading');
@@ -3835,31 +3927,653 @@
 
             /*
             |--------------------------------------------------------------------------
-            | Logout Other Sessions
+            | Active Sessions
             |--------------------------------------------------------------------------
             */
 
-            $('#logoutOtherSessions').on(
+            function loadActiveSessions() {
+
+                if (
+                    !sessionsUrl ||
+                    !$sessionsContainer.length ||
+                    sessionsLoading
+                ) {
+                    return;
+                }
+
+                sessionsLoading = true;
+
+                renderSessionsLoading();
+
+                $.ajax({
+
+                    url: sessionsUrl,
+
+                    type: 'GET',
+
+                    success: function (response) {
+
+                        if (
+                            !response ||
+                            !response.success ||
+                            !response.data
+                        ) {
+
+                            renderSessionsError();
+
+                            return;
+                        }
+
+                        renderActiveSessions(
+                            response.data.sessions || []
+                        );
+
+                    },
+
+                    error: function (xhr) {
+
+                        console.error(
+                            'WorkManagement: Unable to load active sessions.',
+                            xhr
+                        );
+
+                        renderSessionsError();
+
+                    },
+
+                    complete: function () {
+
+                        sessionsLoading = false;
+
+                    }
+
+                });
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Render Sessions Loading
+            |--------------------------------------------------------------------------
+            */
+
+            function renderSessionsLoading() {
+
+                $sessionsContainer.html(`
+
+                    <div class="wm-profile-sessions__loading">
+
+                        <span class="wm-profile-spinner"></span>
+
+                        <span>
+                            ${translations.loadingSessions}
+                        </span>
+
+                    </div>
+
+                `);
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Render Sessions Error
+            |--------------------------------------------------------------------------
+            */
+
+            function renderSessionsError() {
+
+                $sessionsContainer.html(`
+
+                    <div class="wm-profile-sessions__empty">
+
+                        <div class="wm-profile-sessions__empty-icon">
+
+                            <i class="ph ph-warning-circle"></i>
+
+                        </div>
+
+                        <p>
+                            ${translations.unableToLoadSessions}
+                        </p>
+
+                    </div>
+
+                `);
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Render Active Sessions
+            |--------------------------------------------------------------------------
+            */
+
+            function renderActiveSessions(sessions) {
+
+                if (!sessions.length) {
+
+                    renderSessionsEmpty();
+
+                    return;
+                }
+
+                const html =
+                    sessions
+                        .map(function (session) {
+
+                            return renderSessionItem(
+                                session
+                            );
+
+                        })
+                        .join('');
+
+                $sessionsContainer.html(html);
+
+                updateLogoutOtherSessionsButton(
+                    sessions
+                );
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Render Empty State
+            |--------------------------------------------------------------------------
+            */
+
+            function renderSessionsEmpty() {
+
+                $sessionsContainer.html(`
+
+                    <div class="wm-profile-sessions__empty">
+
+                        <div class="wm-profile-sessions__empty-icon">
+
+                            <i class="ph ph-devices"></i>
+
+                        </div>
+
+                        <p>
+                            ${translations.noOtherSessions}
+                        </p>
+
+                    </div>
+
+                `);
+
+                $logoutOtherSessions
+                    .prop('disabled', true);
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Render Single Session
+            |--------------------------------------------------------------------------
+            */
+
+            function renderSessionItem(session) {
+
+                const isCurrent =
+                    Boolean(session.is_current);
+
+                const browser =
+                    escapeHtml(
+                        session.browser ||
+                        'Unknown Browser'
+                    );
+
+                const platform =
+                    escapeHtml(
+                        session.platform ||
+                        'Unknown'
+                    );
+
+                const device =
+                    escapeHtml(
+                        session.device ||
+                        'Desktop'
+                    );
+
+                const ipAddress =
+                    escapeHtml(
+                        session.ip_address ||
+                        ''
+                    );
+
+                const lastActive =
+                    escapeHtml(
+                        session.last_active ||
+                        translations.justNow
+                    );
+
+                const sessionId =
+                    escapeHtml(
+                        session.id ||
+                        ''
+                    );
+
+                const icon =
+                    getSessionIcon(
+                        session
+                    );
+
+                const deviceLabel =
+                    `${browser} · ${platform}`;
+
+                const metaParts = [
+                    device,
+                    ipAddress
+                ].filter(Boolean);
+
+                const statusHtml =
+                    isCurrent
+                        ? `
+                            <span class="wm-profile-session__current">
+                                ${translations.current}
+                            </span>
+                        `
+                        : `
+                            <button
+                                type="button"
+                                class="btn btn-light btn-sm wm-profile-session__signout"
+                                data-session-id="${sessionId}"
+                            >
+                                ${translations.signOut}
+                            </button>
+                        `;
+
+                return `
+
+                    <div
+                        class="wm-profile-session ${
+                    isCurrent
+                        ? 'is-current'
+                        : ''
+                }"
+                        data-session-id="${sessionId}"
+                    >
+
+                        <div class="wm-profile-session__device">
+
+                            <div class="wm-profile-session__icon">
+
+                                <i class="ph ${icon}"></i>
+
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ${deviceLabel}
+                                </strong>
+
+                                <span>
+                                    ${metaParts.join(' · ')}
+                                </span>
+
+                                <small>
+                                    ${lastActive}
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                        <div class="wm-profile-session__status">
+
+                            ${statusHtml}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Session Icon
+            |--------------------------------------------------------------------------
+            */
+
+            function getSessionIcon(session) {
+
+                const device =
+                    String(
+                        session.device || ''
+                    ).toLowerCase();
+
+                const platform =
+                    String(
+                        session.platform || ''
+                    ).toLowerCase();
+
+                if (device === 'mobile') {
+
+                    return 'ph-device-mobile';
+
+                }
+
+                if (device === 'tablet') {
+
+                    return 'ph-device-tablet';
+
+                }
+
+                if (
+                    platform === 'macos' ||
+                    platform === 'windows' ||
+                    platform === 'linux' ||
+                    platform === 'chromeos'
+                ) {
+
+                    return 'ph-desktop';
+
+                }
+
+                return 'ph-devices';
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Logout Specific Session
+            |--------------------------------------------------------------------------
+            */
+
+            $(document).on(
                 'click',
+                '.wm-profile-session__signout',
                 function () {
+
+                    const $button =
+                        $(this);
+
+                    const sessionId =
+                        $button.attr(
+                            'data-session-id'
+                        );
+
+                    if (!sessionId) {
+                        return;
+                    }
 
                     Swal.fire({
 
-                        icon: 'info',
+                        icon: 'warning',
 
                         title:
-                        @json(__('profile.active_sessions')),
+                        translations.confirmSignOut,
 
                         text:
-                        @json(__('profile.js.active_sessions_message')),
+                        translations.confirmSignOutMessage,
+
+                        showCancelButton: true,
 
                         confirmButtonText:
-                        translations.continue
+                        translations.signOut,
+
+                        cancelButtonText:
+                        translations.cancel,
+
+                        confirmButtonColor:
+                            '#EF4444',
+
+                        showLoaderOnConfirm: true,
+
+                        allowOutsideClick: function () {
+
+                            return !Swal.isLoading();
+
+                        },
+
+                        preConfirm: function () {
+
+                            const url =
+                                buildSessionDestroyUrl(
+                                    sessionId
+                                );
+
+                            return $.ajax({
+
+                                url: url,
+
+                                type: 'DELETE',
+
+                                data: {
+                                    _token: csrfToken
+                                }
+
+                            })
+
+                                .then(function (response) {
+
+                                    if (
+                                        !response ||
+                                        !response.success
+                                    ) {
+
+                                        Swal.showValidationMessage(
+                                            response?.message ||
+                                            translations.unableToSignOutSession
+                                        );
+
+                                        return false;
+                                    }
+
+                                    return response;
+
+                                })
+
+                                .catch(function (xhr) {
+
+                                    Swal.showValidationMessage(
+                                        xhr.responseJSON?.message ||
+                                        translations.unableToSignOutSession
+                                    );
+
+                                    return false;
+
+                                });
+
+                        }
+
+                    }).then(function (result) {
+
+                        if (
+                            !result.isConfirmed ||
+                            !result.value?.success
+                        ) {
+                            return;
+                        }
+
+                        showToast(
+                            translations.sessionSignedOut,
+                            result.value.message ||
+                            translations.sessionSignedOut
+                        );
+
+                        loadActiveSessions();
 
                     });
 
                 }
             );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Build Session Destroy URL
+            |--------------------------------------------------------------------------
+            */
+
+            function buildSessionDestroyUrl(sessionId) {
+
+                if (!destroySessionUrl) {
+                    return '';
+                }
+
+                return destroySessionUrl.replace(
+                    '__SESSION__',
+                    encodeURIComponent(sessionId)
+                );
+
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Logout Other Sessions
+            |--------------------------------------------------------------------------
+            */
+
+            $logoutOtherSessions.on(
+                'click',
+                function () {
+
+                    if (
+                        !logoutOtherSessionsUrl ||
+                        $(this).prop('disabled')
+                    ) {
+                        return;
+                    }
+
+                    Swal.fire({
+
+                        icon: 'warning',
+
+                        title:
+                        translations.signOutOtherSessionsTitle,
+
+                        text:
+                        translations.signOutOtherSessionsMessage,
+
+                        showCancelButton: true,
+
+                        confirmButtonText:
+                        translations.signOutOtherSessions,
+
+                        cancelButtonText:
+                        translations.cancel,
+
+                        confirmButtonColor:
+                            '#EF4444',
+
+                        showLoaderOnConfirm: true,
+
+                        allowOutsideClick: function () {
+
+                            return !Swal.isLoading();
+
+                        },
+
+                        preConfirm: function () {
+
+                            return $.ajax({
+
+                                url:
+                                logoutOtherSessionsUrl,
+
+                                type: 'POST',
+
+                                data: {
+                                    _token: csrfToken
+                                }
+
+                            })
+
+                                .then(function (response) {
+
+                                    if (
+                                        !response ||
+                                        !response.success
+                                    ) {
+
+                                        Swal.showValidationMessage(
+                                            response?.message ||
+                                            translations.unableToSignOutSession
+                                        );
+
+                                        return false;
+                                    }
+
+                                    return response;
+
+                                })
+
+                                .catch(function (xhr) {
+
+                                    Swal.showValidationMessage(
+                                        xhr.responseJSON?.message ||
+                                        translations.unableToSignOutSession
+                                    );
+
+                                    return false;
+
+                                });
+
+                        }
+
+                    }).then(function (result) {
+
+                        if (
+                            !result.isConfirmed ||
+                            !result.value?.success
+                        ) {
+                            return;
+                        }
+
+                        showToast(
+                            translations.signOutOtherSessions,
+                            result.value.message ||
+                            translations.sessionsSignedOut
+                        );
+
+                        loadActiveSessions();
+
+                    });
+
+                }
+            );
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | Update Logout Other Sessions Button
+            |--------------------------------------------------------------------------
+            */
+
+            function updateLogoutOtherSessionsButton(
+                sessions
+            ) {
+
+                const hasOtherSessions =
+                    sessions.some(function (session) {
+
+                        return !Boolean(
+                            session.is_current
+                        );
+
+                    });
+
+                $logoutOtherSessions
+                    .prop(
+                        'disabled',
+                        !hasOtherSessions
+                    );
+
+            }
 
 
             /*
@@ -3908,6 +4622,8 @@
             clearChangedState();
 
             loadTwoFactorStatus();
+
+            loadActiveSessions();
 
         });
     </script>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\Auth\TwoFactorController;
 use App\Http\Controllers\Settings\ProfileController;
+use App\Http\Controllers\Settings\ProfileSessionController;
 use App\Http\Controllers\Settings\SecurityController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -586,30 +587,100 @@ Route::middleware('auth')->group(function () {
 
             Route::prefix('profile')->group(function () {
 
+                /*
+                |--------------------------------------------------------------------------
+                | Profile Page
+                |--------------------------------------------------------------------------
+                */
+
                 Route::get('/', [
                     ProfileController::class,
                     'index',
                 ])->name('profile');
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Update Profile
+                |--------------------------------------------------------------------------
+                */
 
                 Route::put('/', [
                     ProfileController::class,
                     'update',
                 ])->name('profile.update');
 
+
+                /*
+                |--------------------------------------------------------------------------
+                | Update Password
+                |--------------------------------------------------------------------------
+                */
+
                 Route::put('/password', [
                     ProfileController::class,
                     'updatePassword',
                 ])->name('profile.password.update');
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Update Avatar
+                |--------------------------------------------------------------------------
+                */
 
                 Route::post('/avatar', [
                     ProfileController::class,
                     'updateAvatar',
                 ])->name('profile.avatar.update');
 
+
+                /*
+                |--------------------------------------------------------------------------
+                | Remove Avatar
+                |--------------------------------------------------------------------------
+                */
+
                 Route::delete('/avatar', [
                     ProfileController::class,
                     'removeAvatar',
                 ])->name('profile.avatar.remove');
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Active Sessions
+                |--------------------------------------------------------------------------
+                */
+
+                Route::get('/sessions', [
+                    ProfileSessionController::class,
+                    'index',
+                ])->name('profile.sessions');
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Sign Out Specific Session
+                |--------------------------------------------------------------------------
+                */
+
+                Route::delete('/sessions/{session}', [
+                    ProfileSessionController::class,
+                    'destroy',
+                ])->name('profile.sessions.destroy');
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Sign Out Other Sessions
+                |--------------------------------------------------------------------------
+                */
+
+                Route::post('/sessions/logout-others', [
+                    ProfileSessionController::class,
+                    'logoutOthers',
+                ])->name('profile.sessions.logout-others');
 
             });
 
